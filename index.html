@@ -1,48 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PunchiSoft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PunchiSoft</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#111827;
-            color:white;
-            text-align:center;
-            padding:50px;
-        }
+    header {
+      padding: 24px 10%;
+      background: #020617;
+      border-bottom: 1px solid #334155;
+    }
 
-        h1{
-            color:#60a5fa;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .card{
-            max-width:800px;
-            margin:auto;
-            background:#1f2937;
-            padding:30px;
-            border-radius:15px;
-        }
-    </style>
+    nav h1 {
+      color: #38bdf8;
+      margin: 0;
+    }
+
+    nav a {
+      color: #e5e7eb;
+      margin-left: 18px;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #cbd5e1;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px 10% 60px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+    }
+
+    .card h3 {
+      color: #38bdf8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #020617;
+      color: #94a3b8;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="card">
+<header>
+  <nav>
     <h1>PunchiSoft</h1>
+    <div>
+      <a href="#">Inicio</a>
+      <a href="#">Blog</a>
+      <a href="#">Software</a>
+      <a href="#">Contacto</a>
+    </div>
+  </nav>
+</header>
 
-    <h2>Bienvenido</h2>
+<section class="hero">
+  <h2>Linux, Fedora, IA y Software</h2>
+  <p>Blog técnico y sitio oficial de proyectos PunchiSoft.</p>
+</section>
 
-    <p>
-        Sitio web oficial de PunchiSoft.
-    </p>
+<section class="cards">
+  <div class="card">
+    <h3>Fedora</h3>
+    <p>Guías, configuración, NVIDIA, Btrfs, Snapper y optimización.</p>
+  </div>
 
-    <p>
-        Linux • Fedora • IA • Software • Industria
-    </p>
-</div>
+  <div class="card">
+    <h3>IA</h3>
+    <p>ComfyUI, generación de imágenes, modelos locales y flujos de trabajo.</p>
+  </div>
+
+  <div class="card">
+    <h3>Software</h3>
+    <p>Fedora Turbo Monitor, PunchiManager y herramientas propias.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 PunchiSoft
+</footer>
 
 </body>
 </html>
