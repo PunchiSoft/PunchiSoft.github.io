@@ -170,10 +170,11 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .coming-soon p { margin-bottom: 0; color: var(--muted); font-size: .88rem; }
 .anchor-target { position: absolute; }
 
-.article-header { padding-block: 85px 55px; }
-.back-link { display: inline-block; margin-bottom: 52px; color: var(--muted); font-size: .82rem; }
+.article-header { padding-block: 72px 30px; }
+.back-link { display: inline-block; margin-bottom: 40px; color: var(--muted); font-size: .82rem; }
 .back-link:hover { color: var(--text); }
-.article-header h1 { margin: 25px 0; font-size: clamp(2.5rem, 6vw, 4.8rem); }
+.article-header h1 { max-width: 740px; margin: 17px 0 14px; font-size: clamp(2rem, 4.5vw, 3.6rem); line-height: 1.06; }
+.article-header .lead { line-height: 1.6; }
 .article-hero { margin-bottom: 10px; }
 .article-hero img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
 .article-hero figcaption, .article-figure figcaption, .article-gallery figcaption { margin-top: 12px; color: #6f7a87; font-size: .73rem; text-align: center; }
@@ -306,8 +307,9 @@ blockquote p { margin: 0 !important; }
   .page-header h1 { font-size: 3rem; }
   .post-card-visual { min-height: 220px; }
   .post-card-image { height: 220px; }
-  .article-header { padding-block: 55px 40px; }
-  .back-link { margin-bottom: 38px; }
+  .article-header { padding-block: 48px 22px; }
+  .back-link { margin-bottom: 30px; }
+  .article-header h1 { font-size: clamp(2rem, 10vw, 2.6rem); line-height: 1.08; }
   .article-cover { min-height: 350px; border-radius: 0; width: 100%; border-left: 0; border-right: 0; }
   .article-hero { width: min(calc(100% - 30px), var(--max-width)); }
   .article-hero img { border-radius: 15px; }
