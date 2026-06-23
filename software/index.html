@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Software de PunchiSoft: herramientas prácticas para Linux creadas con claridad y propósito.">
+  <meta name="theme-color" content="#0a0d12">
+  <title>Software — PunchiSoft</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a href="../blog/index.html">Blog</a><a class="active" href="index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-header container">
+      <p class="eyebrow">Herramientas PunchiSoft</p>
+      <h1>Software útil,<br><span>complejidad bajo control.</span></h1>
+      <p class="lead">Proyectos que nacen de necesidades reales y buscan hacer Linux más accesible.</p>
+    </section>
+    <section class="section container">
+      <article class="software-card">
+        <div class="software-visual" aria-hidden="true"><div class="app-icon">SP</div><div class="visual-status"><i></i> Proyecto en desarrollo</div></div>
+        <div class="software-info">
+          <div class="post-meta"><span class="tag">Linux</span><span class="status-dot">En desarrollo</span></div>
+          <h2>SwitchPower Manager</h2>
+          <p class="software-lead">Cambia entre modos de energía y rendimiento desde una interfaz clara, sin entrar a la BIOS.</p>
+          <ul class="feature-list"><li>Interfaz visual y sencilla</li><li>Pensado para usuarios nuevos</li><li>Enfoque seguro y transparente</li><li>Orientado a Fedora y Linux</li></ul>
+          <a class="button button-primary" href="../blog/switchpower-manager.html">Conocer la historia <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </section>
+    <section class="principles section container">
+      <div><p class="eyebrow">Cómo construimos</p><h2>Principios del software PunchiSoft</h2></div>
+      <div class="principle-grid"><article><span>01</span><h3>Claro</h3><p>Interfaces que explican lo necesario y respetan la atención.</p></article><article><span>02</span><h3>Práctico</h3><p>Cada proyecto comienza con un problema concreto.</p></article><article><span>03</span><h3>Abierto al aprendizaje</h3><p>Compartimos decisiones, procesos y lo aprendido.</p></article></div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a><p>Linux, IA y software con propósito.</p></div><nav><a href="../blog/index.html">Blog</a><a href="index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+</body>
+</html>
