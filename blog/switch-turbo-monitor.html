@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="La historia de Switch Turbo Monitor, una aplicación para controlar Turbo Boost, perfiles de energía y recursos del sistema en Fedora KDE.">
-  <meta name="theme-color" content="#0a0d12">
+  <meta name="theme-color" content="#10141c">
   <title>Switch Turbo Monitor: control y rendimiento en Fedora — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
-      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a>
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
       <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a class="active" href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
     </nav>
@@ -26,7 +27,7 @@
         <p class="lead">Lo que comenzó como una forma de activar o desactivar Turbo Boost sin entrar a la BIOS terminó convirtiéndose en un centro de control para entender mejor el equipo.</p>
       </header>
 
-      <figure class="article-hero container">
+      <figure class="article-hero container-narrow">
         <img src="../assets/images/switch-turbo-monitor/00.png" alt="Switch Turbo Monitor mostrando los modos frío y rendimiento en Fedora KDE" width="1293" height="857">
         <figcaption>Dos decisiones claras: priorizar temperatura y consumo, o disponer de más rendimiento.</figcaption>
       </figure>
@@ -93,7 +94,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a><p>Linux, IA y software con propósito.</p></div><nav><a href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></nav></div>
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Linux, IA y software con propósito.</p></div><nav><a href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></nav></div>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
   </footer>
   <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>

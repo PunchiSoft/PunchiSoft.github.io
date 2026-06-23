@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Software de PunchiSoft: herramientas prácticas para Linux creadas con claridad y propósito.">
-  <meta name="theme-color" content="#0a0d12">
+  <meta name="theme-color" content="#10141c">
   <title>Software — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
-      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a>
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
       <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a href="../blog/index.html">Blog</a><a class="active" href="index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
     </nav>
@@ -24,12 +25,12 @@
     </section>
     <section class="section container">
       <article class="software-card">
-        <div class="software-visual" aria-hidden="true"><div class="app-icon">STM</div><div class="visual-status"><i></i> Proyecto en desarrollo</div></div>
+        <div class="software-visual" aria-hidden="true"><div class="app-icon"><img src="../icons/app.svg" alt=""></div><div class="visual-status"><i></i> Proyecto en desarrollo</div></div>
         <div class="software-info">
           <div class="post-meta"><span class="tag">Fedora KDE</span><span class="status-dot">v0.8.5.0</span></div>
           <h2>Switch Turbo Monitor</h2>
           <p class="software-lead">Controla Turbo Boost, aplica perfiles de energía y observa los recursos del sistema desde una interfaz clara.</p>
-          <ul class="feature-list"><li>Modos frío y rendimiento</li><li>Métricas de CPU, RAM, GPU y red</li><li>Autorización segura con PolicyKit</li><li>Diagnóstico de dependencias</li></ul>
+          <ul class="feature-list"><li><img src="../icons/frio.svg" alt="">Modos frío y rendimiento</li><li><img src="../icons/recursos.svg" alt="">Métricas de CPU, RAM, GPU y red</li><li><img src="../icons/informacion.svg" alt="">Autorización segura con PolicyKit</li><li><img src="../icons/requisitos.svg" alt="">Diagnóstico de dependencias</li></ul>
           <a class="button button-primary" href="../blog/switch-turbo-monitor.html">Conocer la historia <span aria-hidden="true">→</span></a>
         </div>
       </article>
@@ -40,7 +41,7 @@
     </section>
   </main>
   <footer class="site-footer">
-    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a><p>Linux, IA y software con propósito.</p></div><nav><a href="../blog/index.html">Blog</a><a href="index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></nav></div>
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Linux, IA y software con propósito.</p></div><nav><a href="../blog/index.html">Blog</a><a href="index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></nav></div>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
   </footer>
   <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>

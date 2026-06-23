@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 68">
+  <defs>
+    <linearGradient id="intelAccent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#65c7ff"/>
+      <stop offset="1" stop-color="#168bd2"/>
+    </linearGradient>
+  </defs>
+  <path d="M10 20h12v38H10zm0-13h12v9H10z" fill="url(#intelAccent)"/>
+  <text x="29" y="51" fill="#f4f7fa" font-family="DejaVu Sans, sans-serif" font-size="43" font-weight="600" letter-spacing="-2">intel</text>
+  <path d="M5 61c39 5 108 1 157-18" fill="none" stroke="url(#intelAccent)" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+  <circle cx="158" cy="42" r="4" fill="#65c7ff"/>
+</svg>
