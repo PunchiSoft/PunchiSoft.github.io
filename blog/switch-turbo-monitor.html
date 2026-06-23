@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La historia de Switch Turbo Monitor, una aplicación para controlar Turbo Boost, perfiles de energía y recursos del sistema en Fedora KDE.">
+  <meta name="theme-color" content="#0a0d12">
+  <title>Switch Turbo Monitor: control y rendimiento en Fedora — PunchiSoft</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a class="active" href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">Fedora</span><time datetime="2026-06-23">23 de junio de 2026</time><span>9 min de lectura</span></div>
+        <h1>Switch Turbo Monitor: hacer comprensible el rendimiento en Fedora</h1>
+        <p class="lead">Lo que comenzó como una forma de activar o desactivar Turbo Boost sin entrar a la BIOS terminó convirtiéndose en un centro de control para entender mejor el equipo.</p>
+      </header>
+
+      <figure class="article-hero container">
+        <img src="../assets/images/switch-turbo-monitor/00.png" alt="Switch Turbo Monitor mostrando los modos frío y rendimiento en Fedora KDE" width="1293" height="857">
+        <figcaption>Dos decisiones claras: priorizar temperatura y consumo, o disponer de más rendimiento.</figcaption>
+      </figure>
+
+      <div class="article-body container-narrow">
+        <p class="article-intro">La configuración de energía de un computador suele estar escondida detrás de términos técnicos, archivos del sistema o menús de firmware. Switch Turbo Monitor nació de una pregunta sencilla: ¿por qué una decisión cotidiana —usar el equipo más frío o darle más rendimiento— tiene que resultar tan difícil para alguien que recién comienza en Linux?</p>
+
+        <h2>El origen: una barrera demasiado alta</h2>
+        <p>En muchos equipos, cambiar el comportamiento del procesador implica entrar a la BIOS o buscar comandos dispersos por Internet. Para un usuario experimentado puede ser una tarea breve. Para alguien que acaba de instalar Fedora, en cambio, significa reiniciar, navegar por opciones desconocidas y preguntarse si un cambio puede dejar el sistema en un estado no deseado.</p>
+        <p>Quise trasladar esa operación al escritorio y darle un contexto fácil de entender. Así apareció la primera idea: un interruptor gráfico para consultar y modificar Turbo Boost desde Fedora KDE. Con el tiempo quedó claro que el estado del procesador no cuenta toda la historia. También importan el perfil de energía activo, la temperatura, el consumo de memoria, la carga gráfica y las herramientas disponibles en el sistema.</p>
+
+        <blockquote><p>El proyecto no busca esconder Linux: busca ofrecer una entrada segura para comprenderlo.</p></blockquote>
+
+        <h2>¿Qué problema resuelve?</h2>
+        <p>Switch Turbo Monitor reúne en una sola ventana tareas que normalmente requieren varias herramientas. Permite activar o desactivar Turbo Boost en procesadores AMD e Intel compatibles, aplicar perfiles rápidos mediante <code>tuned</code> y consultar el estado del hardware sin tener que memorizar comandos.</p>
+        <p>El <strong>modo frío</strong> desactiva Turbo Boost e intenta utilizar un perfil equilibrado. El <strong>modo rendimiento</strong> hace lo contrario: activa Turbo Boost y selecciona un perfil orientado al rendimiento cuando está disponible. No son promesas mágicas de temperatura o velocidad; son atajos transparentes para configurar el sistema de acuerdo con el trabajo del momento.</p>
+        <p>La aplicación está dirigida principalmente a usuarios de Fedora KDE que quieren más control sin perderse en la terminal. También puede ser útil para quienes ya conocen Linux, pero prefieren tener diagnóstico, perfiles y monitorización en una interfaz única.</p>
+
+        <figure class="article-figure article-figure-wide">
+          <img src="../assets/images/switch-turbo-monitor/01.png" alt="Monitor de recursos de Switch Turbo Monitor con gráficas de CPU, RAM, GPU y red" width="1293" height="857" loading="lazy">
+          <figcaption>El monitor conserva hasta 60 muestras en memoria y no escribe el historial en disco.</figcaption>
+        </figure>
+
+        <h2>Cómo funciona, sin convertirlo en una caja negra</h2>
+        <p>Al iniciarse, una pantalla de comprobación busca las herramientas que amplían sus funciones: <code>sensors</code> para temperaturas, <code>nvidia-smi</code> para GPU NVIDIA, <code>tuned-adm</code> para perfiles, <code>fastfetch</code> para el resumen del equipo y <code>pkexec</code> para las acciones que requieren autorización. Si falta un componente opcional, la aplicación lo informa y continúa funcionando.</p>
+        <p>El cambio de Turbo Boost se realiza sobre las interfaces que expone el kernel para AMD o Intel. Cuando es necesario escribir en ellas, la aplicación solicita autorización mediante PolicyKit y <code>pkexec</code>. No se ejecuta toda la interfaz como administrador, no se usa <code>sudo</code> internamente y no se almacenan contraseñas. Esa separación fue una decisión importante: una herramienta cómoda no debe pedir más privilegios de los que realmente necesita.</p>
+        <p>En paralelo, el monitor obtiene métricas de CPU, RAM, GPU y red. Las curvas temporales viven únicamente en memoria y pueden pausarse, ocultarse o actualizarse a otro intervalo. Fastfetch se ejecuta en segundo plano, de modo que una consulta externa no congele la ventana.</p>
+
+        <div class="article-gallery">
+          <figure><img src="../assets/images/switch-turbo-monitor/splashscreen.png" alt="Pantalla inicial comprobando dependencias del sistema" width="608" height="316" loading="lazy"><figcaption>Comprobación inicial</figcaption></figure>
+          <figure><img src="../assets/images/switch-turbo-monitor/03.png" alt="Vista de requisitos instalados y opcionales" width="1292" height="863" loading="lazy"><figcaption>Diagnóstico de requisitos</figcaption></figure>
+        </div>
+
+        <h2>Las tecnologías detrás de la interfaz</h2>
+        <p>El proyecto está escrito en <strong>Python 3</strong>. La interfaz utiliza <strong>PyQt6</strong>, elegida por su integración con el escritorio y porque permite construir una aplicación nativa y organizada en componentes. Las gráficas se dibujan con <strong>pyqtgraph</strong>, mientras que <strong>watchfiles</strong> facilita el ciclo de desarrollo con recarga automática.</p>
+        <p>Debajo de la interfaz conviven varias piezas propias del ecosistema Linux: las rutas <code>sysfs</code> del kernel para Turbo Boost, <code>tuned</code> para los perfiles de energía, PolicyKit para autorización, <code>lm_sensors</code> para temperatura y las utilidades de NVIDIA cuando están disponibles. La aplicación se divide en módulos de interfaz, energía, GPU, configuración, dependencias y control de instancia. Esa separación hace más sencillo probar una parte sin tener que alterar las demás.</p>
+
+        <aside class="article-note">
+          <span>Stack principal</span>
+          <p>Python 3 · PyQt6 · pyqtgraph · Fedora KDE · tuned · PolicyKit · sysfs</p>
+        </aside>
+
+        <h2>Lo que aprendí al construirlo</h2>
+        <p>El aprendizaje más importante fue que una interfaz sencilla exige muchas decisiones internas. Un botón de encendido parece trivial hasta que debe reconocer dos convenciones distintas del kernel, confirmar el resultado, explicar un error y seguir siendo seguro si falta una dependencia.</p>
+        <p>También aprendí a tratar las funciones opcionales como capacidades y no como obstáculos. Un equipo sin GPU NVIDIA o sin Fastfetch debe seguir teniendo una aplicación útil. Diseñar esa degradación progresiva mejoró tanto la experiencia como la estructura del código.</p>
+        <p>Otro desafío fue mantener la interfaz fluida mientras se consultan comandos y métricas. Limitar el historial, ejecutar tareas externas en segundo plano y permitir que el usuario controle el ritmo de actualización me hizo pensar en rendimiento no solo como potencia del procesador, sino también como calidad de la experiencia.</p>
+
+        <h2>Codex como compañero de desarrollo</h2>
+        <p>La inteligencia artificial, mediante Codex, me acompañó durante el proceso como asistente técnico. Me ayudó a ordenar ideas, dividir responsabilidades entre módulos, generar y revisar código, detectar casos que necesitaban mejor manejo de errores y mantener más clara la documentación.</p>
+        <p>Su aporte fue especialmente valioso para comparar alternativas y acelerar tareas repetitivas. Aun así, la dirección del proyecto, las pruebas sobre el equipo real y las decisiones sobre seguridad y experiencia de uso siguieron requiriendo criterio humano. La IA no sustituyó el aprendizaje: me permitió dedicar más tiempo a entender el problema, evaluar resultados y pulir la solución.</p>
+
+        <h2>Camino a la versión 1.0</h2>
+        <p>Switch Turbo Monitor se encuentra en desarrollo previo a la versión 1.0. Los próximos pasos apuntan a ampliar las pruebas en distintos equipos AMD e Intel, mejorar la detección de capacidades y simplificar todavía más la instalación. También quiero seguir puliendo la accesibilidad, los mensajes de diagnóstico y la integración con Fedora KDE.</p>
+        <p>A más largo plazo, el objetivo es convertir el proyecto en una herramienta estable y fácil de distribuir, sin abandonar su principio original: que el usuario sepa qué está cambiando, por qué se solicita autorización y cómo volver a un estado equilibrado.</p>
+
+        <figure class="article-figure article-figure-wide">
+          <img src="../assets/images/switch-turbo-monitor/04.png" alt="Resumen de información del sistema en Switch Turbo Monitor" width="1292" height="863" loading="lazy">
+          <figcaption>Información del sistema, energía y dependencias reunida en una vista.</figcaption>
+        </figure>
+
+        <div class="article-end"><span>Proyecto de PunchiSoft</span><a class="button button-primary" href="https://github.com/PunchiSoft/switch-turbo-monitor" target="_blank" rel="noopener noreferrer">Ver código en GitHub <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark">P</span><span>PunchiSoft</span></a><p>Linux, IA y software con propósito.</p></div><nav><a href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+</body>
+</html>
