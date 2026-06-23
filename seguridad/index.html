@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Seguridad, descarga responsable y reporte de vulnerabilidades en PunchiSoft.">
+  <meta name="theme-color" content="#10141c">
+  <title>Seguridad — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a href="../blog/index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <header class="page-header container-narrow legal-header">
+      <p class="eyebrow">Uso responsable</p>
+      <h1>Seguridad</h1>
+      <p class="lead">Criterios para identificar fuentes oficiales, utilizar herramientas del sistema y comunicar vulnerabilidades.</p>
+    </header>
+
+    <div class="security-grid container-narrow">
+      <section class="security-card">
+        <span class="category-icon icon-blue"><img src="../icons/informacion.svg" alt=""></span>
+        <h2>Fuentes oficiales</h2>
+        <p>El código oficial de Switch Turbo Monitor se publica únicamente en <a href="https://github.com/PunchiSoft/switch-turbo-monitor" target="_blank" rel="noopener noreferrer">PunchiSoft/switch-turbo-monitor</a>. Compruebe la dirección antes de descargar, clonar o seguir instrucciones.</p>
+      </section>
+      <section class="security-card">
+        <span class="category-icon icon-orange"><img src="../icons/requisitos.svg" alt=""></span>
+        <h2>Dependencias y permisos</h2>
+        <p>Revise las dependencias, mantenga Fedora actualizado y evite ejecutar scripts que no comprenda. Switch Turbo Monitor solicita privilegios mediante PolicyKit solo cuando una operación los necesita; no ejecute toda la aplicación como administrador.</p>
+      </section>
+      <section class="security-card">
+        <span class="category-icon icon-green"><img src="../icons/energia.svg" alt=""></span>
+        <h2>Cambios del sistema</h2>
+        <p>Modificar Turbo Boost o perfiles de energía puede cambiar temperatura, consumo y rendimiento. Verifique la compatibilidad del equipo, cierre tareas importantes y conozca el procedimiento para volver a un perfil equilibrado.</p>
+      </section>
+    </div>
+
+    <section class="security-report container-narrow">
+      <p class="eyebrow">Divulgación responsable</p>
+      <h2>¿Encontraste una vulnerabilidad?</h2>
+      <p>Utiliza la pestaña <strong>Security</strong> del repositorio afectado y la opción <strong>Report a vulnerability</strong>, si está disponible. No publiques contraseñas, datos personales, pruebas de concepto explotables ni detalles que puedan poner a otros usuarios en riesgo.</p>
+      <p>Si el reporte privado no está habilitado, abre una incidencia mínima solicitando un canal privado, sin revelar información sensible.</p>
+      <a class="button button-primary" href="https://github.com/PunchiSoft/PunchiSoft.github.io/security" target="_blank" rel="noopener noreferrer">Ir a Seguridad en GitHub <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav><a href="../blog/index.html">Blog</a><a href="../software/index.html">Software</a><a href="../legal/index.html">Legal</a><a class="footer-active" href="index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Información técnica con responsabilidad.</span></div>
+  </footer>
+  <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+</body>
+</html>
