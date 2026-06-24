@@ -57,11 +57,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
    HERO PRINCIPAL
    Presentación profesional y panel de actividad de la portada.
    ======================================================= */
-.hero { min-height: 690px; padding-block: 96px 90px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(380px, .92fr); align-items: center; gap: clamp(50px, 6vw, 82px); }
+.hero { min-height: 610px; padding-block: 78px 72px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(380px, .92fr); align-items: center; gap: clamp(50px, 6vw, 82px); }
 .eyebrow { margin: 0 0 18px; color: var(--accent); font: 700 .72rem/1.3 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; }
 h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
-.hero h1 { max-width: 760px; margin-bottom: 27px; font-size: clamp(2.75rem, 5.3vw, 4.85rem); font-weight: 720; }
+.hero h1 { max-width: 760px; margin-bottom: 17px; font-size: clamp(3.2rem, 6vw, 5.2rem); font-weight: 720; }
 .hero h1 span, .page-header h1 span { color: var(--muted); }
+.hero-subtitle { max-width: 650px; margin: 0 0 14px; color: var(--text); font-size: clamp(1.25rem, 2.2vw, 1.55rem); line-height: 1.45; letter-spacing: -.015em; }
 .lead { max-width: 680px; margin: 0; color: #aab4c0; font-size: clamp(1.05rem, 1.8vw, 1.22rem); line-height: 1.75; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 48px; padding: 0 21px; border: 1px solid transparent; border-radius: 10px; font-size: .9rem; font-weight: 650; transition: transform .2s, background .2s, border-color .2s; }
@@ -100,10 +101,11 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
    COMPONENTES REUTILIZABLES Y TARJETAS DE CATEGORÍA
    Ritmo de secciones, encabezados, botones y accesos temáticos.
    ======================================================= */
-.section { padding-block: 90px; }
+.section { padding-block: 72px; }
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-bottom: 42px; }
 .section-heading h2, .about h2, .principles h2 { margin-bottom: 0; font-size: clamp(2rem, 4vw, 3rem); }
 .section-heading > p { max-width: 460px; justify-self: end; margin: 0; color: var(--muted); }
+.section-link { justify-self: end; color: var(--accent); font-size: .85rem; font-weight: 650; }
 .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .category-card { min-height: 285px; padding: 27px; display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: transform .25s, border-color .25s, background .25s; }
 .category-card:hover { transform: translateY(-5px); border-color: #394653; background: var(--surface-2); }
@@ -122,7 +124,7 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
    ======================================================= */
 .featured-post { overflow: hidden; display: grid; grid-template-columns: 1.35fr .65fr; border: 1px solid var(--border); border-radius: 24px; background: linear-gradient(135deg, var(--surface), #101720); }
 .featured-content { padding: clamp(34px, 6vw, 68px); }
-.featured-content h2 { max-width: 730px; margin: 25px 0 20px; font-size: clamp(1.9rem, 3.5vw, 3.15rem); }
+.featured-content h2, .featured-content h3 { max-width: 730px; margin: 25px 0 20px; font-size: clamp(1.75rem, 3vw, 2.55rem); }
 .featured-content > p { max-width: 680px; color: var(--muted); }
 .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; color: #7f8a97; font-size: .75rem; }
 .tag { padding: 5px 9px; border: 1px solid rgba(88,166,255,.32); border-radius: 99px; background: var(--accent-soft); color: var(--accent); font: 700 .65rem ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; }
@@ -136,6 +138,18 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .power-line { height: 6px; margin-bottom: 18px; overflow: hidden; border-radius: 99px; background: #26303a; }
 .power-line i { display: block; width: 62%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
 
+/* Ficha compacta de proyecto utilizada en la portada. */
+.project-highlight { padding: clamp(28px, 5vw, 48px); display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 54px); border: 1px solid var(--border); border-radius: 20px; background: linear-gradient(135deg, var(--surface), var(--bg-soft)); }
+.project-highlight-icon { width: 120px; height: 120px; padding: 18px; border: 1px solid var(--border); border-radius: 24px; background: #131923; }
+.project-highlight-icon img { width: 100%; height: 100%; display: block; }
+.project-highlight h3 { margin: 14px 0 10px; font-size: clamp(1.6rem, 3vw, 2.25rem); }
+.project-highlight p { max-width: 760px; margin: 0; color: var(--muted); }
+.tech-list { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 7px; }
+.tech-list span { padding: 5px 9px; border: 1px solid var(--border); border-radius: 99px; color: #aeb9c5; font: .67rem ui-monospace, monospace; }
+.project-links { display: flex; flex-wrap: wrap; gap: 28px; }
+.home-categories .category-card { min-height: 230px; }
+.home-categories .category-icon { margin-bottom: 26px; }
+
 /* =======================================================
    ACERCA DE
    Retrato profesional, experiencia, áreas de enfoque y perfiles.
@@ -147,7 +161,10 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .about-heading h2 { max-width: 680px; font-size: clamp(1.65rem, 2.5vw, 1.95rem); line-height: 1.16; }
 .about-layout { padding: clamp(18px, 2.5vw, 30px); display: grid; grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr); align-items: stretch; gap: clamp(34px, 5vw, 68px); border: 1px solid var(--border); border-radius: 28px; background: linear-gradient(135deg, rgba(27,35,48,.92), rgba(15,20,28,.72)); }
 .about-portrait { position: relative; min-width: 0; margin: 0; padding: 28px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-self: center; border: 1px solid var(--border); border-radius: 20px; background: radial-gradient(circle at 50% 28%, rgba(88,166,255,.1), transparent 58%), rgba(12,16,22,.24); text-align: center; }
+.portrait-frame { position: relative; width: 100%; max-width: 260px; overflow: hidden; border-radius: 24px; user-select: none; }
 .about-portrait img { position: relative; z-index: 1; width: 100%; max-width: 260px; height: 360px; max-height: 360px; display: block; object-fit: cover; object-position: center; overflow: hidden; border: 1px solid var(--border-light); border-radius: 24px; box-shadow: 0 18px 45px rgba(0,0,0,.3); }
+.portrait-frame img { -webkit-user-drag: none; user-select: none; }
+.photo-shield { position: absolute; z-index: 2; inset: 0; border-radius: inherit; background: transparent; -webkit-touch-callout: none; }
 .about-portrait figcaption { position: relative; z-index: 1; margin-top: 28px; display: flex; align-items: center; flex-direction: column; }
 .about-portrait figcaption strong { margin: 13px 0 3px; color: var(--text); font-size: 1.15rem; }
 .about-portrait figcaption small { color: #aab5c2; font-size: .77rem; line-height: 1.45; }
@@ -168,11 +185,37 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .profile-link { width: fit-content; padding: 12px 16px; display: flex; align-items: center; gap: 24px; border: 1px solid var(--border-light); border-radius: 10px; color: var(--text); font-size: .84rem; font-weight: 650; transition: border-color .2s, background .2s, transform .2s; }
 .profile-link:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
 
+/* Página independiente de perfil profesional. */
+.about-page { max-width: 1040px; margin-block: 48px 72px; padding: clamp(24px, 4vw, 46px); display: grid; grid-template-columns: 300px minmax(0, 1fr); align-items: start; gap: 32px clamp(38px, 6vw, 72px); border: 1px solid var(--border); border-radius: 26px; background: linear-gradient(135deg, rgba(27,35,48,.94), rgba(15,20,28,.78)); box-shadow: 0 22px 65px rgba(0,0,0,.2); }
+.about-card-heading { grid-column: 1 / -1; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.about-card-heading h1 { margin-bottom: 12px; font-size: clamp(2rem, 3.6vw, 2.8rem); }
+.profile-identity { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(48,59,77,.7); }
+.profile-identity h2 { margin-bottom: 6px; font-size: clamp(1.55rem, 2.6vw, 2rem); }
+.profile-identity .profile-role { margin-bottom: 0; }
+.about-page .about-portrait { height: 100%; padding: 20px 16px 16px; justify-content: flex-start; align-self: stretch; border-color: rgba(65,81,106,.75); background: rgba(12,16,22,.3); }
+.about-page .about-portrait img { height: 340px; }
+.about-page .about-portrait figcaption { margin-top: 18px; }
+.about-page .about-copy { height: 100%; padding: 0; justify-content: flex-start; align-self: stretch; }
+.about-page .about-copy h2 { margin-bottom: 8px; font-size: clamp(1.8rem, 3vw, 2.3rem); }
+.about-page .about-focus { margin: auto 0 0; padding-top: 24px; }
+.profile-role { margin: 0 0 28px; color: var(--accent); font-size: .82rem; }
+.social-links { width: 100%; margin-top: 20px; display: grid; gap: 9px; }
+.social-link { min-height: 56px; padding: 9px 12px; display: grid; grid-template-columns: 23px minmax(0, 1fr) auto; align-items: center; gap: 10px; border: 1px solid var(--border-light); border-radius: 11px; text-align: left; transition: transform .2s, border-color .2s, background .2s; }
+.social-link:hover { transform: translateY(-2px); }
+.social-link svg { width: 23px; height: 23px; fill: currentColor; }
+.social-link > span:nth-child(2) { display: flex; flex-direction: column; }
+.social-link strong { color: var(--text); font-size: .82rem; }
+.social-link small { margin-top: 1px; color: #94a0ad; font-size: .66rem; }
+.social-linkedin { border-color: rgba(88,166,255,.42); background: rgba(10,102,194,.14); color: #72b7ff; }
+.social-linkedin:hover { border-color: #72b7ff; background: rgba(10,102,194,.22); }
+.social-github { background: rgba(255,255,255,.035); color: #e6edf3; }
+.social-github:hover { border-color: #8b98a7; background: rgba(255,255,255,.065); }
+
 /* =======================================================
    PIE DE PÁGINA
    Marca secundaria, navegación auxiliar y metadatos del sitio.
    ======================================================= */
-.site-footer { margin-top: 80px; border-top: 1px solid var(--border); background: #0c1016; }
+.site-footer { margin-top: 60px; border-top: 1px solid var(--border); background: #0c1016; }
 .footer-content { padding-block: 58px; display: flex; justify-content: space-between; align-items: flex-start; }
 .footer-content p { margin: 14px 0 0; color: var(--muted); font-size: .85rem; }
 .footer-content nav { max-width: 610px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 16px 28px; color: var(--muted); font-size: .85rem; }
@@ -184,9 +227,9 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
    ENCABEZADOS INTERNOS Y LISTADO DEL BLOG
    Jerarquía editorial compacta, filtros y tarjetas de artículos.
    ======================================================= */
-.page-header { padding-block: 68px 30px; }
-.page-header h1 { max-width: 780px; margin-bottom: 14px; font-size: clamp(2.2rem, 4.2vw, 3.8rem); line-height: 1.06; }
-.page-header + .section { padding-top: 30px; }
+.page-header { padding-block: 48px 22px; }
+.page-header h1 { max-width: 780px; margin-bottom: 12px; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.08; }
+.page-header + .section { padding-top: 22px; }
 .filter-list { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 38px; }
 .filter-list a, .filter-list span { padding: 7px 14px; border: 1px solid var(--border); border-radius: 99px; color: var(--muted); font-size: .78rem; }
 .filter-list a:first-child, .filter-list a:hover, .filter-list .active { border-color: var(--border-light); color: var(--text); background: var(--surface); }
@@ -203,22 +246,26 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .post-card h2 { max-width: 680px; margin: 18px 0 12px; font-size: clamp(1.4rem, 3vw, 2rem); }
 .post-card h2 a:hover { color: var(--accent); }
 .post-card-body > p { color: var(--muted); }
+.post-card-action { margin-top: 8px; }
 .coming-soon { padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px dashed var(--border-light); border-radius: var(--radius); }
 .coming-soon .category-icon { margin-bottom: auto; }
 .coming-soon h2 { font-size: 1.3rem; }
 .coming-soon p { margin-bottom: 0; color: var(--muted); font-size: .88rem; }
 .anchor-target { position: absolute; }
 
-/* TODO: activar controles de filtrado cuando exista más de una publicación por categoría. */
+.blog-list .posts-grid { width: 100%; grid-template-columns: minmax(0, 1000px); }
+.blog-list .post-card { max-width: 1000px; display: grid; grid-template-columns: minmax(360px, 440px) minmax(0, 1fr); }
+.blog-list .post-card-image { height: auto; min-height: 285px; border-right: 1px solid var(--border); border-bottom: 0; box-shadow: inset -1px 0 rgba(255,255,255,.025); }
+.blog-list .post-card-body { align-self: center; }
 
 /* =======================================================
    ARTÍCULOS DEL BLOG
    Cabecera, contenido de lectura, figuras, notas y cierre editorial.
    ======================================================= */
-.article-header { padding-block: 58px 26px; }
+.article-header { padding-block: 48px 22px; }
 .back-link { display: inline-block; margin-bottom: 30px; color: var(--muted); font-size: .82rem; }
 .back-link:hover { color: var(--text); }
-.article-header h1 { max-width: 700px; margin: 15px 0 12px; font-size: clamp(1.9rem, 3.8vw, 3.1rem); line-height: 1.08; }
+.article-header h1 { max-width: 700px; margin: 15px 0 12px; font-size: clamp(2.1rem, 3.6vw, 3rem); line-height: 1.08; }
 .article-header .lead { line-height: 1.6; }
 .article-hero { margin-bottom: 10px; }
 .article-hero img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
@@ -233,7 +280,7 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .cover-panel > span { color: var(--muted); font-size: .72rem; }
 .power-switch { width: 62px; height: 32px; margin-bottom: 20px; padding: 4px; border-radius: 99px; background: var(--accent-2); }
 .power-switch i { display: block; width: 24px; height: 24px; margin-left: 30px; border-radius: 50%; background: #0a1711; }
-.article-body { padding-block: 75px; color: #b5bec8; font-size: 1.04rem; }
+.article-body { padding-block: 58px; color: #b5bec8; font-size: 1.04rem; }
 .article-body p { margin: 0 0 25px; }
 .article-body .article-intro { margin-bottom: 52px; color: var(--text); font-size: 1.3rem; line-height: 1.65; }
 .article-body h2 { margin: 60px 0 22px; color: var(--text); font-size: 1.75rem; }
@@ -259,13 +306,13 @@ blockquote p { margin: 0 !important; }
    Ficha del producto, estado, funciones y criterios de desarrollo.
    ======================================================= */
 .software-card { overflow: hidden; display: grid; grid-template-columns: .85fr 1.15fr; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
-.software-visual { min-height: 520px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; border-right: 1px solid var(--border); background: radial-gradient(circle, rgba(88,166,255,.16), transparent 45%), #131923; }
-.app-icon { width: 170px; height: 170px; display: grid; place-items: center; filter: drop-shadow(0 25px 40px rgba(0,0,0,.34)); }
+.software-visual { min-height: 390px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; border-right: 1px solid var(--border); background: radial-gradient(circle, rgba(88,166,255,.16), transparent 45%), #131923; }
+.app-icon { width: 130px; height: 130px; display: grid; place-items: center; filter: drop-shadow(0 25px 40px rgba(0,0,0,.34)); }
 .app-icon img { width: 100%; height: 100%; display: block; }
 .visual-status { color: var(--muted); font-size: .72rem; }
 .visual-status i, .status-dot::before { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); }
-.software-info { padding: clamp(36px, 6vw, 70px); align-self: center; }
-.software-info h2 { margin: 24px 0 18px; font-size: clamp(2.2rem, 4vw, 3.7rem); }
+.software-info { padding: clamp(32px, 5vw, 52px); align-self: center; }
+.software-info h2 { margin: 20px 0 14px; font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
 .software-actions { margin-top: 0; }
 .software-lead { max-width: 570px; color: #b5bec8; font-size: 1.1rem; }
 .status-dot { color: var(--muted); }
@@ -279,7 +326,7 @@ blockquote p { margin: 0 !important; }
 .principle-grid h3 { margin: 32px 0 10px; }
 .principle-grid p { margin: 0; color: var(--muted); font-size: .85rem; }
 
-/* TODO: convertir la ficha de software en una cuadrícula cuando se publiquen más proyectos. */
+/* TODO: convertir la ficha en una cuadrícula cuando se publiquen más proyectos. */
 
 /* =======================================================
    PÁGINAS LEGALES Y DE SEGURIDAD
@@ -302,6 +349,27 @@ blockquote p { margin: 0 !important; }
 .security-report .button { margin-top: 17px; }
 
 /* =======================================================
+   MICROINTERACCIONES PARA MOUSE
+   Movimiento sutil y profundidad sin afectar dispositivos táctiles.
+   ======================================================= */
+.hero-workbench, .featured-post, .project-highlight, .post-card, .software-card, .security-card, .about-page { transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+.about-focus li, .principle-grid article { transition: transform .22s ease, border-color .22s ease, background .22s ease; }
+.article-figure img, .article-gallery img { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.project-highlight-icon img, .app-icon img, .category-icon img { transition: transform .3s ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-workbench:hover { transform: translateY(-5px); border-color: rgba(88,166,255,.6); box-shadow: 0 30px 90px rgba(0,0,0,.34); }
+  .featured-post:hover, .project-highlight:hover, .post-card:hover, .software-card:hover, .security-card:hover { transform: translateY(-4px); border-color: rgba(88,166,255,.48); box-shadow: 0 22px 58px rgba(0,0,0,.24); }
+  .about-page:hover { border-color: rgba(88,166,255,.42); box-shadow: 0 28px 78px rgba(0,0,0,.28); }
+  .about-focus li:hover { transform: translateX(4px); border-color: var(--border-light); background: rgba(32,42,56,.72); }
+  .principle-grid article:hover { transform: translateY(-3px); background: rgba(255,255,255,.018); }
+  .article-figure img:hover, .article-gallery img:hover { transform: translateY(-3px) scale(1.008); border-color: var(--border-light); box-shadow: 0 18px 48px rgba(0,0,0,.24); }
+  .project-highlight:hover .project-highlight-icon img, .software-card:hover .app-icon img { transform: scale(1.06) rotate(-2deg); }
+  .category-card:hover .category-icon img { transform: scale(1.09); }
+  .text-link:hover, .section-link:hover { color: #82c0ff; }
+}
+
+/* =======================================================
    RESPONSIVE: TABLET Y PANTALLAS MEDIANAS
    Reorganiza composiciones complejas antes del diseño móvil.
    ======================================================= */
@@ -321,6 +389,7 @@ blockquote p { margin: 0 !important; }
   .about-layout { grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr); gap: 30px; }
   .about-portrait { padding-inline: 8px; }
   .about-focus { grid-template-columns: 1fr; }
+  .article-header h1 { font-size: clamp(2rem, 5.5vw, 2.2rem); }
 }
 
 /* Punto intermedio dedicado al retrato y contenido de Acerca de. */
@@ -330,6 +399,8 @@ blockquote p { margin: 0 !important; }
   .about-portrait img { height: min(360px, 115vw); }
   .about-copy { padding: 10px 4px 6px; }
   .about-focus { grid-template-columns: 1fr 1fr; }
+  .about-page { grid-template-columns: 1fr; gap: 28px; }
+  .about-page .about-portrait { width: min(100%, 310px); justify-self: center; }
 }
 
 /* =======================================================
@@ -345,13 +416,15 @@ blockquote p { margin: 0 !important; }
   .nav-links a { padding: 12px 0; }
   .nav-links a.active::after { display: none; }
   .hero { padding-block: 72px; gap: 50px; }
-  .hero h1 { font-size: 2.5rem; }
+  .hero h1 { font-size: 3rem; }
   .hero-profile { align-items: flex-start; }
   .hero-workbench { border-radius: 16px; }
   .workbench-header { padding-inline: 15px; font-size: .57rem; }
   .active-project { padding: 22px 18px; grid-template-columns: 43px 1fr; gap: 14px; }
   .active-project img { width: 43px; height: 43px; }
   .workbench-section { padding: 19px 18px; }
+  .project-highlight { grid-template-columns: 1fr; }
+  .project-highlight-icon { width: 90px; height: 90px; padding: 14px; }
   .section { padding-block: 65px; }
   .section-heading { grid-template-columns: 1fr; gap: 15px; }
   .section-heading > p { justify-self: start; }
@@ -369,13 +442,15 @@ blockquote p { margin: 0 !important; }
   .footer-content nav { justify-content: flex-start; gap: 16px 20px; }
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 7px; }
   .page-header { padding-block: 48px 22px; }
-  .page-header h1 { font-size: clamp(2.05rem, 10vw, 2.6rem); line-height: 1.08; }
+  .page-header h1 { font-size: clamp(1.9rem, 8vw, 2.25rem); line-height: 1.08; }
   .page-header + .section { padding-top: 22px; }
   .post-card-visual { min-height: 220px; }
   .post-card-image { height: 220px; }
+  .blog-list .post-card { grid-template-columns: 1fr; }
+  .blog-list .post-card-image { height: 210px; min-height: 0; border-right: 0; border-bottom: 1px solid var(--border); }
   .article-header { padding-block: 42px 20px; }
   .back-link { margin-bottom: 24px; }
-  .article-header h1 { font-size: clamp(1.9rem, 8.5vw, 2.25rem); line-height: 1.1; }
+  .article-header h1 { font-size: clamp(1.8rem, 8vw, 2rem); line-height: 1.1; }
   .article-cover { min-height: 350px; border-radius: 0; width: 100%; border-left: 0; border-right: 0; }
   .article-hero { width: min(calc(100% - 30px), var(--max-width)); }
   .article-hero img { border-radius: 15px; }
