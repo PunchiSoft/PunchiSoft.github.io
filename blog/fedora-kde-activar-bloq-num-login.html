@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cómo activar Bloq Num en la pantalla de login de Fedora KDE cuando el sistema utiliza Plasma Login Manager o plasmalogin.">
+  <meta name="theme-color" content="#10141c">
+  <title>Fedora KDE: activar Bloq Num en la pantalla de login — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <!-- ===================================================== -->
+  <!-- HEADER Y NAVEGACIÓN                                   -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a class="active" href="index.html">Blog</a><a href="../software/index.html">Proyectos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">Fedora</span><time datetime="2026-06-23">23 de junio de 2026</time><span>5 min de lectura</span></div>
+        <h1>Fedora KDE: activar Bloq Num en la pantalla de login</h1>
+        <p class="lead">Bloq Num funcionaba dentro de Plasma, pero aparecía desactivado justo donde primero lo necesitaba: antes de iniciar sesión. La solución dependía de identificar correctamente qué gestor controlaba esa pantalla.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- CAPTURA DE LA PANTALLA DE ACCESO                      -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/fedora-kde-numlock/loginuser.png" alt="Pantalla de inicio de sesión de Fedora KDE donde se utiliza el teclado numérico antes de acceder al escritorio" width="1586" height="992">
+        <figcaption>Pantalla de acceso administrada por Plasma Login Manager antes de iniciar la sesión de usuario.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CONTENIDO DEL ARTÍCULO                                -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <h2>1. Introducción</h2>
+        <p class="article-intro">El detalle parecía pequeño, pero se repetía en cada arranque: el teclado numérico quedaba activo después de entrar al escritorio y desactivado en la pantalla de acceso. Esta es la solución que apliqué en Fedora KDE con Wayland, Plasma 6.6.5 y Plasma Login Manager.</p>
+
+        <h2>2. El problema</h2>
+        <p>Dentro de KDE, Bloq Num funcionaba como esperaba. Sin embargo, antes de iniciar sesión tenía que presionar la tecla manualmente para utilizar el teclado numérico. La preferencia configurada en <strong>Configuración del sistema → Teclado</strong> no resolvía esa primera pantalla.</p>
+        <p>La razón es que la configuración del usuario se carga después de iniciar sesión. El gestor de acceso se ejecuta antes y mantiene su propia configuración, independiente de las preferencias del escritorio.</p>
+        <p>No impedía usar el equipo, pero añadía una comprobación innecesaria en cada arranque. Si una contraseña o un método de acceso incluye números, es fácil escribirlos pensando que el bloque numérico está activo y descubrir el error solo después de intentar entrar.</p>
+
+        <h2>3. Por qué la solución típica de SDDM no servía</h2>
+        <p>Muchas guías para KDE apuntan a <code>/etc/sddm.conf.d/</code>. Esa ruta es válida cuando la pantalla de acceso está administrada por SDDM, pero no conviene asumir que ese sigue siendo el gestor activo.</p>
+        <p>En este equipo la solución de SDDM no aplicaba porque Fedora KDE estaba utilizando <strong>Plasma Login Manager</strong>, cuyo servicio es <code>plasmalogin</code>. Escribir una configuración en la ruta de otro gestor no habría tenido efecto.</p>
+
+        <h2>4. Cómo confirmé que estaba usando plasmalogin</h2>
+        <p>Antes de modificar archivos, consulté el destino real del servicio de display manager administrado por systemd:</p>
+        <pre class="code-block"><code>readlink -f /etc/systemd/system/display-manager.service</code></pre>
+        <p>En mi instalación, el comando devolvió:</p>
+        <pre class="code-block code-output"><code>/usr/lib/systemd/system/plasmalogin.service</code></pre>
+        <p>Esa salida confirmó que debía usar la configuración de plasmalogin y no la de SDDM.</p>
+
+        <aside class="article-note">
+          <span>Comprueba antes de cambiar</span>
+          <p>Si el resultado de <code>readlink</code> apunta a otro servicio, no copies estas rutas de forma automática. La configuración debe corresponder al gestor de login que realmente utiliza el sistema.</p>
+        </aside>
+
+        <h2>5. Solución paso a paso</h2>
+        <p>Primero revisé si ya existían el archivo principal y el directorio para configuraciones adicionales:</p>
+        <pre class="code-block"><code>ls -l /etc/plasmalogin.conf /etc/plasmalogin.conf.d 2&gt;/dev/null</code></pre>
+
+        <h3>Crear el directorio de configuración</h3>
+        <p><code>mkdir -p</code> crea la carpeta si no existe y no la reemplaza si ya está disponible:</p>
+        <pre class="code-block"><code>sudo mkdir -p /etc/plasmalogin.conf.d</code></pre>
+
+        <h3>Crear una configuración separada</h3>
+        <p>En lugar de editar directamente el archivo principal, creé <code>10-numlock.conf</code> dentro del directorio de configuraciones adicionales:</p>
+        <pre class="code-block"><code>printf "[General]\nNumlock=on\n" | sudo tee /etc/plasmalogin.conf.d/10-numlock.conf</code></pre>
+        <p>El archivo contiene únicamente:</p>
+        <pre class="code-block code-output"><code>[General]
+Numlock=on</code></pre>
+
+        <h3>Verificar antes de reiniciar</h3>
+        <p>Comprobé que el contenido se hubiera escrito correctamente:</p>
+        <pre class="code-block"><code>cat /etc/plasmalogin.conf.d/10-numlock.conf</code></pre>
+        <p>Con la configuración confirmada, reinicié el sistema:</p>
+        <pre class="code-block"><code>sudo reboot</code></pre>
+
+        <h2>6. Cómo revertir el cambio</h2>
+        <p>La ventaja de utilizar un archivo separado es que la reversión resulta directa. Basta con eliminarlo y reiniciar:</p>
+        <pre class="code-block"><code>sudo rm /etc/plasmalogin.conf.d/10-numlock.conf
+sudo reboot</code></pre>
+        <p>No se modifica el archivo principal de plasmalogin ni es necesario recordar qué línea fue añadida anteriormente.</p>
+
+        <h2>7. Resultado final</h2>
+        <p>Después del reinicio, Bloq Num quedó activado automáticamente en la pantalla de login. El teclado numérico ya estaba disponible antes de escribir la contraseña, sin tener que pulsar la tecla manualmente en cada arranque.</p>
+
+        <h2>8. Conclusión</h2>
+        <p>La parte más importante no fue el archivo de dos líneas, sino comprobar primero qué componente controlaba realmente la pantalla de acceso. En un sistema que cambia con el tiempo, verificar el servicio activo evita aplicar soluciones correctas en el lugar equivocado.</p>
+        <p>Si una actualización futura cambia el gestor de login, repetir el comando <code>readlink</code> permitirá confirmar nuevamente la ruta adecuada antes de tocar la configuración.</p>
+
+        <div class="article-end"><span>Guía probada en Fedora KDE · Plasma 6.6.5 · Wayland</span><a class="button button-ghost" href="index.html">Más artículos</a></div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- FOOTER                                                -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Blog</a><a href="../software/index.html">Proyectos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+    toggle.addEventListener('click', () => setMenuState(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenuState(false); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
