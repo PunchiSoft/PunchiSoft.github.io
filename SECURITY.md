@@ -1,4 +1,4 @@
-# Política de seguridad
+# Guía de seguridad
 
 ## Versiones cubiertas
 
@@ -8,20 +8,20 @@ rama principal de este repositorio.
 Las vulnerabilidades de Switch Turbo Monitor deben reportarse en su repositorio
 oficial: <https://github.com/PunchiSoft/switch-turbo-monitor>.
 
-## Reportar una vulnerabilidad
+## Cómo reportar una vulnerabilidad
 
-1. Abra la pestaña **Security** del repositorio correspondiente.
-2. Si está disponible, utilice **Report a vulnerability** para enviar el reporte
-   de forma privada.
+1. Abra la pestaña **Security** del repositorio afectado.
+2. Si GitHub muestra la opción **Report a vulnerability**, utilícela para enviar
+   el reporte de forma privada.
 3. Incluya una descripción clara, los pasos mínimos para reproducir el problema,
    su impacto potencial y cualquier mitigación conocida.
 
-Si el reporte privado no está habilitado, abra una incidencia pública que
-solicite un canal de contacto privado, **sin incluir credenciales, datos
-personales, pruebas de concepto explotables ni detalles sensibles**.
+Si esa opción no está disponible, cree una incidencia pública que solicite un
+canal privado, sin describir la vulnerabilidad. No publique credenciales, datos
+personales, pruebas de concepto explotables ni detalles que faciliten abusos.
 
-No utilice LinkedIn ni comentarios públicos del blog para divulgar una
-vulnerabilidad.
+LinkedIn y los comentarios públicos no son canales para reportar
+vulnerabilidades.
 
 ## Alcance
 

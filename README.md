@@ -1,11 +1,12 @@
 # PunchiSoft.github.io
 
-Sitio oficial de PunchiSoft, publicado con GitHub Pages y desarrollado con HTML,
-CSS y JavaScript sin frameworks externos.
+PunchiSoft es un blog técnico y un espacio de proyectos personales, publicado
+con GitHub Pages y desarrollado con HTML, CSS y JavaScript sin frameworks
+externos.
 
-PunchiSoft conecta Linux, programación e inteligencia artificial con una mirada
-técnica vinculada al mantenimiento industrial, el análisis de sistemas y la
-mejora de procesos.
+Está enfocado en Linux, Fedora, inteligencia artificial, desarrollo de software
+y mantenimiento industrial. Su propósito es documentar soluciones reales,
+experiencias técnicas y aprendizajes prácticos que puedan servir como referencia.
 
 ## Sitio y enlaces oficiales
 
@@ -31,7 +32,9 @@ mejora de procesos.
 ├── css/estilos.css                   # Estilos compartidos
 ├── icons/                            # Iconos SVG del proyecto
 ├── assets/                           # Capturas e imágenes
-└── SECURITY.md                       # Política para reportar vulnerabilidades
+├── LICENSE                           # Licencia MIT del código fuente
+├── COPYRIGHT.md                      # Alcance sobre contenidos y marca
+└── SECURITY.md                       # Guía para reportar vulnerabilidades
 ```
 
 ## Desarrollo local
@@ -72,10 +75,11 @@ publicar datos sensibles ni detalles explotables en una incidencia pública.
 
 ## Licencia y contenidos
 
-Este repositorio todavía no incluye una licencia propia. En consecuencia, la
-publicación del código fuente no concede por sí sola permisos generales para
-copiar, modificar o redistribuir el sitio. Los proyectos enlazados se rigen por
-la licencia incluida en sus respectivos repositorios.
+El código fuente de este sitio se distribuye bajo la [licencia MIT](LICENSE),
+salvo que se indique expresamente lo contrario. Los artículos, textos, capturas,
+imágenes, logotipos, identidad visual, marca PunchiSoft y contenidos editoriales
+conservan los derechos de sus respectivos titulares y no quedan cubiertos
+automáticamente por la licencia MIT.
 
-Los nombres, textos, capturas y elementos de identidad de PunchiSoft pertenecen
-a sus respectivos titulares, salvo indicación expresa en contrario.
+Los proyectos enlazados se rigen por sus propias licencias. Consulte
+[COPYRIGHT.md](COPYRIGHT.md) para conocer el alcance completo.
