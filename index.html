@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Marca, enlaces globales y control desplegable móvil.   -->
+  <!-- ===================================================== -->
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
       <a class="brand" href="index.html" aria-label="PunchiSoft, inicio">
@@ -20,7 +24,7 @@
         <span></span><span></span><span></span><span class="sr-only">Abrir menú</span>
       </button>
       <div class="nav-links" id="menu-principal">
-        <a class="active" href="index.html">Inicio</a>
+        <a class="active" href="index.html" aria-current="page">Inicio</a>
         <a href="blog/index.html">Blog</a>
         <a href="software/index.html">Software</a>
         <a href="#acerca-de">Acerca de</a>
@@ -29,6 +33,10 @@
   </header>
 
   <main>
+    <!-- ===================================================== -->
+    <!-- HERO PRINCIPAL                                        -->
+    <!-- Propuesta del sitio, perfil profesional y trabajo activo. -->
+    <!-- ===================================================== -->
     <section class="hero container">
       <div class="hero-copy">
         <p class="eyebrow">Ingeniería aplicada · Linux · IA</p>
@@ -73,6 +81,10 @@
       </aside>
     </section>
 
+    <!-- ===================================================== -->
+    <!-- CATEGORÍAS PRINCIPALES                                -->
+    <!-- Accesos a las áreas editoriales y técnicas del sitio. -->
+    <!-- ===================================================== -->
     <section class="section container" aria-labelledby="categorias-titulo">
       <div class="section-heading">
         <div>
@@ -82,7 +94,7 @@
         <p>Notas prácticas, experiencias y proyectos explicados con calma.</p>
       </div>
       <div class="category-grid">
-        <a class="category-card" href="blog/index.html#linux">
+        <a class="category-card" href="blog/index.html">
           <span class="category-icon icon-blue"><img src="icons/informacion.svg" alt=""></span>
           <h3>Linux</h3>
           <p>Terminal, sistemas, automatización y cultura de software libre.</p>
@@ -94,7 +106,7 @@
           <p>Configuración, optimización y guías para el uso diario.</p>
           <span class="card-link">Ver artículos →</span>
         </a>
-        <a class="category-card" href="blog/index.html#ia">
+        <a class="category-card" href="blog/index.html">
           <span class="category-icon icon-purple"><img src="icons/fastfetch.svg" alt=""></span>
           <h3>Inteligencia artificial</h3>
           <p>Modelos locales, flujos creativos y desarrollo asistido.</p>
@@ -109,6 +121,10 @@
       </div>
     </section>
 
+    <!-- ===================================================== -->
+    <!-- PUBLICACIÓN DESTACADA                                 -->
+    <!-- Presenta el artículo principal y su contexto técnico. -->
+    <!-- ===================================================== -->
     <section class="section container" aria-labelledby="destacado-titulo">
       <article class="featured-post">
         <div class="featured-content">
@@ -126,6 +142,10 @@
       </article>
     </section>
 
+    <!-- ===================================================== -->
+    <!-- ACERCA DE                                             -->
+    <!-- Perfil, experiencia industrial y áreas de especialización. -->
+    <!-- ===================================================== -->
     <section class="about section container" id="acerca-de" aria-labelledby="acerca-titulo">
       <div class="about-heading">
         <p class="eyebrow">Acerca de</p>
@@ -162,6 +182,10 @@
     </section>
   </main>
 
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria, enlaces legales y autoría.      -->
+  <!-- ===================================================== -->
   <footer class="site-footer">
     <div class="container footer-content">
       <div><a class="brand" href="index.html"><span class="brand-mark"><img src="icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div>
@@ -170,13 +194,39 @@
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
   </footer>
   <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE
+    // Sincroniza el estado accesible del botón y del menú móvil.
+    // =======================================================
     const toggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
     toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      menu.classList.toggle('open');
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
     });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    // =======================================================
+    // AÑO DEL COPYRIGHT
+    // Mantiene el pie de página actualizado con la fecha local.
+    // =======================================================
     document.querySelector('[data-year]').textContent = new Date().getFullYear();
   </script>
 </body>

@@ -10,19 +10,33 @@
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con Blog marcado como sección activa.    -->
+  <!-- ===================================================== -->
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
       <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
-      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a class="active" href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a class="active" href="index.html" aria-current="page">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a></div>
     </nav>
   </header>
   <main>
+    <!-- ===================================================== -->
+    <!-- ENCABEZADO DEL BLOG                                   -->
+    <!-- Introducción editorial al archivo de publicaciones.   -->
+    <!-- ===================================================== -->
     <section class="page-header container">
       <p class="eyebrow">Ideas y aprendizaje</p>
       <h1>Blog</h1>
       <p class="lead">Notas técnicas, proyectos y aprendizajes sobre las herramientas que usamos para construir.</p>
     </section>
+
+    <!-- ===================================================== -->
+    <!-- LISTADO DE PUBLICACIONES                              -->
+    <!-- Filtros temáticos y tarjetas con acceso a cada artículo. -->
+    <!-- ===================================================== -->
+    <!-- TODO: convertir las etiquetas en filtros interactivos cuando aumente el archivo. -->
     <section class="section container">
       <div class="filter-list" aria-label="Temas de la publicación"><span class="active">Publicación</span><span>Fedora</span><span>Linux</span><span>Software</span></div>
       <div class="posts-grid posts-grid-single" id="todos">
@@ -38,10 +52,46 @@
       </div>
     </section>
   </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
   <footer class="site-footer">
-    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav><a href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html" aria-current="page">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
   </footer>
-  <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

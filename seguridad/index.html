@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global compartido por las páginas internas.     -->
+  <!-- ===================================================== -->
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
       <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
@@ -19,12 +23,20 @@
   </header>
 
   <main>
+    <!-- ===================================================== -->
+    <!-- ENCABEZADO DE SEGURIDAD                               -->
+    <!-- Introduce los criterios de uso y divulgación responsable. -->
+    <!-- ===================================================== -->
     <header class="page-header container-narrow legal-header">
       <p class="eyebrow">Uso responsable</p>
       <h1>Seguridad</h1>
       <p class="lead">Criterios para identificar fuentes oficiales, utilizar herramientas del sistema y comunicar vulnerabilidades.</p>
     </header>
 
+    <!-- ===================================================== -->
+    <!-- RECOMENDACIONES DE SEGURIDAD                          -->
+    <!-- Tarjetas sobre fuentes, permisos y cambios del sistema. -->
+    <!-- ===================================================== -->
     <div class="security-grid container-narrow">
       <section class="security-card">
         <span class="category-icon icon-blue"><img src="../icons/informacion.svg" alt=""></span>
@@ -43,6 +55,10 @@
       </section>
     </div>
 
+    <!-- ===================================================== -->
+    <!-- REPORTE DE VULNERABILIDADES                           -->
+    <!-- Canal y precauciones para una divulgación responsable. -->
+    <!-- ===================================================== -->
     <section class="security-report container-narrow">
       <p class="eyebrow">Divulgación responsable</p>
       <h2>¿Encontraste una vulnerabilidad?</h2>
@@ -52,10 +68,45 @@
     </section>
   </main>
 
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación documental con Seguridad marcada como activa. -->
+  <!-- ===================================================== -->
   <footer class="site-footer">
-    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav><a href="../blog/index.html">Blog</a><a href="../software/index.html">Software</a><a href="../legal/index.html">Legal</a><a class="footer-active" href="index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="../blog/index.html">Blog</a><a href="../software/index.html">Software</a><a href="../legal/index.html">Legal</a><a class="footer-active" href="index.html" aria-current="page">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Información técnica con responsabilidad.</span></div>
   </footer>
-  <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con Blog marcado como sección activa.    -->
+  <!-- ===================================================== -->
   <header class="site-header">
     <nav class="nav container" aria-label="Navegación principal">
       <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
@@ -20,6 +24,10 @@
 
   <main>
     <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- Metadatos editoriales, título y resumen de lectura.    -->
+      <!-- ===================================================== -->
       <header class="article-header container-narrow">
         <a class="back-link" href="index.html">← Volver al blog</a>
         <div class="post-meta"><span class="tag">Fedora</span><time datetime="2026-06-23">23 de junio de 2026</time><span>9 min de lectura</span></div>
@@ -27,20 +35,30 @@
         <p class="lead">Lo que comenzó como una forma de activar o desactivar Turbo Boost sin entrar a la BIOS terminó convirtiéndose en un centro de control para entender mejor el equipo.</p>
       </header>
 
+      <!-- ===================================================== -->
+      <!-- IMAGEN PRINCIPAL                                      -->
+      <!-- Captura de contexto que introduce visualmente el proyecto. -->
+      <!-- ===================================================== -->
       <figure class="article-hero container-narrow">
         <img src="../assets/images/switch-turbo-monitor/00.png" alt="Switch Turbo Monitor mostrando los modos frío y rendimiento en Fedora KDE" width="1293" height="857">
         <figcaption>Dos decisiones claras: priorizar temperatura y consumo, o disponer de más rendimiento.</figcaption>
       </figure>
 
+      <!-- ===================================================== -->
+      <!-- CUERPO DEL ARTÍCULO                                   -->
+      <!-- Relato técnico, decisiones de diseño y material visual. -->
+      <!-- ===================================================== -->
       <div class="article-body container-narrow">
         <p class="article-intro">Switch Turbo Monitor nace para facilitar a usuarios de Fedora y Linux el cambio de perfiles de rendimiento y Turbo Boost desde una interfaz visual, evitando configuraciones complejas en la BIOS o una cadena de comandos difíciles de recordar.</p>
 
+        <!-- Origen del proyecto y barrera de uso identificada. -->
         <h2>El origen: una barrera demasiado alta</h2>
         <p>En muchos equipos, cambiar el comportamiento del procesador implica entrar a la BIOS o buscar comandos dispersos por Internet. Para un usuario experimentado puede ser una tarea breve. Para alguien que acaba de instalar Fedora, en cambio, significa reiniciar, navegar por opciones desconocidas y preguntarse si un cambio puede dejar el sistema en un estado no deseado.</p>
         <p>Quise trasladar esa operación al escritorio y darle un contexto fácil de entender. Así apareció la primera idea: un interruptor gráfico para consultar y modificar Turbo Boost desde Fedora KDE. Con el tiempo quedó claro que el estado del procesador no cuenta toda la historia. También importan el perfil de energía activo, la temperatura, el consumo de memoria, la carga gráfica y las herramientas disponibles en el sistema.</p>
 
         <blockquote><p>El proyecto no busca esconder Linux: busca ofrecer una entrada segura para comprenderlo.</p></blockquote>
 
+        <!-- Alcance funcional y usuarios a quienes beneficia la solución. -->
         <h2>¿Qué problema resuelve?</h2>
         <p>Switch Turbo Monitor reúne en una sola ventana tareas que normalmente requieren varias herramientas. Permite activar o desactivar Turbo Boost en procesadores AMD e Intel compatibles, aplicar perfiles rápidos mediante <code>tuned</code> y consultar el estado del hardware sin tener que memorizar comandos.</p>
         <p>El <strong>modo frío</strong> desactiva Turbo Boost e intenta utilizar un perfil equilibrado. El <strong>modo rendimiento</strong> hace lo contrario: activa Turbo Boost y selecciona un perfil orientado al rendimiento cuando está disponible. No son promesas mágicas de temperatura o velocidad; son atajos transparentes para configurar el sistema de acuerdo con el trabajo del momento.</p>
@@ -51,6 +69,7 @@
           <figcaption>El monitor conserva hasta 60 muestras en memoria y no escribe el historial en disco.</figcaption>
         </figure>
 
+        <!-- Arquitectura operativa, permisos y obtención de métricas. -->
         <h2>Cómo funciona, sin convertirlo en una caja negra</h2>
         <p>Al iniciarse, una pantalla de comprobación busca las herramientas que amplían sus funciones: <code>sensors</code> para temperaturas, <code>nvidia-smi</code> para GPU NVIDIA, <code>tuned-adm</code> para perfiles, <code>fastfetch</code> para el resumen del equipo y <code>pkexec</code> para las acciones que requieren autorización. Si falta un componente opcional, la aplicación lo informa y continúa funcionando.</p>
         <p>El cambio de Turbo Boost se realiza sobre las interfaces que expone el kernel para AMD o Intel. Cuando es necesario escribir en ellas, la aplicación solicita autorización mediante PolicyKit y <code>pkexec</code>. No se ejecuta toda la interfaz como administrador, no se usa <code>sudo</code> internamente y no se almacenan contraseñas. Esa separación fue una decisión importante: una herramienta cómoda no debe pedir más privilegios de los que realmente necesita.</p>
@@ -61,6 +80,7 @@
           <figure><img src="../assets/images/switch-turbo-monitor/03.png" alt="Vista de requisitos instalados y opcionales" width="1292" height="863" loading="lazy"><figcaption>Diagnóstico de requisitos</figcaption></figure>
         </div>
 
+        <!-- Tecnologías y componentes principales del proyecto. -->
         <h2>Las tecnologías detrás de la interfaz</h2>
         <p>El proyecto está escrito en <strong>Python 3</strong>. La interfaz utiliza <strong>PyQt6</strong>, elegida por su integración con el escritorio y porque permite construir una aplicación nativa y organizada en componentes. Las gráficas se dibujan con <strong>pyqtgraph</strong>, mientras que <strong>watchfiles</strong> facilita el ciclo de desarrollo con recarga automática.</p>
         <p>Debajo de la interfaz conviven varias piezas propias del ecosistema Linux: las rutas <code>sysfs</code> del kernel para Turbo Boost, <code>tuned</code> para los perfiles de energía, PolicyKit para autorización, <code>lm_sensors</code> para temperatura y las utilidades de NVIDIA cuando están disponibles. La aplicación se divide en módulos de interfaz, energía, GPU, configuración, dependencias y control de instancia. Esa separación hace más sencillo probar una parte sin tener que alterar las demás.</p>
@@ -70,15 +90,18 @@
           <p>Python 3 · PyQt6 · pyqtgraph · Fedora KDE · tuned · PolicyKit · sysfs</p>
         </aside>
 
+        <!-- Aprendizajes derivados del desarrollo y las pruebas. -->
         <h2>Lo que aprendí al construirlo</h2>
         <p>El aprendizaje más importante fue que una interfaz sencilla exige muchas decisiones internas. Un botón de encendido parece trivial hasta que debe reconocer dos convenciones distintas del kernel, confirmar el resultado, explicar un error y seguir siendo seguro si falta una dependencia.</p>
         <p>También aprendí a tratar las funciones opcionales como capacidades y no como obstáculos. Un equipo sin GPU NVIDIA o sin Fastfetch debe seguir teniendo una aplicación útil. Diseñar esa degradación progresiva mejoró tanto la experiencia como la estructura del código.</p>
         <p>Otro desafío fue mantener la interfaz fluida mientras se consultan comandos y métricas. Limitar el historial, ejecutar tareas externas en segundo plano y permitir que el usuario controle el ritmo de actualización me hizo pensar en rendimiento no solo como potencia del procesador, sino también como calidad de la experiencia.</p>
 
+        <!-- Uso de inteligencia artificial como apoyo al proceso técnico. -->
         <h2>Codex como compañero de desarrollo</h2>
         <p>La inteligencia artificial, mediante Codex, me acompañó durante el proceso como asistente técnico. Me ayudó a ordenar ideas, dividir responsabilidades entre módulos, generar y revisar código, detectar casos que necesitaban mejor manejo de errores y mantener más clara la documentación.</p>
         <p>Su aporte fue especialmente valioso para comparar alternativas y acelerar tareas repetitivas. Aun así, la dirección del proyecto, las pruebas sobre el equipo real y las decisiones sobre seguridad y experiencia de uso siguieron requiriendo criterio humano. La IA no sustituyó el aprendizaje: me permitió dedicar más tiempo a entender el problema, evaluar resultados y pulir la solución.</p>
 
+        <!-- TODO: actualizar esta hoja de ruta al publicar la versión estable 1.0. -->
         <h2>Camino a la versión 1.0</h2>
         <p>Switch Turbo Monitor se encuentra en desarrollo previo a la versión 1.0. Los próximos pasos apuntan a ampliar las pruebas en distintos equipos AMD e Intel, mejorar la detección de capacidades y simplificar todavía más la instalación. También quiero seguir puliendo la accesibilidad, los mensajes de diagnóstico y la integración con Fedora KDE.</p>
         <p>A más largo plazo, el objetivo es convertir el proyecto en una herramienta estable y fácil de distribuir, sin abandonar su principio original: que el usuario sepa qué está cambiando, por qué se solicita autorización y cómo volver a un estado equilibrado.</p>
@@ -93,10 +116,45 @@
     </article>
   </main>
 
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
   <footer class="site-footer">
-    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav><a href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Blog</a><a href="../software/index.html">Software</a><a href="../index.html#acerca-de">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
   </footer>
-  <script>const t=document.querySelector('.menu-toggle'),m=document.querySelector('.nav-links');t.addEventListener('click',()=>{const o=t.getAttribute('aria-expanded')==='true';t.setAttribute('aria-expanded',String(!o));m.classList.toggle('open')});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
