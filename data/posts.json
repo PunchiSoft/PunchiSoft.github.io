@@ -1,0 +1,41 @@
+[
+  {
+    "id": "fedora-numlock",
+    "title": "Fedora KDE: activar Bloq Num en la pantalla de login",
+    "summary": "Cómo confirmé que el sistema utilizaba plasmalogin y configuré Bloq Num sin aplicar instrucciones destinadas a SDDM.",
+    "featuredSummary": "Una solución práctica para plasmalogin, después de comprobar por qué la configuración habitual de SDDM no aplicaba.",
+    "category": "Fedora",
+    "date": "2026-06-23",
+    "readingTime": "5 min de lectura",
+    "url": "fedora-kde-activar-bloq-num-login.html",
+    "image": "../assets/images/fedora-kde-numlock/loginuser.png",
+    "imageAlt": "Pantalla de inicio de sesión de Fedora KDE",
+    "imageWidth": 1586,
+    "imageHeight": 992,
+    "featured": {
+      "icon": "icons/perfiles.svg",
+      "label": "Fedora KDE · plasmalogin",
+      "title": "Bloq Num activado",
+      "detail": "Wayland · Plasma 6.6.5 · configuración"
+    }
+  },
+  {
+    "id": "fedora",
+    "title": "Switch Turbo Monitor: hacer comprensible el rendimiento en Fedora",
+    "summary": "Una interfaz visual para cambiar perfiles de rendimiento y Turbo Boost en Fedora/Linux sin depender de la BIOS ni memorizar comandos.",
+    "category": "Fedora",
+    "date": "2026-06-23",
+    "readingTime": "9 min de lectura",
+    "url": "switch-turbo-monitor.html",
+    "image": "../assets/images/switch-turbo-monitor/00.png",
+    "imageAlt": "Modos de rendimiento de Switch Turbo Monitor",
+    "imageWidth": 1293,
+    "imageHeight": 857,
+    "featured": {
+      "icon": "icons/app.svg",
+      "label": "Fedora · rendimiento",
+      "title": "Control visual del sistema",
+      "detail": "Python 3 · PyQt6 · PolicyKit · tuned"
+    }
+  }
+]

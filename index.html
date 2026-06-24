@@ -8,6 +8,7 @@
   <title>PunchiSoft — Linux, IA y software</title>
   <link rel="icon" href="icons/app.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/posts.js" data-site-root="./" defer></script>
 </head>
 <body>
   <!-- ===================================================== -->
@@ -90,18 +91,18 @@
         </div>
         <a class="section-link" href="blog/index.html">Ver todos los artículos →</a>
       </div>
-      <article class="featured-post">
+      <article class="featured-post" data-latest-post>
         <div class="featured-content">
-          <div class="post-meta"><span class="tag">Fedora</span><time datetime="2026-06-23">23 jun 2026</time><span>5 min de lectura</span></div>
-          <h3>Fedora KDE: activar Bloq Num en la pantalla de login</h3>
-          <p>Una solución práctica para plasmalogin, después de comprobar por qué la configuración habitual de SDDM no aplicaba.</p>
-          <a class="text-link" href="blog/fedora-kde-activar-bloq-num-login.html">Leer publicación <span aria-hidden="true">→</span></a>
+          <div class="post-meta" data-post-meta><span class="tag">Fedora</span><time datetime="2026-06-23">23 jun 2026</time><span>5 min de lectura</span></div>
+          <h3 data-post-title>Fedora KDE: activar Bloq Num en la pantalla de login</h3>
+          <p data-post-summary>Una solución práctica para plasmalogin, después de comprobar por qué la configuración habitual de SDDM no aplicaba.</p>
+          <a class="text-link" href="blog/fedora-kde-activar-bloq-num-login.html" data-post-link>Leer publicación <span aria-hidden="true">→</span></a>
         </div>
         <div class="featured-code" aria-hidden="true">
-          <div class="feature-title"><img src="icons/perfiles.svg" alt=""><span>Fedora KDE · plasmalogin</span></div>
-          <strong>Bloq Num activado</strong>
+          <div class="feature-title"><img src="icons/perfiles.svg" alt="" data-feature-icon><span data-feature-label>Fedora KDE · plasmalogin</span></div>
+          <strong data-feature-title>Bloq Num activado</strong>
           <div class="power-line"><i></i></div>
-          <small>Wayland · Plasma 6.6.5 · configuración</small>
+          <small data-feature-detail>Wayland · Plasma 6.6.5 · configuración</small>
         </div>
       </article>
     </section>

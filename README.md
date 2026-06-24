@@ -23,6 +23,8 @@ mejora de procesos.
 ├── blog/
 │   ├── index.html                    # Índice del blog
 │   └── switch-turbo-monitor.html     # Publicación principal
+├── data/posts.json                   # Catálogo y orden de publicaciones
+├── js/posts.js                       # Renderizado automático del blog
 ├── software/index.html               # Proyectos de software
 ├── legal/index.html                  # Aviso legal y privacidad
 ├── seguridad/index.html              # Recomendaciones de seguridad
@@ -44,6 +46,13 @@ python3 -m http.server 8000
 Luego abra `http://localhost:8000` en el navegador. Se recomienda probar los
 enlaces relativos y la navegación en resoluciones de escritorio y móvil antes de
 publicar cambios.
+
+## Publicar un artículo
+
+Después de crear el HTML del artículo dentro de `blog/`, agregue sus metadatos a
+`data/posts.json`. El listado del blog se ordena automáticamente por `date` y la
+portada muestra la publicación más reciente. El objeto `featured` controla el
+panel visual que acompaña al artículo en la portada.
 
 ## Publicación
 
