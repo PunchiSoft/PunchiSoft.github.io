@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La donación a PunchiSoft no se completó.">
+  <meta name="theme-color" content="#10141c">
+  <meta name="robots" content="noindex">
+  <title>Donación no completada — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a href="../blog/index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main class="donation-status container">
+    <section class="donation-status-card" aria-labelledby="cancelado-titulo">
+      <span class="donation-mark" aria-hidden="true"><img src="../icons/donaciones.svg" alt=""></span>
+      <p class="eyebrow">Donación no completada</p>
+      <h1 id="cancelado-titulo">No se realizó la donación</h1>
+      <p>La operación fue cancelada o no llegó a completarse en PayPal. Puedes volver a intentarlo cuando quieras.</p>
+      <div class="actions">
+        <a class="button button-primary" href="index.html">Volver a donaciones</a>
+        <a class="button button-ghost" href="../index.html">Ir al inicio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="../blog/index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="index.html" data-donation-footer>Donaciones</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Gracias por visitar el sitio.</span></div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+    toggle.addEventListener('click', () => setMenuState(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenuState(false); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

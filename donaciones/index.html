@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Donaciones voluntarias para apoyar el contenido y los proyectos de PunchiSoft.">
+  <meta name="theme-color" content="#10141c">
+  <title>Donaciones — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a href="../blog/index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="donation-page container" aria-labelledby="donaciones-titulo">
+      <div class="donation-layout">
+        <div class="donation-hero">
+          <span class="donation-mark" aria-hidden="true"><img src="../icons/donaciones.svg" alt=""></span>
+          <p class="eyebrow">Apoyo voluntario</p>
+          <h1 id="donaciones-titulo">Donaciones</h1>
+          <p class="lead">Si el contenido, los artículos o los proyectos de PunchiSoft te han servido, puedes apoyar su continuidad mediante una donación voluntaria.</p>
+          <div class="donation-actions">
+            <a class="button button-primary button-paypal" href="https://www.paypal.com/donate/?hosted_button_id=HXFSZU4K8C38W" target="_blank" rel="noopener noreferrer"><img src="../assets/images/donaciones/paypal.svg" alt="PayPal">Donar <span aria-hidden="true">↗</span></a>
+            <a class="button button-ghost" href="../index.html">Volver al inicio</a>
+          </div>
+          <p class="donation-note">Las donaciones se procesan fuera de este sitio mediante PayPal. PunchiSoft no recibe datos de tarjetas ni credenciales de pago.</p>
+        </div>
+
+        <aside class="donation-card" aria-label="Código QR de PayPal">
+          <img class="paypal-card-brand" src="../assets/images/donaciones/paypal.svg" alt="PayPal">
+          <img src="../assets/images/donaciones/paypal-qr.png" alt="Código QR para donar a PunchiSoft mediante PayPal" width="128" height="128">
+          <h2>Escanea desde el celular</h2>
+          <p>Abre la cámara o lector QR de tu teléfono para ir directamente al enlace de donación de PayPal.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="../blog/index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="index.html" aria-current="page" data-donation-footer>Donaciones</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Gracias por apoyar el proyecto.</span></div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+    toggle.addEventListener('click', () => setMenuState(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenuState(false); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -112,6 +112,9 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .button-cad:hover { background: linear-gradient(135deg, #ddb9ff, #add2ff); box-shadow: 0 16px 34px rgba(210,168,255,.25); }
 .button-icon { width: 28px; height: 28px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: rgba(255,255,255,.72); box-shadow: inset 0 0 0 1px rgba(7,17,28,.1), 0 5px 12px rgba(7,17,28,.12); }
 .button-icon img { width: 18px; height: 18px; display: block; }
+.button-paypal { background: #ffc439; color: #12204a; border-color: rgba(255,196,57,.55); box-shadow: 0 12px 30px rgba(255,196,57,.18); }
+.button-paypal:hover { background: #ffd45f; box-shadow: 0 16px 34px rgba(255,196,57,.26); }
+.button-paypal img { width: 82px; height: auto; display: block; flex: 0 0 auto; }
 .hero-visual { position: relative; }
 .hero-visual::before { position: absolute; content: ""; width: 330px; height: 330px; inset: -70px 0 auto 60px; border-radius: 50%; background: rgba(88,166,255,.14); filter: blur(90px); }
 .hero-profile { max-width: 520px; margin-top: 30px; display: flex; align-items: center; gap: 13px; color: var(--muted); }
@@ -271,6 +274,57 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .footer-content nav a:hover { color: var(--text); }
 .footer-content nav .footer-active, .footer-content nav [aria-current="page"] { color: var(--text); }
 .footer-bottom { padding-block: 21px; display: flex; justify-content: space-between; border-top: 1px solid var(--border); color: #697482; font-size: .75rem; }
+
+/* =======================================================
+   DONACIONES
+   Página dedicada y acceso flotante para apoyar el proyecto.
+   ======================================================= */
+.donation-page { padding-block: 56px 90px; }
+.donation-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr); gap: clamp(28px, 5vw, 62px); align-items: stretch; }
+.donation-hero { padding: clamp(30px, 5vw, 54px); display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--border); border-radius: 24px; background: linear-gradient(135deg, var(--surface), var(--bg-soft)); box-shadow: var(--shadow); }
+.donation-mark { width: 68px; height: 68px; margin-bottom: 26px; padding: 13px; display: grid; place-items: center; border: 1px solid rgba(88,166,255,.34); border-radius: 18px; background: linear-gradient(135deg, rgba(88,166,255,.14), rgba(82,199,136,.1)); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
+.donation-mark img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 8px 14px rgba(0,0,0,.2)); }
+.donation-hero h1 { margin-bottom: 16px; font-size: clamp(2.3rem, 5vw, 4.2rem); }
+.donation-hero .lead { max-width: 620px; }
+.donation-actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.donation-card { position: relative; overflow: hidden; padding: clamp(26px, 5vw, 42px); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(88,166,255,.32); border-radius: 22px; background: radial-gradient(circle at 50% 20%, rgba(88,166,255,.16), transparent 46%), var(--surface); text-align: center; }
+.donation-card::before { position: absolute; top: 22px; right: 22px; width: 42px; height: 42px; content: ""; border: 1px solid rgba(82,199,136,.25); border-radius: 14px; background: url("../icons/donaciones.svg") center / 26px 26px no-repeat, rgba(82,199,136,.09); }
+.donation-card > img:not(.paypal-card-brand) { width: min(100%, 220px); height: auto; padding: 16px; display: block; border: 1px solid var(--border); border-radius: 18px; background: #ffffff; image-rendering: pixelated; box-shadow: 0 18px 42px rgba(0,0,0,.24); }
+.paypal-card-brand { width: 124px; height: auto; margin-bottom: 22px; display: block; }
+.donation-card h2 { margin: 28px 0 10px; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.donation-card p { max-width: 420px; margin: 0; color: var(--muted); }
+.donation-note { margin-top: 26px; padding: 18px 20px; border-left: 2px solid var(--accent); border-radius: 0 12px 12px 0; background: rgba(88,166,255,.08); color: var(--muted); font-size: .9rem; }
+.donation-status { min-height: 58vh; display: grid; place-items: center; padding-block: 60px; }
+.donation-status-card { width: min(100%, 720px); padding: clamp(30px, 6vw, 56px); border: 1px solid var(--border); border-radius: 24px; background: linear-gradient(135deg, var(--surface), var(--bg-soft)); text-align: center; box-shadow: var(--shadow); }
+.donation-status-card .donation-mark { margin-inline: auto; }
+.donation-status-card h1 { margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); }
+.donation-status-card p { margin: 0 auto; max-width: 560px; color: var(--muted); }
+.donation-status-card .actions { justify-content: center; }
+
+.donation-widget { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 35; display: grid; justify-items: end; gap: 12px; pointer-events: none; }
+.donation-float, .donation-panel { pointer-events: auto; }
+.donation-float { min-height: 54px; padding: 0 17px 0 10px; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(88,166,255,.4); border-radius: 99px; background: linear-gradient(135deg, rgba(88,166,255,.96), rgba(82,199,136,.92)); color: #07111c; font-size: .88rem; font-weight: 750; box-shadow: 0 18px 42px rgba(0,0,0,.28); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.donation-float:hover { transform: translateY(-2px); box-shadow: 0 24px 54px rgba(0,0,0,.34); }
+.donation-float-icon { width: 36px; height: 36px; padding: 6px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: rgba(255,255,255,.86); box-shadow: inset 0 0 0 1px rgba(7,17,28,.1), 0 8px 16px rgba(7,17,28,.18); }
+.donation-float-icon img { width: 100%; height: 100%; display: block; }
+.donation-panel { position: relative; width: min(calc(100vw - 30px), 380px); padding: 25px; border: 1px solid var(--border-light); border-radius: 18px; background: rgba(18,24,32,.98); color: var(--text); box-shadow: 0 30px 80px rgba(0,0,0,.38); transform-origin: right bottom; animation: donation-pop .18s ease-out; }
+.donation-panel[hidden] { display: none; }
+.donation-panel-icon { width: 48px; height: 48px; margin-bottom: 16px; padding: 9px; display: grid; place-items: center; border: 1px solid rgba(88,166,255,.32); border-radius: 15px; background: rgba(88,166,255,.1); }
+.donation-panel-icon img { width: 100%; height: 100%; display: block; }
+.donation-panel h2 { margin-bottom: 10px; font-size: 1.45rem; }
+.donation-panel p:not(.eyebrow) { margin: 0 0 18px; color: #b6c0cb; font-size: .92rem; line-height: 1.58; }
+.donation-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: var(--surface-2); color: var(--text); cursor: pointer; }
+.donation-qr { margin: 18px 0 20px; display: grid; grid-template-columns: 104px 1fr; align-items: center; gap: 15px; text-align: left; }
+.donation-qr img { width: 104px; height: 104px; padding: 9px; border: 1px solid var(--border); border-radius: 13px; background: #ffffff; image-rendering: pixelated; }
+.donation-qr span { display: grid; gap: 8px; color: var(--muted); font-size: .82rem; }
+.donation-qr .paypal-brand { width: 96px; height: auto; padding: 0; border: 0; border-radius: 0; background: transparent; image-rendering: auto; }
+.donation-panel-actions { display: grid; gap: 10px; }
+.donation-panel-actions .button { width: 100%; }
+
+@keyframes donation-pop {
+  from { opacity: 0; transform: translateY(8px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
 /* =======================================================
    ENCABEZADOS INTERNOS Y LISTADO DEL BLOG
@@ -479,6 +533,7 @@ blockquote p { margin: 0 !important; }
   .project-contact { grid-template-columns: 1fr; }
   .project-contact-link { justify-self: start; }
   .principles { grid-template-columns: 1fr; gap: 24px; }
+  .donation-layout { grid-template-columns: 1fr; }
   .about-heading { grid-template-columns: 1fr; gap: 10px; }
   .about-heading .eyebrow { margin-top: 0; }
   .about-layout { grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr); gap: 30px; }
@@ -559,6 +614,14 @@ blockquote p { margin: 0 !important; }
   .principle-grid article { min-height: 0; }
   .principle-grid h3 { min-height: 0; }
   .project-contact-link { width: 100%; white-space: normal; }
+  .donation-page { padding-block: 42px 70px; }
+  .donation-hero, .donation-card, .donation-status-card { border-radius: 18px; }
+  .donation-actions .button { width: 100%; }
+  .donation-widget { right: 15px; bottom: 15px; }
+  .donation-float { min-height: 50px; padding-right: 14px; }
+  .donation-panel { padding: 22px; }
+  .donation-qr { grid-template-columns: 88px 1fr; }
+  .donation-qr img { width: 88px; height: 88px; }
 }
 
 /* =======================================================
@@ -614,6 +677,11 @@ blockquote p { margin: 0 !important; }
 :root[data-theme="light"] .principles-heading,
 :root[data-theme="light"] .principle-grid article { background: linear-gradient(135deg, #fbfcfe, #eef2f7); }
 :root[data-theme="light"] .project-contact { background: linear-gradient(135deg, rgba(37,110,184,.1), rgba(33,137,91,.07)); }
+:root[data-theme="light"] .donation-hero,
+:root[data-theme="light"] .donation-status-card { background: linear-gradient(135deg, #fbfcfe, #eef2f7); }
+:root[data-theme="light"] .donation-card { background: radial-gradient(circle at 50% 20%, rgba(37,110,184,.12), transparent 46%), var(--surface); }
+:root[data-theme="light"] .donation-panel { background: rgba(251,252,254,.98); box-shadow: 0 26px 70px rgba(31,42,56,.22); }
+:root[data-theme="light"] .donation-panel p:not(.eyebrow) { color: var(--muted); }
 :root[data-theme="light"] .project-contact-link { border-color: rgba(37,110,184,.34); background: linear-gradient(135deg, rgba(37,110,184,.16), rgba(37,110,184,.08)); color: #1f66aa; }
 :root[data-theme="light"] .card-link { border-color: rgba(37,110,184,.24); background: rgba(37,110,184,.09); color: #1f66aa; }
 :root[data-theme="light"] .category-card:hover .card-link { border-color: rgba(37,110,184,.4); background: rgba(37,110,184,.14); color: #154d82; }
