@@ -3,6 +3,7 @@
    Paleta, medidas y efectos compartidos por todo el sitio.
    ======================================================= */
 :root {
+  color-scheme: dark;
   --bg: #10141c;
   --bg-soft: #151b24;
   --surface: #1b2330;
@@ -23,13 +24,32 @@
   --shadow: 0 24px 80px rgba(0, 0, 0, .28);
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef1f5;
+  --bg-soft: #e3e7ed;
+  --surface: #fbfcfe;
+  --surface-2: #f1f4f8;
+  --border: #d2d9e3;
+  --border-light: #b8c3d1;
+  --text: #17202b;
+  --muted: #596675;
+  --accent: #256eb8;
+  --accent-soft: rgba(37, 110, 184, .11);
+  --accent-2: #21895b;
+  --purple: #7856b8;
+  --orange: #a65f16;
+  --coral: #b84d3a;
+  --shadow: 0 18px 55px rgba(31, 42, 56, .12);
+}
+
 /* =======================================================
    BASE Y UTILIDADES REUTILIZABLES
    Normalización mínima, tipografía, contenedores y accesibilidad.
    ======================================================= */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; transition: background .2s ease, color .2s ease; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
@@ -42,16 +62,24 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
    Cabecera fija, marca, enlaces activos y control del menú móvil.
    ======================================================= */
 .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(48,59,77,.82); background: rgba(16,20,28,.9); backdrop-filter: blur(18px); }
-.nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: inline-flex; align-items: center; gap: 11px; font-size: 1rem; font-weight: 720; letter-spacing: -.02em; }
+.nav { min-height: 72px; display: flex; align-items: center; justify-content: flex-start; }
+.brand { order: 1; margin-right: auto; display: inline-flex; align-items: center; gap: 11px; font-size: 1rem; font-weight: 720; letter-spacing: -.02em; }
 .brand-mark { width: 34px; height: 34px; display: inline-grid; place-items: center; flex: 0 0 auto; }
 .brand-mark img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
-.nav-links { display: flex; align-items: center; gap: 34px; color: var(--muted); font-size: .9rem; }
+.nav-links { order: 2; display: flex; align-items: center; gap: 34px; color: var(--muted); font-size: .9rem; }
 .nav-links a { position: relative; transition: color .2s ease; }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
 .nav-links a.active::after { position: absolute; content: ""; left: 0; right: 0; bottom: -25px; height: 2px; background: var(--accent); }
-.menu-toggle { display: none; width: 40px; height: 40px; padding: 9px; border: 0; background: none; cursor: pointer; }
+.menu-toggle { order: 4; display: none; width: 40px; height: 40px; margin-left: 10px; padding: 9px; border: 0; background: none; cursor: pointer; }
 .menu-toggle > span:not(.sr-only) { display: block; width: 21px; height: 1px; margin: 5px 0; background: var(--text); transition: .2s; }
+.theme-toggle { order: 3; width: 52px; height: 32px; margin-left: 18px; padding: 4px; display: inline-grid; place-items: center; flex: 0 0 auto; border: 1px solid var(--border-light); border-radius: 99px; background: var(--surface); color: var(--text); cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.theme-toggle:hover { transform: translateY(-1px); border-color: var(--accent); }
+.theme-toggle-track { position: relative; width: 38px; height: 22px; display: block; border-radius: 99px; background: var(--bg-soft); box-shadow: inset 0 0 0 1px var(--border); }
+.theme-toggle-track::before, .theme-toggle-track::after { position: absolute; top: 50%; width: 7px; height: 7px; content: ""; border-radius: 50%; transform: translateY(-50%); }
+.theme-toggle-track::before { left: 7px; background: #8fa1b5; box-shadow: 0 0 0 2px rgba(143,161,181,.14); }
+.theme-toggle-track::after { right: 7px; background: var(--accent); box-shadow: 0 0 8px rgba(88,166,255,.65); }
+.theme-toggle-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; display: block; border-radius: 50%; background: var(--text); box-shadow: 0 3px 9px rgba(0,0,0,.25); transition: transform .2s ease, background .2s ease; }
+:root[data-theme="light"] .theme-toggle-thumb { transform: translateX(16px); background: #ffffff; }
 
 /* =======================================================
    HERO PRINCIPAL
@@ -470,6 +498,59 @@ blockquote p { margin: 0 !important; }
   .principle-grid { grid-template-columns: 1fr; }
   .principle-grid article { border-left: 0; border-top: 1px solid var(--border); }
 }
+
+/* =======================================================
+   TEMA CLARO
+   Fondo plomo claro y superficies suaves para lectura extendida.
+   ======================================================= */
+:root[data-theme="light"] .site-header { border-bottom-color: rgba(184,195,209,.86); background: rgba(238,241,245,.9); }
+:root[data-theme="light"] .lead,
+:root[data-theme="light"] .hero-subtitle,
+:root[data-theme="light"] .featured-content > p,
+:root[data-theme="light"] .project-highlight p,
+:root[data-theme="light"] .post-card-body > p,
+:root[data-theme="light"] .article-body,
+:root[data-theme="light"] .software-lead,
+:root[data-theme="light"] .legal-layout p,
+:root[data-theme="light"] .security-card p,
+:root[data-theme="light"] .security-report p { color: var(--muted); }
+:root[data-theme="light"] .hero-workbench,
+:root[data-theme="light"] .featured-post,
+:root[data-theme="light"] .project-highlight,
+:root[data-theme="light"] .software-card,
+:root[data-theme="light"] .about-layout,
+:root[data-theme="light"] .about-page,
+:root[data-theme="light"] .security-report { background: linear-gradient(135deg, #fbfcfe, #eef2f7); }
+:root[data-theme="light"] .workbench-header,
+:root[data-theme="light"] .featured-code,
+:root[data-theme="light"] .software-visual,
+:root[data-theme="light"] .post-card-image,
+:root[data-theme="light"] .article-cover { background: #e4e9f0; }
+:root[data-theme="light"] .active-project,
+:root[data-theme="light"] .workbench-section { border-color: var(--border); }
+:root[data-theme="light"] .active-project p,
+:root[data-theme="light"] .expertise-list li,
+:root[data-theme="light"] .workbench-stack > div span,
+:root[data-theme="light"] .tech-list span,
+:root[data-theme="light"] .featured-code small,
+:root[data-theme="light"] .visual-status,
+:root[data-theme="light"] .status-dot { color: #5f6c7b; }
+:root[data-theme="light"] .article-body .article-intro,
+:root[data-theme="light"] blockquote,
+:root[data-theme="light"] .article-note p,
+:root[data-theme="light"] .article-body strong,
+:root[data-theme="light"] .about-copy strong,
+:root[data-theme="light"] .about-lead,
+:root[data-theme="light"] .hero-profile strong { color: var(--text); }
+:root[data-theme="light"] .article-body code { background: #e7ebf1; color: #263445; }
+:root[data-theme="light"] .code-block { background: #202936; color: #eef3f9; }
+:root[data-theme="light"] .code-output { border-color: rgba(33,137,91,.35); color: #bce8cf; }
+:root[data-theme="light"] .article-note,
+:root[data-theme="light"] .post-card,
+:root[data-theme="light"] .category-card,
+:root[data-theme="light"] .security-card { background: var(--surface); }
+:root[data-theme="light"] .site-footer { background: #dfe5ec; }
+:root[data-theme="light"] .footer-bottom { color: #687586; }
 
 /* =======================================================
    MOVIMIENTO Y ACCESIBILIDAD
