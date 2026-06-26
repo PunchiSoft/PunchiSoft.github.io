@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Switch Turbo Boost Plasmoid permite consultar y alternar Turbo Boost desde el panel de KDE Plasma 6 con QML, Bash y PolicyKit.">
+  <meta name="theme-color" content="#10141c">
+  <title>Switch Turbo Boost Plasmoid: Turbo Boost desde KDE Plasma — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con Blog marcado como sección activa.    -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a class="active" href="index.html">Blog</a><a href="../software/index.html">Proyectos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- Metadatos editoriales, título y resumen de lectura.    -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-06-26">26 de junio de 2026</time><span>6 min de lectura</span></div>
+        <h1>Switch Turbo Boost Plasmoid: control rápido desde KDE Plasma</h1>
+        <p class="lead">Un interruptor liviano para consultar y alternar Turbo Boost directamente desde el panel de Plasma 6, sin abrir una aplicación completa ni perder claridad sobre lo que cambia en el sistema.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- IMAGEN PRINCIPAL                                      -->
+      <!-- Captura que muestra el plasmoide desplegado en Plasma. -->
+      <!-- ===================================================== -->
+      <figure class="article-hero article-hero-compact container-narrow">
+        <img src="../assets/images/switch-turbo-boost-plasmoid/menu-principal.png" alt="Switch Turbo Boost Plasmoid mostrando el estado OFF de Turbo Boost desde el panel de KDE Plasma" width="266" height="525">
+        <figcaption>El plasmoide vive en el panel y muestra estado, procesador detectado y acción disponible.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CUERPO DEL ARTÍCULO                                   -->
+      <!-- Relato técnico, instalación, seguridad y compatibilidad. -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <p class="article-intro">Switch Turbo Boost Plasmoid es un elemento gráfico para KDE Plasma 6 pensado para usuarios que quieren controlar rendimiento, consumo, temperatura y ruido desde un lugar visible del escritorio. Nace como complemento de Switch Turbo Monitor: no reemplaza la aplicación principal, sino que ofrece una acción rápida y discreta para el día a día.</p>
+
+        <h2>Un gesto pequeño para una decisión frecuente</h2>
+        <p>Turbo Boost puede mejorar el rendimiento cuando el equipo lo necesita, pero también puede aumentar temperatura, ruido y consumo energético. En Linux, consultar o cambiar ese estado suele llevar a rutas de <code>/sys</code>, comandos concretos y permisos administrativos. Para una acción frecuente, esa fricción se nota.</p>
+        <p>La idea del plasmoide es reducir ese recorrido a una interacción clara: ver el estado actual y alternarlo con un clic desde Plasma. No intenta automatizar políticas complejas ni prometer resultados mágicos. Su objetivo es hacer visible una decisión técnica y dejar que el usuario la tome con contexto.</p>
+
+        <blockquote><p>El plasmoide no reemplaza el diagnóstico completo: entrega un control inmediato para el panel.</p></blockquote>
+
+        <h2>Qué muestra la interfaz</h2>
+        <p>El widget aparece como un icono compacto en el panel. Al abrirlo, muestra el procesador detectado, el estado de Turbo Boost, un interruptor ON/OFF, una descripción del modo activo y un botón para comprobar manualmente el estado. Además realiza lecturas periódicas cada 15 segundos, de modo que la vista se mantiene actualizada sin exigir atención constante.</p>
+        <p>Esa estructura busca que el usuario entienda rápidamente qué está pasando. Si Turbo Boost está desactivado, el texto comunica que se priorizan temperatura, ruido y consumo. Si está activo, la lectura se orienta al rendimiento disponible.</p>
+
+        <h2>Preferencias sin recargar la experiencia</h2>
+        <p>La configuración permite separar el icono del panel del icono del procesador mostrado dentro del menú flotante. El icono del procesador puede quedar en modo automático, usar presets para AMD, Intel, CPU o chip, o elegirse manualmente desde el selector de iconos del sistema.</p>
+        <p>También se puede ajustar el idioma de la interfaz y el tamaño preferido del menú. Son opciones pequeñas, pero importantes en un plasmoide: cada usuario organiza su panel de forma distinta y el widget debe adaptarse sin volverse pesado.</p>
+
+        <figure class="article-figure article-figure-wide">
+          <img src="../assets/images/switch-turbo-boost-plasmoid/preferencias.png" alt="Pantalla de preferencias de Switch Turbo Boost con selector de iconos, idioma y tamaño del menú" width="815" height="664" loading="lazy">
+          <figcaption>Preferencias para iconos, idioma y tamaño del menú flotante.</figcaption>
+        </figure>
+
+        <h2>Cómo está construido</h2>
+        <p>La interfaz está escrita en <strong>QML</strong>, siguiendo la forma natural de los plasmoides de KDE Plasma. La lectura y escritura del estado se delega a scripts <strong>Bash</strong>. Esa separación mantiene el código visual enfocado en la experiencia y deja las operaciones del sistema en helpers específicos.</p>
+        <p>El proyecto separa la interfaz del backend privilegiado. Esto permite actualizar solo el plasmoide cuando cambian archivos QML, o solo el backend cuando se modifican scripts del sistema. El ID del plasmoide es <code>org.punchisoft.switchturbo</code> y la versión documentada para esta publicación es <code>0.1.8</code>.</p>
+
+        <aside class="article-note">
+          <span>Stack principal</span>
+          <p>KDE Plasma 6 · QML · Bash · PolicyKit · pkexec · sysfs</p>
+        </aside>
+
+        <h2>Instalación y archivos del sistema</h2>
+        <p>El plasmoide se instala para el usuario en <code>~/.local/share/plasma/plasmoids/org.punchisoft.switchturbo/</code>. Los helpers del sistema viven en <code>/usr/local/libexec/switch-turbo-boost-plasmoid/</code> y la política de autorización se registra en <code>/usr/share/polkit-1/actions/org.punchisoft.switchturbo.policy</code>.</p>
+        <p>El repositorio incluye scripts separados para instalar solo la interfaz, instalar el backend, ejecutar una instalación completa o desinstalar el proyecto:</p>
+        <pre class="code-block"><code>chmod +x install.sh install-plasmoid.sh install-backend.sh scripts/*.sh
+./install.sh</code></pre>
+        <p>Esta división facilita probar cambios visuales sin tocar permisos del sistema, y mantener bajo control las partes que sí requieren privilegios.</p>
+
+        <h2>Seguridad: privilegios bien delimitados</h2>
+        <p>El QML no escribe directamente en <code>/sys</code> ni invoca <code>sudo</code> desde la interfaz gráfica. Para cambiar el estado de Turbo Boost se llama a <code>pkexec</code> sobre scripts instalados bajo <code>/usr/local/libexec/switch-turbo-boost-plasmoid/</code>. PolicyKit limita la autorización a esos ejecutables concretos.</p>
+        <p>La lectura del estado no requiere privilegios; la escritura sí requiere autenticación administrativa. Esta distinción es central: una herramienta cómoda no debería convertir toda la interfaz en un proceso privilegiado.</p>
+
+        <div class="article-gallery">
+          <figure class="article-figure-compact"><img src="../assets/images/switch-turbo-boost-plasmoid/selector-widgets.png" alt="Switch Turbo Boost disponible desde el selector de widgets de KDE Plasma" width="170" height="225" loading="lazy"><figcaption>Disponible desde el selector de widgets</figcaption></figure>
+          <figure><img src="../assets/images/switch-turbo-boost-plasmoid/atajos-teclado.png" alt="Integración del plasmoide con el apartado de atajos de teclado de KDE Plasma" width="819" height="671" loading="lazy"><figcaption>Integración con atajos de teclado</figcaption></figure>
+        </div>
+
+        <h2>Compatibilidad</h2>
+        <p>El proyecto está pensado para <strong>KDE Plasma 6</strong>, tanto en sesiones Plasma Wayland como X11. Requiere Linux con PolicyKit y <code>pkexec</code>, además de un CPU/kernel que exponga <code>/sys/devices/system/cpu/cpufreq/boost</code> o <code>/sys/devices/system/cpu/intel_pstate/no_turbo</code>.</p>
+        <p>Cuando esas interfaces existen, el plasmoide puede consultar el estado y solicitar autorización para alternarlo. Si el equipo no expone esas rutas, la herramienta debe tratarlo como una limitación del hardware, del kernel o de la configuración disponible.</p>
+
+        <h2>Un complemento para Switch Turbo Monitor</h2>
+        <p>Switch Turbo Monitor sigue siendo la herramienta completa para ver recursos, perfiles y diagnóstico del sistema. Switch Turbo Boost Plasmoid ocupa otro lugar: el panel. Está pensado para esa decisión puntual de activar o desactivar Turbo Boost mientras se trabaja, sin interrumpir el flujo con una ventana más grande.</p>
+        <p>Ambos proyectos comparten una misma idea: acercar decisiones de rendimiento a una interfaz comprensible, cuidando los permisos y mostrando con claridad qué cambia en el sistema.</p>
+
+        <figure class="article-figure article-figure-wide">
+          <img src="../assets/images/switch-turbo-boost-plasmoid/acerca-de.png" alt="Página Acerca de de Switch Turbo Boost con versión, sitio web, licencia y autor" width="823" height="672" loading="lazy">
+          <figcaption>Página Acerca de con versión, sitio web, licencia y autor.</figcaption>
+        </figure>
+
+        <div class="article-end"><span>Proyecto GPL-3.0-or-later de PunchiSoft</span><a class="button button-primary" href="https://github.com/PunchiSoft/switch-turbo-boost-plasmoid" target="_blank" rel="noopener noreferrer">Ver código en GitHub <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Blog</a><a href="../software/index.html">Proyectos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

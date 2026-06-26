@@ -269,6 +269,8 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .article-header .lead { line-height: 1.6; }
 .article-hero { margin-bottom: 10px; }
 .article-hero img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
+.article-hero.article-hero-compact { width: min(calc(100% - 40px), 360px); }
+.article-hero.article-hero-compact img { width: min(100%, 266px); margin-inline: auto; }
 .article-hero figcaption, .article-figure figcaption, .article-gallery figcaption { margin-top: 12px; color: #6f7a87; font-size: .73rem; text-align: center; }
 .article-cover { position: relative; min-height: 440px; overflow: hidden; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 24px; background: radial-gradient(circle at 50% 50%, rgba(88,166,255,.14), transparent 30%), #131923; }
 .cover-orbit { position: absolute; border: 1px solid rgba(88,166,255,.16); border-radius: 50%; }
@@ -297,6 +299,8 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .article-figure { width: 100%; margin: 55px 0; }
 .article-figure-wide { width: 100%; margin-inline: 0; transform: none; }
 .article-figure img, .article-gallery img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 15px; background: var(--surface); }
+.article-figure-compact { width: min(100%, 260px); margin-inline: auto; }
+.article-figure-compact img { width: min(100%, 190px); margin-inline: auto; }
 .article-gallery { width: 100%; margin: 55px 0; display: grid; grid-template-columns: 1fr; gap: 30px; transform: none; }
 .article-gallery figure { margin: 0; }
 .article-note { margin: 45px 0; padding: 25px 28px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface); }

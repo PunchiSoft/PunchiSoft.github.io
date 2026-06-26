@@ -1,5 +1,25 @@
 [
   {
+    "id": "switch-turbo-boost-plasmoid",
+    "title": "Switch Turbo Boost Plasmoid: control rápido desde KDE Plasma",
+    "summary": "Un plasmoide para KDE Plasma 6 que permite consultar y alternar Turbo Boost desde el panel con QML, Bash y PolicyKit.",
+    "featuredSummary": "Un interruptor liviano para controlar Turbo Boost desde el panel de Plasma, cuidando permisos y claridad para el usuario.",
+    "category": "KDE Plasma",
+    "date": "2026-06-26",
+    "readingTime": "6 min de lectura",
+    "url": "switch-turbo-boost-plasmoid.html",
+    "image": "../assets/images/switch-turbo-boost-plasmoid/menu-principal.png",
+    "imageAlt": "Switch Turbo Boost Plasmoid mostrando el estado de Turbo Boost desde el panel de KDE Plasma",
+    "imageWidth": 266,
+    "imageHeight": 525,
+    "featured": {
+      "icon": "icons/energia.svg",
+      "label": "KDE Plasma · Turbo Boost",
+      "title": "Control rápido desde el panel",
+      "detail": "QML · Bash · PolicyKit · pkexec"
+    }
+  },
+  {
     "id": "fedora-numlock",
     "title": "Fedora KDE: activar Bloq Num en la pantalla de login",
     "summary": "Cómo confirmé que el sistema utilizaba plasmalogin y configuré Bloq Num sin aplicar instrucciones destinadas a SDDM.",
