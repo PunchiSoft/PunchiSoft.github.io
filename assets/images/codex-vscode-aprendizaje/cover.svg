@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Codex en Visual Studio Code</title>
+  <desc id="desc">Ilustración editorial de un editor de código con panel de IA y terminal</desc>
+  <rect width="1200" height="760" fill="#10141c"/>
+  <rect x="84" y="74" width="1032" height="612" rx="24" fill="#151b24" stroke="#41516a" stroke-width="2"/>
+  <rect x="84" y="74" width="1032" height="58" rx="24" fill="#202a38"/>
+  <circle cx="126" cy="103" r="8" fill="#ff7a63"/>
+  <circle cx="154" cy="103" r="8" fill="#ffa657"/>
+  <circle cx="182" cy="103" r="8" fill="#52c788"/>
+  <text x="236" y="109" fill="#9aa8bb" font-family="Inter, Segoe UI, sans-serif" font-size="18" font-weight="700">PunchiSoft / VS Code</text>
+  <rect x="118" y="164" width="236" height="482" rx="16" fill="#101720" stroke="#303b4d"/>
+  <rect x="386" y="164" width="426" height="482" rx="16" fill="#0b1017" stroke="#303b4d"/>
+  <rect x="844" y="164" width="238" height="482" rx="16" fill="#111923" stroke="#303b4d"/>
+  <text x="142" y="205" fill="#58a6ff" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="20" font-weight="700">proyecto</text>
+  <text x="142" y="250" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">├─ src/</text>
+  <text x="142" y="288" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">├─ docs/</text>
+  <text x="142" y="326" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">├─ README.md</text>
+  <text x="142" y="364" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">└─ ideas.md</text>
+  <text x="418" y="212" fill="#52c788" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">const aprendizaje = {</text>
+  <text x="442" y="258" fill="#d2a8ff" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">idea:</text>
+  <text x="514" y="258" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">"construir",</text>
+  <text x="442" y="304" fill="#d2a8ff" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">error:</text>
+  <text x="514" y="304" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">"pista",</text>
+  <text x="442" y="350" fill="#d2a8ff" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">criterio:</text>
+  <text x="550" y="350" fill="#f4f7fa" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">"humano"</text>
+  <text x="418" y="396" fill="#52c788" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18">};</text>
+  <rect x="418" y="468" width="360" height="98" rx="14" fill="#131923" stroke="#41516a"/>
+  <text x="444" y="508" fill="#58a6ff" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="700">Aprender construyendo</text>
+  <text x="444" y="542" fill="#9aa8bb" font-family="Inter, Segoe UI, sans-serif" font-size="15">ideas reales · errores · pruebas · Git</text>
+  <text x="872" y="208" fill="#58a6ff" font-family="Inter, Segoe UI, sans-serif" font-size="18" font-weight="700">Codex</text>
+  <rect x="872" y="238" width="182" height="70" rx="12" fill="#1b2330" stroke="#41516a"/>
+  <text x="894" y="268" fill="#f4f7fa" font-family="Inter, Segoe UI, sans-serif" font-size="15">Explícame</text>
+  <text x="894" y="292" fill="#9aa8bb" font-family="Inter, Segoe UI, sans-serif" font-size="13">este error...</text>
+  <rect x="872" y="334" width="182" height="96" rx="12" fill="#1b2330" stroke="#41516a"/>
+  <text x="894" y="366" fill="#f4f7fa" font-family="Inter, Segoe UI, sans-serif" font-size="15">Propón</text>
+  <text x="894" y="390" fill="#9aa8bb" font-family="Inter, Segoe UI, sans-serif" font-size="13">una estructura</text>
+  <text x="894" y="414" fill="#9aa8bb" font-family="Inter, Segoe UI, sans-serif" font-size="13">más clara</text>
+  <rect x="872" y="520" width="182" height="36" rx="18" fill="#58a6ff"/>
+  <text x="913" y="544" fill="#07111c" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="800">revisar</text>
+</svg>

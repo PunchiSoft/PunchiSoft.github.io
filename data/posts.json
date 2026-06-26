@@ -1,5 +1,25 @@
 [
   {
+    "id": "codex-vscode-aprendizaje",
+    "title": "Codex en Visual Studio Code: aprender programación construyendo proyectos reales",
+    "summary": "Cómo Codex puede transformar el aprendizaje de programación en un proceso práctico basado en ideas reales, errores, pruebas y proyectos compartibles.",
+    "featuredSummary": "Una reflexión sobre aprender programación con IA desde proyectos reales, sin reemplazar el criterio humano ni el aprendizaje práctico.",
+    "category": "IA",
+    "date": "2026-06-26",
+    "readingTime": "7 min de lectura",
+    "url": "codex-visual-studio-code-aprender-programacion.html",
+    "image": "../assets/images/codex-vscode-aprendizaje/cover.svg",
+    "imageAlt": "Ilustración de Visual Studio Code con Codex como apoyo de aprendizaje",
+    "imageWidth": 1200,
+    "imageHeight": 760,
+    "featured": {
+      "icon": "icons/fastfetch.svg",
+      "label": "IA · aprendizaje",
+      "title": "Aprender construyendo",
+      "detail": "Codex · VS Code · Git · proyectos reales"
+    }
+  },
+  {
     "id": "switch-turbo-boost-plasmoid",
     "title": "Switch Turbo Boost Plasmoid: control rápido desde KDE Plasma",
     "summary": "Un plasmoide para KDE Plasma 6 que permite consultar y alternar Turbo Boost desde el panel con QML, Bash y PolicyKit.",
