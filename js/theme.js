@@ -4,7 +4,6 @@
   const storageKey = 'punchisoft-theme';
   const root = document.documentElement;
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)');
 
   const getStoredTheme = () => {
     try {
@@ -22,7 +21,7 @@
     }
   };
 
-  const preferredTheme = () => getStoredTheme() || (systemPrefersLight.matches ? 'light' : 'dark');
+  const preferredTheme = () => getStoredTheme() === 'dark' ? 'dark' : 'light';
 
   const applyTheme = (theme) => {
     root.dataset.theme = theme;
@@ -62,8 +61,4 @@
   } else {
     buildToggle();
   }
-
-  systemPrefersLight.addEventListener('change', () => {
-    if (!getStoredTheme()) applyTheme(preferredTheme());
-  });
 })();
