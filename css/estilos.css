@@ -66,7 +66,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .brand { order: 1; margin-right: auto; display: inline-flex; align-items: center; gap: 11px; font-size: 1rem; font-weight: 720; letter-spacing: -.02em; }
 .brand-mark { width: 34px; height: 34px; display: inline-grid; place-items: center; flex: 0 0 auto; }
 .brand-mark img { width: 100%; height: 100%; display: block; filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
-.nav-links { order: 2; display: flex; align-items: center; gap: 34px; color: var(--muted); font-size: .9rem; }
+.nav-links { order: 2; display: flex; align-items: center; gap: clamp(16px, 2vw, 28px); color: var(--muted); font-size: .84rem; }
 .nav-links a { position: relative; transition: color .2s ease; }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
 .nav-links a.active::after { position: absolute; content: ""; left: 0; right: 0; bottom: -25px; height: 2px; background: var(--accent); }
@@ -134,7 +134,7 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .section-heading h2, .about h2, .principles h2 { margin-bottom: 0; font-size: clamp(2rem, 4vw, 3rem); }
 .section-heading > p { max-width: 460px; justify-self: end; margin: 0; color: var(--muted); }
 .section-link { justify-self: end; color: var(--accent); font-size: .85rem; font-weight: 650; }
-.category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .category-card { min-height: 285px; padding: 27px; display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: transform .25s, border-color .25s, background .25s; }
 .category-card:hover { transform: translateY(-5px); border-color: #394653; background: var(--surface-2); }
 .category-icon { width: 46px; height: 46px; margin-bottom: 40px; padding: 9px; display: grid; place-items: center; border: 1px solid rgba(88,166,255,.3); border-radius: 11px; background: rgba(88,166,255,.08); }
@@ -345,7 +345,9 @@ blockquote p { margin: 0 !important; }
 .software-card { overflow: hidden; display: grid; grid-template-columns: .85fr 1.15fr; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
 .software-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .software-list .software-card { grid-template-columns: 1fr; }
-.software-list .software-visual { min-height: 230px; border-right: 0; border-bottom: 1px solid var(--border); }
+.software-list .software-visual { height: 240px; min-height: 0; border-right: 0; border-bottom: 1px solid var(--border); }
+.software-list .app-icon { width: 112px; height: 112px; }
+.software-list .visual-status { min-height: 20px; white-space: nowrap; }
 .software-list .software-info { padding: clamp(28px, 4vw, 42px); align-self: start; }
 .software-list .feature-list { grid-template-columns: 1fr; }
 .software-visual { min-height: 390px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; border-right: 1px solid var(--border); background: radial-gradient(circle, rgba(88,166,255,.16), transparent 45%), #131923; }
@@ -391,6 +393,21 @@ blockquote p { margin: 0 !important; }
 .security-report .button { margin-top: 17px; }
 
 /* =======================================================
+   ÁREAS TEMÁTICAS
+   Hubs preparados para futuras publicaciones, videos y recursos.
+   ======================================================= */
+.topic-layout { display: grid; gap: 22px; }
+.topic-hero { padding: clamp(28px, 5vw, 48px); display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: clamp(22px, 4vw, 38px); border: 1px solid var(--border); border-radius: 22px; background: linear-gradient(135deg, var(--surface), var(--bg-soft)); }
+.topic-hero .category-icon { margin: 0; }
+.topic-hero h2 { margin: 18px 0 12px; font-size: clamp(1.65rem, 3vw, 2.25rem); }
+.topic-hero p { max-width: 780px; margin: 0; color: var(--muted); }
+.topic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.topic-grid article { min-height: 220px; padding: 26px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.topic-grid span { color: var(--accent); font: .7rem ui-monospace, monospace; }
+.topic-grid h2 { margin: 28px 0 10px; font-size: 1.25rem; }
+.topic-grid p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+/* =======================================================
    MICROINTERACCIONES PARA MOUSE
    Movimiento sutil y profundidad sin afectar dispositivos táctiles.
    ======================================================= */
@@ -426,6 +443,7 @@ blockquote p { margin: 0 !important; }
   .coming-soon { min-height: 270px; }
   .software-visual { min-height: 390px; border-right: 0; border-bottom: 1px solid var(--border); }
   .software-list { grid-template-columns: 1fr; }
+  .software-list .software-visual { height: 220px; min-height: 0; }
   .principles { grid-template-columns: 1fr; gap: 50px; }
   .about-heading { grid-template-columns: 1fr; gap: 10px; }
   .about-heading .eyebrow { margin-top: 0; }
@@ -433,6 +451,7 @@ blockquote p { margin: 0 !important; }
   .about-portrait { padding-inline: 8px; }
   .about-focus { grid-template-columns: 1fr; }
   .article-header h1 { font-size: clamp(2rem, 5.5vw, 2.2rem); }
+  .topic-grid { grid-template-columns: 1fr; }
 }
 
 /* Punto intermedio dedicado al retrato y contenido de Acerca de. */
@@ -468,6 +487,7 @@ blockquote p { margin: 0 !important; }
   .workbench-section { padding: 19px 18px; }
   .project-highlight { grid-template-columns: 1fr; }
   .project-highlight-icon { width: 90px; height: 90px; padding: 14px; }
+  .topic-hero { grid-template-columns: 1fr; }
   .section { padding-block: 65px; }
   .section-heading { grid-template-columns: 1fr; gap: 15px; }
   .section-heading > p { justify-self: start; }

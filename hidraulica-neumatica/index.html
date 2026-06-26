@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Área de PunchiSoft dedicada a hidráulica, neumática, mantenimiento industrial y diagnóstico técnico.">
+  <meta name="theme-color" content="#10141c">
+  <title>Hidráulica &amp; Neumática — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a href="../index.html">Inicio</a><a href="../blog/index.html">Blog</a><a href="../software/index.html">Proyectos</a><a class="active" href="index.html" aria-current="page">Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header container">
+      <p class="eyebrow">Industria · mantenimiento · diagnóstico</p>
+      <h1>Hidráulica &amp; Neumática</h1>
+      <p class="lead">Área preparada para publicar guías, casos prácticos, diagnóstico de fallas, esquemas y aprendizajes de mantenimiento industrial.</p>
+    </section>
+
+    <section class="section container topic-layout">
+      <article class="topic-hero">
+        <div class="category-icon icon-orange"><img src="../icons/energia.svg" alt=""></div>
+        <div>
+          <div class="post-meta"><span class="tag">Próximamente</span><span>Artículos · videos · casos</span></div>
+          <h2>Contenido técnico en preparación</h2>
+          <p>Este espacio reunirá material sobre circuitos hidráulicos y neumáticos, componentes, síntomas de falla, mantenimiento preventivo, interpretación de esquemas y criterios prácticos para terreno.</p>
+        </div>
+      </article>
+
+      <div class="topic-grid">
+        <article><span>01</span><h2>Guías técnicas</h2><p>Explicaciones claras de componentes, válvulas, actuadores, unidades de potencia, FRL y circuitos comunes.</p></article>
+        <article><span>02</span><h2>Diagnóstico</h2><p>Casos de pérdida de presión, fugas, movimientos lentos, contaminación, cavitación y fallas repetitivas.</p></article>
+        <article><span>03</span><h2>Material visual</h2><p>Espacio pensado para esquemas, videos cortos, procedimientos y recursos descargables cuando estén disponibles.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="../blog/index.html">Blog</a><a href="../software/index.html">Proyectos</a><a href="index.html" aria-current="page">Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+    toggle.addEventListener('click', () => setMenuState(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenuState(false); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
