@@ -617,9 +617,9 @@ blockquote p { margin: 0 !important; }
   .donation-page { padding-block: 42px 70px; }
   .donation-hero, .donation-card, .donation-status-card { border-radius: 18px; }
   .donation-actions .button { width: 100%; }
-  .donation-widget { right: 15px; bottom: 15px; }
+  .donation-widget { left: 15px; right: 15px; bottom: 15px; justify-items: end; }
   .donation-float { min-height: 50px; padding-right: 14px; }
-  .donation-panel { padding: 22px; }
+  .donation-panel { width: 100%; max-width: 380px; justify-self: center; padding: 22px; transform-origin: center bottom; }
   .donation-qr { grid-template-columns: 88px 1fr; }
   .donation-qr img { width: 88px; height: 88px; }
 }
