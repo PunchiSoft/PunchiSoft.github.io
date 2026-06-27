@@ -21,9 +21,9 @@
   },
   {
     "id": "switch-turbo-boost-plasmoid",
-    "title": "Switch Turbo Boost Plasmoid: control rápido desde KDE Plasma",
-    "summary": "Un plasmoide para KDE Plasma 6 que permite consultar y alternar Turbo Boost desde el panel con QML, Bash y PolicyKit.",
-    "featuredSummary": "Un interruptor liviano para controlar Turbo Boost desde el panel de Plasma, cuidando permisos y claridad para el usuario.",
+    "title": "Switch Turbo Boost Plasmoid 0.2.0: control rápido desde KDE Plasma",
+    "summary": "Un plasmoide para KDE Plasma 6 que permite consultar y alternar Turbo Boost desde el panel, ahora con mejor detección de CPU, tema integrado y configuración más clara.",
+    "featuredSummary": "La versión 0.2.0 mejora la detección de CPU, los iconos y la apariencia del plasmoide sin perder su control rápido desde el panel.",
     "category": "KDE Plasma",
     "date": "2026-06-26",
     "readingTime": "6 min de lectura",
@@ -35,8 +35,8 @@
     "featured": {
       "icon": "icons/energia.svg",
       "label": "KDE Plasma · Turbo Boost",
-      "title": "Control rápido desde el panel",
-      "detail": "QML · Bash · PolicyKit · pkexec"
+      "title": "Versión 0.2.0",
+      "detail": "Detección CPU · QML · PolicyKit"
     }
   },
   {
