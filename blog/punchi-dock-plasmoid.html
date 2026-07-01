@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Punchi Dock 0.2.0 es un plasmoide ligero para KDE Plasma 6: lanzadores, carpetas de aplicaciones, separadores, reloj, calendario, Papelera y configuración visual sin reemplazar el gestor de tareas de Plasma.">
+  <meta name="theme-color" content="#10141c">
+  <title>Punchi Dock 0.2.0: un dock ligero para KDE Plasma 6 — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+</head>
+<body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con Mundo Linux marcado como sección activa. -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- Metadatos editoriales, título y resumen de lectura.    -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-01">1 de julio de 2026</time><span>7 min de lectura</span></div>
+        <h1>Punchi Dock 0.2.0: un dock ligero para organizar lanzadores en Plasma 6</h1>
+        <p class="lead">Un plasmoide para KDE Plasma 6 que reúne aplicaciones, carpetas, separadores y módulos rápidos en un dock visual, configurable y pensado para convivir con el gestor de tareas de Plasma.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- IMAGEN PRINCIPAL                                      -->
+      <!-- Captura del dock funcionando en KDE Plasma.            -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/00.png" alt="Punchi Dock funcionando como dock de lanzadores en el escritorio KDE Plasma 6" loading="eager">
+        <figcaption>Punchi Dock organiza accesos frecuentes en un dock ligero para KDE Plasma 6.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CUERPO DEL ARTÍCULO                                   -->
+      <!-- Presentación técnica, límites, configuración e instalación. -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <p class="article-intro">Punchi Dock nace como una respuesta concreta a una necesidad simple: tener un dock de lanzadores en Plasma 6 que sea cómodo, visual y fácil de ajustar sin convertirlo en un segundo gestor de ventanas. Su lugar natural está entre los accesos frecuentes y las pequeñas herramientas de escritorio, no en la administración de tareas abiertas.</p>
+
+        <h2>Un dock para lanzar y ordenar</h2>
+        <p>El proyecto está pensado para abrir aplicaciones, agrupar comandos en carpetas, separar zonas visuales y mantener algunos módulos internos a mano. Puede mostrar reloj, calendario y Papelera, además de lanzadores con nombre, icono y comando personalizado.</p>
+        <p>La administración de ventanas sigue siendo tarea del gestor de tareas de KDE Plasma. Esa decisión mantiene el alcance claro: Punchi Dock no minimiza, restaura, enfoca, fija ni agrupa ventanas abiertas. Tampoco modifica la configuración global de Plasma ni toca <code>plasma-org.kde.plasma.desktop-appletsrc</code>.</p>
+
+        <blockquote><p>La idea no es reemplazar Plasma, sino sumar un dock de lanzadores que se sienta nativo dentro de Plasma.</p></blockquote>
+
+        <h2>Qué puede hacer</h2>
+        <p>La versión 0.2.0 permite crear una barra con aplicaciones, carpetas de aplicaciones, separadores, espaciadores, reloj, calendario y Papelera. Las carpetas pueden abrirse como popup en cuadrícula o lista, con opciones para columnas, filas, tamaño de celda, etiquetas y cierre automático después de lanzar una app.</p>
+        <p>También incluye indicadores simples de ejecución para lanzadores configurados. Son útiles para casos comunes, porque revisan el nombre de proceso inferido desde el comando, pero no buscan competir con el seguimiento completo del gestor de tareas de KDE.</p>
+
+        <aside class="article-note">
+          <span>Stack principal</span>
+          <p>KDE Plasma 6 · QML · JavaScript · kpackagetool6 · GPL-3.0-or-later</p>
+        </aside>
+
+        <h2>Configuración visual</h2>
+        <p>Punchi Dock permite ajustar tamaño de iconos, separación, zoom al pasar el cursor, largo máximo, transparencia, radio de esquinas, orientación, etiquetas y fuente del reloj. La orientación puede ser horizontal, vertical o automática, de modo que el dock se adapta mejor al panel o al borde donde se ubique.</p>
+        <p>El dock se dimensiona según la cantidad de elementos. Si se define un largo máximo y la lista crece demasiado, el contenido se vuelve desplazable en vez de estirar indefinidamente el marco visual.</p>
+
+        <figure class="article-figure article-figure-wide">
+          <img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/02.png" alt="Configuración visual de Punchi Dock con opciones de tamaño, transparencia y apariencia" loading="lazy">
+          <figcaption>Ajustes visuales para adaptar tamaño, orientación, apariencia y comportamiento del dock.</figcaption>
+        </figure>
+
+        <h2>Items: edición simple y modo avanzado</h2>
+        <p>La forma recomendada de editar el dock es abrir la configuración del plasmoide y usar la página <strong>Items</strong>. Desde ahí se pueden agregar aplicaciones, carpetas, separadores, espaciadores, reloj, calendario y Papelera sin editar archivos manualmente.</p>
+        <p>Para usuarios técnicos, la vista <strong>Advanced JSON</strong> permite revisar, copiar o modificar la configuración completa. Internamente, Punchi Dock guarda sus elementos en:</p>
+        <pre class="code-block"><code>~/.config/punchi-dock/dock_items.json</code></pre>
+        <p>Si el archivo no existe, el plasmoide crea una configuración inicial con Firefox, Home, Konsole, carpetas de desarrollo, oficina y sistema, además de Papelera, separadores, reloj y calendario.</p>
+
+        <div class="article-gallery">
+          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/03.png" alt="Página de edición de elementos de Punchi Dock" loading="lazy"><figcaption>Edición de elementos desde la configuración del plasmoide.</figcaption></figure>
+          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/06.png" alt="Vista avanzada JSON de Punchi Dock" loading="lazy"><figcaption>Vista avanzada JSON para revisar o copiar configuraciones completas.</figcaption></figure>
+        </div>
+
+        <h2>Carpetas y módulos internos</h2>
+        <p>Las carpetas son una de las partes más útiles del proyecto. Permiten agrupar aplicaciones por contexto, como desarrollo, oficina o sistema, y mostrarlas en una cuadrícula compacta o una lista más tradicional. Cada app dentro de la carpeta conserva su propio nombre, icono y comando.</p>
+        <p>El proyecto evita cargar plasmoides externos dentro del dock. En su lugar usa módulos internos como <code>clock</code>, <code>calendar</code>, <code>trash</code>, <code>separator</code> y <code>spacer</code>. Esto reduce complejidad y mantiene el comportamiento bajo control dentro del propio paquete.</p>
+
+        <div class="article-gallery">
+          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/04.png" alt="Carpeta de aplicaciones abierta dentro de Punchi Dock" loading="lazy"><figcaption>Carpetas de aplicaciones con popup integrado.</figcaption></figure>
+          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/07.png" alt="Punchi Dock con módulos internos como reloj, calendario y Papelera" loading="lazy"><figcaption>Módulos internos para reloj, calendario, Papelera y separadores.</figcaption></figure>
+        </div>
+
+        <h2>Instalación local y empaquetado</h2>
+        <p>Punchi Dock se instala para el usuario actual mediante <code>kpackagetool6</code>, sin usar <code>sudo</code>. Desde la carpeta del proyecto, la instalación o actualización local se realiza con:</p>
+        <pre class="code-block"><code>git clone https://github.com/PunchiSoft/punchi-dock-plasmoid.git
+cd punchi-dock-plasmoid
+chmod +x install-plasmoid.sh
+./install-plasmoid.sh</code></pre>
+        <p>También se puede generar un paquete instalable <code>.plasmoid</code>:</p>
+        <pre class="code-block"><code>chmod +x build-plasmoid.sh
+./build-plasmoid.sh</code></pre>
+        <p>El paquete queda disponible en <code>dist/punchi-dock.plasmoid</code>. El ID del plasmoide es <code>org.kde.plasma.punchi-dock</code>, la versión documentada aquí es <code>0.2.0</code> y el mínimo declarado para Plasma es <code>6.0</code>.</p>
+
+        <h2>Compatibilidad y límites claros</h2>
+        <p>El plasmoide está orientado a KDE Plasma 6 y funciona en sesiones Wayland y X11. No depende de herramientas como <code>xdotool</code>, <code>wmctrl</code> o <code>xprop</code>, precisamente porque no intenta manipular ventanas abiertas.</p>
+        <p>Ese límite también lo vuelve más predecible: Punchi Dock organiza accesos, carpetas y módulos rápidos; KDE Plasma sigue encargado de las ventanas, tareas y comportamiento global del escritorio.</p>
+
+        <figure class="article-figure article-figure-wide">
+          <img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/09.png" alt="Punchi Dock en uso con accesos frecuentes configurados" loading="lazy">
+          <figcaption>Un dock pensado para accesos frecuentes, carpetas y módulos rápidos sin invadir el gestor de tareas.</figcaption>
+        </figure>
+
+        <h2>Para quién es</h2>
+        <p>Punchi Dock encaja bien si quieres un dock visual para organizar accesos frecuentes, separar grupos de trabajo y mantener a mano pequeños módulos del escritorio. También sirve como base de aprendizaje para estudiar plasmoides modernos: QML, configuración de widgets, archivos JSON de usuario y empaquetado <code>.plasmoid</code>.</p>
+        <p>Como proyecto PunchiSoft, sigue la misma dirección de otras herramientas del sitio: hacer más comprensibles tareas técnicas del escritorio Linux, con una interfaz concreta y un alcance honesto.</p>
+
+        <div class="article-end"><span>Proyecto GPL-3.0-or-later de PunchiSoft</span><a class="button button-primary" href="https://github.com/PunchiSoft/punchi-dock-plasmoid" target="_blank" rel="noopener noreferrer">Ver código en GitHub <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

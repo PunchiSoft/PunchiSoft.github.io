@@ -1,5 +1,23 @@
 [
   {
+    "id": "punchi-dock-plasmoid",
+    "title": "Punchi Dock 0.2.0: un dock ligero para organizar lanzadores en Plasma 6",
+    "summary": "Un plasmoide para KDE Plasma 6 que organiza aplicaciones, carpetas, separadores, reloj, calendario y Papelera en un dock visual sin reemplazar el gestor de tareas.",
+    "featuredSummary": "Un dock ligero para Plasma 6 que reúne lanzadores, carpetas y módulos rápidos con configuración visual y límites claros.",
+    "category": "KDE Plasma",
+    "date": "2026-07-01",
+    "readingTime": "7 min de lectura",
+    "url": "punchi-dock-plasmoid.html",
+    "image": "https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/00.png",
+    "imageAlt": "Punchi Dock funcionando como dock de lanzadores en KDE Plasma 6",
+    "featured": {
+      "icon": "icons/app.svg",
+      "label": "KDE Plasma · Dock",
+      "title": "Punchi Dock 0.2.0",
+      "detail": "QML · JavaScript · carpetas · módulos"
+    }
+  },
+  {
     "id": "codex-vscode-aprendizaje",
     "title": "Codex en Visual Studio Code: aprender programación construyendo proyectos reales",
     "summary": "Cómo Codex puede transformar el aprendizaje de programación en un proceso práctico basado en ideas reales, errores, pruebas y proyectos compartibles.",
