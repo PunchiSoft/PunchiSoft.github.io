@@ -1,20 +1,22 @@
 [
   {
     "id": "punchi-dock-plasmoid",
-    "title": "Punchi Dock 0.6.0: dock ligero para Plasma 6 con soporte opcional de ventanas",
-    "summary": "Un plasmoide para KDE Plasma 6 que organiza lanzadores, contenedores y módulos internos, ahora con soporte opcional de ventanas, integración con paneles y apariencia más flexible.",
-    "featuredSummary": "Un dock ligero para Plasma 6 con lanzadores, contenedores, módulos rápidos y soporte opcional de ventanas en Wayland.",
+    "title": "Punchi Dock 0.7.0: temas locales, popups pulidos y más control visual",
+    "summary": "Un dock ligero para KDE Plasma 6 que suma temas locales en SVG/PNG, popups más legibles, carpetas radial y abanico, notas rápidas, sonidos, animaciones y mejoras al resolver iconos.",
+    "featuredSummary": "Un dock ligero para Plasma 6 con temas locales, popups pulidos, notas rápidas, sonidos, animaciones y soporte opcional de ventanas.",
     "category": "KDE Plasma",
-    "date": "2026-07-04",
+    "date": "2026-07-06",
     "readingTime": "8 min de lectura",
     "url": "punchi-dock-plasmoid.html",
-    "image": "https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/00.png",
-    "imageAlt": "Punchi Dock 0.6.0 funcionando como dock de lanzadores en KDE Plasma 6",
+    "image": "../assets/images/punchi-dock-plasmoid/00.png",
+    "imageAlt": "Punchi Dock 0.7.0 funcionando en el escritorio KDE Plasma 6",
+    "imageWidth": 1672,
+    "imageHeight": 941,
     "featured": {
       "icon": "icons/app.svg",
       "label": "KDE Plasma · Dock",
-      "title": "Punchi Dock 0.6.0",
-      "detail": "Wayland · ventanas · contenedores · módulos"
+      "title": "Punchi Dock 0.7.0",
+      "detail": "Wayland · temas locales · popups · notas"
     }
   },
   {

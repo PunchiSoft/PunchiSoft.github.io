@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Punchi Dock 0.6.0 es un dock ligero para KDE Plasma 6 con lanzadores, contenedores, módulos internos, configuración visual avanzada y soporte opcional de ventanas en Wayland.">
+  <meta name="description" content="Punchi Dock 0.7.0 actualiza el dock para KDE Plasma 6 con temas locales, popups más pulidos, carpetas radial y abanico, notas rápidas, sonidos, animaciones y mejoras de rendimiento.">
   <meta name="theme-color" content="#10141c">
-  <title>Punchi Dock 0.6.0: dock ligero para KDE Plasma 6 con soporte opcional de ventanas — PunchiSoft</title>
+  <title>Punchi Dock 0.7.0: temas locales, popups pulidos y más control visual — PunchiSoft</title>
   <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
   <link rel="stylesheet" href="../css/estilos.css">
@@ -32,9 +32,9 @@
       <!-- ===================================================== -->
       <header class="article-header container-narrow">
         <a class="back-link" href="index.html">← Volver al blog</a>
-        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-04">4 de julio de 2026</time><span>8 min de lectura</span></div>
-        <h1>Punchi Dock 0.6.0: un dock ligero para Plasma 6 que ahora conversa mejor con tus ventanas</h1>
-        <p class="lead">La versión 0.6.0 mantiene el foco en lanzadores y herramientas rápidas, pero suma soporte opcional de ventanas, contenedores más flexibles, mejor integración con paneles y una apariencia mucho más adaptable al tema de KDE Plasma.</p>
+        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-06">6 de julio de 2026</time><span>8 min de lectura</span></div>
+        <h1>Punchi Dock 0.7.0: temas locales, popups más pulidos y un dock con más personalidad</h1>
+        <p class="lead">La nueva versión del dock para KDE Plasma 6 refina la integración visual con Plasma, suma temas locales en SVG/PNG, mejora carpetas radial y abanico, agrega notas rápidas y reduce esperas al resolver iconos.</p>
       </header>
 
       <!-- ===================================================== -->
@@ -42,99 +42,104 @@
       <!-- Captura del dock funcionando en KDE Plasma.            -->
       <!-- ===================================================== -->
       <figure class="article-hero container-narrow">
-        <img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/00.png" alt="Punchi Dock 0.6.0 funcionando como dock de lanzadores en KDE Plasma 6" loading="eager">
-        <figcaption>Punchi Dock 0.6.0 organiza accesos, contenedores y módulos rápidos en KDE Plasma 6.</figcaption>
+        <img src="../assets/images/punchi-dock-plasmoid/00.png" alt="Punchi Dock 0.7.0 funcionando en el escritorio KDE Plasma 6" width="1672" height="941" loading="eager">
+        <figcaption>Punchi Dock 0.7.0 mantiene el enfoque en Wayland y añade más control visual sin modificar la configuración global de Plasma.</figcaption>
       </figure>
 
       <!-- ===================================================== -->
       <!-- CUERPO DEL ARTÍCULO                                   -->
-      <!-- Actualización editorial para Punchi Dock 0.6.0.        -->
+      <!-- Actualización editorial para Punchi Dock 0.7.0.        -->
       <!-- ===================================================== -->
       <div class="article-body container-narrow">
-        <p class="article-intro">Punchi Dock empezó como una idea muy concreta: tener un dock de lanzadores para Plasma 6 que fuera claro, configurable y fácil de instalar sin tocar la configuración global del escritorio. Con la versión 0.6.0 el proyecto crece bastante, pero conserva esa intención: sumar una herramienta útil al escritorio, no pelearse con Plasma.</p>
-
-        <h2>Qué cambia en la versión 0.6.0</h2>
-        <p>La novedad principal es el soporte opcional de ventanas. Cuando se activa desde la página <strong>Ventanas</strong>, Punchi Dock puede usar el modelo de tareas de Plasma para activar, minimizar, cerrar, anclar o desanclar ventanas desde el dock. También puede mostrar ventanas abiertas que todavía no están fijadas como items temporales.</p>
-        <p>Esto no convierte al proyecto en un gestor de tareas completo. La primera implementación evita las miniaturas vivas y usa un popup liviano con título, icono, estado activo y botón de cierre. Es una base más estable para Wayland y para Plasma 6, sin depender de herramientas externas como <code>xdotool</code>, <code>wmctrl</code> o <code>xprop</code>.</p>
-
-        <blockquote><p>La idea sigue siendo la misma: un dock práctico para lanzar, ordenar y acceder rápido, ahora con una capa opcional para interactuar con ventanas cuando tiene sentido.</p></blockquote>
-
-        <h2>Lanzadores, contenedores y módulos</h2>
-        <p>Punchi Dock permite mezclar aplicaciones, contenedores, separadores, espacios fijos o flexibles, reloj, calendario y Papelera. Cada app puede tener nombre, icono y comando propio; los contenedores pueden armarse manualmente, desde una carpeta del sistema o desde categorías de aplicaciones KDE como desarrollo, juegos, multimedia, internet, oficina, sistema, utilidades o gráficos.</p>
-        <p>El selector de iconos también creció: puede buscar en el tema actual de KDE, temas heredados, <code>hicolor</code>, exports de Flatpak y archivos de imagen. Eso ayuda especialmente cuando se fijan ventanas temporales o se crean contenedores con aplicaciones instaladas como Flatpak.</p>
+        <p class="article-intro">Punchi Dock sigue siendo un plasmoide ligero para KDE Plasma 6: lanzadores, contenedores, separadores, espacios, reloj, calendario, Papelera y soporte opcional de ventanas. La versión 0.7.0 no intenta convertirlo en otro gestor de tareas completo; se concentra en que el dock se sienta mejor integrado, más configurable y más cómodo para el uso diario.</p>
 
         <aside class="article-note">
-          <span>Stack principal</span>
-          <p>KDE Plasma 6 · Wayland · QML · JavaScript · TaskManager · kpackagetool6 · GPL-3.0-or-later</p>
+          <span>Antes de probar</span>
+          <p>Después de una instalación limpia o una actualización, si Punchi Dock aparece pero no responde a los clics, reinicia Plasma Shell una vez o cierra sesión y vuelve a entrar. Ese refresco no borra la configuración del dock.</p>
         </aside>
 
-        <h2>Apariencia más flexible</h2>
-        <p>La configuración visual ahora está más ordenada y cubre iconos, espaciado, zoom, espacio reservado para el zoom, opacidad, etiquetas, sonidos, popups, indicadores activos, orientación y forma del dock. La forma puede seguir el tema de Plasma o usar estilos recto, redondeado, píldora y personalizado.</p>
-        <p>También se agregaron presets para el largo máximo y el grosor del dock. El grosor funciona como alto en orientación horizontal y como ancho en orientación vertical; el largo puede quedar automático, a pantalla completa, tres cuartos, media pantalla, un tercio, un octavo o personalizado. Fuera de un panel, una protección evita deformaciones al mover el dock desde el modo de edición de Plasma.</p>
+        <h2>Qué cambia en 0.7.0</h2>
+        <p>Esta tanda parte desde la versión publicada 0.6.8 y justifica el salto a 0.7.0 porque no trae solo correcciones: incorpora controles visibles para el usuario, nuevos comportamientos de popups, opciones de carpetas y material de temas locales.</p>
+        <p>Los menús contextuales y popups ahora usan una base más sólida del tema Plasma para mejorar la legibilidad. También se redujo la translucidez excesiva, se ajustaron estados hover en items especiales y se retiró el puntero triangular experimental porque podía generar lag durante animaciones o cambios de tema.</p>
+
+        <blockquote><p>La dirección es clara: mantener un dock práctico, visual y entendible, pero con más espacio para personalizar sin tocar archivos globales de Plasma.</p></blockquote>
+
+        <h2>Lanzadores, contenedores y notas rápidas</h2>
+        <p>El dock conserva los lanzadores con nombre, icono, comando y acciones de clic derecho configurables. Los contenedores pueden armarse de forma manual, desde carpetas del sistema o desde categorías de aplicaciones KDE, con popups en grilla, lista, radial y abanico.</p>
+        <p>En esta versión aparecen nuevas opciones para mostrar u ocultar acciones generales del clic derecho, incluyendo <strong>Añadir nota rápida</strong> y <strong>Configurar Punchi Dock</strong>. La nota rápida puede agregarse directamente desde el menú del dock sin abrir toda la ventana de configuración.</p>
+
+        <div class="article-gallery">
+          <figure><img src="../assets/images/punchi-dock-plasmoid/01.png" alt="Configuración de elementos de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Elementos del dock: apps, contenedores y módulos internos.</figcaption></figure>
+          <figure><img src="../assets/images/punchi-dock-plasmoid/02.png" alt="Configuración general de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Configuración general, popups y comportamiento.</figcaption></figure>
+        </div>
+
+        <h2>Temas locales</h2>
+        <p>La novedad más visible es el soporte inicial de temas locales para fondos, separadores y bordes del dock usando archivos SVG o PNG desde la carpeta del usuario:</p>
+        <pre class="code-block"><code>~/.config/punchi-dock/themes/</code></pre>
+        <p>Cada tema puede tener su propio <code>theme.json</code>, una textura de fondo, una imagen de separador y un borde o extremo reflejado. Los modos disponibles incluyen <code>stretch</code>, <code>tile</code>, <code>repeat-x</code>, <code>repeat-y</code>, <code>mirror</code> y <code>blank</code>. La versión incluye muestras como Platform, Excite, Wood Shelf y debug.</p>
+        <pre class="code-block"><code>~/.config/punchi-dock/themes/bricks/
+  theme.json
+  background.svg
+  separator.png
+  edge.png</code></pre>
+        <p>Para crear temas conviene usar fondos de <code>250x250</code>, separadores de <code>50x250</code> en dock horizontal o <code>250x50</code> en dock vertical, y bordes de <code>250x250</code>. El botón de recarga de temas vuelve a listar, recarga el tema seleccionado y fuerza a QML a leer los assets actualizados sin reiniciar Plasma.</p>
 
         <figure class="article-figure article-figure-wide">
-          <img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/03.1.png" alt="Configuración de apariencia de Punchi Dock con opciones de tema, forma e indicadores" loading="lazy">
-          <figcaption>Apariencia, tema, forma del dock e indicadores configurables.</figcaption>
+          <img src="../assets/images/punchi-dock-plasmoid/03.png" alt="Opciones de apariencia, tema y forma en Punchi Dock 0.7.0" width="838" height="684" loading="lazy">
+          <figcaption>Apariencia, forma, indicadores y temas locales quedan reunidos en la configuración visual.</figcaption>
         </figure>
 
-        <h2>Edición de elementos</h2>
-        <p>La forma recomendada de editar el dock es abrir la configuración del plasmoide y entrar en <strong>Elementos</strong>. Desde esa página se pueden agregar apps, contenedores, separadores, espacios, reloj, calendario y Papelera sin editar archivos a mano. El clic derecho también incluye una acción para abrir la configuración de Punchi Dock desde los items principales.</p>
-        <p>Para usuarios técnicos, la vista <strong>Advanced JSON</strong> sigue disponible para revisar, copiar o modificar configuraciones completas. Internamente, Punchi Dock guarda sus elementos en:</p>
-        <pre class="code-block"><code>~/.config/punchi-dock/dock_items.json</code></pre>
-        <p>Si el archivo no existe, crea una configuración inicial con Mozilla Firefox, Home, Konsole, LibreOffice, Gráficos, Configurar dock, Papelera, GitHub, Calendario, un separador y Reloj.</p>
+        <h2>Carpetas radial y abanico</h2>
+        <p>Las carpetas ganan controles más precisos. La vista radial ahora puede configurar fondo o aro radial, círculos de iconos y distancia radial. La vista abanico separa mejor su geometría, permite ajustar apertura y diámetro virtual, y mejora su posicionamiento en docks flotantes horizontales y verticales.</p>
+        <p>Esto hace que los contenedores sirvan no solo como listas ordenadas, sino también como accesos visuales rápidos para categorías de trabajo, sistema, desarrollo, multimedia o utilidades frecuentes.</p>
+
+        <h2>Mouse, sonidos y animaciones</h2>
+        <p>Punchi Dock mantiene zoom clásico, parabólico y estilo Mac, con control de intensidad y etiquetas al pasar. En la interacción también aparecen animaciones de clic como sacudida, rebote, doble rebote, giro, caída dominó e impacto lateral.</p>
+        <p>Los temas de sonido de interacción incluyen piano, estilo retro platform, mushroom platform, flauta, guitarra y violín. El ecualizador visual queda como extra opcional: reacciona a los sonidos de Punchi Dock, no captura audio del sistema ni usa el micrófono.</p>
 
         <div class="article-gallery">
-          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/04.png" alt="Editor de elementos de Punchi Dock" loading="lazy"><figcaption>Editor de elementos para apps, contenedores y módulos internos.</figcaption></figure>
-          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/06.png" alt="Editor de acciones de clic derecho de Punchi Dock" loading="lazy"><figcaption>Acciones configurables para el clic derecho.</figcaption></figure>
+          <figure><img src="../assets/images/punchi-dock-plasmoid/04.png" alt="Configuración del comportamiento del mouse en Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Zoom, sonidos, efectos y comportamiento del mouse.</figcaption></figure>
+          <figure><img src="../assets/images/punchi-dock-plasmoid/05.png" alt="Configuración de ventanas y panel en Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Ventanas, integración con panel y opciones relacionadas.</figcaption></figure>
         </div>
 
-        <h2>Ventanas sin perder el foco</h2>
-        <p>El soporte de ventanas viene desactivado por defecto. Al habilitarlo, los items de aplicación pueden activar o minimizar su ventana asociada; si hay más de una ventana, el dock puede mostrar una lista compacta. Desde el clic derecho se agregan acciones comunes como restaurar, minimizar, cerrar o abrir la lista de ventanas.</p>
-        <p>También hay una opción para publicar la geometría del icono al modelo de tareas de Plasma. Cuando KWin y el efecto del compositor lo soportan, Plasma puede usar esa información para animar minimizar o restaurar hacia el icono correspondiente del dock.</p>
+        <h2>Ventanas y panel</h2>
+        <p>El soporte de ventanas sigue siendo opcional. Punchi Dock puede activar, minimizar, cerrar, anclar y desanclar ventanas, además de mostrar un popup ligero con título, icono, estado activo y botón de cierre. Las miniaturas vivas todavía no están activadas porque los experimentos anteriores dependían de módulos internos o no disponibles del gestor de tareas de Plasma.</p>
+        <p>La integración con panel también se mantiene: fondo ocultable, relleno de espacio libre, alineación de contenido y opciones para evitar repetir reloj o calendario cuando el dock vive dentro de un panel de Plasma.</p>
+
+        <h2>Rendimiento e iconos</h2>
+        <p>Al anclar aplicaciones, la búsqueda de iconos ya no espera recorridos recursivos pesados cuando el archivo <code>.desktop</code> entrega un nombre usable. El selector prioriza el tema actual, sus herencias y <code>hicolor</code>; Flatpak y pixmaps se resuelven de forma más acotada cuando se detecta una app Flatpak o cuando el flujo lo necesita.</p>
+        <p>Es un cambio pequeño en apariencia, pero importante en sensación: menos bloqueo al fijar apps nuevas y menos trabajo innecesario cuando Plasma ya ofrece la información correcta.</p>
 
         <div class="article-gallery">
-          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/01.png" alt="Menú contextual de Punchi Dock con acciones de lanzador y ventana" loading="lazy"><figcaption>Acciones rápidas desde el clic derecho.</figcaption></figure>
-          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/02.png" alt="Configuración general de Punchi Dock" loading="lazy"><figcaption>Configuración general, popups e interacción.</figcaption></figure>
+          <figure><img src="../assets/images/punchi-dock-plasmoid/06.png" alt="Editor JSON y herramientas de configuración de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Editor JSON y herramientas de configuración.</figcaption></figure>
+          <figure><img src="../assets/images/punchi-dock-plasmoid/07.png" alt="Página Acerca de de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Información del proyecto, ayuda y licencia.</figcaption></figure>
         </div>
 
-        <h2>Contenedores, reloj, calendario y Papelera</h2>
-        <p>Los contenedores reemplazan la idea inicial de carpetas rígidas por un modelo más flexible. Pueden abrirse como popup en cuadrícula o lista, cargar contenido manual o tomar elementos desde carpetas y categorías KDE. Para el uso diario, eso permite agrupar trabajo, sistema, desarrollo o multimedia sin llenar el panel principal.</p>
-        <p>El proyecto sigue evitando cargar plasmoides externos dentro del dock. En su lugar usa módulos internos como <code>clock</code>, <code>calendar</code>, <code>trash</code>, <code>separator</code> y <code>spacer</code>. El calendario puede funcionar en modo visual o texto, el reloj puede configurarse como digital o analógico y la Papelera soporta estado lleno/vacío, apertura de <code>trash:/</code>, vaciado desde clic derecho y arrastre de archivos.</p>
-
-        <div class="article-gallery">
-          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/07.png" alt="Contenedor de Punchi Dock abierto en cuadrícula" loading="lazy"><figcaption>Contenedor en cuadrícula para accesos agrupados.</figcaption></figure>
-          <figure><img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/08.png" alt="Contenedor de Punchi Dock abierto como lista" loading="lazy"><figcaption>Contenedor en lista para una navegación más compacta.</figcaption></figure>
-        </div>
-
-        <h2>Integración con panel</h2>
-        <p>La versión 0.6.0 también mejora el uso cuando Punchi Dock está anclado a un panel de Plasma. Puede ocultar su fondo, rellenar espacio libre, alinear contenido y ocultar reloj o calendario cuando no conviene repetir información que ya está en el panel.</p>
-        <p>El modo de tema Plasma queda como base recomendada: usa colores y comportamiento visual del entorno cuando corresponde, pero deja opciones manuales para quienes quieren ajustar opacidad, radio, indicadores o forma.</p>
-
-        <h2>Instalación local y empaquetado</h2>
-        <p>Punchi Dock se puede instalar para el usuario actual mediante <code>kpackagetool6</code>, sin usar <code>sudo</code>. La forma más directa es descargar <code>punchi-dock.plasmoid</code> desde el release de GitHub o instalar desde una copia local del repositorio:</p>
+        <h2>Instalación local</h2>
+        <p>Punchi Dock se puede instalar para el usuario actual mediante el paquete <code>.plasmoid</code> del release o desde una copia local del repositorio:</p>
         <pre class="code-block"><code>git clone https://github.com/PunchiSoft/punchi-dock-plasmoid.git
 cd punchi-dock-plasmoid
 chmod +x install-plasmoid.sh
 ./install-plasmoid.sh</code></pre>
-        <p>También se puede generar un paquete instalable <code>.plasmoid</code>:</p>
+        <p>Para generar un paquete instalable localmente:</p>
         <pre class="code-block"><code>chmod +x build-plasmoid.sh
 ./build-plasmoid.sh</code></pre>
-        <p>El paquete queda disponible en <code>dist/punchi-dock.plasmoid</code>. El ID del plasmoide es <code>org.kde.plasma.punchi-dock</code>, la versión documentada aquí es <code>0.6.0</code> y el mínimo declarado para Plasma es <code>6.0</code>.</p>
+        <p>El paquete queda en <code>dist/punchi-dock.plasmoid</code>. El ID del plasmoide es <code>org.kde.plasma.punchi-dock</code>, la versión documentada aquí es <code>0.7.0</code> y el mínimo declarado para Plasma es <code>6.0</code>.</p>
 
-        <h2>Compatibilidad y límites claros</h2>
-        <p>El plasmoide está orientado a KDE Plasma 6 o superior y especialmente a Wayland. No modifica la configuración global de Plasma, no toca <code>plasma-org.kde.plasma.desktop-appletsrc</code> y no depende de utilidades externas para manipular ventanas.</p>
-        <p>Hay límites intencionales: todavía no muestra miniaturas vivas, no reemplaza al gestor de tareas completo de KDE y no carga plasmoides externos. Sus indicadores de ejecución para lanzadores configurados siguen siendo simples, útiles para casos comunes, pero el seguimiento profundo de tareas queda en manos de Plasma.</p>
+        <h2>Límites claros</h2>
+        <p>Punchi Dock no usa <code>xdotool</code>, <code>wmctrl</code> ni <code>xprop</code>, y no modifica archivos globales de Plasma. También mantiene fuera las miniaturas vivas por ahora, priorizando un popup de ventanas más ligero y seguro.</p>
+        <p>Las próximas actualizaciones deberían concentrarse en pulir todavía más el comportamiento de ventanas dentro del dock: detección, activación, minimizado, items temporales y anclado, junto con limpieza interna del código para mejorar mantenimiento y rendimiento.</p>
 
         <figure class="article-figure article-figure-wide">
-          <img src="https://raw.githubusercontent.com/PunchiSoft/punchi-dock-plasmoid/main/Img/10.png" alt="Punchi Dock en uso con accesos frecuentes configurados en KDE Plasma" loading="lazy">
-          <figcaption>Un dock pensado para accesos frecuentes, módulos internos y control opcional de ventanas.</figcaption>
+          <img src="../assets/images/punchi-dock-plasmoid/banner-cuadrado.png" alt="Banner cuadrado de Punchi Dock 0.7.0" width="1254" height="1254" loading="lazy">
+          <figcaption>Punchi Dock 0.7.0 suma identidad visual y assets listos para publicación.</figcaption>
         </figure>
 
         <h2>Para quién es</h2>
-        <p>Punchi Dock encaja bien si quieres un dock visual para organizar accesos frecuentes, separar grupos de trabajo, mantener pequeños módulos a mano y, si lo necesitas, interactuar con ventanas abiertas sin abandonar el estilo de Plasma. También sirve como base de aprendizaje para estudiar plasmoides modernos: QML, configuración de widgets, archivos JSON de usuario, modelo de tareas y empaquetado <code>.plasmoid</code>.</p>
-        <p>Como proyecto PunchiSoft, sigue la misma dirección de otras herramientas del sitio: hacer más comprensibles tareas técnicas del escritorio Linux, con una interfaz concreta y un alcance honesto.</p>
+        <p>Punchi Dock encaja bien si quieres un dock visual para ordenar accesos frecuentes, agrupar herramientas, probar temas locales, usar pequeños módulos internos y mantener una interacción opcional con ventanas abiertas sin abandonar el estilo de KDE Plasma.</p>
+        <p>Como proyecto PunchiSoft, mantiene una idea sencilla: hacer más amable el escritorio Linux con herramientas concretas, configurables y honestas sobre su alcance.</p>
 
-        <div class="article-end"><span>Proyecto GPL-3.0-or-later de PunchiSoft</span><a class="button button-primary" href="https://github.com/PunchiSoft/punchi-dock-plasmoid/releases/tag/v0.6.0" target="_blank" rel="noopener noreferrer">Descargar 0.6.0 <span aria-hidden="true">↗</span></a></div>
+        <div class="article-end"><span>Proyecto GPL-3.0-or-later de PunchiSoft</span><a class="button button-primary" href="https://github.com/PunchiSoft/punchi-dock-plasmoid/releases/tag/v0.7.0" target="_blank" rel="noopener noreferrer">Descargar 0.7.0 <span aria-hidden="true">↗</span></a></div>
       </div>
     </article>
   </main>
