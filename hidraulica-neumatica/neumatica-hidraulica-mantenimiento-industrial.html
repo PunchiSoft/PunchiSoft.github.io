@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Introducción práctica a la neumática e hidráulica industrial. Analizamos sus diferencias, principios de funcionamiento, ventajas y criterios de selección.">
+  <meta name="theme-color" content="#10141c">
+  <title>Neumática e hidráulica: dos formas de transmitir potencia — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <style>
+    /* Barra de Progreso de Lectura */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg, #69b7ff, #f0a64a);
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Diagrama SVG Adaptativo */
+    .diagram-container {
+      margin: 36px 0;
+      padding: 28px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .diagram-container svg {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .diagram-legends {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .legend-box {
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .legend-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .legend-box-pneumatic strong {
+      color: #69b7ff;
+    }
+
+    .legend-box-hydraulic strong {
+      color: #f0a64a;
+    }
+
+    .legend-box p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Tarjetas de Sistemas Comparativos */
+    .systems-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .system-card {
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .system-card-pneumatic {
+      border-top: 4px solid #69b7ff;
+    }
+
+    .system-card-hydraulic {
+      border-top: 4px solid #f0a64a;
+    }
+
+    .system-card h3 {
+      margin-top: 0;
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .system-card h3 span {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .system-card-pneumatic h3 span {
+      background: rgba(105, 183, 255, 0.1);
+      color: #69b7ff;
+    }
+
+    .system-card-hydraulic h3 span {
+      background: rgba(240, 166, 74, 0.1);
+      color: #f0a64a;
+    }
+
+    .system-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .system-card li {
+      margin: 8px 0;
+    }
+
+    /* Tabla Comparativa */
+    .table-container {
+      overflow-x: auto;
+      margin: 32px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .data-table th, .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th {
+      background: var(--surface-2);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .data-table td {
+      color: var(--muted);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Principios de Transmisión */
+    .principles-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .principle-box {
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .principle-box strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .principle-box p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Cuadrícula de Aplicaciones */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .app-box {
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .app-box strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .app-box span {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Matriz de Decisiones */
+    .decision-list {
+      display: grid;
+      gap: 12px;
+      margin: 32px 0;
+    }
+
+    .decision-item {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .decision-badge {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--surface-2);
+      color: var(--text);
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .decision-info h3 {
+      margin: 0 0 2px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .decision-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .decision-ans {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .ans-pneumatic {
+      background: rgba(105, 183, 255, 0.1);
+      color: #69b7ff;
+    }
+
+    .ans-hydraulic {
+      background: rgba(240, 166, 74, 0.1);
+      color: #f0a64a;
+    }
+
+    /* Cajas Finales */
+    .final-box {
+      padding: 34px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(105,183,255,0.06), rgba(240,166,74,0.06)), var(--surface);
+    }
+
+    .final-box h2 {
+      margin-top: 0;
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .final-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Adaptabilidad */
+    @media (max-width: 768px) {
+      .systems-comparison, .principles-row, .apps-grid, .diagram-legends {
+        grid-template-columns: 1fr;
+      }
+      .decision-item {
+        grid-template-columns: 36px 1fr;
+      }
+      .decision-ans {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso superior -->
+  <div class="progress-bar-container" id="reading-progress" aria-hidden="true"></div>
+
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con Neumática e Hidráulica activa.       -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a href="../blog/index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a class="active" href="index.html" aria-current="page">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver a Neumática e Hidráulica</a>
+        <div class="post-meta"><span class="tag">Neumática e Hidráulica</span><time datetime="2026-07-21">21 de julio de 2026</time><span>8 min de lectura</span></div>
+        <h1>Neumática e hidráulica: dos formas de transmitir potencia</h1>
+        <p class="lead">Una introducción práctica para comprender sus diferencias, aplicaciones, ventajas y criterios de selección en mantenimiento industrial y maestranza.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- IMAGEN PRINCIPAL                                      -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/neumatica-hidraulica/cover.jpg" alt="Ilustración esquemática de sistemas mecánicos neumáticos e hidráulicos" width="1200" height="675" loading="eager">
+        <figcaption>Los fluidos presurizados (aceite y aire) alimentan la gran mayoría de movimientos de automatización pesada.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CUERPO DEL ARTÍCULO                                    -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <section id="introduccion">
+          <h2>¿Por qué comenzar comparando ambos sistemas?</h2>
+          <p class="article-intro">Neumática e hidráulica suelen estudiarse como asignaturas independientes, pero en el piso de planta y en la maestranza conviven de forma constante. Ambas tecnologías comparten el mismo propósito central: transmitir energía a través de un fluido confinado y presurizado para accionar actuadores lineales o rotativos.</p>
+
+          <p>La diferencia clave radica en las propiedades físicas del medio utilizado y en el comportamiento dinámico que se obtiene de cada uno. Comprender estas diferencias previene errores de diseño comunes, como elegir un sistema insuficiente para la carga de trabajo, encarecer innecesariamente la instalación o implementar sistemas complejos de difícil mantenimiento.</p>
+
+          <aside class="article-note" aria-label="Nota de síntesis inicial">
+            <span>Idea central de selección</span>
+            <p>La neumática prioriza la velocidad de ciclo, la limpieza operativa y la simplicidad mecánica. Por el contrario, la hidráulica se enfoca en la fuerza bruta, la rigidez del posicionamiento y un control milimétrico bajo cargas severas.</p>
+          </aside>
+        </section>
+
+        <section id="principio">
+          <h2>Un mismo principio: transmitir energía mediante presión</h2>
+          <p>El funcionamiento de ambos sistemas responde a la Ley de Pascal. Una bomba o compresor ejerce trabajo sobre el fluido confinándolo en tuberías. Luego, un arreglo de válvulas controla la dirección, velocidad y fuerza con la que este fluido llega al actuador (un cilindro o motor), el cual devuelve la energía al proceso físico como trabajo mecánico útil.</p>
+
+          <div class="principles-row">
+            <div class="principle-box">
+              <strong>01</strong>
+              <p>La unidad de potencia (bomba o compresor) genera caudal y acumula presión.</p>
+            </div>
+            <div class="principle-box">
+              <strong>02</strong>
+              <p>Las válvulas direccionales y reguladoras dosifican y orientan el recorrido.</p>
+            </div>
+            <div class="principle-box">
+              <strong>03</strong>
+              <p>El actuador final traduce el volumen presurizado en movimiento lineal o rotación.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="esquema-tecnico">
+          <h2>Comparación de circuitos básicos</h2>
+          <p>Para entender las diferencias físicas en taller, observemos un circuito neumático elemental (generación y escape directo a atmósfera) frente a uno hidráulico (que requiere retorno continuo de aceite al depósito):</p>
+
+          <div class="diagram-container">
+            <svg viewBox="0 0 620 430" role="img" aria-labelledby="diagram-title diagram-desc">
+              <title id="diagram-title">Circuitos de fluido comparados</title>
+              <desc id="diagram-desc">Compresor neumático con cilindro vs. bomba hidráulica con estanque y cilindro.</desc>
+
+              <!-- Neumática (Celeste) -->
+              <text x="55" y="45" fill="#69b7ff" font-size="22" font-weight="800">NEUMÁTICA</text>
+              <rect x="55" y="80" width="110" height="70" rx="10" fill="var(--surface)" stroke="#69b7ff" stroke-width="3"/>
+              <text x="73" y="122" fill="var(--text)" font-size="16">Compresor</text>
+              
+              <line x1="165" y1="115" x2="285" y2="115" stroke="#69b7ff" stroke-width="4"/>
+              <polygon points="285,107 305,115 285,123" fill="#69b7ff"/>
+              <rect x="305" y="78" width="190" height="74" rx="8" fill="var(--surface)" stroke="#69b7ff" stroke-width="3"/>
+              <line x1="380" y1="78" x2="380" y2="152" stroke="#69b7ff" stroke-width="2"/>
+              <line x1="380" y1="115" x2="540" y2="115" stroke="#69b7ff" stroke-width="4"/>
+              <rect x="540" y="103" width="45" height="24" rx="4" fill="#69b7ff"/>
+              <text x="320" y="174" fill="var(--muted)" font-size="14">Aire comprimido</text>
+
+              <!-- Separación -->
+              <line x1="45" y1="215" x2="575" y2="215" stroke="var(--border)" stroke-width="2"/>
+
+              <!-- Hidráulica (Naranja) -->
+              <text x="55" y="265" fill="#f0a64a" font-size="22" font-weight="800">HIDRÁULICA</text>
+              <rect x="55" y="300" width="110" height="76" rx="10" fill="var(--surface)" stroke="#f0a64a" stroke-width="3"/>
+              <text x="86" y="344" fill="var(--text)" font-size="16">Bomba</text>
+
+              <line x1="165" y1="338" x2="285" y2="338" stroke="#f0a64a" stroke-width="4"/>
+              <polygon points="285,330 305,338 285,346" fill="#f0a64a"/>
+              <rect x="305" y="300" width="190" height="76" rx="8" fill="var(--surface)" stroke="#f0a64a" stroke-width="3"/>
+              <line x1="380" y1="300" x2="380" y2="376" stroke="#f0a64a" stroke-width="2"/>
+              <line x1="380" y1="338" x2="540" y2="338" stroke="#f0a64a" stroke-width="4"/>
+              <rect x="540" y="326" width="45" height="24" rx="4" fill="#f0a64a"/>
+
+              <!-- Depósito Hidráulico -->
+              <path d="M82 390 H138 V412 H82 Z" fill="none" stroke="#f0a64a" stroke-width="2"/>
+              <line x1="110" y1="390" x2="110" y2="376" stroke="#f0a64a" stroke-width="2"/>
+              <text x="320" y="400" fill="var(--muted)" font-size="14">Aceite presurizado</text>
+            </svg>
+
+            <div class="diagram-legends">
+              <div class="legend-box legend-box-pneumatic">
+                <strong>Fluido neumático</strong>
+                <p>Aire filtrado tomado del ambiente. Al realizar el trabajo, se purga a la atmósfera de forma directa y silenciosa mediante silenciadores.</p>
+              </div>
+              <div class="legend-box legend-box-hydraulic">
+                <strong>Fluido hidráulico</strong>
+                <p>Aceite mineral incompresible. Circula en circuito cerrado: la bomba lo succiona del tanque y el retorno lo devuelve para ser filtrado y enfriado.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="diferencias">
+          <h2>Diferencias clave para el mantenimiento industrial</h2>
+          <p>Cada tecnología cuenta con sus propias características estructurales. A continuación se desglosan los comportamientos mecánicos típicos en el taller:</p>
+
+          <div class="systems-comparison">
+            <div class="system-card system-card-pneumatic">
+              <h3><span>⌁</span>Sistema Neumático</h3>
+              <ul>
+                <li><strong>Compresibilidad:</strong> El aire se comprime. Absorbe golpes pero dificulta paradas intermedias rígidas bajo cargas fluctuantes.</li>
+                <li><strong>Escape limpio:</strong> Las fugas de aire no contaminan la línea de producción, clave en alimentos y farmacéutica.</li>
+                <li><strong>Velocidad:</strong> Rápida respuesta lineal (fácilmente superior a 1 m/s).</li>
+                <li><strong>FRL:</strong> Requiere una unidad Filtro-Regulador-Lubricador para proteger los cilindros.</li>
+              </ul>
+            </div>
+
+            <div class="system-card system-card-hydraulic">
+              <h3><span>⌬</span>Sistema Hidráulico</h3>
+              <ul>
+                <li><strong>Incompresibilidad:</strong> Aceite rígido. Permite detenciones exactas y sostiene cargas suspendidas pesadas sin ceder.</li>
+                <li><strong>Fuerza bruta:</strong> Capaz de operar a altas presiones (típicamente de 70 a más de 350 bar) en cilindros compactos.</li>
+                <li><strong>Lubricación natural:</strong> El propio aceite hidráulico lubrica internamente bombas, válvulas y sellos.</li>
+                <li><strong>Retorno continuo:</strong> Exige un tendido de cañerías doble (presión y retorno) y depósitos de almacenamiento.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Criterio técnico</th>
+                  <th>Neumática industrial</th>
+                  <th>Hidráulica industrial</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Presión de trabajo</strong></td>
+                  <td>6 - 10 bar (media)</td>
+                  <td>70 - 350+ bar (muy alta)</td>
+                </tr>
+                <tr>
+                  <td><strong>Fuerza producida</strong></td>
+                  <td>Baja a moderada (según diámetro)</td>
+                  <td>Extremadamente alta</td>
+                </tr>
+                <tr>
+                  <td><strong>Velocidad de actuador</strong></td>
+                  <td>Alta (ciclos rápidos y repetitivos)</td>
+                  <td>Moderada (regulada de forma precisa)</td>
+                </tr>
+                <tr>
+                  <td><strong>Precisión bajo carga</strong></td>
+                  <td>Limitada (el aire actúa como resorte)</td>
+                  <td>Excelente (sin variación de posición)</td>
+                </tr>
+                <tr>
+                  <td><strong>Riesgo de contaminación</strong></td>
+                  <td>Bajo (aire purificado)</td>
+                  <td>Moderado por fugas y derrames de aceite</td>
+                </tr>
+                <tr>
+                  <td><strong>Mantenimiento común</strong></td>
+                  <td>Fugas de aire, condensación y purga</td>
+                  <td>Reemplazo de filtros, control de temperatura y sellos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="aplicaciones">
+          <h2>Dónde se utiliza cada tecnología</h2>
+          <p>Las aplicaciones industriales aprovechan las ventajas inherentes de cada fluido:</p>
+
+          <div class="apps-grid">
+            <div class="app-box">
+              <strong>Prensas, cizallas y dobladoras</strong>
+              <span>Requieren fuerzas de empuje o corte de varias toneladas donde la rigidez del fluido hidráulico es fundamental.</span>
+            </div>
+            <div class="app-box">
+              <strong>Pinzas mecánicas y manipulación pick &amp; place</strong>
+              <span>Priorizan la velocidad del ciclo de empaque y la ligereza del actuador neumático en la línea de montaje.</span>
+            </div>
+            <div class="app-box">
+              <strong>Maquinaria pesada y vial (Excavadoras)</strong>
+              <span>Utilizan motores y cilindros hidráulicos para excavar y mover grandes brazos articulados en espacios limitados.</span>
+            </div>
+            <div class="app-box">
+              <strong>Sistemas de expulsión y soplado</strong>
+              <span>Aprovechan la descarga veloz del volumen de aire neumático para clasificar productos o limpiar piezas a gran velocidad.</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="seleccion">
+          <h2>Criterios de selección rápida</h2>
+          <p>Para determinar la tecnología correcta en un rediseño de maquinaria, podemos plantear una matriz de decisiones basadas en la aplicación:</p>
+
+          <div class="decision-list">
+            <div class="decision-item">
+              <span class="decision-badge">1</span>
+              <div class="decision-info">
+                <h3>¿La fuerza de empuje o tracción supera los 15 kN?</h3>
+                <p>Para mover compuertas pesadas, prensar metal o izar cargas estructurales.</p>
+              </div>
+              <span class="decision-ans ans-hydraulic">Hidráulica</span>
+            </div>
+
+            <div class="decision-item">
+              <span class="decision-badge">2</span>
+              <div class="decision-info">
+                <h3>¿Se requiere una velocidad de respuesta muy alta sin frenado intermedio?</h3>
+                <p>Ciclos automáticos ultrarrápidos de clasificación o indexado.</p>
+              </div>
+              <span class="decision-ans ans-pneumatic">Neumática</span>
+            </div>
+
+            <div class="decision-item">
+              <span class="decision-badge">3</span>
+              <div class="decision-info">
+                <h3>¿El cilindro debe detenerse rígidamente a mitad de carrera bajo carga?</h3>
+                <p>Posicionamiento intermedio preciso para mecanizados o sujeción estable.</p>
+              </div>
+              <span class="decision-ans ans-hydraulic">Hidráulica</span>
+            </div>
+
+            <div class="decision-item">
+              <span class="decision-badge">4</span>
+              <div class="decision-info">
+                <h3>¿La zona de trabajo es higiénica o con presencia de alimentos?</h3>
+                <p>Planta de procesamiento donde un derrame de aceite mineral arruinaría el lote.</p>
+              </div>
+              <span class="decision-ans ans-pneumatic">Neumática</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="seguridad">
+          <h2>Seguridad crítica: la energía almacenada</h2>
+          <p>Un sistema hidráulico o neumático apagado no es sinónimo de sistema seguro. A diferencia de las estructuras rígidas, los fluidos acumulan energía potencial que puede liberarse violentamente durante las labores de mantenimiento:</p>
+
+          <aside class="article-note" aria-label="Aviso crítico de seguridad en mantención">
+            <span>Reglas de oro para intervenir</span>
+            <p>Antes de soltar cualquier racor, manguera o válvula: desenergice la bomba, bloquee mecánicamente las cargas suspendidas que puedan empujar un cilindro, y purgue por completo la presión remanente (tanto en acumuladores como en tramos de cañerías cerrados).</p>
+          </aside>
+
+          <p><strong>Cuidado con la micropresión:</strong> Nunca busque una sospecha de fuga de aceite hidráulico palpando con la mano desnuda. Un orificio milimétrico a 200 bar genera un chorro ultrafino capaz de inyectar fluido directamente bajo la piel (inyección de fluido), produciendo necrosis y lesiones médicas de extrema gravedad.</p>
+        </section>
+
+        <section id="conclusion">
+          <div class="final-box">
+            <h2>No existe una tecnología superior, sino una adecuada</h2>
+            <p>La neumática y la hidráulica se complementan para dar vida a la automatización industrial. El éxito del diseño reside en analizar el esfuerzo del actuador, la precisión requerida y las condiciones operacionales del taller para decantarse por el sistema que garantice el menor costo operativo y la mayor confiabilidad de mantenimiento.</p>
+          </div>
+        </section>
+
+        <div class="article-end">
+          <span>Área de Neumática e Hidráulica — PunchiSoft</span>
+          <a class="button button-primary" href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">Seguir en GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+        <p>Industria, Linux, IA y software con propósito.</p>
+      </div>
+      <nav aria-label="Navegación del pie">
+        <a href="../blog/index.html">Mundo Linux</a>
+        <a href="../software/index.html">Proyectos</a>
+        <a href="index.html" aria-current="page">Neumática e Hidráulica</a>
+        <a href="../inventor-autocad/index.html">CAD &amp; Planos</a>
+        <a href="../acerca-de/index.html">Acerca de</a>
+        <a href="../legal/index.html">Legal</a>
+        <a href="../seguridad/index.html">Seguridad</a>
+        <a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year>2026</span> PunchiSoft</span>
+      <span>Hecho con curiosidad y código.</span>
+    </div>
+  </footer>
+
+  <script>
+    // =======================================================
+    // BARRA DE PROGRESO DE LECTURA
+    // =======================================================
+    const progressBar = document.getElementById("reading-progress");
+    window.addEventListener("scroll", () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = scrolled + "%";
+      }
+    });
+
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    // =======================================================
+    // AÑO DEL COPYRIGHT
+    // =======================================================
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

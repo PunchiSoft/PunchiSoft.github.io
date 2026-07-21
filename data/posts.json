@@ -1,5 +1,25 @@
 [
   {
+    "id": "neumatica-hidraulica-mantenimiento-industrial",
+    "title": "Neumática e hidráulica: dos formas de transmitir potencia",
+    "summary": "Una introducción práctica para comprender sus diferencias, aplicaciones, ventajas y criterios de selección en mantenimiento industrial y maestranza.",
+    "featuredSummary": "Una introducción práctica para comprender diferencias, aplicaciones y ventajas de la neumática y la hidráulica.",
+    "category": "Neumática e Hidráulica",
+    "date": "2026-07-21",
+    "readingTime": "8 min de lectura",
+    "url": "../hidraulica-neumatica/neumatica-hidraulica-mantenimiento-industrial.html",
+    "image": "../assets/images/neumatica-hidraulica/cover.jpg",
+    "imageAlt": "Esquemas neumáticos e hidráulicos de transmisión de potencia",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/energia.svg",
+      "label": "Neumática · Hidráulica",
+      "title": "Transmisión de potencia",
+      "detail": "Circuitos de fluido · Criterios técnicos · Seguridad"
+    }
+  },
+  {
     "id": "gdt-maestranza-planos-industriales",
     "title": "GD&T en maestranza: cuando medir no es suficiente",
     "summary": "El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico en planos de fabricación.",
