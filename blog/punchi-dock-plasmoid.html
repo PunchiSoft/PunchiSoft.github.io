@@ -3,13 +3,197 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Punchi Dock 0.7.0 actualiza el dock para KDE Plasma 6 con temas locales, popups más pulidos, carpetas radial y abanico, notas rápidas, sonidos, animaciones y mejoras de rendimiento.">
+  <meta name="description" content="Punchi Dock Remastered es un dock de lanzadores nativo e interfaz de tareas personalizable y de alta fidelidad estética para KDE Plasma 6 y Wayland.">
   <meta name="theme-color" content="#10141c">
-  <title>Punchi Dock 0.7.0: temas locales, popups pulidos y más control visual — PunchiSoft</title>
+  <title>Punchi Dock Remastered para KDE Plasma 6 — PunchiSoft</title>
   <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
   <link rel="stylesheet" href="../css/estilos.css">
   <script src="../js/theme.js" defer></script>
+  <style>
+    /* Pestañas del artículo de Punchi Dock */
+    .punchi-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--surface);
+      padding: 6px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .punchi-tab-button {
+      flex: 1;
+      padding: 10px 16px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 9px;
+      transition: all .2s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .punchi-tab-button:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .punchi-tab-button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+
+    .punchi-tab-button[aria-selected="true"] {
+      color: var(--text);
+      background: var(--surface-2);
+      border-color: var(--border-light);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Paneles de pestañas */
+    .punchi-tab-content {
+      display: none;
+      animation: punchiFadeIn 0.3s ease-out forwards;
+    }
+
+    .punchi-tab-content.active {
+      display: block;
+    }
+
+    @keyframes punchiFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Tarjetas y rejillas en el artículo */
+    .punchi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .punchi-card h2 {
+      font-size: 1.45rem;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .punchi-card h3 {
+      font-size: 1.15rem;
+      margin: 28px 0 12px 0;
+      color: var(--text);
+    }
+
+    .punchi-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .punchi-feature-item {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.25s ease;
+    }
+
+    .punchi-feature-item:hover {
+      background: rgba(88, 166, 255, 0.04);
+      border-color: rgba(88, 166, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .punchi-feature-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .punchi-feature-title::before {
+      content: "✦";
+      color: var(--accent);
+    }
+
+    .punchi-feature-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Usamos los estilos nativos de notas de la plantilla de PunchiSoft (.article-note) */
+
+    /* Tablas */
+    .punchi-table-container {
+      overflow-x: auto;
+      margin: 24px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .punchi-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .punchi-table th, .punchi-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .punchi-table th {
+      font-weight: 600;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .punchi-table td {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .punchi-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Iconos */
+    .punchi-icon-svg {
+      width: 1.25em;
+      height: 1.25em;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
   <!-- ===================================================== -->
@@ -32,9 +216,9 @@
       <!-- ===================================================== -->
       <header class="article-header container-narrow">
         <a class="back-link" href="index.html">← Volver al blog</a>
-        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-06">6 de julio de 2026</time><span>8 min de lectura</span></div>
-        <h1>Punchi Dock 0.7.0: temas locales, popups más pulidos y un dock con más personalidad</h1>
-        <p class="lead">La nueva versión del dock para KDE Plasma 6 refina la integración visual con Plasma, suma temas locales en SVG/PNG, mejora carpetas radial y abanico, agrega notas rápidas y reduce esperas al resolver iconos.</p>
+        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-21">21 de julio de 2026</time><span>8 min de lectura</span></div>
+        <h1>Punchi Dock Remastered: lanzador y gestor de tareas nativo para KDE Plasma 6</h1>
+        <p class="lead">Un dock de lanzadores nativo e interfaz de tareas personalizable y de alta fidelidad estética para KDE Plasma 6 y Wayland.</p>
       </header>
 
       <!-- ===================================================== -->
@@ -42,104 +226,220 @@
       <!-- Captura del dock funcionando en KDE Plasma.            -->
       <!-- ===================================================== -->
       <figure class="article-hero container-narrow">
-        <img src="../assets/images/punchi-dock-plasmoid/00.png" alt="Punchi Dock 0.7.0 funcionando en el escritorio KDE Plasma 6" width="1672" height="941" loading="eager">
-        <figcaption>Punchi Dock 0.7.0 mantiene el enfoque en Wayland y añade más control visual sin modificar la configuración global de Plasma.</figcaption>
+        <img src="../assets/images/punchi-dock-plasmoid/00.png" alt="Punchi Dock Remastered funcionando en el escritorio KDE Plasma 6" width="1672" height="941" loading="eager">
+        <figcaption>Punchi Dock Remastered mantiene el enfoque en Wayland y añade más rendimiento nativo y control visual bajo KDE Plasma 6.</figcaption>
       </figure>
 
       <!-- ===================================================== -->
       <!-- CUERPO DEL ARTÍCULO                                   -->
-      <!-- Actualización editorial para Punchi Dock 0.7.0.        -->
+      <!-- Actualización editorial para Punchi Dock Remastered.  -->
       <!-- ===================================================== -->
       <div class="article-body container-narrow">
-        <p class="article-intro">Punchi Dock sigue siendo un plasmoide ligero para KDE Plasma 6: lanzadores, contenedores, separadores, espacios, reloj, calendario, Papelera y soporte opcional de ventanas. La versión 0.7.0 no intenta convertirlo en otro gestor de tareas completo; se concentra en que el dock se sienta mejor integrado, más configurable y más cómodo para el uso diario.</p>
+        <p class="article-intro"><strong>Punchi Dock Remastered</strong> es una reescritura modular y nativa del popular plasmoide <em>Punchi Dock</em>. Se ha rediseñado desde cero para integrarse sin costuras en entornos modernos basados en <strong>KDE Plasma 6 y Wayland</strong>, preservando un rendimiento excepcional y una estética sumamente premium.</p>
 
-        <aside class="article-note">
+        <aside class="article-note" aria-label="Nota de preparación">
           <span>Antes de probar</span>
           <p>Después de una instalación limpia o una actualización, si Punchi Dock aparece pero no responde a los clics, reinicia Plasma Shell una vez o cierra sesión y vuelve a entrar. Ese refresco no borra la configuración del dock.</p>
         </aside>
 
-        <h2>Qué cambia en 0.7.0</h2>
-        <p>Esta tanda parte desde la versión publicada 0.6.8 y justifica el salto a 0.7.0 porque no trae solo correcciones: incorpora controles visibles para el usuario, nuevos comportamientos de popups, opciones de carpetas y material de temas locales.</p>
-        <p>Los menús contextuales y popups ahora usan una base más sólida del tema Plasma para mejorar la legibilidad. También se redujo la translucidez excesiva, se ajustaron estados hover en items especiales y se retiró el puntero triangular experimental porque podía generar lag durante animaciones o cambios de tema.</p>
+        <!-- Navegación por Pestañas Accesible -->
+        <nav class="punchi-tabs" role="tablist" aria-label="Secciones de información de Punchi Dock">
+          <button class="punchi-tab-button" type="button" role="tab" aria-selected="true" aria-controls="panel-sobre-proyecto" id="tab-sobre-proyecto" onclick="openTab(event, 'sobre-proyecto')">
+            <svg class="punchi-icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            Sobre el Proyecto
+          </button>
+          <button class="punchi-tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-caracteristicas" id="tab-caracteristicas" tabindex="-1" onclick="openTab(event, 'caracteristicas')">
+            <svg class="punchi-icon-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Características
+          </button>
+          <button class="punchi-tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-novedades" id="tab-novedades" tabindex="-1" onclick="openTab(event, 'novedades')">
+            <svg class="punchi-icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            Novedades v0.8.9
+          </button>
+          <button class="punchi-tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-instalacion" id="tab-instalacion" tabindex="-1" onclick="openTab(event, 'instalacion')">
+            <svg class="punchi-icon-svg" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            Instalación
+          </button>
+        </nav>
 
-        <blockquote><p>La dirección es clara: mantener un dock práctico, visual y entendible, pero con más espacio para personalizar sin tocar archivos globales de Plasma.</p></blockquote>
+        <!-- Contenido 1: Sobre el Proyecto -->
+        <div id="panel-sobre-proyecto" class="punchi-tab-content active" role="tabpanel" aria-labelledby="tab-sobre-proyecto" tabindex="0">
+          <div class="punchi-card">
+            <h2>Sobre Punchi Dock Remastered</h2>
+            <p>El proyecto combina la flexibilidad de un widget de Plasma con las capacidades de un módulo nativo en C++ (Qt 6), lo que permite ofrecer una excelente gestión de procesos, soporte robusto para audio mediante PipeWire y controles interactivos sin degradar la fluidez del compositor KWin.</p>
 
-        <h2>Lanzadores, contenedores y notas rápidas</h2>
-        <p>El dock conserva los lanzadores con nombre, icono, comando y acciones de clic derecho configurables. Los contenedores pueden armarse de forma manual, desde carpetas del sistema o desde categorías de aplicaciones KDE, con popups en grilla, lista, radial y abanico.</p>
-        <p>En esta versión aparecen nuevas opciones para mostrar u ocultar acciones generales del clic derecho, incluyendo <strong>Añadir nota rápida</strong> y <strong>Configurar Punchi Dock</strong>. La nota rápida puede agregarse directamente desde el menú del dock sin abrir toda la ventana de configuración.</p>
+            <aside class="article-note" aria-label="Nota técnica de arquitectura">
+              <span>Nota sobre la arquitectura</span>
+              <p>A diferencia de otros widgets puramente visuales, Punchi Dock utiliza un módulo binario compilado nativamente para interactuar de forma segura con la API del TaskManager de Plasma y resolver metadatos multimedia complejos en segundo plano.</p>
+            </aside>
+          </div>
 
-        <div class="article-gallery">
-          <figure><img src="../assets/images/punchi-dock-plasmoid/01.png" alt="Configuración de elementos de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Elementos del dock: apps, contenedores y módulos internos.</figcaption></figure>
-          <figure><img src="../assets/images/punchi-dock-plasmoid/02.png" alt="Configuración general de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Configuración general, popups y comportamiento.</figcaption></figure>
+          <div class="punchi-card">
+            <h2>¿Por qué Remastered?</h2>
+            <p>La versión original para Plasma 5 sufría limitaciones debido a dependencias en desuso y transiciones bruscas. Esta edición Remastered introduce:</p>
+            <div class="punchi-features-grid">
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Motor C++ / QML</div>
+                <div class="punchi-feature-desc">Módulo compilado específico para resolver y renderizar la actividad del sistema de forma eficiente.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Optimizado para Wayland</div>
+                <div class="punchi-feature-desc">Diseñado para funcionar nativamente bajo el protocolo de Wayland sin recurrir a hacks heredados de X11.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Modularidad Extrema</div>
+                <div class="punchi-feature-desc">Componentes bien delimitados en lugar de concentrar la interfaz entera dentro de un único archivo general.</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2>Temas locales</h2>
-        <p>La novedad más visible es el soporte inicial de temas locales para fondos, separadores y bordes del dock usando archivos SVG o PNG desde la carpeta del usuario:</p>
-        <pre class="code-block"><code>~/.config/punchi-dock/themes/</code></pre>
-        <p>Cada tema puede tener su propio <code>theme.json</code>, una textura de fondo, una imagen de separador y un borde o extremo reflejado. Los modos disponibles incluyen <code>stretch</code>, <code>tile</code>, <code>repeat-x</code>, <code>repeat-y</code>, <code>mirror</code> y <code>blank</code>. La versión incluye muestras como Platform, Excite, Wood Shelf y debug.</p>
-        <pre class="code-block"><code>~/.config/punchi-dock/themes/bricks/
-  theme.json
-  background.svg
-  separator.png
-  edge.png</code></pre>
-        <p>Para crear temas conviene usar fondos de <code>250x250</code>, separadores de <code>50x250</code> en dock horizontal o <code>250x50</code> en dock vertical, y bordes de <code>250x250</code>. El botón de recarga de temas vuelve a listar, recarga el tema seleccionado y fuerza a QML a leer los assets actualizados sin reiniciar Plasma.</p>
+        <!-- Contenido 2: Características -->
+        <div id="panel-caracteristicas" class="punchi-tab-content" role="tabpanel" aria-labelledby="tab-caracteristicas" tabindex="0">
+          <div class="punchi-card">
+            <h2>Capacidades Principales</h2>
+            <p>Punchi Dock Remastered no es solo un lanzador, es una suite completa de control e interacción para tu panel de escritorio.</p>
 
-        <figure class="article-figure article-figure-wide">
-          <img src="../assets/images/punchi-dock-plasmoid/03.png" alt="Opciones de apariencia, tema y forma en Punchi Dock 0.7.0" width="838" height="684" loading="lazy">
-          <figcaption>Apariencia, forma, indicadores y temas locales quedan reunidos en la configuración visual.</figcaption>
-        </figure>
-
-        <h2>Carpetas radial y abanico</h2>
-        <p>Las carpetas ganan controles más precisos. La vista radial ahora puede configurar fondo o aro radial, círculos de iconos y distancia radial. La vista abanico separa mejor su geometría, permite ajustar apertura y diámetro virtual, y mejora su posicionamiento en docks flotantes horizontales y verticales.</p>
-        <p>Esto hace que los contenedores sirvan no solo como listas ordenadas, sino también como accesos visuales rápidos para categorías de trabajo, sistema, desarrollo, multimedia o utilidades frecuentes.</p>
-
-        <h2>Mouse, sonidos y animaciones</h2>
-        <p>Punchi Dock mantiene zoom clásico, parabólico y estilo Mac, con control de intensidad y etiquetas al pasar. En la interacción también aparecen animaciones de clic como sacudida, rebote, doble rebote, giro, caída dominó e impacto lateral.</p>
-        <p>Los temas de sonido de interacción incluyen piano, estilo retro platform, mushroom platform, flauta, guitarra y violín. El ecualizador visual queda como extra opcional: reacciona a los sonidos de Punchi Dock, no captura audio del sistema ni usa el micrófono.</p>
-
-        <div class="article-gallery">
-          <figure><img src="../assets/images/punchi-dock-plasmoid/04.png" alt="Configuración del comportamiento del mouse en Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Zoom, sonidos, efectos y comportamiento del mouse.</figcaption></figure>
-          <figure><img src="../assets/images/punchi-dock-plasmoid/05.png" alt="Configuración de ventanas y panel en Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Ventanas, integración con panel y opciones relacionadas.</figcaption></figure>
+            <div class="punchi-features-grid">
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Modo Flotante y Panel</div>
+                <div class="punchi-feature-desc">Úsalo como un dock flotante clásico en tu escritorio o colócalo dentro de un panel oficial de Plasma adaptándose de inmediato.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Vistas de Carpetas Flexibles</div>
+                <div class="punchi-feature-desc">Los popups de carpeta admiten vistas en Cuadrícula (Grid), Lista (List) y Detalle (Detail) con soporte para navegación por teclado.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Visualizador de Audio</div>
+                <div class="punchi-feature-desc">Un visualizador opcional basado en PipeWire que procesa los espectros de sonido directamente en memoria y se dibuja sobre el fondo.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Notas Rápidas Integradas</div>
+                <div class="punchi-feature-desc">Crea notas directamente desde tu dock, con guardado automático y confirmación al eliminarlas.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Biblioteca de Temas JSON</div>
+                <div class="punchi-feature-desc">Soporte para cargar estilos avanzados en 2D y 2.5D con bordes degradados, reflejos de iconos y sombras adaptativas.</div>
+              </div>
+              <div class="punchi-feature-item">
+                <div class="punchi-feature-title">Gestión de Papelera Nítida</div>
+                <div class="punchi-feature-desc">Operaciones asíncronas de vaciado con sonidos de confirmación y notificaciones integradas en la bandeja del sistema.</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2>Ventanas y panel</h2>
-        <p>El soporte de ventanas sigue siendo opcional. Punchi Dock puede activar, minimizar, cerrar, anclar y desanclar ventanas, además de mostrar un popup ligero con título, icono, estado activo y botón de cierre. Las miniaturas vivas todavía no están activadas porque los experimentos anteriores dependían de módulos internos o no disponibles del gestor de tareas de Plasma.</p>
-        <p>La integración con panel también se mantiene: fondo ocultable, relleno de espacio libre, alineación de contenido y opciones para evitar repetir reloj o calendario cuando el dock vive dentro de un panel de Plasma.</p>
+        <!-- Contenido 3: Novedades v0.8.9 -->
+        <div id="panel-novedades" class="punchi-tab-content" role="tabpanel" aria-labelledby="tab-novedades" tabindex="0">
+          <div class="punchi-card">
+            <h2>Novedades de la Versión 0.8.9</h2>
+            <p>La v0.8.9 refina la experiencia de integración nativa, agregando un mayor control sobre el panel y nuevas capacidades interactivas.</p>
 
-        <h2>Rendimiento e iconos</h2>
-        <p>Al anclar aplicaciones, la búsqueda de iconos ya no espera recorridos recursivos pesados cuando el archivo <code>.desktop</code> entrega un nombre usable. El selector prioriza el tema actual, sus herencias y <code>hicolor</code>; Flatpak y pixmaps se resuelven de forma más acotada cuando se detecta una app Flatpak o cuando el flujo lo necesita.</p>
-        <p>Es un cambio pequeño en apariencia, pero importante en sensación: menos bloqueo al fijar apps nuevas y menos trabajo innecesario cuando Plasma ya ofrece la información correcta.</p>
+            <h3>Reserva Flexible en el Panel Horizontal</h3>
+            <p>El dock ahora puede configurarse para rellenar de forma inteligente el espacio libre restante en paneles horizontales. Esto alinea las tareas dinámicas inmediatamente después de los elementos fijados y distribuye el espacio óptimamente.</p>
 
-        <div class="article-gallery">
-          <figure><img src="../assets/images/punchi-dock-plasmoid/06.png" alt="Editor JSON y herramientas de configuración de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Editor JSON y herramientas de configuración.</figcaption></figure>
-          <figure><img src="../assets/images/punchi-dock-plasmoid/07.png" alt="Página Acerca de de Punchi Dock 0.7.0" width="838" height="684" loading="lazy"><figcaption>Información del proyecto, ayuda y licencia.</figcaption></figure>
+            <h3>Control Multimedia MPRIS en Hover</h3>
+            <p>Ahora puedes configurar el plasmoide para mostrar tarjetas de reproducción multimedia completas al pasar el puntero sobre aplicaciones multimedia (como Spotify, VLC, Audacious, etc.). Incluye carátula de álbum, controles de transporte, control de volumen y navegación por teclado rápida.</p>
+
+            <h3>Reacciones de Minimización de KWin</h3>
+            <p>Punchi Dock publica activamente la geometría de sus iconos en la API de KDE, permitiendo que la animación clásica de minimización del gestor de ventanas KWin apunte exactamente al icono del lanzador, grupo de tareas o menú de desbordamiento correspondiente.</p>
+
+            <h3>Localización Novedosa en Español</h3>
+            <p>Esta actualización incorpora el primer catálogo de traducción completo al español compilado de forma nativa e integrada en el paquete de distribución <code>.plasmoid</code>, adaptándose al idioma local del sistema de manera automática.</p>
+          </div>
         </div>
 
-        <h2>Instalación local</h2>
-        <p>Punchi Dock se puede instalar para el usuario actual mediante el paquete <code>.plasmoid</code> del release o desde una copia local del repositorio:</p>
-        <pre class="code-block"><code>git clone https://github.com/PunchiSoft/punchi-dock-plasmoid.git
-cd punchi-dock-plasmoid
-chmod +x install-plasmoid.sh
-./install-plasmoid.sh</code></pre>
-        <p>Para generar un paquete instalable localmente:</p>
-        <pre class="code-block"><code>chmod +x build-plasmoid.sh
-./build-plasmoid.sh</code></pre>
-        <p>El paquete queda en <code>dist/punchi-dock.plasmoid</code>. El ID del plasmoide es <code>org.kde.plasma.punchi-dock</code>, la versión documentada aquí es <code>0.7.0</code> y el mínimo declarado para Plasma es <code>6.0</code>.</p>
+        <!-- Contenido 4: Instalación -->
+        <div id="panel-instalacion" class="punchi-tab-content" role="tabpanel" aria-labelledby="tab-instalacion" tabindex="0">
+          <div class="punchi-card">
+            <h2>Guía de Instalación</h2>
+            <p>Dado que Punchi Dock incluye componentes nativos C++, debes instalar el paquete correspondiente a tu distribución para asegurar la compatibilidad binaria.</p>
 
-        <h2>Límites claros</h2>
-        <p>Punchi Dock no usa <code>xdotool</code>, <code>wmctrl</code> ni <code>xprop</code>, y no modifica archivos globales de Plasma. También mantiene fuera las miniaturas vivas por ahora, priorizando un popup de ventanas más ligero y seguro.</p>
-        <p>Las próximas actualizaciones deberían concentrarse en pulir todavía más el comportamiento de ventanas dentro del dock: detección, activación, minimizado, items temporales y anclado, junto con limpieza interna del código para mejorar mantenimiento y rendimiento.</p>
+            <h3>1. Instalación del Paquete Precompilado (.plasmoid)</h3>
+            <p>Si eres usuario final y no deseas compilar el código, puedes descargar el paquete precompilado adecuado para tu distribución directamente desde la página oficial del proyecto en la <a href="https://store.kde.org/p/2364290/" target="_blank" rel="noopener noreferrer">KDE Store</a> e instalarlo mediante <code>kpackagetool6</code> (no se necesitan herramientas de desarrollo).</p>
 
-        <figure class="article-figure article-figure-wide">
-          <img src="../assets/images/punchi-dock-plasmoid/banner-cuadrado.png" alt="Banner cuadrado de Punchi Dock 0.7.0" width="1254" height="1254" loading="lazy">
-          <figcaption>Punchi Dock 0.7.0 suma identidad visual y assets listos para publicación.</figcaption>
-        </figure>
+            <aside class="article-note" aria-label="Nota sobre objetivo oficial">
+              <span>Objetivo de lanzamiento oficial</span>
+              <p>El paquete precompilado oficial es desarrollado para <strong>Fedora 44+ x86_64</strong> con Plasma 6.</p>
+            </aside>
 
-        <h2>Para quién es</h2>
-        <p>Punchi Dock encaja bien si quieres un dock visual para ordenar accesos frecuentes, agrupar herramientas, probar temas locales, usar pequeños módulos internos y mantener una interacción opcional con ventanas abiertas sin abandonar el estilo de KDE Plasma.</p>
-        <p>Como proyecto PunchiSoft, mantiene una idea sencilla: hacer más amable el escritorio Linux con herramientas concretas, configurables y honestas sobre su alcance.</p>
+            <p><strong>Comando para instalar por primera vez:</strong></p>
+            <pre class="code-block"><code>kpackagetool6 --type Plasma/Applet --install ./punchi-dock-remastered-0.8.9-fedora44-x86_64.plasmoid</code></pre>
 
-        <div class="article-end"><span>Proyecto GPL-3.0-or-later de PunchiSoft</span><a class="button button-primary" href="https://github.com/PunchiSoft/punchi-dock-plasmoid/releases/tag/v0.7.0" target="_blank" rel="noopener noreferrer">Descargar 0.7.0 <span aria-hidden="true">↗</span></a></div>
+            <p><strong>Comando para actualizar una versión existente:</strong></p>
+            <pre class="code-block"><code>kpackagetool6 --type Plasma/Applet --upgrade ./punchi-dock-remastered-0.8.9-fedora44-x86_64.plasmoid</code></pre>
+
+            <p><em>Nota: Recuerda reiniciar la shell de Plasma después de instalar o actualizar para aplicar los cambios ejecutando <code>systemctl --user restart plasma-plasmashell.service</code> o cerrando sesión.</em></p>
+          </div>
+
+          <div class="punchi-card">
+            <h2>Compilar desde el Código Fuente</h2>
+            <p>Si prefieres compilar e instalar localmente el módulo binario, sigue estos pasos:</p>
+
+            <h3>Requisitos previos para la compilación (Fedora)</h3>
+            <p>Instala las herramientas de compilación y las librerías de desarrollo de Qt6, KF6 y Plasma:</p>
+            <pre class="code-block"><code>sudo dnf install binutils cmake gcc-c++ ninja-build extra-cmake-modules \
+    qt6-qtdeclarative-devel \
+    kf6-kcoreaddons-devel kf6-kio-devel kf6-kjobwidgets-devel \
+    kf6-kservice-devel libplasma-devel \
+    pipewire-devel gettext \
+    zip unzip</code></pre>
+
+            <h3>Comandos de compilación y empaquetado</h3>
+            <p>El repositorio incluye scripts automatizados para verificar el entorno y generar el paquete adecuado para tu distribución actual:</p>
+
+            <p><strong>1. Verificar dependencias del sistema:</strong></p>
+            <pre class="code-block"><code>./scripts/check-build-environment.sh</code></pre>
+
+            <p><strong>2. Compilar y empaquetar en un archivo .plasmoid:</strong></p>
+            <pre class="code-block"><code>./scripts/empaquetar-plasmoid.sh</code></pre>
+
+            <p><strong>3. Compilar, instalar localmente y reiniciar Plasma Shell (Entorno de pruebas):</strong></p>
+            <pre class="code-block"><code>./scripts/probar-plasmoid.sh</code></pre>
+          </div>
+
+          <div class="punchi-card">
+            <h2>Matriz de Compatibilidad</h2>
+            <div class="punchi-table-container">
+              <table class="punchi-table">
+                <thead>
+                  <tr>
+                    <th>Distribución</th>
+                    <th>Estado de Soporte</th>
+                    <th>Notas del Entorno</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Fedora 44+</strong></td>
+                    <td>Soporte Oficial Principal</td>
+                    <td>Objetivo principal de distribución y testing de QA del proyecto.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Debian 13 (Trixie)</strong></td>
+                    <td>Soporte Secundario Validador</td>
+                    <td>Validado con paquetes nativos y Qt 6.8.2.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Kubuntu 26.04+ (Plasma 6)</strong></td>
+                    <td>Soporte Secundario Validador</td>
+                    <td>Validado localmente en Plasma 6.6.4 (compilación local recomendada).</td>
+                  </tr>
+                  <tr>
+                    <td>Otras Distros (Arch, openSUSE)</td>
+                    <td>Compatibilidad Comunitaria</td>
+                    <td>Funcionamiento reportado correcto por la comunidad compilando desde fuentes.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-end">
+          <span>Proyecto GPL-3.0-or-later de PunchiSoft</span>
+          <a class="button button-primary" href="https://github.com/PunchiSoft/punchi-dock-remastered" target="_blank" rel="noopener noreferrer">Ver repositorio oficial <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </article>
   </main>
@@ -153,6 +453,57 @@ chmod +x install-plasmoid.sh
     <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
   </footer>
   <script>
+    // =======================================================
+    // CONTROL DE PESTAÑAS ACCESIBLES
+    // Permite alternar secciones con soporte de teclado y ARIA.
+    // =======================================================
+    function openTab(evt, tabId) {
+      const panels = document.querySelectorAll('.punchi-tab-content');
+      panels.forEach(panel => panel.classList.remove('active'));
+
+      const buttons = document.querySelectorAll('.punchi-tab-button');
+      buttons.forEach(button => {
+        button.setAttribute('aria-selected', 'false');
+        button.setAttribute('tabindex', '-1');
+      });
+
+      const targetPanel = document.getElementById('panel-' + tabId);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      const currentTab = evt.currentTarget;
+      if (currentTab) {
+        currentTab.setAttribute('aria-selected', 'true');
+        currentTab.removeAttribute('tabindex');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const tablist = document.querySelector('.punchi-tabs');
+      if (tablist) {
+        const tabs = tablist.querySelectorAll('.punchi-tab-button');
+        tabs.forEach((tab, index) => {
+          tab.addEventListener('keydown', (e) => {
+            let targetIndex = null;
+            if (e.key === 'ArrowRight') {
+              targetIndex = (index + 1) % tabs.length;
+            } else if (e.key === 'ArrowLeft') {
+              targetIndex = (index - 1 + tabs.length) % tabs.length;
+            } else if (e.key === 'Home') {
+              targetIndex = 0;
+            } else if (e.key === 'End') {
+              targetIndex = tabs.length - 1;
+            }
+
+            if (targetIndex !== null) {
+              tabs[targetIndex].focus();
+              tabs[targetIndex].click();
+              e.preventDefault();
+            }
+          });
+        });
+      }
+    });
+
     // =======================================================
     // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
     // Control compartido por las páginas internas del sitio.

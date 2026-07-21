@@ -1,22 +1,42 @@
 [
   {
-    "id": "punchi-dock-plasmoid",
-    "title": "Punchi Dock 0.7.0: temas locales, popups pulidos y más control visual",
-    "summary": "Un dock ligero para KDE Plasma 6 que suma temas locales en SVG/PNG, popups más legibles, carpetas radial y abanico, notas rápidas, sonidos, animaciones y mejoras al resolver iconos.",
-    "featuredSummary": "Un dock ligero para Plasma 6 con temas locales, popups pulidos, notas rápidas, sonidos, animaciones y soporte opcional de ventanas.",
+    "id": "kwin-opengl-es-kde-plasma",
+    "title": "KWin apuesta por OpenGL ES y Plasma continúa refinando su experiencia de usuario",
+    "summary": "El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.",
+    "featuredSummary": "El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.",
     "category": "KDE Plasma",
-    "date": "2026-07-06",
+    "date": "2026-07-21",
+    "readingTime": "5 min de lectura",
+    "url": "kwin-opengl-es-kde-plasma.html",
+    "image": "../assets/images/kwin-opengl-es/cover.jpg",
+    "imageAlt": "Ilustración conceptual de KDE Plasma con pipelines gráficos de OpenGL ES",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/app.svg",
+      "label": "KDE Plasma · KWin",
+      "title": "OpenGL ES en KWin",
+      "detail": "KDE Plasma 6.8 · OpenGL ES · Animaciones · Seguridad"
+    }
+  },
+  {
+    "id": "punchi-dock-plasmoid",
+    "title": "Punchi Dock Remastered: lanzador y gestor de tareas nativo para KDE Plasma 6",
+    "summary": "Un dock de lanzadores nativo e interfaz de tareas personalizable y de alta fidelidad estética para KDE Plasma 6 y Wayland.",
+    "featuredSummary": "Un dock de lanzadores nativo e interfaz de tareas de alta fidelidad estética para KDE Plasma 6 y Wayland.",
+    "category": "KDE Plasma",
+    "date": "2026-07-21",
     "readingTime": "8 min de lectura",
     "url": "punchi-dock-plasmoid.html",
     "image": "../assets/images/punchi-dock-plasmoid/00.png",
-    "imageAlt": "Punchi Dock 0.7.0 funcionando en el escritorio KDE Plasma 6",
+    "imageAlt": "Punchi Dock Remastered funcionando en el escritorio KDE Plasma 6",
     "imageWidth": 1672,
     "imageHeight": 941,
     "featured": {
       "icon": "icons/app.svg",
       "label": "KDE Plasma · Dock",
-      "title": "Punchi Dock 0.7.0",
-      "detail": "Wayland · temas locales · popups · notas"
+      "title": "Punchi Dock Remastered",
+      "detail": "KDE Plasma 6 · Wayland · C++ / QML · MPRIS"
     }
   },
   {

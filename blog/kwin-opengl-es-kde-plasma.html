@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KWin simplifica su motor gráfico apostando por OpenGL ES. Analizamos esta y otras mejoras importantes de seguridad y rendimiento en las próximas versiones de KDE Plasma.">
+  <meta name="theme-color" content="#10141c">
+  <title>KWin en KDE Plasma apuesta por OpenGL ES — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <style>
+    /* Barra de Progreso de Lectura */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Los estilos y el layout del artículo se heredan directamente de estilos.css. No se requiere CSS personalizado adicional. */
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso superior -->
+  <div class="progress-bar-container" id="reading-progress" aria-hidden="true"></div>
+
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con Mundo Linux marcado como sección activa. -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- Metadatos editoriales, título y resumen de lectura.    -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-21">21 de julio de 2026</time><span>5 min de lectura</span></div>
+        <h1>KWin apuesta por OpenGL ES y Plasma continúa refinando su experiencia de usuario</h1>
+        <p class="lead">El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- IMAGEN PRINCIPAL                                      -->
+      <!-- Captura conceptual del desarrollo de KWin / OpenGL.   -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/kwin-opengl-es/cover.jpg" alt="Ilustración conceptual de KDE Plasma con pipelines gráficos de OpenGL ES" width="1200" height="675" loading="eager">
+        <figcaption>KDE Plasma continúa simplificando el motor de renderizado del escritorio para priorizar la estabilidad y Wayland.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CONTENIDO DEL ARTÍCULO                                -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <section id="introduccion">
+              <p class="article-intro">KDE continúa evolucionando Plasma con una serie de mejoras arquitectónicas profundas que afectan tanto al núcleo del compositor KWin como a la experiencia interactiva diaria del escritorio. En esta tanda de desarrollo, la simplificación del renderizado gráfico y el pulido de micro-animaciones toman un rol protagónico.</p>
+            </section>
+
+            <section id="kwin-simplificado">
+              <h2>KWin simplificado y OpenGL ES</h2>
+              <p>Uno de los cambios de mayor envergadura estructural consiste en el uso de <strong>OpenGL ES</strong> como única API gráfica interna por defecto para el compositor. Históricamente, KWin mantenía de forma paralela dos motores de renderizado independientes: uno basado en la especificación OpenGL de escritorio tradicional y otro optimizado para sistemas embebidos y móviles mediante OpenGL ES.</p>
+              <figure class="article-figure">
+                <img src="../assets/images/kwin-opengl-es/compositor.jpg" alt="Simulación del compositor gráfico de KWin renderizando ventanas" width="1200" height="675" loading="lazy">
+                <figcaption>KWin reduce el mantenimiento técnico al unificar sus componentes sobre un único backend gráfico.</figcaption>
+              </figure>
+
+              <p>Al unificar todo bajo OpenGL ES, el equipo de desarrollo de KDE reduce sustancialmente la deuda técnica. Esto permite que el compositor sea más liviano, tenga rutas de renderizado más directas y disminuya la probabilidad de errores visuales causados por diferencias entre drivers. Para el usuario, esto se traduce en una mejora marginal en el consumo de memoria de video y un rendimiento óptimo en arquitecturas portátiles y GPUs de bajo consumo.</p>
+
+              <blockquote>
+                <p>«KWin ya no necesita mantener dos rutas de renderizado independientes. Consolidar el compositor sobre OpenGL ES garantiza un comportamiento predecible bajo Wayland y un mantenimiento de código viable a largo plazo.»</p>
+              </blockquote>
+            </section>
+
+            <section id="animaciones-fluidas">
+              <h2>Animaciones más fluidas</h2>
+              <p>El refinamiento estético de Plasma no se detiene en los componentes de bajo nivel. KWin ha recibido ajustes en sus curvas de aceleración interactiva, ofreciendo transiciones más naturales y fluidas durante las notificaciones de sistema y la apertura de ventanas.</p>
+
+              <figure class="article-figure">
+                <img src="../assets/images/kwin-opengl-es/animations.jpg" alt="Gráficos vectoriales demostrando transiciones y curvas de animación fluidas" width="1200" height="675" loading="lazy">
+                <figcaption>Las nuevas curvas físicas de aceleración mejoran la sensación táctil y de respuesta del compositor.</figcaption>
+              </figure>
+
+              <p>Estas nuevas curvas calculan de manera física las velocidades de entrada y salida (easing function) reduciendo las transiciones bruscas. Esta fluidez responde a los principios de KDE sobre una interfaz que se sienta al mismo tiempo responsiva y elegante, adaptándose con delicadeza al hardware del usuario y respetando las configuraciones de accesibilidad si se solicita reducir el movimiento.</p>
+            </section>
+
+            <section id="seguridad-reforzada">
+              <h2>Seguridad reforzada y gestión de launchers</h2>
+              <p>Otro de los aspectos cubiertos en esta actualización es la ciberseguridad a nivel de sistema. El gestor de tareas de Plasma ahora implementa una validación más estricta para los accesos directos y archivos descriptivos de aplicaciones (<code>.desktop</code>).</p>
+              <aside class="article-note" aria-label="Nota técnica de seguridad">
+                <span>Seguridad reforzada</span>
+                <p>Las próximas actualizaciones bloquearán de manera proactiva la ejecución de binarios que intenten ocultarse tras iconos del sistema comunes, evitando ataques de suplantación y reforzando los privilegios de ejecución no autorizada en segundo plano.</p>
+              </aside>
+
+              <p>Esta medida preventiva neutraliza un vector común de vulnerabilidad, donde archivos descriptores locales modificados fraudulentamente podían ejecutar comandos en terminal imitando el icono de una aplicación inocua o del sistema.</p>
+            </section>
+
+            <section id="conclusiones">
+              <h2>Conclusiones</h2>
+              <p>Plasma sigue consolidándose como la alternativa predilecta para usuarios que buscan potencia, control estético y una plataforma robusta construida con criterios modernos. Con estas integraciones en KWin y la continua simplificación de APIs, el escritorio está mejor preparado que nunca para afrontar el estándar de Plasma 6 y superiores.</p>
+            </section>
+
+        <div class="article-end">
+          <span>Proyecto de divulgación de PunchiSoft</span>
+          <a class="button button-primary" href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">Seguir en GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+        <p>Industria, Linux, IA y software con propósito.</p>
+      </div>
+      <nav aria-label="Navegación del pie">
+        <a href="index.html">Mundo Linux</a>
+        <a href="../software/index.html">Proyectos</a>
+        <a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a>
+        <a href="../inventor-autocad/index.html">CAD &amp; Planos</a>
+        <a href="../acerca-de/index.html">Acerca de</a>
+        <a href="../legal/index.html">Legal</a>
+        <a href="../seguridad/index.html">Seguridad</a>
+        <a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year>2026</span> PunchiSoft</span>
+      <span>Hecho con curiosidad y código.</span>
+    </div>
+  </footer>
+
+  <script>
+    // =======================================================
+    // BARRA DE PROGRESO DE LECTURA
+    // =======================================================
+    const progressBar = document.getElementById("reading-progress");
+    window.addEventListener("scroll", () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = scrolled + "%";
+      }
+    });
+
+    // Lógica de tabla de contenidos removida.
+
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    // =======================================================
+    // AÑO DEL COPYRIGHT
+    // =======================================================
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
