@@ -1,5 +1,25 @@
 [
   {
+    "id": "gdt-maestranza-planos-industriales",
+    "title": "GD&T en maestranza: cuando medir no es suficiente",
+    "summary": "El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico en planos de fabricación.",
+    "featuredSummary": "El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico.",
+    "category": "CAD & Planos",
+    "date": "2026-07-21",
+    "readingTime": "8 min de lectura",
+    "url": "../inventor-autocad/gdt-maestranza-planos-industriales.html",
+    "image": "../assets/images/gdt-maestranza/cover.jpg",
+    "imageAlt": "Plano técnico con tolerancias geométricas GD&T",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/recursos.svg",
+      "label": "CAD & Planos · GD&T",
+      "title": "GD&T en maestranza",
+      "detail": "Planos técnicos · Tolerancias geométricas · Fabricación"
+    }
+  },
+  {
     "id": "kwin-opengl-es-kde-plasma",
     "title": "KWin apuesta por OpenGL ES y Plasma continúa refinando su experiencia de usuario",
     "summary": "El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.",

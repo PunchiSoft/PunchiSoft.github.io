@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dimensionamiento y tolerado geométrico (GD&T) en maestranza. Analizamos la importancia de la exactitud geométrica en planos de fabricación y cómo optimizar la inspección y el montaje.">
+  <meta name="theme-color" content="#10141c">
+  <title>GD&amp;T en maestranza: cuando medir no es suficiente — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <style>
+    /* Barra de Progreso de Lectura */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), #f5c66b);
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Estilos del Dibujo Técnico SVG (Tema Claro/Oscuro adaptado) */
+    .drawing-container {
+      margin: 36px 0;
+      padding: 28px;
+      border-radius: 16px;
+      background: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px),
+                  var(--surface);
+      background-size: 20px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .drawing-container svg {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .feature-control {
+      margin-top: 20px;
+      display: inline-grid;
+      grid-template-columns: repeat(5, auto);
+      border: 1px solid var(--border-light);
+      background: var(--bg);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .feature-control span {
+      min-width: 48px;
+      padding: 6px 12px;
+      display: grid;
+      place-items: center;
+      border-right: 1px solid var(--border-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      color: var(--text);
+    }
+
+    .feature-control span:last-child {
+      border-right: 0;
+    }
+
+    /* Grillas e Ilustraciones de Métricas */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .comparison-card {
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .comparison-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .comparison-card li {
+      margin: 8px 0;
+    }
+
+    .comparison-card-bad {
+      border-left: 4px solid var(--danger, #ff657a);
+    }
+
+    .comparison-card-good {
+      border-left: 4px solid var(--accent);
+    }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .metric-box {
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .metric-box strong {
+      display: block;
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .metric-box span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Símbolos */
+    .symbols-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .symbol-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .symbol-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-light);
+    }
+
+    .symbol-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      background: rgba(217, 164, 65, 0.1);
+      color: var(--accent);
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .symbol-info strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .symbol-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Datums Leyendas */
+    .legend-list {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .legend-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .legend-badge {
+      width: 36px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 800;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .legend-text {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* Flujo de Proceso */
+    .process-timeline {
+      display: grid;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-2);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      background: rgba(217, 164, 65, 0.1);
+      color: var(--accent);
+      font-weight: 800;
+      border-radius: 8px;
+    }
+
+    .step-content h3 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .step-content p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Tablas */
+    .table-container {
+      overflow-x: auto;
+      margin: 32px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .data-table th, .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th {
+      background: var(--surface-2);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .data-table td {
+      color: var(--muted);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Adaptabilidad */
+    @media (max-width: 768px) {
+      .comparison-grid, .metrics-row, .symbols-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso superior -->
+  <div class="progress-bar-container" id="reading-progress" aria-hidden="true"></div>
+
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Acceso global con CAD & Planos marcado como activo.    -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a href="../blog/index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a class="active" href="index.html" aria-current="page">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver a CAD &amp; Planos</a>
+        <div class="post-meta"><span class="tag">CAD &amp; Planos</span><time datetime="2026-07-21">21 de julio de 2026</time><span>8 min de lectura</span></div>
+        <h1>GD&amp;T en maestranza: cuando medir no es suficiente</h1>
+        <p class="lead">El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico en planos de fabricación.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- IMAGEN PRINCIPAL                                      -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/gdt-maestranza/cover.jpg" alt="Plano técnico de ingeniería y símbolos de tolerancias geométricas GD&T" width="1200" height="675" loading="eager">
+        <figcaption>GD&amp;T proporciona un lenguaje inequívoco para fabricar componentes mecánicos complejos.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CUERPO DEL ARTÍCULO                                    -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <section id="problema">
+          <h2>Una pieza puede medir bien y aun así no funcionar</h2>
+          <p class="article-intro">En una maestranza es habitual recibir un plano aparentemente completo: diámetros, largos, espesores y perforaciones. El operador fabrica la pieza dentro de las tolerancias lineales indicadas, pero durante el montaje final los pernos no coinciden, el eje queda desalineado o el conjunto completo requiere retrabajo adicional.</p>
+
+          <aside class="article-note" aria-label="Aviso sobre el diseño tradicional">
+            <span>El problema no siempre es el mecanizado</span>
+            <p>Muchas veces el plano define correctamente el tamaño de las características (diámetros y longitudes), pero no controla adecuadamente la forma, la orientación ni la ubicación relativa de sus elementos funcionales.</p>
+          </aside>
+
+          <div class="comparison-grid">
+            <div class="comparison-card comparison-card-bad">
+              <h3>Plano tradicional basado en cotas ±</h3>
+              <ul>
+                <li>Permite interpretaciones ambiguas por el taller.</li>
+                <li>Acumula tolerancias a lo largo de la cadena.</li>
+                <li>No define claramente cómo debe apoyarse la pieza al inspeccionar.</li>
+                <li>Puede encarecer el mecanizado de zonas no críticas.</li>
+              </ul>
+            </div>
+
+            <div class="comparison-card comparison-card-good">
+              <h3>Plano diseñado con GD&amp;T</h3>
+              <ul>
+                <li>Establece referencias de montaje (datums) claras.</li>
+                <li>Controla directamente la función de la pieza.</li>
+                <li>Define tolerancias cilíndricas que optimizan la fabricación.</li>
+                <li>Reduce la necesidad de retrabajos e improvisación.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="que-es">
+          <h2>Qué es realmente GD&amp;T</h2>
+          <p>El <strong>Dimensionamiento y Tolerado Geométrico</strong> (GD&amp;T por sus siglas en inglés, normado por ASME Y14.5 o ISO 1101) es un lenguaje técnico y matemático utilizado en el diseño industrial para expresar de manera exacta cuánto puede desviarse una pieza respecto de su geometría ideal sin perder su capacidad de funcionamiento.</p>
+
+          <p>No reemplaza las dimensiones lineales tradicionales. Las complementa delimitando zonas de tolerancia virtuales que controlan la forma, la orientación, la localización y el perfil de cada elemento en tres dimensiones.</p>
+
+          <blockquote>
+            <p>«Un plano de fabricación no debe obligar al tornero, al soldador o al inspector de calidad a interpretar o adivinar la intención de quien diseñó la pieza.»</p>
+          </blockquote>
+
+          <div class="metrics-row">
+            <div class="metric-box">
+              <strong>1</strong>
+              <span>Criterio de interpretación unificado</span>
+            </div>
+            <div class="metric-box">
+              <strong>3</strong>
+              <span>Datums de referencia: A, B y C</span>
+            </div>
+            <div class="metric-box">
+              <strong>0%</strong>
+              <span>De ambigüedad durante la inspección</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="soporte-mecanico">
+          <h2>Ejemplo práctico de control geométrico</h2>
+          <p>A continuación se muestra el esquema técnico de un soporte mecanizado que utiliza referencias de orientación y localización. Al definir marcos de control de posición, el taller sabe con precisión dónde perforar en relación a la base de apoyo.</p>
+
+          <div class="drawing-container">
+            <svg viewBox="0 0 560 340" role="img" aria-labelledby="drawing-title drawing-desc">
+              <title id="drawing-title">Soporte mecanizado con referencias geométricas</title>
+              <desc id="drawing-desc">Pieza rectangular con agujero central, dos perforaciones y referencias datum A, B y C.</desc>
+
+              <!-- Pieza -->
+              <rect x="90" y="85" width="365" height="175" rx="8" fill="none" stroke="var(--text)" stroke-width="3" />
+              <circle cx="272" cy="172" r="48" fill="none" stroke="var(--text)" stroke-width="3" />
+              <circle cx="145" cy="118" r="16" fill="none" stroke="var(--text)" stroke-width="3" />
+              <circle cx="400" cy="118" r="16" fill="none" stroke="var(--text)" stroke-width="3" />
+
+              <!-- Cota Lineal -->
+              <line x1="90" y1="286" x2="455" y2="286" stroke="var(--accent)" stroke-width="2" />
+              <line x1="90" y1="278" x2="90" y2="294" stroke="var(--accent)" stroke-width="2" />
+              <line x1="455" y1="278" x2="455" y2="294" stroke="var(--accent)" stroke-width="2" />
+              <text x="235" y="312" fill="var(--accent)" font-size="18" font-weight="700">180 ±0,20</text>
+
+              <!-- Anotación Diámetro -->
+              <line x1="272" y1="38" x2="272" y2="120" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 6" />
+              <text x="286" y="55" fill="var(--muted)" font-size="16" font-family="ui-monospace, monospace">Ø40 H7</text>
+
+              <!-- Datum A -->
+              <polygon points="78,262 64,282 92,282" fill="var(--text)" />
+              <rect x="48" y="282" width="60" height="36" fill="var(--text)" />
+              <text x="68" y="308" fill="var(--bg)" font-size="20" font-weight="800">A</text>
+
+              <!-- Datum B -->
+              <polygon points="455,160 480,174 455,188" fill="var(--text)" />
+              <rect x="480" y="156" width="52" height="36" fill="var(--text)" />
+              <text x="498" y="182" fill="var(--bg)" font-size="20" font-weight="800">B</text>
+
+              <!-- Datum C -->
+              <polygon points="90,85 65,70 90,55" fill="var(--text)" />
+              <rect x="13" y="52" width="52" height="36" fill="var(--text)" />
+              <text x="31" y="78" fill="var(--bg)" font-size="20" font-weight="800">C</text>
+            </svg>
+
+            <div class="feature-control">
+              <span>⌖</span>
+              <span>⌀0,20</span>
+              <span>A</span>
+              <span>B</span>
+              <span>C</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="datums">
+          <h2>Los datums: la base del plano funcional</h2>
+          <p>Un <strong>datum</strong> es una referencia teórica perfecta (un plano, un eje, o un punto) construida a partir de una superficie real de la pieza. Equivale a definir la "base de apoyo" desde la cual se mide todo el conjunto. El sistema de referencias (primario, secundario y terciario) restringe los seis grados de libertad de movimiento en el espacio tridimensional.</p>
+
+          <div class="drawing-container">
+            <svg viewBox="0 0 640 330" role="img" aria-labelledby="datum-title datum-desc">
+              <title id="datum-title">Sistema de referencias datum en una pieza</title>
+              <desc id="datum-desc">Representación tridimensional de los Datums A, B y C en una placa.</desc>
+
+              <!-- Pieza 3D conceptual -->
+              <polygon points="110,240 475,240 540,190 175,190" fill="var(--surface-2)" stroke="var(--text)" stroke-width="2" />
+              <polygon points="175,95 540,95 540,190 175,190" fill="var(--surface)" stroke="var(--text)" stroke-width="2" />
+              <polygon points="110,145 175,95 175,190 110,240" fill="var(--border)" stroke="var(--text)" stroke-width="2" />
+              <circle cx="270" cy="145" r="22" fill="none" stroke="var(--accent)" stroke-width="3" />
+              <circle cx="430" cy="145" r="22" fill="none" stroke="var(--accent)" stroke-width="3" />
+
+              <!-- Indicadores Datum -->
+              <line x1="250" y1="252" x2="250" y2="295" stroke="var(--text)" stroke-width="2"/>
+              <polygon points="238,252 262,252 250,235" fill="var(--text)"/>
+              <rect x="222" y="294" width="56" height="34" fill="var(--text)"/>
+              <text x="240" y="318" fill="var(--bg)" font-size="20" font-weight="800">A</text>
+
+              <line x1="552" y1="145" x2="590" y2="145" stroke="var(--text)" stroke-width="2"/>
+              <polygon points="552,133 552,157 535,145" fill="var(--text)"/>
+              <rect x="590" y="128" width="50" height="34" fill="var(--text)"/>
+              <text x="605" y="152" fill="var(--bg)" font-size="20" font-weight="800">B</text>
+
+              <line x1="98" y1="184" x2="58" y2="184" stroke="var(--text)" stroke-width="2"/>
+              <polygon points="98,172 98,196 115,184" fill="var(--text)"/>
+              <rect x="8" y="167" width="50" height="34" fill="var(--text)"/>
+              <text x="23" y="191" fill="var(--bg)" font-size="20" font-weight="800">C</text>
+            </svg>
+
+            <div class="legend-list">
+              <div class="legend-item">
+                <span class="legend-badge">A</span>
+                <span class="legend-text"><strong>Datum primario:</strong> Superficie de apoyo principal para asegurar estabilidad.</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-badge">B</span>
+                <span class="legend-text"><strong>Datum secundario:</strong> Orientación angular respecto al datum primario.</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-badge">C</span>
+                <span class="legend-text"><strong>Datum terciario:</strong> Posicionamiento final y parada lateral.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="simbolos">
+          <h2>Símbolos especialmente útiles en maestranza</h2>
+          <p>No todos los planos requieren todas las tolerancias geométricas. Los más comunes e influyentes en componentes de maestranza (ejes, alojamientos de rodamientos, bridas y bases de soporte) son:</p>
+
+          <div class="symbols-grid">
+            <div class="symbol-item">
+              <span class="symbol-icon">▱</span>
+              <div class="symbol-info">
+                <strong>Planitud (Flatness)</strong>
+                <p>Asegura que una cara de apoyo o brida de sellado no tenga alabeo o curvatura excesiva.</p>
+              </div>
+            </div>
+
+            <div class="symbol-item">
+              <span class="symbol-icon">⊥</span>
+              <div class="symbol-info">
+                <strong>Perpendicularidad</strong>
+                <p>Controla que caras mecanizadas o agujeros mantengan un ángulo exacto de 90° respecto a una base.</p>
+              </div>
+            </div>
+
+            <div class="symbol-item">
+              <span class="symbol-icon">∥</span>
+              <div class="symbol-info">
+                <strong>Paralelismo</strong>
+                <p>Asegura que las caras superior e inferior de una placa mecanizada no presenten conicidad.</p>
+              </div>
+            </div>
+
+            <div class="symbol-item">
+              <span class="symbol-icon">⌖</span>
+              <div class="symbol-info">
+                <strong>Posición (Position)</strong>
+                <p>Controla la ubicación espacial del eje de perforaciones evitando desajustes en el pernerío.</p>
+              </div>
+            </div>
+
+            <div class="symbol-item">
+              <span class="symbol-icon">○</span>
+              <div class="symbol-info">
+                <strong>Circularidad (Roundness)</strong>
+                <p>Define la exactitud radial de secciones circulares en ejes o alojamientos de rodamientos.</p>
+              </div>
+            </div>
+
+            <div class="symbol-item">
+              <span class="symbol-icon">⌒</span>
+              <div class="symbol-info">
+                <strong>Perfil de Superficie</strong>
+                <p>Establece la zona tridimensional de tolerancia para contornos curvos o soldaduras complejas.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="flujo">
+          <h2>Cómo mejora el flujo de trabajo en taller</h2>
+          <p>GD&amp;T tiene sentido cuando se piensa desde el modelado en Inventor o AutoCAD y se traslada inteligentemente a los procesos físicos de fabricación:</p>
+
+          <div class="process-timeline">
+            <div class="process-step">
+              <span class="step-number">01</span>
+              <div class="step-content">
+                <h3>Diseño y Modelado Funcional</h3>
+                <p>El diseñador identifica en el ensamble 3D qué caras participan activamente del apoyo y la alineación.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <span class="step-number">02</span>
+              <div class="step-content">
+                <h3>Planificación del Mecanizado</h3>
+                <p>El operador del taller define apoyos, prensa y secuencias basándose en las referencias (datums) indicadas.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <span class="step-number">03</span>
+              <div class="step-content">
+                <h3>Control de Calidad Consistente</h3>
+                <p>El inspector utiliza calibres o máquinas CMM reproduciendo fielmente el mismo sistema datum A-B-C del plano.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <span class="step-number">04</span>
+              <div class="step-content">
+                <h3>Montaje e Intercambiabilidad</h3>
+                <p>Los subconjuntos encajan sin ajustes improvisados en terreno, reduciendo drásticamente los tiempos muertos.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="economia">
+          <h2>El impacto económico en la fabricación</h2>
+          <p>Una tolerancia lineal extremadamente estricta (por ejemplo ±0,02 mm) puede encarecer radicalmente el mecanizado sin aportar valor. GD&amp;T, gracias a conceptos como el <strong>Principio de Máxima Condición de Material (MMC)</strong>, permite ampliar la tolerancia permitida si la pieza real se desvía del tamaño máximo, flexibilizando la producción sin comprometer la función.</p>
+
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Enfoque habitual</th>
+                  <th>Consecuencia en taller</th>
+                  <th>Impacto económico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Datums ausentes en planos</td>
+                  <td>El maquinista mide de un extremo; metrología de otro.</td>
+                  <td>Rechazos por falta de consenso e interpretaciones.</td>
+                </tr>
+                <tr>
+                  <td>Tolerancia global ±0.05</td>
+                  <td>Zonas libres de montaje forzadas a rectificados precisos.</td>
+                  <td>Aumento innecesario de costos y tiempos de entrega.</td>
+                </tr>
+                <tr>
+                  <td>Posición lineal en coordenadas</td>
+                  <td>Zonas de tolerancia cuadradas que penalizan las esquinas.</td>
+                  <td>Montajes forzados de pernos en terreno.</td>
+                </tr>
+                <tr>
+                  <td>GD&amp;T Funcional (MMC)</td>
+                  <td>Zonas de tolerancia cilíndricas y bonificación de medida.</td>
+                  <td>Optimización del tiempo de máquina y ensamble directo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="conclusion">
+          <div class="final-banner">
+            <h2>GD&amp;T convierte el plano en una instrucción de taller indiscutible</h2>
+            <p>Para una maestranza moderna o un departamento técnico CAD, aplicar tolerancias geométricas no consiste en llenar el plano de símbolos complejos. Se trata de asegurar la intercambiabilidad, controlar estrictamente las caras de acoplamiento clave y lograr componentes precisos desde el primer mecanizado.</p>
+          </div>
+        </section>
+
+        <div class="article-end">
+          <span>Área técnica de CAD &amp; Planos — PunchiSoft</span>
+          <a class="button button-primary" href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">Seguir en GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+        <p>Industria, Linux, IA y software con propósito.</p>
+      </div>
+      <nav aria-label="Navegación del pie">
+        <a href="../blog/index.html">Mundo Linux</a>
+        <a href="../software/index.html">Proyectos</a>
+        <a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a>
+        <a href="index.html" aria-current="page">CAD &amp; Planos</a>
+        <a href="../acerca-de/index.html">Acerca de</a>
+        <a href="../legal/index.html">Legal</a>
+        <a href="../seguridad/index.html">Seguridad</a>
+        <a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year>2026</span> PunchiSoft</span>
+      <span>Hecho con curiosidad y código.</span>
+    </div>
+  </footer>
+
+  <script>
+    // =======================================================
+    // BARRA DE PROGRESO DE LECTURA
+    // =======================================================
+    const progressBar = document.getElementById("reading-progress");
+    window.addEventListener("scroll", () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = scrolled + "%";
+      }
+    });
+
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    // =======================================================
+    // AÑO DEL COPYRIGHT
+    // =======================================================
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
