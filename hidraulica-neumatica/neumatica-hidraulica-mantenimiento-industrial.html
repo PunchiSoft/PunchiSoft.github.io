@@ -91,6 +91,17 @@
       background: var(--surface);
     }
 
+    .system-card-image {
+      margin: 0 0 16px 0;
+    }
+
+    .system-card-image img {
+      border-radius: 8px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .system-card-pneumatic {
       border-top: 4px solid #69b7ff;
     }
@@ -454,6 +465,9 @@
 
           <div class="systems-comparison">
             <div class="system-card system-card-pneumatic">
+              <figure class="system-card-image">
+                <img src="../assets/images/neumatica-hidraulica/neumatica.webp" alt="Componentes de un sistema neumático en planta" width="600" height="400" loading="lazy">
+              </figure>
               <h3><span>⌁</span>Sistema Neumático</h3>
               <ul>
                 <li><strong>Compresibilidad:</strong> El aire se comprime. Absorbe golpes pero dificulta paradas intermedias rígidas bajo cargas fluctuantes.</li>
@@ -464,6 +478,9 @@
             </div>
 
             <div class="system-card system-card-hydraulic">
+              <figure class="system-card-image">
+                <img src="../assets/images/neumatica-hidraulica/hidraulica.jpg" alt="Componentes de un sistema hidráulico en taller" width="600" height="400" loading="lazy">
+              </figure>
               <h3><span>⌬</span>Sistema Hidráulico</h3>
               <ul>
                 <li><strong>Incompresibilidad:</strong> Aceite rígido. Permite detenciones exactas y sostiene cargas suspendidas pesadas sin ceder.</li>
