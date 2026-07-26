@@ -216,7 +216,7 @@
       <!-- ===================================================== -->
       <header class="article-header container-narrow">
         <a class="back-link" href="index.html">← Volver al blog</a>
-        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-21">21 de julio de 2026</time><span>8 min de lectura</span></div>
+        <div class="post-meta"><span class="tag">KDE Plasma</span><time datetime="2026-07-26">26 de julio de 2026</time><span>8 min de lectura</span></div>
         <h1>Punchi Dock Remastered: lanzador y gestor de tareas nativo para KDE Plasma 6</h1>
         <p class="lead">Un dock de lanzadores nativo e interfaz de tareas personalizable y de alta fidelidad estética para KDE Plasma 6 y Wayland.</p>
       </header>
@@ -254,7 +254,7 @@
           </button>
           <button class="punchi-tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-novedades" id="tab-novedades" tabindex="-1" onclick="openTab(event, 'novedades')">
             <svg class="punchi-icon-svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-            Novedades v0.8.9
+            Novedades v0.9.2
           </button>
           <button class="punchi-tab-button" type="button" role="tab" aria-selected="false" aria-controls="panel-instalacion" id="tab-instalacion" tabindex="-1" onclick="openTab(event, 'instalacion')">
             <svg class="punchi-icon-svg" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
@@ -329,23 +329,23 @@
           </div>
         </div>
 
-        <!-- Contenido 3: Novedades v0.8.9 -->
+        <!-- Contenido 3: Novedades v0.9.2 -->
         <div id="panel-novedades" class="punchi-tab-content" role="tabpanel" aria-labelledby="tab-novedades" tabindex="0">
           <div class="punchi-card">
-            <h2>Novedades de la Versión 0.8.9</h2>
-            <p>La v0.8.9 refina la experiencia de integración nativa, agregando un mayor control sobre el panel y nuevas capacidades interactivas.</p>
+            <h2>Novedades de la Versión 0.9.2</h2>
+            <p>La v0.9.2 incorpora soporte nativo para paneles verticales y laterales de Plasma 6, adaptando la distribución, indicadores y despliegue de popups al eje vertical.</p>
 
-            <h3>Reserva Flexible en el Panel Horizontal</h3>
-            <p>El dock ahora puede configurarse para rellenar de forma inteligente el espacio libre restante en paneles horizontales. Esto alinea las tareas dinámicas inmediatamente después de los elementos fijados y distribuye el espacio óptimamente.</p>
+            <h3>Paneles Laterales y Verticales Nativos</h3>
+            <p>La composición del dock cambia de forma fluida entre orientación en fila o columna según el panel en el que se ubique, conservando el espacio, los separadores y la animación interactiva de la ola.</p>
 
-            <h3>Control Multimedia MPRIS en Hover</h3>
-            <p>Ahora puedes configurar el plasmoide para mostrar tarjetas de reproducción multimedia completas al pasar el puntero sobre aplicaciones multimedia (como Spotify, VLC, Audacious, etc.). Incluye carátula de álbum, controles de transporte, control de volumen y navegación por teclado rápida.</p>
+            <h3>Popups Orientados al Interior</h3>
+            <p>Menús desplegables, contenido de carpetas, vistas previas de ventanas y tarjetas multimedia se orientan y abren de forma inteligente hacia la zona útil de la pantalla sin importar el borde del escritorio.</p>
 
-            <h3>Reacciones de Minimización de KWin</h3>
-            <p>Punchi Dock publica activamente la geometría de sus iconos en la API de KDE, permitiendo que la animación clásica de minimización del gestor de ventanas KWin apunte exactamente al icono del lanzador, grupo de tareas o menú de desbordamiento correspondiente.</p>
+            <h3>Controles Multimedia Accesibles</h3>
+            <p>Las tarjetas de reproducción MPRIS integran una acción dedicada para silenciar o restaurar el volumen con un solo clic, completamente accesible mediante navegación por teclado.</p>
 
-            <h3>Localización Novedosa en Español</h3>
-            <p>Esta actualización incorpora el primer catálogo de traducción completo al español compilado de forma nativa e integrada en el paquete de distribución <code>.plasmoid</code>, adaptándose al idioma local del sistema de manera automática.</p>
+            <h3>Compatibilidad Extendida</h3>
+            <p>Optimizado para KDE Plasma 6 y Wayland en Fedora 44+, con flujos de compilación y empaquetado nativos probados en Debian 13 (Trixie) y Kubuntu 26.04+.</p>
           </div>
         </div>
 
@@ -364,10 +364,10 @@
             </aside>
 
             <p><strong>Comando para instalar por primera vez:</strong></p>
-            <pre class="code-block"><code>kpackagetool6 --type Plasma/Applet --install ./punchi-dock-remastered-0.8.9-fedora44-x86_64.plasmoid</code></pre>
+            <pre class="code-block"><code>kpackagetool6 --type Plasma/Applet --install ./punchi-dock-remastered-0.9.2-fedora44-x86_64.plasmoid</code></pre>
 
             <p><strong>Comando para actualizar una versión existente:</strong></p>
-            <pre class="code-block"><code>kpackagetool6 --type Plasma/Applet --upgrade ./punchi-dock-remastered-0.8.9-fedora44-x86_64.plasmoid</code></pre>
+            <pre class="code-block"><code>kpackagetool6 --type Plasma/Applet --upgrade ./punchi-dock-remastered-0.9.2-fedora44-x86_64.plasmoid</code></pre>
 
             <p><em>Nota: Recuerda reiniciar la shell de Plasma después de instalar o actualizar para aplicar los cambios ejecutando <code>systemctl --user restart plasma-plasmashell.service</code> o cerrando sesión.</em></p>
           </div>

@@ -65,7 +65,7 @@
     "summary": "Un dock de lanzadores nativo e interfaz de tareas personalizable y de alta fidelidad estética para KDE Plasma 6 y Wayland.",
     "featuredSummary": "Un dock de lanzadores nativo e interfaz de tareas de alta fidelidad estética para KDE Plasma 6 y Wayland.",
     "category": "KDE Plasma",
-    "date": "2026-07-21",
+    "date": "2026-07-26",
     "readingTime": "8 min de lectura",
     "url": "punchi-dock-plasmoid.html",
     "image": "../assets/images/punchi-dock-plasmoid/00.png",
@@ -76,7 +76,7 @@
       "icon": "icons/app.svg",
       "label": "KDE Plasma · Dock",
       "title": "Punchi Dock Remastered",
-      "detail": "KDE Plasma 6 · Wayland · C++ / QML · MPRIS"
+      "detail": "KDE Plasma 6 · Wayland · v0.9.2 · Paneles verticales"
     }
   },
   {
