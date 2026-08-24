@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diagnóstico reproducible paso a paso de fallos de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, GPU NVIDIA y métodos ACPI de bajo consumo.">
+  <meta name="theme-color" content="#10141c">
+  <title>Cuando el portátil se duerme y no vuelve: diagnóstico de suspensión en Lenovo LOQ y Fedora — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <style>
+    /* Barra de progreso de lectura */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Fichas de especificaciones de hardware */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 32px 0;
+    }
+    .spec-item {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm, 10px);
+      background: var(--surface);
+    }
+    .spec-item span {
+      display: block;
+      color: var(--muted);
+      font: 700 0.72rem ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .spec-item strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    /* Avisos y Callouts de advertencia / peligro */
+    .callout {
+      margin: 28px 0;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent-2);
+      border-radius: var(--radius-sm, 10px);
+      background: var(--surface);
+      line-height: 1.65;
+    }
+    .callout.warning {
+      border-left-color: #ffc857;
+    }
+    .callout.danger {
+      border-left-color: #ff7675;
+    }
+    .callout strong {
+      color: var(--text);
+    }
+
+    /* Contenedor de código con botón de copiado */
+    .code-container {
+      position: relative;
+      margin: 20px 0 28px;
+    }
+    .code-container .code-block {
+      margin: 0;
+      padding-top: 36px;
+    }
+    .btn-copy {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font: 600 0.74rem ui-monospace, monospace;
+      cursor: pointer;
+      transition: all var(--transition-fast, 150ms ease);
+    }
+    .btn-copy:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.12);
+    }
+    :root[data-theme="light"] .btn-copy {
+      background: rgba(0, 0, 0, 0.06);
+    }
+    :root[data-theme="light"] .btn-copy:hover {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    /* Pasos estructurados */
+    .step-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .step-badge {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--accent);
+      font: 700 0.95rem ui-monospace, monospace;
+      background: var(--surface);
+    }
+
+    /* Tabla de pruebas comparativas */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 24px 0 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm, 10px);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+    .data-table th, .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .data-table th {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 700;
+    }
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font: 700 0.76rem ui-monospace, monospace;
+    }
+    .status-ok {
+      background: rgba(98, 230, 167, 0.15);
+      color: #62e6a7;
+      border: 1px solid rgba(98, 230, 167, 0.35);
+    }
+    .status-fail {
+      background: rgba(255, 118, 117, 0.15);
+      color: #ff7675;
+      border: 1px solid rgba(255, 118, 117, 0.35);
+    }
+
+    /* Tarjeta de Veredicto Final */
+    .verdict-box {
+      margin: 36px 0;
+      padding: 28px 30px;
+      border: 1px solid rgba(98, 230, 167, 0.35);
+      border-radius: var(--radius-md, 14px);
+      background: linear-gradient(135deg, rgba(98, 230, 167, 0.08), rgba(116, 185, 255, 0.05));
+    }
+    .verdict-box .eyebrow {
+      color: var(--accent);
+      font: 700 0.75rem ui-monospace, monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .verdict-box h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .step-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso superior -->
+  <div class="progress-bar-container" id="reading-progress" aria-hidden="true"></div>
+
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DEL ARTÍCULO                                 -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">Fedora</span><time datetime="2026-08-23">23 de agosto de 2026</time><span>7 min de lectura</span></div>
+        <h1>Cuando el portátil se duerme y no vuelve</h1>
+        <p class="lead">Diagnóstico paso a paso de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, NVIDIA y un firmware que falla al entrar en estados de bajo consumo.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- PORTADA DEL ARTÍCULO (HERO)                           -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/diagnostico-suspension-lenovo-loq/cover.svg" alt="Diagrama conceptual de diagnóstico ACPI y estados de suspensión en Linux" width="1200" height="675" loading="eager">
+        <figcaption>Aislamiento de etapas de suspensión y estados de energía ACPI en Linux mediante pruebas controladas de software y firmware.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CONTENIDO DEL ARTÍCULO                                -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <!-- Ficha técnica del equipo probado -->
+        <div class="specs-grid" aria-label="Especificaciones del entorno de prueba">
+          <div class="spec-item"><span>Dispositivo</span><strong>Lenovo LOQ 15ARP9 (83JC)</strong></div>
+          <div class="spec-item"><span>Sistema</span><strong>Fedora 44 · Kernel 7.1.8</strong></div>
+          <div class="spec-item"><span>GPU Dedicada</span><strong>NVIDIA RTX 3050 (6 GB)</strong></div>
+          <div class="spec-item"><span>BIOS / Firmware</span><strong>PQCN27WW</strong></div>
+        </div>
+
+        <section id="problema">
+          <h2>1. El problema</h2>
+          <p class="article-intro">Al suspender el equipo, la pantalla se apagaba pero era imposible reanudarlo: teclado, touchpad y botón de encendido dejaban de responder. La única salida era forzar el apagado manteniendo presionado el botón de encendido y reiniciar desde cero. El síntoma se reproducía exactamente igual en Fedora y en Debian.</p>
+
+          <div class="callout warning">
+            <strong>Advertencia técnica:</strong> Las pruebas de gestión de energía con cuelgues de hardware obligan a apagar el equipo bruscamente. Guarda siempre el trabajo antes de cada prueba y no repitas de forma innecesaria experimentos que ya hayan fallado.
+          </div>
+        </section>
+
+        <section id="inventario">
+          <h2>2. Inventario inicial de energía y drivers</h2>
+          <p>La investigación comenzó recopilando información del sistema sin aplicar modificaciones previas. Estos comandos determinan el tipo de suspensión que la BIOS ofrece al kernel y el estado del controlador NVIDIA:</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar comandos">Copiar</button>
+            <pre class="code-block"><code>cat /sys/power/mem_sleep
+sudo dmidecode -s bios-version
+nvidia-smi
+cat /proc/driver/nvidia/params | grep -i S0ix</code></pre>
+          </div>
+
+          <p>En este portátil, <code>/sys/power/mem_sleep</code> devolvió únicamente <code>[s2idle]</code>. No existe soporte de suspensión tradicional S3 (<code>deep</code>), por lo que forzar parámetros de kernel como <code>mem_sleep_default=deep</code> no constituye una solución válida.</p>
+
+          <p>El controlador NVIDIA estaba correctamente cargado y la GPU anunciaba soporte para autorrefresco de memoria de video (VRAM):</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar comando">Copiar</button>
+            <pre class="code-block"><code>grep -H 'Video Memory Self Refresh' /proc/driver/nvidia/gpus/*/power
+# Resultado:
+# Video Memory Self Refresh: Supported</code></pre>
+          </div>
+
+          <p>Sin embargo, la gestión de S0ix en el driver propietario venía desactivada por defecto:</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar comando">Copiar</button>
+            <pre class="code-block"><code>grep -E 'EnableS0ixPowerManagement|UseKernelSuspendNotifiers|PreserveVideoMemoryAllocations' \
+  /proc/driver/nvidia/params
+
+# EnableS0ixPowerManagement: 0</code></pre>
+          </div>
+
+          <p>Al revisar el registro de sistema (<code>journalctl -b -1</code>) tras un cuelgue, la traza terminaba abruptamente en <code>PM: suspend entry (s2idle)</code>, sin registrar ninguna línea de retorno o reanudación.</p>
+        </section>
+
+        <section id="prueba-s0ix">
+          <h2>3. Prueba controlada de S0ix en NVIDIA</h2>
+          <p>Dado que tanto la plataforma como la GPU declaraban soporte teórico, se probó habilitar el parámetro recomendado por la documentación de NVIDIA. El cambio se implementó de forma aislada y completamente reversible:</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar configuración">Copiar</button>
+            <pre class="code-block"><code>printf '%s\n' 'options nvidia NVreg_EnableS0ixPowerManagement=1' \
+  | sudo tee /etc/modprobe.d/nvidia-s0ix.conf
+sudo dracut --force
+systemctl reboot</code></pre>
+          </div>
+
+          <p>Tras reiniciar, se comprobó que el parámetro estuviera activo:</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar verificación">Copiar</button>
+            <pre class="code-block"><code>grep EnableS0ixPowerManagement /proc/driver/nvidia/params
+# EnableS0ixPowerManagement: 1</code></pre>
+          </div>
+
+          <div class="callout danger">
+            <strong>Resultado:</strong> El portátil volvió a bloquearse por completo al intentar suspender. Aunque S0ix estaba activo en el driver, la plataforma continuó sin reanudar.
+          </div>
+
+          <h3>Reversión del experimento</h3>
+          <p>Para no arrastrar configuraciones no concluyentes, se retiró el archivo de inmediato:</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar reversión">Copiar</button>
+            <pre class="code-block"><code>sudo rm /etc/modprobe.d/nvidia-s0ix.conf
+sudo dracut --force
+systemctl reboot</code></pre>
+          </div>
+        </section>
+
+        <section id="pm-test">
+          <h2>4. Aislamiento de fases con pm_test</h2>
+          <p>La interfaz <code>/sys/power/pm_test</code> del kernel Linux permite simular etapas específicas del ciclo de energía y forzar un retorno automático tras aproximadamente cinco segundos. Esto permite discernir si la falla ocurre en los procesos de usuario, en los drivers de dispositivos o en el firmware ACPI.</p>
+
+          <div class="step-item">
+            <div class="step-badge" aria-hidden="true">A</div>
+            <div>
+              <h3>Prueba de dispositivos (<code>devices</code>)</h3>
+              <div class="code-container">
+                <button class="btn-copy" type="button" aria-label="Copiar prueba devices">Copiar</button>
+                <pre class="code-block"><code>echo devices | sudo tee /sys/power/pm_test
+systemctl suspend
+echo none | sudo tee /sys/power/pm_test</code></pre>
+              </div>
+              <p><strong>Resultado: <span class="status-badge status-ok">Reanudación Exitosa</span></strong>. Los procesos y periféricos entraron en pausa y el equipo reanudó sin problemas. Aunque el registro mostró una advertencia menor del módulo Bluetooth, el equipo volvió al escritorio con normalidad, demostrando que los periféricos no eran los causantes del bloqueo.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-badge" aria-hidden="true">B</div>
+            <div>
+              <h3>Prueba de plataforma (<code>platform</code>)</h3>
+              <div class="code-container">
+                <button class="btn-copy" type="button" aria-label="Copiar prueba platform">Copiar</button>
+                <pre class="code-block"><code>echo platform | sudo tee /sys/power/pm_test
+systemctl suspend</code></pre>
+              </div>
+              <p><strong>Resultado: <span class="status-badge status-fail">Bloqueo Total</span></strong>. Al invocar los métodos de bajo nivel del firmware, el equipo quedó congelado y demandó apagado forzado. Al arrancar de nuevo, <code>pm_test</code> volvió automáticamente a su valor seguro <code>none</code>.</p>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Modo pm_test</th>
+                  <th scope="col">Alcance de la prueba</th>
+                  <th scope="col">Resultado en Lenovo LOQ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>devices</code></td>
+                  <td>Congelación de procesos y suspensión de drivers/dispositivos</td>
+                  <td><span class="status-badge status-ok">Reanudó correctamente</span></td>
+                </tr>
+                <tr>
+                  <td><code>platform</code></td>
+                  <td>Llamadas globales de control ACPI y estados de bajo consumo del firmware</td>
+                  <td><span class="status-badge status-fail">Bloqueo de hardware</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Esta diferenciación localizó el problema directamente en la interacción entre la BIOS/ACPI y el hardware. Adicionalmente, el log de kernel revelaba advertencias ACPI vinculadas a la GPU dedicada (por ejemplo, llamadas a símbolos no resueltos en <code>PEGP.GPS</code>).</p>
+        </section>
+
+        <section id="hibernacion">
+          <h2>5. Prueba de hibernación: guardado correcto, apagado incompleto</h2>
+          <p>Como alternativa para preservar el estado de trabajo se configuró hibernación mediante un archivo swap de 20 GB dentro de la partición ext4 de Fedora, sin alterar particiones ni tocar las instalaciones de Windows o Debian.</p>
+
+          <aside class="article-note">
+            <span>Advertencia sobre parámetros</span>
+            <p>Los identificadores UUID y los desplazamientos <code>resume_offset</code> son propios de cada disco e instalación. Nunca deben copiarse literalmente sin consultar los comandos en tu equipo.</p>
+          </aside>
+
+          <h3>Creación del archivo swap</h3>
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar creación swap">Copiar</button>
+            <pre class="code-block"><code>sudo fallocate -l 20G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+swapon --show</code></pre>
+          </div>
+
+          <h3>Cálculo del desplazamiento físico (resume_offset)</h3>
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar cálculo offset">Copiar</button>
+            <pre class="code-block"><code>sudo filefrag -v /swapfile
+# El primer número bajo la columna 'physical_offset' corresponde al resume_offset.</code></pre>
+          </div>
+
+          <h3>Persistencia y configuración del kernel</h3>
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar persistencia">Copiar</button>
+            <pre class="code-block"><code>echo '/swapfile none swap defaults 0 0' | sudo tee -a /etc/fstab
+
+sudo mkdir -p /etc/systemd/sleep.conf.d
+printf '[Sleep]\nHibernateMode=shutdown\n' \
+  | sudo tee /etc/systemd/sleep.conf.d/hibernate.conf
+
+sudo grubby --update-kernel=ALL \
+  --args="resume=UUID=&lt;UUID_FEDORA&gt; resume_offset=&lt;OFFSET_SWAPFILE&gt;"
+sudo dracut --force
+systemctl reboot</code></pre>
+          </div>
+
+          <div class="callout warning">
+            <strong>Resultado:</strong> La imagen de memoria se guardó y restauró perfectamente al iniciar. Sin embargo, al completar la hibernación el firmware dejó el teclado y los buses energizados, impidiendo el corte eléctrico total y exigiendo apagado manual. La hibernación tampoco ofrecía una experiencia confiable para el uso diario.
+          </div>
+        </section>
+
+        <section id="reversion">
+          <h2>6. Reversión completa y bloqueo preventivo</h2>
+          <p>Para recuperar el espacio en disco y asegurar que el portátil nunca intente suspenderse o hibernar de forma accidental (por ejemplo, al cerrar la tapa), se retiró el swapfile y se enmascararon los objetivos de energía en <code>systemd</code>:</p>
+
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar limpieza y bloqueo">Copiar</button>
+            <pre class="code-block"><code>sudo swapoff /swapfile
+sudo sed -i '\|^/swapfile[[:space:]]|d' /etc/fstab
+sudo rm /swapfile
+sudo rm -f /etc/systemd/sleep.conf.d/hibernate.conf
+
+sudo grubby --update-kernel=ALL \
+  --remove-args="resume=UUID=&lt;UUID_FEDORA&gt; resume_offset=&lt;OFFSET_SWAPFILE&gt;"
+sudo dracut --force
+
+# Enmascarar objetivos de suspensión e hibernación
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+systemctl reboot</code></pre>
+          </div>
+
+          <p>Tras reiniciar, se verificó que los cuatro objetivos apuntaran a <code>/dev/null</code>, manteniéndose únicamente zram para el manejo normal de memoria.</p>
+
+          <h3>Cómo desenmascarar si una futura BIOS lo soluciona</h3>
+          <div class="code-container">
+            <button class="btn-copy" type="button" aria-label="Copiar desenmascarar">Copiar</button>
+            <pre class="code-block"><code>sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target</code></pre>
+          </div>
+        </section>
+
+        <section id="conclusion">
+          <div class="verdict-box">
+            <div class="eyebrow">Veredicto Técnico</div>
+            <h2>No era Fedora ni Debian: es el firmware de la plataforma</h2>
+            <p>El comportamiento idéntico en múltiples distribuciones, la ineficacia de S0ix y la prueba rotunda con <code>pm_test=platform</code> frente al éxito de <code>pm_test=devices</code> señalan directamente a un defecto en las tablas ACPI/BIOS de Lenovo para este modelo al gestionar energía con la GPU NVIDIA dedicada.</p>
+          </div>
+
+          <h3>Estrategia de uso estable recomendada</h3>
+          <ul>
+            <li><strong>Suspensiones bloqueadas:</strong> Mantener enmascarados los targets de <code>systemd</code>.</li>
+            <li><strong>Apagado de pantalla:</strong> Permitir que la pantalla se apague por inactividad (DPMS funciona sin colgar el equipo).</li>
+            <li><strong>Transporte y pausas largas:</strong> Realizar apagado normal del sistema.</li>
+            <li><strong>Restauración de sesión:</strong> Usar la opción de recordar aplicaciones abiertas de KDE Plasma.</li>
+            <li><strong>Actualizaciones:</strong> Esperar revisiones de BIOS posteriores a <code>PQCN27WW</code> de Lenovo.</li>
+          </ul>
+
+          <div class="callout danger">
+            <strong>Prácticas desaconsejadas:</strong> No fuerces <code>deep</code> en kernels modernos cuando la BIOS no lo implementa, ni apliques parches DSDT manuales o manipulación de parámetros ACPI sin telemetría térmica. Podrías comprometer el control de ventiladores y la integridad del equipo.
+          </div>
+
+          <p>Referencias y documentación recomendada: <a href="https://docs.kernel.org/6.12/power/basic-pm-debugging.html" target="_blank" rel="noopener noreferrer">Depuración básica de energía en el Kernel Linux ↗</a>, <a href="https://download.nvidia.com/XFree86/Linux-x86_64/595.84/README/powermanagement.html" target="_blank" rel="noopener noreferrer">Guía de Power Management de NVIDIA ↗</a> y <a href="https://support.lenovo.com/aw/en/downloads/ds568585" target="_blank" rel="noopener noreferrer">Página oficial de soporte Lenovo LOQ 15ARP9 ↗</a>.</p>
+        </section>
+
+        <div class="article-end">
+          <span>Bitácora técnica de PunchiSoft</span>
+          <a class="button button-ghost" href="index.html">Más artículos</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+        <p>Industria, Linux, IA y software con propósito.</p>
+      </div>
+      <nav aria-label="Navegación del pie">
+        <a href="index.html">Mundo Linux</a>
+        <a href="../software/index.html">Proyectos</a>
+        <a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a>
+        <a href="../inventor-autocad/index.html">CAD &amp; Planos</a>
+        <a href="../acerca-de/index.html">Acerca de</a>
+        <a href="../legal/index.html">Legal</a>
+        <a href="../seguridad/index.html">Seguridad</a>
+        <a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year>2026</span> PunchiSoft</span>
+      <span>Hecho con curiosidad y código.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Barra de progreso de lectura
+    const progressBar = document.getElementById("reading-progress");
+    window.addEventListener("scroll", () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrolled = (window.scrollY / docHeight) * 100;
+        progressBar.style.width = scrolled + "%";
+      }
+    });
+
+    // Navegación responsive
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+    toggle.addEventListener('click', () => setMenuState(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => { if (event.target.closest('a')) setMenuState(false); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    // Copiado seguro al portapapeles sin sinks peligrosos
+    document.querySelectorAll('.btn-copy').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const codeElement = button.parentElement.querySelector('code');
+        if (!codeElement) return;
+        const codeText = codeElement.textContent;
+        try {
+          await navigator.clipboard.writeText(codeText);
+          const originalText = button.textContent;
+          button.textContent = '¡Copiado!';
+          setTimeout(() => { button.textContent = originalText; }, 1600);
+        } catch {
+          button.textContent = 'Selecciona';
+        }
+      });
+    });
+
+    // Año del pie de página
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1017"/>
+      <stop offset="50%" stop-color="#101722"/>
+      <stop offset="100%" stop-color="#06090d"/>
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#62e6a7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#74b9ff" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#172230" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f1620" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#62e6a7"/>
+      <stop offset="100%" stop-color="#54a0ff"/>
+    </linearGradient>
+    <linearGradient id="warn-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9f43"/>
+      <stop offset="100%" stop-color="#ee5253"/>
+    </linearGradient>
+    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#233244" stroke-width="0.75" stroke-opacity="0.35"/>
+    </pattern>
+    <filter id="glow-effect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="soft-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Fondo base con gradiente profundo -->
+  <rect width="1200" height="675" fill="url(#bg-grad)"/>
+
+  <!-- Patrón de malla técnica -->
+  <rect width="1200" height="675" fill="url(#grid-pattern)"/>
+
+  <!-- Resplandores ambientales de fondo -->
+  <circle cx="200" cy="180" r="280" fill="#74b9ff" fill-opacity="0.07" filter="url(#glow-effect)"/>
+  <circle cx="1000" cy="450" r="320" fill="#62e6a7" fill-opacity="0.06" filter="url(#glow-effect)"/>
+  <circle cx="600" cy="550" r="220" fill="#ee5253" fill-opacity="0.04" filter="url(#glow-effect)"/>
+
+  <!-- Líneas de circuito y buses de datos -->
+  <g stroke="#28394e" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <path d="M 120 280 H 260 L 320 340 H 420" />
+    <path d="M 780 340 H 880 L 940 280 H 1080" />
+    <path d="M 600 120 V 200" />
+    <path d="M 450 490 L 520 540 H 680 L 750 490" />
+    <circle cx="260" cy="280" r="3" fill="#62e6a7"/>
+    <circle cx="940" cy="280" r="3" fill="#74b9ff"/>
+    <circle cx="600" cy="200" r="3" fill="#62e6a7"/>
+  </g>
+
+  <!-- Tarjeta Central: Núcleo de Diagnóstico de Energía -->
+  <g filter="url(#soft-shadow)">
+    <!-- Contenedor del procesador / ACPI PM Core -->
+    <rect x="420" y="190" width="360" height="290" rx="20" fill="url(#card-grad)" stroke="#2b3d52" stroke-width="1.5"/>
+
+    <!-- Cabecera de la tarjeta -->
+    <rect x="420" y="190" width="360" height="48" rx="20" fill="#131c27"/>
+    <rect x="420" y="218" width="360" height="20" fill="#131c27"/>
+    <circle cx="445" cy="214" r="5" fill="#ee5253"/>
+    <circle cx="462" cy="214" r="5" fill="#feca57"/>
+    <circle cx="479" cy="214" r="5" fill="#1dd1a1"/>
+    <text x="502" y="219" fill="#8ca0b8" font-family="ui-monospace, monospace" font-size="12" font-weight="600">LINUX PM · ACPI SUBSYSTEM</text>
+
+    <!-- Indicador de estado de reposo -->
+    <rect x="450" y="260" width="300" height="60" rx="10" fill="#0b1016" stroke="#233244" stroke-width="1"/>
+    <text x="470" y="286" fill="#8ca0b8" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1">/sys/power/mem_sleep</text>
+    <text x="470" y="307" fill="#62e6a7" font-family="ui-monospace, monospace" font-size="16" font-weight="700">[s2idle] <tspan fill="#63768d" font-size="12">deep: N/A</tspan></text>
+
+    <!-- Test de Aislamiento: Devices vs Platform -->
+    <g transform="translate(450, 335)">
+      <!-- Devices Test (OK) -->
+      <rect x="0" y="0" width="144" height="64" rx="8" fill="#0d171d" stroke="#1f4438" stroke-width="1.2"/>
+      <circle cx="18" cy="20" r="6" fill="#10ac84"/>
+      <path d="M 15 20 L 17 22 L 21 18" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <text x="32" y="24" fill="#a7f3d0" font-family="ui-monospace, monospace" font-size="12" font-weight="700">pm_test: devices</text>
+      <text x="18" y="48" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="11">Reanudación OK</text>
+
+      <!-- Platform Test (FAIL) -->
+      <rect x="156" y="0" width="144" height="64" rx="8" fill="#1b1216" stroke="#5c2429" stroke-width="1.2"/>
+      <circle cx="174" cy="20" r="6" fill="#ee5253"/>
+      <path d="M 171 17 L 177 23 M 177 17 L 171 23" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="188" y="24" fill="#fca5a5" font-family="ui-monospace, monospace" font-size="12" font-weight="700">pm_test: platform</text>
+      <text x="174" y="48" fill="#f87171" font-family="system-ui, sans-serif" font-size="11">Bloqueo Firmware</text>
+    </g>
+
+    <!-- Barra de estado de plataforma -->
+    <g transform="translate(450, 415)">
+      <rect x="0" y="0" width="300" height="42" rx="8" fill="#121a24" stroke="#253547" stroke-width="1"/>
+      <text x="15" y="26" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Veredicto:</text>
+      <text x="80" y="26" fill="#ff7675" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Defecto en Firmware ACPI / BIOS</text>
+    </g>
+  </g>
+
+  <!-- Tarjeta Lateral Izquierda: Hardware & Plataforma -->
+  <g filter="url(#soft-shadow)">
+    <rect x="90" y="180" width="280" height="230" rx="16" fill="url(#card-grad)" stroke="#27374a" stroke-width="1.2"/>
+    <rect x="90" y="180" width="280" height="42" rx="16" fill="#131c27"/>
+    <rect x="90" y="206" width="280" height="16" fill="#131c27"/>
+    <text x="110" y="207" fill="#74b9ff" font-family="ui-monospace, monospace" font-size="11" font-weight="700" letter-spacing="1">HARDWARE · ESPECIFICACIONES</text>
+
+    <g transform="translate(110, 240)" font-family="system-ui, sans-serif">
+      <text y="0" fill="#8fa1b5" font-size="12">Portátil:</text>
+      <text y="18" fill="#ffffff" font-size="13" font-weight="600">Lenovo LOQ 15ARP9 (83JC)</text>
+
+      <text y="48" fill="#8fa1b5" font-size="12">Sistema Operativo:</text>
+      <text y="66" fill="#62e6a7" font-size="13" font-weight="600">Fedora 44 · Kernel 7.1.8</text>
+
+      <text y="96" fill="#8fa1b5" font-size="12">Gráfica Dedicada:</text>
+      <text y="114" fill="#74b9ff" font-size="13" font-weight="600">NVIDIA RTX 3050 (6 GB)</text>
+
+      <text y="144" fill="#8fa1b5" font-size="12">Firmware:</text>
+      <text y="162" fill="#e2e8f0" font-size="13" font-weight="600">BIOS PQCN27WW</text>
+    </g>
+  </g>
+
+  <!-- Tarjeta Lateral Derecha: Parámetros & Solución -->
+  <g filter="url(#soft-shadow)">
+    <rect x="830" y="180" width="280" height="230" rx="16" fill="url(#card-grad)" stroke="#27374a" stroke-width="1.2"/>
+    <rect x="830" y="180" width="280" height="42" rx="16" fill="#131c27"/>
+    <rect x="830" y="206" width="280" height="16" fill="#131c27"/>
+    <text x="850" y="207" fill="#62e6a7" font-family="ui-monospace, monospace" font-size="11" font-weight="700" letter-spacing="1">GESTIÓN Y MITIGACIÓN</text>
+
+    <g transform="translate(850, 240)">
+      <rect x="0" y="0" width="240" height="52" rx="8" fill="#0d141d" stroke="#202e3f" stroke-width="1"/>
+      <text x="14" y="20" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="10">NVIDIA S0ix Power</text>
+      <text x="14" y="38" fill="#ff7675" font-family="ui-monospace, monospace" font-size="12" font-weight="600">NVreg_EnableS0ix=1 (Insuficiente)</text>
+
+      <rect x="0" y="64" width="240" height="52" rx="8" fill="#0d141d" stroke="#202e3f" stroke-width="1"/>
+      <text x="14" y="84" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="10">Swapfile Hibernación</text>
+      <text x="14" y="102" fill="#feca57" font-family="ui-monospace, monospace" font-size="12" font-weight="600">Restaura pero no apaga bus</text>
+
+      <rect x="0" y="128" width="240" height="52" rx="8" fill="#0c1a18" stroke="#1d4538" stroke-width="1"/>
+      <text x="14" y="148" fill="#6ee7b7" font-family="ui-monospace, monospace" font-size="10">Solución Estable Adoptada</text>
+      <text x="14" y="166" fill="#62e6a7" font-family="ui-monospace, monospace" font-size="12" font-weight="700">systemctl mask sleep.target</text>
+    </g>
+  </g>
+
+  <!-- Encabezado y Título Principal del Gráfico -->
+  <g transform="translate(90, 75)">
+    <rect x="0" y="0" width="265" height="26" rx="13" fill="#13212f" stroke="#24384d" stroke-width="1"/>
+    <circle cx="14" cy="13" r="4" fill="#62e6a7"/>
+    <text x="28" y="17" fill="#62e6a7" font-family="ui-monospace, monospace" font-size="11" font-weight="700" letter-spacing="1">BITÁCORA TÉCNICA · ACPI</text>
+
+    <text x="0" y="60" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5">Diagnóstico de Suspensión en Lenovo LOQ y Fedora</text>
+  </g>
+
+  <!-- Footer con firma PunchiSoft -->
+  <g transform="translate(90, 605)">
+    <line x1="0" y1="0" x2="1020" y2="0" stroke="#1e2c3c" stroke-width="1"/>
+    <text x="0" y="32" fill="#64748b" font-family="system-ui, sans-serif" font-size="13">PunchiSoft · Mundo Linux · Diagnóstico reproducible de estados de bajo consumo en hardware real</text>
+    <text x="1020" y="32" fill="#74b9ff" font-family="ui-monospace, monospace" font-size="13" font-weight="600" text-anchor="end">Fedora 44 · KDE Plasma</text>
+  </g>
+</svg>

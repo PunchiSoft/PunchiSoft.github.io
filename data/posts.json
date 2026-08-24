@@ -1,5 +1,25 @@
 [
   {
+    "id": "diagnostico-suspension-lenovo-loq-fedora",
+    "title": "Cuando el portátil se duerme y no vuelve: diagnóstico de suspensión en Lenovo LOQ y Fedora",
+    "summary": "Diagnóstico paso a paso de fallos de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, GPU NVIDIA y métodos ACPI de bajo consumo.",
+    "featuredSummary": "Diagnóstico paso a paso de suspensión e hibernación en Lenovo LOQ con Fedora y GPU NVIDIA, aislando fallos de firmware con pm_test.",
+    "category": "Fedora",
+    "date": "2026-08-23",
+    "readingTime": "7 min de lectura",
+    "url": "diagnostico-suspension-lenovo-loq-fedora.html",
+    "image": "../assets/images/diagnostico-suspension-lenovo-loq/cover.svg",
+    "imageAlt": "Diagrama conceptual de diagnóstico ACPI y estados de suspensión en Linux",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/energia.svg",
+      "label": "Fedora · ACPI · Energía",
+      "title": "Diagnóstico de suspensión",
+      "detail": "Lenovo LOQ 15ARP9 · s2idle · pm_test · NVIDIA S0ix"
+    }
+  },
+  {
     "id": "neumatica-hidraulica-mantenimiento-industrial",
     "title": "Neumática e hidráulica: dos formas de transmitir potencia",
     "summary": "Una introducción práctica para comprender sus diferencias, aplicaciones, ventajas y criterios de selección en mantenimiento industrial y maestranza.",
