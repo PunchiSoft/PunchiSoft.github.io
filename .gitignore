@@ -1,3 +1,5 @@
 # Exclusiones de seguridad y desarrollo local
 AGENTS.md
 modificaciones/
+.agents/
+
