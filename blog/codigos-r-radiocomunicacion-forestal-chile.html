@@ -3,25 +3,319 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Guía técnica y tabla interactiva de Códigos R de radiocomunicación forestal en Chile. Claves oficiales para walkie-talkies, brigadas CONAF, CORMA y faenas industriales.">
+  <meta name="description" content="Manual operativo de Códigos R de radiocomunicación forestal en Chile y la 8va Región del Biobío. Claves para walkie-talkies en faenas de cosecha, aserraderos, plantas de remanufactura de pino radiata (Arauco, CMPC, Promasa, Masisa) y combate de incendios con CONAF.">
   <meta name="theme-color" content="#10141c">
   <meta property="og:site_name" content="PunchiSoft">
-  <meta property="og:title" content="Códigos R de Radiocomunicación Forestal en Chile — PunchiSoft">
-  <meta property="og:description" content="Tabla completa, buscador en vivo y protocolos de radiocomunicación VHF/UHF en walkie-talkies para faenas forestales y combate de incendios en Chile.">
+  <meta property="og:title" content="Códigos R de Radiocomunicación Forestal en Chile y la 8va Región del Biobío — PunchiSoft">
+  <meta property="og:description" content="Manual de claves radiales y protocolos para walkie-talkies en faenas de pino radiata, aserraderos, remanufactura y combate de incendios en el Biobío.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://punchisoft.github.io/assets/images/codigos-r-forestales/cover.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@punchisoft">
   <meta name="twitter:creator" content="@punchisoft">
-  <meta name="twitter:title" content="Códigos R de Radiocomunicación Forestal en Chile — PunchiSoft">
-  <meta name="twitter:description" content="Tabla completa y buscador en vivo de Códigos R de radio para operaciones forestales y emergencias en Chile.">
+  <meta name="twitter:title" content="Códigos R de Radiocomunicación Forestal en Chile y la 8va Región del Biobío — PunchiSoft">
+  <meta name="twitter:description" content="Manual de claves radiales y protocolos de walkie-talkies en faenas de pino radiata, remanufactura y combate de incendios en el Biobío.">
   <meta name="twitter:image" content="https://punchisoft.github.io/assets/images/codigos-r-forestales/cover.svg">
-  <title>Códigos R de Radiocomunicación Forestal en Chile — PunchiSoft</title>
+  <title>Códigos R de Radiocomunicación Forestal en Chile y el Biobío — PunchiSoft</title>
   <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
-  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/estilos.css?v=2.2">
   <script src="../js/theme.js" defer></script>
   <script src="../js/i18n.js" defer></script>
+
+  <style>
+    /* =======================================================
+       ESTILOS ESPECÍFICOS DEL ARTÍCULO DE CÓDIGOS R
+       Diseño editorial integrado y responsive para PunchiSoft
+       ======================================================= */
+
+    /* Tarjeta técnica del walkie-talkie en terreno */
+    .radio-summary-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      margin: 28px 0 36px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius, 16px);
+      background: linear-gradient(135deg, var(--surface), var(--bg-soft));
+      box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+    }
+    .radio-icon-badge {
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #0f1622;
+      border: 1px solid rgba(56,189,248,0.3);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+    .radio-icon-badge svg {
+      width: 32px;
+      height: 32px;
+    }
+    .radio-summary-info h2 {
+      font-size: 1.15rem;
+      margin: 0 0 4px;
+      color: var(--text);
+    }
+    .radio-summary-info p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Avisos y Callouts */
+    .callout {
+      margin: 28px 0;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      background: var(--surface);
+      line-height: 1.65;
+    }
+    .callout.warning { border-left-color: #f59e0b; }
+    .callout.danger { border-left-color: #ef4444; }
+    .callout.info { border-left-color: #38bdf8; }
+
+    /* Rejilla de empresas y sectores del Biobío */
+    .biobio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 24px 0 36px;
+    }
+    .biobio-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .biobio-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .biobio-card .tag-badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: rgba(56,189,248,0.12);
+      color: var(--accent);
+      font: 700 0.72rem ui-monospace, monospace;
+      letter-spacing: 0.04em;
+    }
+    .biobio-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .biobio-card p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Barra de búsqueda y navegación rápida */
+    .r-nav-bar {
+      margin: 32px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .r-search-container {
+      position: relative;
+      width: 100%;
+    }
+    .r-search-input {
+      width: 100%;
+      height: 46px;
+      padding: 0 16px 0 44px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.92rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .r-search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .r-search-icon {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .r-phase-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .r-phase-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    .r-phase-pill:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      color: var(--accent);
+    }
+
+    /* Secciones y Tablas por Fases Operativas */
+    .r-phase-section {
+      margin-top: 48px;
+    }
+    .r-phase-header {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .r-phase-header h2 {
+      font-size: 1.3rem;
+      margin: 0 0 6px;
+    }
+    .r-phase-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .r-table-box {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      margin-top: 14px;
+    }
+    .r-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .r-table th {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--muted);
+      font: 700 0.72rem ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .r-table td {
+      padding: 13px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: middle;
+    }
+    :root[data-theme="light"] .r-table td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .r-table tr:last-child td {
+      border-bottom: none;
+    }
+    .r-table tr:hover td {
+      background: var(--accent-soft);
+    }
+
+    /* Badges de código interactivo click-to-copy */
+    .r-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #101622;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font: 800 0.88rem ui-monospace, monospace;
+      cursor: pointer;
+      user-select: none;
+      transition: all .15s ease;
+    }
+    :root[data-theme="light"] .r-badge {
+      background: #eaf3fd;
+      border-color: rgba(37, 110, 184, 0.28);
+      color: var(--accent);
+    }
+    .r-badge:hover {
+      border-color: var(--accent);
+      transform: scale(1.04);
+    }
+    .r-badge-copy-icon {
+      font-size: 0.72rem;
+      opacity: 0.6;
+    }
+    .r-phrase {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.86rem;
+    }
+
+    /* Toast flotante de copiado */
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #101622;
+      color: #52c788;
+      border: 1px solid #52c788;
+      font: 600 0.84rem ui-monospace, monospace;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .2s ease, transform .2s ease;
+      pointer-events: none;
+    }
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Alfabeto Fonético ICAO */
+    .phonetic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 20px 0;
+    }
+    .phonetic-item {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      font-size: 0.86rem;
+    }
+    .phonetic-item strong {
+      color: var(--accent);
+      margin-right: 4px;
+    }
+  </style>
 </head>
 <body>
   <!-- ===================================================== -->
@@ -44,164 +338,335 @@
 
   <main>
     <article class="article-page container">
-      <!-- Encabezado del artículo -->
-      <header class="article-header">
-        <div class="article-breadcrumb">
-          <a href="index.html">← Mundo Linux / Industria</a>
-        </div>
+      <!-- Encabezado editorial del artículo -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
         <div class="post-meta">
           <span class="tag">Industria &amp; Telecomunicaciones</span>
-          <time datetime="2026-09-01">1 sep 2026</time>
-          <span>9 min de lectura</span>
-          <span>Actualizado 2026</span>
+          <time datetime="2026-09-01">1 de septiembre de 2026</time>
+          <span>10 min de lectura</span>
         </div>
-        <h1>Códigos R de Radiocomunicación Forestal en Chile: Tabla Completa y Protocolos de Terreno</h1>
-        <p class="lead">Manual operativo de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF utilizados por brigadas de CONAF, empresas asociadas a CORMA, torres de vigilancia y faenas forestales en Chile.</p>
+        <h1>Códigos R de Radiocomunicación Forestal en Chile y la 8va Región del Biobío</h1>
+        <p class="lead">Manual operativo de terreno y claves radiales estandarizadas para walkie-talkies y transceptores portátiles VHF/UHF utilizados en cosecha mecanizada, aserraderos, remanufactura de pino radiata y combate de incendios forestales en la Región del Biobío.</p>
       </header>
 
-      <!-- Portada técnica visual -->
-      <figure class="article-cover" style="margin: 28px 0 40px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 48px rgba(0,0,0,0.3);">
-        <img src="../assets/images/codigos-r-forestales/cover.svg" alt="Ilustración técnica de radiocomunicación forestal y claves R en Chile" width="1200" height="675" style="width: 100%; height: auto; display: block;">
+      <!-- Portada técnica visual representativa (Walkie-talkie táctico industrial y repetidora Nahuelbuta) -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/codigos-r-forestales/cover.svg" alt="Transceptor táctico industrial con pantalla R-4 COPIADO y torre repetidora en la Cordillera de Nahuelbuta" width="1200" height="675" loading="eager">
+        <figcaption>Transceptor táctico industrial VHF con modulación «R-4 COPIADO» y torre repetidora de cumbre en la 8va Región del Biobío.</figcaption>
       </figure>
 
-      <!-- Tarjeta destacada del walkie-talkie forestal -->
-      <aside class="walkie-talkie-card">
-        <div class="walkie-talkie-visual">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7.5 1.5v6" stroke-width="2.2" stroke="#38bdf8"/>
-            <path d="M15 4v3.5" stroke-width="2.4" stroke="#f97316"/>
-            <path d="M17.5 5v2.5" stroke-width="2" stroke="#94a3b8"/>
-            <rect x="5" y="7.5" width="13" height="15" rx="2.5" fill="#1e293b" stroke="#38bdf8"/>
-            <path d="M3 10.5v4" stroke-width="2.6" stroke="#f97316"/>
-            <rect x="7.5" y="10" width="8" height="3.2" rx="0.8" fill="#032030" stroke="#38bdf8" stroke-width="1.2"/>
-            <line x1="8" y1="15.5" x2="15" y2="15.5" stroke="#94a3b8" stroke-width="1.5"/>
-            <line x1="8" y1="17.5" x2="15" y2="17.5" stroke="#94a3b8" stroke-width="1.5"/>
-            <line x1="9" y1="19.5" x2="14" y2="19.5" stroke="#94a3b8" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <div>
-          <span class="eyebrow" style="color: var(--accent);">Dispositivo de Campo</span>
-          <h2 style="font-size: 1.4rem; margin: 4px 0 10px;">El Walkie-Talkie en Operaciones Forestales</h2>
-          <p style="margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
-            En la agreste topografía de los valles y cordilleras de Chile, la telefonía móvil suele quedar fuera de servicio. El <strong>walkie-talkie portátil VHF/UHF</strong> (radiotransceptor handy para brigadistas y operadores de maquinaria) conectado a <strong>repetidoras de cumbre</strong> constituye el canal vital de comunicación, coordinación de agua, despacho aéreo y evacuación en caso de emergencia.
-          </p>
-        </div>
-      </aside>
+      <div class="article-body container-narrow">
+        <!-- Tarjeta técnica compacta del walkie-talkie -->
+        <aside class="radio-summary-card">
+          <div class="radio-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7.5 1.5v6" stroke-width="2.2" stroke="#38bdf8"/>
+              <path d="M15 4v3.5" stroke-width="2.4" stroke="#f97316"/>
+              <path d="M17.5 5v2.5" stroke-width="2" stroke="#94a3b8"/>
+              <rect x="5" y="7.5" width="13" height="15" rx="2.5" fill="#1e293b" stroke="#38bdf8"/>
+              <path d="M3 10.5v4" stroke-width="2.6" stroke="#f97316"/>
+              <rect x="7.5" y="10" width="8" height="3.2" rx="0.8" fill="#032030" stroke="#38bdf8" stroke-width="1.2"/>
+              <line x1="8" y1="15.5" x2="15" y2="15.5" stroke="#94a3b8" stroke-width="1.5"/>
+              <line x1="8" y1="17.5" x2="15" y2="17.5" stroke="#94a3b8" stroke-width="1.5"/>
+              <line x1="9" y1="19.5" x2="14" y2="19.5" stroke="#94a3b8" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="radio-summary-info">
+            <h2>El Walkie-Talkie como Canal Crítico de Terreno</h2>
+            <p>En quebradas y serranías de la 8va Región sin cobertura celular, el <strong>transceptor portátil VHF/UHF</strong> con arnés de pecho es el canal vital para brigadistas, operadores de skidder, camiones aljibe y patios de trozas.</p>
+          </div>
+        </aside>
 
-      <!-- Contenido editorial -->
-      <section class="article-content">
-        <h2>1. ¿Por qué se utilizan Códigos R en el sector forestal chileno?</h2>
+        <h2>1. Ruido en Faena y la Necesidad de los Códigos R</h2>
         <p>
-          En faenas de cosecha mecanizada, volteo de madera y particularmente durante el combate directo de <strong>incendios forestales</strong>, el ruido ambiente generado por motosierras, turbinas de helicópteros cisterna, aviones bombarderos y motobombas dificulta la audición de oraciones extensas.
+          En faenas de cosecha mecanizada, volteo de madera y particularmente durante el combate directo de incendios forestales, el ruido ambiente generado por motosierras, turbinas de helicópteros cisterna, aviones bombarderos y motobombas dificulta la audición de oraciones extensas.
         </p>
         <p>
-          Para maximizar la <strong>disciplina radial</strong> y la rapidez en la transmisión de órdenes sin saturar los canales repetidores compartidos entre <strong>CONAF (Corporación Nacional Forestal)</strong>, brigadas de empresas asociadas a <strong>CORMA</strong> (como Arauco, CMPC y Masisa) y cuerpos de bomberos, se implementó el sistema estandarizado de <strong>Códigos R</strong>.
+          Para maximizar la disciplina radial y la rapidez en la transmisión de órdenes sin saturar los canales repetidores compartidos entre <strong>CONAF (Corporación Nacional Forestal)</strong>, brigadas de empresas asociadas a <strong>CORMA</strong> (como <strong>Arauco</strong>, <strong>CMPC</strong> y <strong>Masisa</strong>) y cuerpos de bomberos, se implementó el sistema estandarizado de <strong>Códigos R</strong>.
         </p>
 
-        <div class="note-card" style="padding: 20px 24px; border-radius: 14px; background: rgba(56,189,248,0.08); border-left: 4px solid var(--accent); margin: 24px 0;">
-          <strong style="color: var(--accent); display: block; margin-bottom: 6px;">💡 Regla de Oro en la Radiocomunicación:</strong>
-          <span style="font-size: 0.94rem; color: var(--text);">
-            <strong>Piense — Presione (PTT) — Espere 1 segundo — Hable claro — Suelte</strong>. Mantenga los mensajes breves, directos y siempre identifique su unidad antes de transmitir.
-          </span>
+        <div class="callout info">
+          <strong>Fraseología canónica de terreno:</strong> Ante cualquier instrucción u orden transmitida por la central o el jefe de cuadrilla, la respuesta reglamentaria es <strong>«R-4 copiado»</strong> (o <em>«Móvil 3 lo copia R-4»</em>). Esto confirma de inmediato que el mensaje fue recibido sin dudas y que la faena continúa según lo planificado.
         </div>
 
-        <!-- Sección de búsqueda y tabla interactiva -->
-        <div class="r-codes-section">
-          <h2>2. Tabla Completa de Códigos R Forestales</h2>
-          <p>Utiliza el buscador en tiempo real o los filtros por categoría para encontrar inmediatamente cualquier clave operativa:</p>
+        <!-- ===================================================== -->
+        <!-- SECCIÓN TÉCNICA: BIOBÍO, PINO RADIATA Y REMANUFACTURA  -->
+        <!-- ===================================================== -->
+        <h2>2. El Ecosistema Industrial del Biobío: Bosque, Aserraderos y Remanufactura de Pino Radiata</h2>
+        <p>
+          La <strong>Región del Biobío</strong> es el epicentro de la industria de la madera en Chile. Más del 70% del patrimonio forestal regional corresponde a plantaciones de <strong>Pino Radiata (<em>Pinus radiata</em>)</strong>, una especie de rápido crecimiento que abastece una cadena productiva integrada de alto impacto económico y operacional:
+        </p>
 
-          <div class="r-toolbar">
-            <div class="r-search-wrapper">
-              <span class="r-search-icon" aria-hidden="true">🔍</span>
-              <input type="text" id="r-search" class="r-search-input" placeholder="Buscar código (ej. R-24, R-83) o concepto..." aria-label="Buscar código R">
-            </div>
-            <div class="r-filter-tabs" role="tablist" aria-label="Filtros de códigos R">
-              <button class="r-filter-tab active" type="button" data-filter="all">Todos (<span id="count-all">0</span>)</button>
-              <button class="r-filter-tab" type="button" data-filter="comms">Comunicaciones (R-1/19)</button>
-              <button class="r-filter-tab" type="button" data-filter="fire">Incendios (R-20/39)</button>
-              <button class="r-filter-tab" type="button" data-filter="ops">Faenas &amp; Logística</button>
-              <button class="r-filter-tab" type="button" data-filter="emergency">Emergencias (R-70/99)</button>
-            </div>
+        <div class="biobio-grid">
+          <div class="biobio-card">
+            <span class="tag-badge">BOSQUE Y COSECHA</span>
+            <h3>Faena Mecanizada y Nahuelbuta</h3>
+            <p>En las laderas empinadas de la Cordillera de Nahuelbuta (Curanilahue, Arauco, Cañete), cuadrillas con <em>harvesters</em>, <em>skidders</em> y torres de madereo coordinan por radio walkie-talkie las zonas de volteo para evitar que los árboles caigan sobre líneas eléctricas o caminos de servicio.</p>
           </div>
 
-          <div class="r-table-container">
-            <table class="r-table" id="r-table">
+          <div class="biobio-card">
+            <span class="tag-badge">PROCESAMIENTO INDUSTRIAL</span>
+            <h3>Promasa y Remanufactura</h3>
+            <p>Empresas especializadas como <strong>Promasa (Procesadora de Maderas Los Ángeles S.p.A.)</strong> en Los Ángeles transforman el pino radiata seco en molduras y puertas de ingeniería de exportación. En sus patios y bodegas, los operadores de grúas horquilla y mantenedores usan radio en frecuencias UHF para coordinar el flujo incesante de paquetes de madera.</p>
+          </div>
+
+          <div class="biobio-card">
+            <span class="tag-badge">HOLDINGS INTEGRADOS</span>
+            <h3>CMPC, Arauco y Masisa</h3>
+            <p><strong>CMPC Maderas</strong> (con plantas de remanufactura en Los Ángeles y Coronel, y aserraderos en Mulchén, Cabrero y Nacimiento), <strong>Arauco</strong> (Complejo Horcones, Aserradero Viñales y Cholguán) y <strong>Masisa</strong> (Cabrero) mantienen redes de radiocomunicaciones que enlazan desde el vivero hasta el puerto de embarque.</p>
+          </div>
+
+          <div class="biobio-card">
+            <span class="tag-badge">TRANSPORTE Y RUTAS</span>
+            <h3>Tráfico de Camiones Madereros</h3>
+            <p>En los caminos ripiados de una pista en el Biobío, los choferes modulan: <em>«Camión cargado bajando km 18»</em>, a lo que el camión vacío que sube contesta <em>«R-4 copiado, aguardo en cancha de desvío»</em>, previniendo accidentes fatales en curvas ciegas.</p>
+          </div>
+        </div>
+
+        <p>
+          Durante el verano, cuando las temperaturas en Los Ángeles, Mulchén o Nacimiento superan los 35 °C y el pino radiata seco se vuelve altamente combustible, todas estas redes se conectan a los canales de emergencia repetidores en las cumbres del <strong>Cerro Cayumanqui</strong> y <strong>Nahuelbuta</strong> para coordinar descargas de aviones cisterna Air Tractor AT-802 y helicópteros pesados Chinook.
+        </p>
+
+        <div class="callout warning">
+          <strong>Prioridad Absoluta de Frecuencia:</strong> Cuando cualquier unidad declara un incendio forestal activo (<strong>R-20</strong>) o una emergencia con riesgo de vida (<strong>R-99 / MAYDAY</strong>), todas las faenas de cosecha, aserraderos y camiones deben guardar <strong>R-3 (silencio radial)</strong> de inmediato.
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- BUSCADOR Y NAVEGACIÓN DE TABLA                         -->
+        <!-- ===================================================== -->
+        <div class="r-nav-bar">
+          <div class="r-search-container">
+            <span class="r-search-icon" aria-hidden="true">🔍</span>
+            <input type="text" id="r-search" class="r-search-input" placeholder="Filtrar código (ej. R-4, R-24, R-83) o palabra clave..." aria-label="Buscar código R">
+          </div>
+          <div class="r-phase-links">
+            <a class="r-phase-pill" href="#fase-enlace">📡 Enlace (R-1 al 19)</a>
+            <a class="r-phase-pill" href="#fase-fuego">🔥 Incendios (R-20 al 39)</a>
+            <a class="r-phase-pill" href="#fase-logistica">🚜 Faenas (R-40 al 69)</a>
+            <a class="r-phase-pill" href="#fase-emergencia">🚨 Emergencias (R-70 al 99)</a>
+          </div>
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- FASE 1: ENLACE Y COMUNICACIONES                        -->
+        <!-- ===================================================== -->
+        <section class="r-phase-section" id="fase-enlace">
+          <div class="r-phase-header">
+            <h2>Fase 1: Control de Enlace y Comunicaciones (R-1 a R-19)</h2>
+            <p>Verificación técnica de señal, puentes radiales, disponibilidad y disciplina en frecuencia.</p>
+          </div>
+          <div class="r-table-box">
+            <table class="r-table">
               <thead>
                 <tr>
-                  <th scope="col" style="width: 140px;">Código</th>
-                  <th scope="col">Significado / Acción Oficial</th>
-                  <th scope="col" style="width: 170px;">Categoría</th>
-                  <th scope="col">Fraseología de Terreno</th>
-                  <th scope="col" style="width: 90px; text-align: center;">Copiar</th>
+                  <th scope="col" style="width: 110px;">Código</th>
+                  <th scope="col">Significado Oficial</th>
+                  <th scope="col">Fraseología Canónica en Terreno</th>
                 </tr>
               </thead>
-              <tbody id="r-tbody">
-                <!-- Se llena dinámicamente con JavaScript para máximo rendimiento y búsqueda en vivo -->
+              <tbody>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-1">R-1 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Recepción deficiente</strong> (señal ruidosa o entrecortada)</td><td class="r-phrase">«Central, Móvil 3 lo copia R-1, repita coordenadas.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-2">R-2 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Buena recepción</strong> (fuerte y claro, 5/5)</td><td class="r-phrase">«Copiado R-2, señal limpia por repetidor Cayumanqui.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-3">R-3 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Silencio radial</strong> (detenga transmisiones por emergencia)</td><td class="r-phrase">«¡R-3 en frecuencia! Tráfico de evacuación en desarrollo.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-4">R-4 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Comprendido / Copiado</strong> (mensaje recibido conforme)</td><td class="r-phrase">«R-4 copiado, brigada avanzando a línea de contención.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-5">R-5 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Repita su mensaje</strong> (no se entendió)</td><td class="r-phrase">«R-5 el último punto, había ráfaga de viento en micrófono.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-6">R-6 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Mantenga en espera</strong> (stand-by para respuesta o cometido)</td><td class="r-phrase">«R-6 en frecuencia mientras verifico con jefe de sector.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-7">R-7 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Término de transmisiones</strong> (cierre de jornada o estación)</td><td class="r-phrase">«Torre Mirador Nahuelbuta para Central, R-7 por hoy.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-8">R-8 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Inicio de transmisiones</strong> (estación en escucha activa)</td><td class="r-phrase">«Base San Pedro iniciando R-8 en canal principal.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-9">R-9 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>¿Cómo me recibe?</strong> (control de señal y modulación)</td><td class="r-phrase">«Brigada 8 en prueba de walkie-talkie, ¿R-9?»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-10">R-10 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Identificación del operador que modula</strong></td><td class="r-phrase">«R-10 operador Henríquez en Puesto de Mando Unificado.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-11">R-11 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Disponible para hablar por radio (QAP)</strong></td><td class="r-phrase">«Jefe Técnico R-11 en frecuencia táctica.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-12">R-12 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Contacto radial establecido</strong></td><td class="r-phrase">«R-12 con helicóptero Eco-2 sobrevolando el sector.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-13">R-13 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Solicito puente radial</strong> (estación intermedia para retransmitir)</td><td class="r-phrase">«Móvil 4, hágame R-13 con Central, estoy encajonado.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-14">R-14 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Mensaje oficial o de despacho</strong></td><td class="r-phrase">«Atención unidades del Biobío, R-14 de despacho.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-15">R-15 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Mensaje urgente pendiente</strong></td><td class="r-phrase">«Tengo R-15 urgente para el jefe de cuadrilla.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-16">R-16 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Llamada general a todas las cuadrillas</strong></td><td class="r-phrase">«R-16 general, cambio de canal operativo a las 15:00.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-17">R-17 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Atento a cadena radial regional</strong></td><td class="r-phrase">«Mantenerse R-17 ante alerta roja por altas temperaturas.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-18">R-18 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Sírvase identificarse quién llama</strong></td><td class="r-phrase">«Estación modulando sin distintivo, favor R-18.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-19">R-19 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Cambio de frecuencia o canal táctico</strong></td><td class="r-phrase">«Cuadrilla de ataque pasa a canal 5 táctico, R-19.»</td></tr>
               </tbody>
             </table>
-            <div id="r-empty" class="r-empty-state" hidden>
-              No se encontraron códigos que coincidan con tu búsqueda.
-            </div>
           </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- FASE 2: INCENDIOS Y COMBATE                            -->
+        <!-- ===================================================== -->
+        <section class="r-phase-section" id="fase-fuego">
+          <div class="r-phase-header">
+            <h2>Fase 2: Incendios Forestales y Combate del Fuego (R-20 a R-39)</h2>
+            <p>Detección, evaluación, operaciones de combate activo, apoyo de aeronaves y faenas de liquidación.</p>
+          </div>
+          <div class="r-table-box">
+            <table class="r-table">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 110px;">Código</th>
+                  <th scope="col">Significado Oficial</th>
+                  <th scope="col">Fraseología Canónica en Terreno</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-20">R-20 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Incendio forestal declarado</strong></td><td class="r-phrase">«Central Alfa, confirmo R-20 en sector Santa Juana.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-21">R-21 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Foco o columna de humo sin confirmar</strong></td><td class="r-phrase">«Torre 5 avista R-21 en azimut 210°, distante 8 km.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-22">R-22 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Informe de situación</strong> (combustible, avance, topografía)</td><td class="r-phrase">«Comandante de incidente entrega R-22 preliminar.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-23">R-23 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Personal o recursos presentes en el lugar</strong></td><td class="r-phrase">«R-23 en terreno: 3 brigadas terrestres y 2 skidder.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-24">R-24 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Incendio bajo combate activo</strong> (trabajo en desarrollo)</td><td class="r-phrase">«Flanco izquierdo se mantiene en R-24 con motobombas.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-25">R-25 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Incendio controlado</strong> (perímetro circunscrito sin avance)</td><td class="r-phrase">«R-25 copiado, cortafuegos unificados con éxito.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-26">R-26 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Faenas de liquidación</strong> (enfriamiento de puntos calientes)</td><td class="r-phrase">«Brigada inicia R-26 con palas y líneas de agua.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-27">R-27 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Incendio completamente extinguido</strong></td><td class="r-phrase">«Se declara R-27 tras inspección térmica infrarroja.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-28">R-28 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Campamento base / Puesto de Comando de Incidentes (PCI)</strong></td><td class="r-phrase">«R-28 instalado en cancha de acopio km 12.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-29">R-29 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Retiro de brigadas / Desmovilización</strong></td><td class="r-phrase">«Cuadrillas iniciando R-29 hacia base de relevo.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-30">R-30 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Rebrote de incendio por viento o salto de pavesas</strong></td><td class="r-phrase">«¡Alerta! R-30 detectado al otro lado del camino.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-31">R-31 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Jefe de Incendio / Comandante del Incidente</strong></td><td class="r-phrase">«R-31 asume el control operacional de la emergencia.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-32">R-32 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Superficie afectada estimada (hectáreas)</strong></td><td class="r-phrase">«R-32 preliminar: 15 ha de pino y matorral denso.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-33">R-33 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Hora oficial / Control de bitácora</strong></td><td class="r-phrase">«Solicito R-33 oficial para registro de bitácora.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-34">R-34 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Informe meteorológico</strong> (viento, temperatura, humedad)</td><td class="r-phrase">«R-34: viento SO 30 km/h, 33°C, 22% HR (alerta 30-30-30).»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-35">R-35 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Condición meteorológica extrema o ráfagas convectivas</strong></td><td class="r-phrase">«Alerta R-35 por cambio súbito en dirección de viento.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-36">R-36 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Zona de seguridad y ruta de escape verificada</strong></td><td class="r-phrase">«Todas las brigadas confirman R-36 despejada y libre.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-37">R-37 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Despegue de aeronave (avión o helicóptero)</strong></td><td class="r-phrase">«Avión cisterna Eco-1 informa R-37 desde pista María Dolores.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-38">R-38 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Aterrizaje de aeronave</strong></td><td class="r-phrase">«Helicóptero R-38 en helipunto para recarga de agua.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-39">R-39 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Descarga de agua o retardante desde el aire</strong></td><td class="r-phrase">«¡Personal en tierra despejar ladera! R-39 en 15 segundos.»</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- FASE 3: FAENAS, LOGÍSTICA Y MAQUINARIA                 -->
+        <!-- ===================================================== -->
+        <section class="r-phase-section" id="fase-logistica">
+          <div class="r-phase-header">
+            <h2>Fase 3: Faenas Forestales, Logística y Maquinaria (R-40 a R-69)</h2>
+            <p>Tránsito de brigadas, abastecimiento de agua, skidder, bulldozers y camiones madereros.</p>
+          </div>
+          <div class="r-table-box">
+            <table class="r-table">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 110px;">Código</th>
+                  <th scope="col">Significado Oficial</th>
+                  <th scope="col">Fraseología Canónica en Terreno</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-40">R-40 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Salida de vehículo o brigada desde base a terreno</strong></td><td class="r-phrase">«Móvil 3 informa R-40 hacia predio Curanilahue.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-41">R-41 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Llegada a destino o ingreso a faena</strong></td><td class="r-phrase">«R-41 en cancha 4, reportando a jefe de faena.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-42">R-42 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Móvil en tránsito / En ruta</strong></td><td class="r-phrase">«Camión aljibe se encuentra R-42 por ruta de la madera.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-43">R-43 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Patrullaje preventivo sin novedad</strong></td><td class="r-phrase">«Ronda de patrullaje forestal R-43 conforme.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-44">R-44 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Reabastecimiento de combustible</strong></td><td class="r-phrase">«Bulldozer requiere R-44 en punto de abastecimiento.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-45">R-45 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Despliegue de maquinaria pesada (Bulldozer / Pala)</strong></td><td class="r-phrase">«R-45 abriendo faja cortafuegos en línea de cresta.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-46">R-46 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Camión aljibe / Suministro de agua</strong></td><td class="r-phrase">«Se solicita R-46 con acople Storz de 2 pulgadas.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-47">R-47 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Transporte de personal o relevo de brigadistas</strong></td><td class="r-phrase">«Bus R-47 trasladando cuadrilla de relevo a base.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-48">R-48 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Faena activa de volteo, raleo o torre de madereo</strong></td><td class="r-phrase">«Precaución en curva, faena R-48 próxima al camino.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-49">R-49 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Tráfico de camión maderero cargado</strong></td><td class="r-phrase">«Atención vía angosta, baja camión R-49 con trozos.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-50">R-50 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Cierre de portón / Acceso restringido a predio</strong></td><td class="r-phrase">«Portón con candado, R-50 operativo.»</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- FASE 4: EMERGENCIAS, RESCATE Y APOYO                   -->
+        <!-- ===================================================== -->
+        <section class="r-phase-section" id="fase-emergencia">
+          <div class="r-phase-header">
+            <h2>Fase 4: Emergencias Críticas, Seguridad y Apoyo (R-70 a R-99)</h2>
+            <p>Despacho de ambulancias, Bomberos, Carabineros y auxilio vital para brigadistas.</p>
+          </div>
+          <div class="r-table-box">
+            <table class="r-table">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 110px;">Código</th>
+                  <th scope="col">Significado Oficial</th>
+                  <th scope="col">Fraseología Canónica en Terreno</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-70">R-70 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Solicitud de refuerzos adicionales</strong></td><td class="r-phrase">«Jefe de sector solicita R-70 por reactivación en quebrada.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-77">R-77 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Problema mecánico / Vehículo o máquina en pana</strong></td><td class="r-phrase">«Camioneta técnica con R-77 por corte de correa.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-78">R-78 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Se requiere personal de apoyo (brigadistas)</strong></td><td class="r-phrase">«Central, se requieren dos brigadas R-78 para flanco sur.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-79">R-79 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Se requieren herramientas (motosierras, mangueras, motobombas)</strong></td><td class="r-phrase">«Despachar R-79: 6 tramos de manguera de 1 pulgada.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-80">R-80 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Apoyo aéreo prioritario (avión cisterna o helicóptero)</strong></td><td class="r-phrase">«Fuego coronando copas, solicitamos R-80 prioritario.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-81">R-81 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Se requiere presencia de Carabineros / Fuerza pública</strong></td><td class="r-phrase">«R-81 por obstaculización intencional de camino forestal.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-82">R-82 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Se requiere Cuerpo de Bomberos en apoyo</strong></td><td class="r-phrase">«R-82 urgente para protección de viviendas en interfaz.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-83">R-83 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Se necesita ambulancia / Personal médico SAMU</strong></td><td class="r-phrase">«R-83 prioritario con paramédico al cruce camino a Nacimiento.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-84">R-84 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Investigación de causas de incendio / Peritaje técnico</strong></td><td class="r-phrase">«Unidad pericial R-84 ingresando al punto de inicio.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-85">R-85 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Evacuación preventiva de viviendas o civiles</strong></td><td class="r-phrase">«Activado protocolo R-85 con autoridades locales.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-90">R-90 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Accidente de brigadista o trabajador en terreno</strong></td><td class="r-phrase">«Alerta médica, R-90 en sector de motosierras.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-91">R-91 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>¡Brigada atrapada! Encajonamiento por avance de fuego</strong></td><td class="r-phrase">«¡MAYDAY R-91! Cuadrilla retrocediendo a zona de seguridad.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-92">R-92 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Lesionado por quemaduras, aplastamiento o caída</strong></td><td class="r-phrase">«Trabajador con R-92 por rodado de piedra, consciente.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-93">R-93 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Tendido eléctrico caído o de alta tensión en suelo</strong></td><td class="r-phrase">«Peligro extremo, R-93 energizado en cruce de camino.»</td></tr>
+                <tr data-r-row><td><button class="r-badge" type="button" data-copy="R-99">R-99 <span class="r-badge-copy-icon">⧉</span></button></td><td><strong>Emergencia de máxima gravedad / Riesgo vital (MAYDAY)</strong></td><td class="r-phrase">«¡R-99! Despejen frecuencia, auxilio vital en quebrada sur.»</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- SECCIÓN 3: ALFABETO FONÉTICO ICAO                      -->
+        <!-- ===================================================== -->
+        <h2 style="margin-top: 48px;">3. Alfabeto Fonético Aeronáutico (ICAO) en Terreno</h2>
+        <p>Cuando la modulación de radio es ruidosa o el viento satura el micrófono del walkie-talkie, nombres propios, matrículas de aviones o patentes de camiones deben deletrearse en fonía internacional:</p>
+
+        <div class="phonetic-grid">
+          <div class="phonetic-item"><strong>A:</strong> Alfa</div>
+          <div class="phonetic-item"><strong>B:</strong> Bravo</div>
+          <div class="phonetic-item"><strong>C:</strong> Charlie</div>
+          <div class="phonetic-item"><strong>D:</strong> Delta</div>
+          <div class="phonetic-item"><strong>E:</strong> Echo</div>
+          <div class="phonetic-item"><strong>F:</strong> Foxtrot</div>
+          <div class="phonetic-item"><strong>G:</strong> Golf</div>
+          <div class="phonetic-item"><strong>H:</strong> Hotel</div>
+          <div class="phonetic-item"><strong>I:</strong> India</div>
+          <div class="phonetic-item"><strong>J:</strong> Juliet</div>
+          <div class="phonetic-item"><strong>K:</strong> Kilo</div>
+          <div class="phonetic-item"><strong>L:</strong> Lima</div>
+          <div class="phonetic-item"><strong>M:</strong> Mike</div>
+          <div class="phonetic-item"><strong>N:</strong> November</div>
+          <div class="phonetic-item"><strong>O:</strong> Oscar</div>
+          <div class="phonetic-item"><strong>P:</strong> Papa</div>
+          <div class="phonetic-item"><strong>Q:</strong> Quebec</div>
+          <div class="phonetic-item"><strong>R:</strong> Romeo</div>
+          <div class="phonetic-item"><strong>S:</strong> Sierra</div>
+          <div class="phonetic-item"><strong>T:</strong> Tango</div>
+          <div class="phonetic-item"><strong>U:</strong> Uniform</div>
+          <div class="phonetic-item"><strong>V:</strong> Victor</div>
+          <div class="phonetic-item"><strong>W:</strong> Whiskey</div>
+          <div class="phonetic-item"><strong>X:</strong> X-ray</div>
+          <div class="phonetic-item"><strong>Y:</strong> Yankee</div>
+          <div class="phonetic-item"><strong>Z:</strong> Zulu</div>
         </div>
 
-        <!-- Sección de Protocolos Complementarios -->
-        <h2 style="margin-top: 50px;">3. Alfabeto Fonético ICAO / Aeronáutico en Terreno</h2>
-        <p>Cuando la señal de radio es débil o hay interferencia estática, los nombres de personas, coordenadas de pistas de aterrizaje o patentes de vehículos deben deletrearse usando el alfabeto fonético internacional:</p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin: 24px 0;">
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>A:</strong> Alfa</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>B:</strong> Bravo</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>C:</strong> Charlie</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>D:</strong> Delta</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>E:</strong> Echo</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>F:</strong> Foxtrot</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>G:</strong> Golf</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>H:</strong> Hotel</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>I:</strong> India</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>J:</strong> Juliet</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>K:</strong> Kilo</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>L:</strong> Lima</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>M:</strong> Mike</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>N:</strong> November</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>O:</strong> Oscar</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>P:</strong> Papa</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>Q:</strong> Quebec</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>R:</strong> Romeo</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>S:</strong> Sierra</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>T:</strong> Tango</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>U:</strong> Uniform</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>V:</strong> Victor</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>W:</strong> Whiskey</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>X:</strong> X-ray</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>Y:</strong> Yankee</div>
-          <div style="padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);"><strong>Z:</strong> Zulu</div>
-        </div>
-
-        <h2>4. La Regla 30-30-30 en Frecuencia Radial</h2>
+        <!-- ===================================================== -->
+        <!-- SECCIÓN 4: REGLA 30-30-30                              -->
+        <!-- ===================================================== -->
+        <h2>4. La Regla Meteorológica 30-30-30 en Frecuencia Radial</h2>
         <p>
-          Cuando el radiooperador o jefe de brigada transmite un informe meteorológico <strong>R-34</strong> con valores que superan la <strong>regla 30-30-30</strong>, se decreta condición de alerta máxima en el canal de combate:
+          En los veranos del Biobío, las centrales de despacho monitorean estaciones meteorológicas automáticas para alertar por radio a las brigadas cuando se gatilla la condición extrema <strong>30-30-30</strong>:
         </p>
         <ul>
-          <li><strong>Temperatura superior a 30 °C</strong>: Secado rápido del combustible vegetal fino.</li>
-          <li><strong>Humedad relativa inferior al 30 %</strong>: Inflamabilidad extrema del sotobosque.</li>
-          <li><strong>Viento sostenido superior a 30 km/h</strong>: Velocidad de propagación crítica y emisión constante de pavesas.</li>
+          <li><strong>Temperatura superior a 30 °C</strong>.</li>
+          <li><strong>Humedad relativa inferior al 30 %</strong>.</li>
+          <li><strong>Velocidad del viento superior a 30 km/h</strong>.</li>
         </ul>
-
-        <!-- Conclusión -->
-        <h2>5. Conclusión</h2>
         <p>
-          La radiocomunicación en el sector forestal chileno es una disciplina de ingeniería de campo que salva vidas. Conocer el Código R, operar con serenidad el walkie-talkie y verificar siempre la recepción permite que la coordinación entre brigadas terrestres, medios aéreos y centrales de mando funcione como un reloj.
+          Bajo esta alerta, transmitida habitualmente bajo la clave <strong>R-34</strong> y <strong>R-35</strong>, el comportamiento del fuego se vuelve errático y explosivo, ordenándose la suspensión preventiva de faenas de cosecha mecanizada para evitar chispas de roce en rocas o cables de madereo.
         </p>
-      </section>
+      </div>
 
       <!-- Pie del artículo -->
-      <footer class="article-footer" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <footer class="article-footer container-narrow" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
         <a class="button button-ghost" href="index.html">← Volver al blog</a>
         <a class="button button-primary" href="../index.html">Ir al inicio</a>
       </footer>
     </article>
   </main>
+
+  <!-- Toast flotante de confirmación de copiado -->
+  <div id="copy-toast" class="copy-toast" aria-live="polite">✓ Código copiado</div>
 
   <!-- ===================================================== -->
   <!-- FOOTER GLOBAL                                         -->
@@ -230,201 +695,47 @@
     </div>
   </footer>
 
-  <!-- Script interactivo de tabla de Códigos R -->
+  <!-- Script interactivo de filtrado y copiado rápido -->
   <script>
     (() => {
       'use strict';
 
-      const rCodesData = [
-        // Comunicaciones (R-1 a R-19)
-        { code: 'R-1', category: 'comms', catLabel: 'Comunicaciones', desc: 'Recepción deficiente / Señal con interferencia', example: 'Central, aquí Móvil 3, lo copio R-1, repita.' },
-        { code: 'R-2', category: 'comms', catLabel: 'Comunicaciones', desc: 'Buena recepción / Fuerte y claro (5/5)', example: 'Lo recibo R-2, proceda con el despacho.' },
-        { code: 'R-3', category: 'comms', catLabel: 'Comunicaciones', desc: 'Silencio radial / Detenga transmisiones (frecuencia libre)', example: 'R-3 en frecuencia, tráfico de emergencia en curso.' },
-        { code: 'R-4', category: 'comms', catLabel: 'Comunicaciones', desc: 'Comprendido / Copiado / Mensaje recibido conforme', example: 'R-4, iniciando línea de control en flanco izquierdo.' },
-        { code: 'R-5', category: 'comms', catLabel: 'Comunicaciones', desc: 'Repita su mensaje / No se entendió', example: 'R-5 las últimas coordenadas, había viento en micrófono.' },
-        { code: 'R-6', category: 'comms', catLabel: 'Comunicaciones', desc: 'Mantenga en espera (stand-by para respuesta o acción)', example: 'R-6 en frecuencia, consulto con jefe de faena.' },
-        { code: 'R-7', category: 'comms', catLabel: 'Comunicaciones', desc: 'Término de transmisiones / Cierre de jornada o estación', example: 'Torre Mirador 4 para Central, R-7 por el día.' },
-        { code: 'R-8', category: 'comms', catLabel: 'Comunicaciones', desc: 'Inicio de transmisiones / Estación en escucha activa', example: 'Central San Javier, aquí Torre Peumo, R-8.' },
-        { code: 'R-9', category: 'comms', catLabel: 'Comunicaciones', desc: '¿Cómo me recibe? (Control de señal y radio)', example: 'Brigada 12 en prueba de equipo walkie-talkie, ¿R-9?' },
-        { code: 'R-10', category: 'comms', catLabel: 'Comunicaciones', desc: 'Identificación de la persona u operador que transmite', example: 'R-10 operador Pérez en Puesto de Mando.' },
-        { code: 'R-11', category: 'comms', catLabel: 'Comunicaciones', desc: 'Disponible para hablar por radio / QAP', example: 'Jefe Técnico R-11 en frecuencia principal.' },
-        { code: 'R-12', category: 'comms', catLabel: 'Comunicaciones', desc: 'Contacto radial establecido', example: 'R-12 exitoso con aeronave cisterna Eco-1.' },
-        { code: 'R-13', category: 'comms', catLabel: 'Comunicaciones', desc: 'Solicito puente radial con otra estación o móvil', example: 'Móvil 2, hágame R-13 con Central, estoy en quebrada.' },
-        { code: 'R-14', category: 'comms', catLabel: 'Comunicaciones', desc: 'Mensaje oficial / Comunicado de alta prioridad', example: 'Atención todas las unidades, R-14 de gerencia técnica.' },
-        { code: 'R-15', category: 'comms', catLabel: 'Comunicaciones', desc: 'Entregar mensaje urgente o pendiente de inmediato', example: 'Tengo R-15 urgente para el jefe de cuadrilla.' },
-        { code: 'R-16', category: 'comms', catLabel: 'Comunicaciones', desc: 'Llamada general a todos los equipos en escucha', example: 'R-16 general, reunión de coordinación en 10 min.' },
-        { code: 'R-17', category: 'comms', catLabel: 'Comunicaciones', desc: 'Atento a cadena radial / Red de enlace regional', example: 'Mantenerse R-17 ante posible tormenta eléctrica seca.' },
-        { code: 'R-18', category: 'comms', catLabel: 'Comunicaciones', desc: 'Sírvase identificarse quién llama', example: 'Estación que transmitió sin distintivo, favor R-18.' },
-        { code: 'R-19', category: 'comms', catLabel: 'Comunicaciones', desc: 'Cambio de canal o frecuencia operativa', example: 'Pase a canal 04 táctico, R-19.' },
-
-        // Incendios y Combate (R-20 a R-39)
-        { code: 'R-20', category: 'fire', catLabel: 'Incendios', desc: 'Incendio forestal declarado', example: 'Central, se confirma R-20 en sector Los Coigües.' },
-        { code: 'R-21', category: 'fire', catLabel: 'Incendios', desc: 'Foco o columna de humo avistada sin confirmar origen', example: 'Torre 2 avista R-21 con azimut 240°, a 8 km.' },
-        { code: 'R-22', category: 'fire', catLabel: 'Incendios', desc: 'Informe de situación del fuego (condición, avance)', example: 'Comandante en terreno entrega R-22 preliminar.' },
-        { code: 'R-23', category: 'fire', catLabel: 'Incendios', desc: 'Personal o recursos presentes en el lugar', example: 'R-23 en terreno: 2 brigadas terrestres y 1 skidder.' },
-        { code: 'R-24', category: 'fire', catLabel: 'Incendios', desc: 'Incendio bajo combate activo (trabajo en desarrollo)', example: 'El evento se mantiene en R-24 con apoyo de motobombas.' },
-        { code: 'R-25', category: 'fire', catLabel: 'Incendios', desc: 'Incendio controlado / Perímetro cerrado y sin avance', example: 'Buenas noticias, R-25 logrado en los cuatro flancos.' },
-        { code: 'R-26', category: 'fire', catLabel: 'Incendios', desc: 'Faenas de liquidación y enfriamiento de puntos calientes', example: 'Cuadrilla inicia R-26 con líneas de agua y rastrillos.' },
-        { code: 'R-27', category: 'fire', catLabel: 'Incendios', desc: 'Incendio completamente extinguido', example: 'Se declara R-27 definitivo tras 48 h sin actividad.' },
-        { code: 'R-28', category: 'fire', catLabel: 'Incendios', desc: 'Campamento base / Puesto de Comando de Incidentes (PCI)', example: 'R-28 instalado en cancha de acopio kilómetro 12.' },
-        { code: 'R-29', category: 'fire', catLabel: 'Incendios', desc: 'Retiro de brigadas / Desmovilización de recursos', example: 'Iniciando R-29 hacia base operacional.' },
-        { code: 'R-30', category: 'fire', catLabel: 'Incendios', desc: 'Rebrote de incendio por viento o salto de pavesas', example: 'Alerta, R-30 detectado fuera de la línea cortafuego.' },
-        { code: 'R-31', category: 'fire', catLabel: 'Incendios', desc: 'Jefe de Incendio / Comandante del Incidente en el área', example: 'R-31 asume el mando táctico de las operaciones.' },
-        { code: 'R-32', category: 'fire', catLabel: 'Incendios', desc: 'Superficie afectada estimada en hectáreas', example: 'R-32 preliminar: 15 hectáreas de pino insigne.' },
-        { code: 'R-33', category: 'fire', catLabel: 'Incendios', desc: 'Hora oficial / Consulta de cronograma operacional', example: 'Solicito R-33 para registro de bitácora.' },
-        { code: 'R-34', category: 'fire', catLabel: 'Incendios', desc: 'Informe meteorológico (viento, temperatura y humedad)', example: 'R-34: viento SO 25 km/h, 31°C, 22% HR (alerta 30-30-30).' },
-        { code: 'R-35', category: 'fire', catLabel: 'Incendios', desc: 'Condición meteorológica extrema o riesgo de tormenta', example: 'Emitido R-35 por ráfagas intensas en cumbre.' },
-        { code: 'R-36', category: 'fire', catLabel: 'Incendios', desc: 'Zona de seguridad y ruta de escape verificada', example: 'Todas las brigadas conocen su R-36 asignada.' },
-        { code: 'R-37', category: 'fire', catLabel: 'Incendios', desc: 'Despegue de aeronave (helicóptero o avión cisterna)', example: 'Helicóptero H-01 informa R-37 desde aeródromo.' },
-        { code: 'R-38', category: 'fire', catLabel: 'Incendios', desc: 'Aterrizaje de aeronave en helipunto o base', example: 'Avión AT-802 R-38 en pista de recarga de agua.' },
-        { code: 'R-39', category: 'fire', catLabel: 'Incendios', desc: 'Lanzamiento / Descarga de agua o retardante', example: 'Alerta brigadistas, despejen zona, R-39 en 30 segundos.' },
-
-        // Logística y Faenas (R-40 a R-69)
-        { code: 'R-40', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Salida de vehículo o brigada desde base a terreno', example: 'Móvil de brigada informa R-40 hacia predio Santa Elena.' },
-        { code: 'R-41', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Llegada a destino / Entrada a faena o predio', example: 'R-41 en predio, iniciando labores de relevo.' },
-        { code: 'R-42', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Móvil en tránsito / En ruta por camino forestal', example: 'Camión aljibe se encuentra R-42 por ruta de ripio.' },
-        { code: 'R-43', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Patrullaje preventivo sin novedad', example: 'Ronda de vigilancia nocturna R-43.' },
-        { code: 'R-44', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Reabastecimiento de combustible (petróleo / bencina)', example: 'Skidder requiere R-44 en cancha 3.' },
-        { code: 'R-45', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Despliegue de maquinaria pesada (Bulldozer / Excavadora)', example: 'R-45 abriendo cortafuego con pala frontal.' },
-        { code: 'R-46', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Camión aljibe / Suministro de agua para motobombas', example: 'Se requiere R-46 con acople rápido de 2 pulgadas.' },
-        { code: 'R-47', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Transporte de cuadrilla o brigadistas', example: 'Bus de personal R-47 saliendo de faena de volteo.' },
-        { code: 'R-48', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Faena de cosecha / Raleo / Torre de madereo activa', example: 'Precaución sector norte, faena activa R-48.' },
-        { code: 'R-49', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Tráfico de camiones madereros cargados (despeje de vías)', example: 'Atención camino angosto, baja camión R-49.' },
-        { code: 'R-50', category: 'ops', catLabel: 'Faenas & Logística', desc: 'Cierre de portón / Acceso restringido a predio', example: 'Acceso cerrado con candado, R-50 operativo.' },
-
-        // Solicitudes, Emergencias y Seguridad (R-70 a R-99)
-        { code: 'R-70', category: 'emergency', catLabel: 'Emergencias', desc: 'Solicitud de refuerzos adicionales en terreno', example: 'Jefe de sector solicita R-70 con urgencia.' },
-        { code: 'R-77', category: 'emergency', catLabel: 'Emergencias', desc: 'Problema mecánico / Vehículo o maquinaria en pana', example: 'Camioneta de cuadrilla con R-77 por rotura de neumático.' },
-        { code: 'R-78', category: 'emergency', catLabel: 'Emergencias', desc: 'Se necesita personal de apoyo (brigadistas / motosierristas)', example: 'Central, requerimos R-78 para línea de contención.' },
-        { code: 'R-79', category: 'emergency', catLabel: 'Emergencias', desc: 'Se necesitan herramientas manuales, mangueras o motobombas', example: 'R-79: 4 rollos de manguera de 1 pulgada y 2 pulaskis.' },
-        { code: 'R-80', category: 'emergency', catLabel: 'Emergencias', desc: 'Apoyo aéreo solicitado (avión o helicóptero)', example: 'Fuego corona copas de pino, solicitamos R-80 prioritario.' },
-        { code: 'R-81', category: 'emergency', catLabel: 'Emergencias', desc: 'Se requiere presencia de Carabineros / Fuerza pública', example: 'R-81 por corte de camino intencional o agresiones.' },
-        { code: 'R-82', category: 'emergency', catLabel: 'Emergencias', desc: 'Se necesita Cuerpo de Bomberos en apoyo', example: 'R-82 urgente para protección de viviendas en interfaz.' },
-        { code: 'R-83', category: 'emergency', catLabel: 'Emergencias', desc: 'Se necesita ambulancia / Personal médico de urgencia', example: 'R-83 prioritario con paramédico en cruce kilómetro 8.' },
-        { code: 'R-84', category: 'emergency', catLabel: 'Emergencias', desc: 'Investigación de causas de incendio / Peritaje forestal', example: 'Equipo R-84 ingresa al punto de inicio.' },
-        { code: 'R-85', category: 'emergency', catLabel: 'Emergencias', desc: 'Evacuación preventiva de civiles o viviendas amenazadas', example: 'Iniciando protocolo R-85 con apoyo de autoridades.' },
-        { code: 'R-90', category: 'emergency', catLabel: 'Emergencias', desc: 'Accidente de brigadista o trabajador en terreno', example: 'Alerta médica, R-90 en flanco derecho.' },
-        { code: 'R-91', category: 'emergency', catLabel: 'Emergencias', desc: '¡Brigada atrapada! / Encajonamiento por avance de fuego', example: '¡MAYDAY R-91! Brigada retrocediendo a zona de seguridad.' },
-        { code: 'R-92', category: 'emergency', catLabel: 'Emergencias', desc: 'Lesionado por quemaduras, caída de árbol o traumatismo', example: 'Brigadista con R-92 por quemadura de segundo grado.' },
-        { code: 'R-93', category: 'emergency', catLabel: 'Emergencias', desc: 'Línea de alta tensión o tendido eléctrico energizado en el suelo', example: 'Peligro extremo, R-93 en camino de acceso.' },
-        { code: 'R-99', category: 'emergency', catLabel: 'Emergencias', desc: 'Emergencia de máxima gravedad / Riesgo vital inminente (MAYDAY)', example: '¡R-99 en sector quebrada, corte total de comunicaciones!' }
-      ];
-
-      const tbody = document.getElementById('r-tbody');
       const searchInput = document.getElementById('r-search');
-      const emptyState = document.getElementById('r-empty');
-      const filterTabs = document.querySelectorAll('.r-filter-tab');
-      const countAll = document.getElementById('count-all');
+      const rows = document.querySelectorAll('[data-r-row]');
+      const toast = document.getElementById('copy-toast');
+      let toastTimer = null;
 
-      let currentFilter = 'all';
-      let currentQuery = '';
-
-      if (countAll) countAll.textContent = rCodesData.length;
-
-      const getPillClass = (category) => {
-        switch (category) {
-          case 'comms': return 'pill-comms';
-          case 'fire': return 'pill-fire';
-          case 'ops': return 'pill-ops';
-          case 'emergency': return 'pill-emergency';
-          default: return 'pill-comms';
-        }
+      const showToast = (text) => {
+        if (!toast) return;
+        toast.textContent = text;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
       };
 
-      const renderRows = () => {
-        const filtered = rCodesData.filter((item) => {
-          const matchFilter = currentFilter === 'all' || item.category === currentFilter;
-          const q = currentQuery.toLowerCase().trim();
-          const matchSearch = !q ||
-            item.code.toLowerCase().includes(q) ||
-            item.desc.toLowerCase().includes(q) ||
-            item.catLabel.toLowerCase().includes(q) ||
-            item.example.toLowerCase().includes(q);
-          return matchFilter && matchSearch;
-        });
-
-        tbody.replaceChildren();
-
-        if (filtered.length === 0) {
-          emptyState.hidden = false;
-          return;
-        }
-
-        emptyState.hidden = true;
-
-        filtered.forEach((item) => {
-          const tr = document.createElement('tr');
-
-          // Código R badge
-          const tdCode = document.createElement('td');
-          const badge = document.createElement('span');
-          badge.className = 'r-code-badge';
-          badge.textContent = item.code;
-          tdCode.append(badge);
-
-          // Significado
-          const tdDesc = document.createElement('td');
-          const strong = document.createElement('strong');
-          strong.textContent = item.desc;
-          tdDesc.append(strong);
-
-          // Categoría pill
-          const tdCat = document.createElement('td');
-          const pill = document.createElement('span');
-          pill.className = `r-category-pill ${getPillClass(item.category)}`;
-          pill.textContent = item.catLabel;
-          tdCat.append(pill);
-
-          // Ejemplo en terreno
-          const tdExample = document.createElement('td');
-          tdExample.style.color = 'var(--muted)';
-          tdExample.style.fontStyle = 'italic';
-          tdExample.style.fontSize = '0.86rem';
-          tdExample.textContent = `«${item.example}»`;
-
-          // Botón de copiar
-          const tdAction = document.createElement('td');
-          tdAction.style.textAlign = 'center';
-          const copyBtn = document.createElement('button');
-          copyBtn.type = 'button';
-          copyBtn.className = 'r-copy-btn';
-          copyBtn.textContent = 'Copiar';
-          copyBtn.setAttribute('aria-label', `Copiar ${item.code}`);
-          copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(`${item.code}: ${item.desc}`).then(() => {
-              copyBtn.textContent = '¡Listo!';
-              copyBtn.classList.add('copied');
-              setTimeout(() => {
-                copyBtn.textContent = 'Copiar';
-                copyBtn.classList.remove('copied');
-              }, 1800);
-            });
+      // Copiado rápido al hacer clic en el badge
+      document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const code = btn.dataset.copy;
+          const tr = btn.closest('tr');
+          const desc = tr ? tr.querySelector('td:nth-child(2)').textContent.trim() : '';
+          navigator.clipboard.writeText(`${code}: ${desc}`).then(() => {
+            showToast(`✓ ${code} copiado al portapapeles`);
           });
-          tdAction.append(copyBtn);
-
-          tr.append(tdCode, tdDesc, tdCat, tdExample, tdAction);
-          tbody.append(tr);
-        });
-      };
-
-      // Manejador de búsqueda
-      searchInput.addEventListener('input', (e) => {
-        currentQuery = e.target.value;
-        renderRows();
-      });
-
-      // Manejador de filtros
-      filterTabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          filterTabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          currentFilter = tab.dataset.filter;
-          renderRows();
         });
       });
 
-      // Inicializar
-      renderRows();
+      // Filtro de búsqueda en tiempo real
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const q = e.target.value.toLowerCase().trim();
+          rows.forEach((row) => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = (!q || text.includes(q)) ? '' : 'none';
+          });
+        });
+      }
+
       document.querySelector('[data-year]').textContent = new Date().getFullYear();
     })();
   </script>

@@ -28,8 +28,8 @@
       'btn.view_all_projects': 'Ver todos los proyectos',
       'btn.contact_linkedin': 'Contactar por LinkedIn',
       'btn.donate': 'Donar',
-      'btn.back_blog': 'Volver a Mundo Linux',
-      'btn.back_home': 'Volver al inicio',
+      'btn.back_blog': '← Volver al blog',
+      'btn.back_home': 'Ir al inicio',
       'btn.copy': 'Copiar',
       'btn.copied': '¡Copiado!',
 
@@ -108,8 +108,8 @@
       'btn.view_all_projects': 'View all projects',
       'btn.contact_linkedin': 'Contact on LinkedIn',
       'btn.donate': 'Donate',
-      'btn.back_blog': 'Back to Linux World',
-      'btn.back_home': 'Back to home',
+      'btn.back_blog': '← Back to blog',
+      'btn.back_home': 'Go to home',
       'btn.copy': 'Copy',
       'btn.copied': 'Copied!',
 
@@ -167,6 +167,82 @@
     }
   };
 
+  // Traducciones detalladas de artículos técnicos
+  const postTranslations = {
+    'punchi-dock-plasmoid': {
+      es: {
+        title: 'Punchi Dock Remastered: lanzador y gestor de tareas nativo para KDE Plasma 6',
+        lead: 'Un dock modular de alto rendimiento, lanzador de aplicaciones PunchiMenu, controles multimedia MPRIS y soporte universal multi-distribución para KDE Plasma 6 y Wayland.',
+        intro: 'Punchi Dock Remastered es una reescritura modular y nativa del popular plasmoide Punchi Dock. Se ha rediseñado desde cero en C++20 y Qt 6 para integrarse sin costuras en entornos modernos basados en KDE Plasma 6 y Wayland, preparando el camino hacia la versión estable 1.0 con capacidades avanzadas de lanzador, gestión de tareas, popups multimedia y compatibilidad multi-distribución.',
+        tipTitle: 'Consejo tras instalar o actualizar',
+        tipText: 'Tras una instalación inicial o actualización del paquete, si el dock se visualiza pero no reacciona a los clics de inmediato, reinicia la shell de Plasma ejecutando systemctl --user restart plasma-plasmashell.service o cierra sesión una vez. La configuración de ítems y temas se preserva intacta.',
+        tabs: ['Sobre el Proyecto', 'Características', 'Novedades v0.9.7', 'Galería Visual', 'Instalación'],
+        status: 'Preparando versión estable 1.0',
+        archTitle: 'Arquitectura Nativa y Limpia',
+        archText: 'El proyecto combina la agilidad de los componentes declarativos de Qt Quick con la potencia de un módulo nativo en C++20 (Qt 6 y KDE Frameworks 6). Esto permite una gestión inmediata de los procesos del sistema, integración profunda con TaskManager de Plasma y análisis de espectro de audio mediante PipeWire sin sobrecargar el hilo del compositor KWin.',
+        pillarsTitle: 'Pilares de la Edición Remastered',
+        featuresTitle: 'Capacidades Principales',
+        featuresLead: 'Punchi Dock Remastered es una suite completa de control e interacción para tu panel de escritorio.',
+        installTitle: 'Guía Rápida de Instalación',
+        installLead: 'Comandos recomendados para desplegar el plasmoide nativo según tu distribución Linux.'
+      },
+      en: {
+        title: 'Punchi Dock Remastered: Native Launcher and Task Manager for KDE Plasma 6',
+        lead: 'A high-performance modular dock, PunchiMenu application launcher, MPRIS multimedia controls, and universal multi-distribution support for KDE Plasma 6 and Wayland.',
+        intro: 'Punchi Dock Remastered is a modular, native rewrite of the popular Punchi Dock plasmoid. Built from scratch in C++20 and Qt 6, it integrates seamlessly into modern desktop environments powered by KDE Plasma 6 and Wayland, paving the path toward stable 1.0 with advanced launcher capabilities, task management, multimedia popups, and multi-distribution support.',
+        tipTitle: 'Tip after installing or upgrading',
+        tipText: 'After an initial install or package update, if the dock renders but does not immediately respond to clicks, restart the Plasma shell with systemctl --user restart plasma-plasmashell.service or log out once. Item configurations and themes are preserved intact.',
+        tabs: ['About Project', 'Features', 'What’s New v0.9.7', 'Visual Gallery', 'Installation'],
+        status: 'Preparing stable release 1.0',
+        archTitle: 'Clean & Native Architecture',
+        archText: 'The project pairs declarative Qt Quick agility with a native C++20 core engine (Qt 6 and KDE Frameworks 6). This delivers instant system process handling, deep Plasma TaskManager integration, and PipeWire audio spectrum visualization without burdening the KWin compositor thread.',
+        pillarsTitle: 'Core Pillars of the Remastered Edition',
+        featuresTitle: 'Core Capabilities',
+        featuresLead: 'Punchi Dock Remastered is a comprehensive control and interaction suite for your desktop panel.',
+        installTitle: 'Quick Installation Guide',
+        installLead: 'Recommended commands to install and deploy the native plasmoid across Linux distributions.'
+      }
+    },
+    'codigos-r-radiocomunicacion-forestal-chile': {
+      es: {
+        title: 'Códigos R de Radiocomunicación Forestal en Chile: Tabla Completa y Protocolos de Terreno',
+        lead: 'Manual operativo de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF utilizados por brigadas de CONAF, empresas asociadas a CORMA, torres de vigilancia y faenas forestales en Chile.',
+        asideLabel: 'Dispositivo de Campo',
+        asideTitle: 'El Walkie-Talkie en Operaciones Forestales',
+        asideText: 'En la agreste topografía de los valles y cordilleras de Chile, la telefonía móvil suele quedar fuera de servicio. El walkie-talkie portátil VHF/UHF (radiotransceptor handy para brigadistas y operadores de maquinaria) conectado a repetidoras de cumbre constituye el canal vital de comunicación, coordinación de agua, despacho aéreo y evacuación en caso de emergencia.',
+        sec1: '1. ¿Por qué se utilizan Códigos R en el sector forestal chileno?',
+        sec2: '2. Tabla Completa de Códigos R Forestales',
+        sec3: '3. Alfabeto Fonético ICAO / Aeronáutico en Terreno',
+        sec4: '4. La Regla 30-30-30 en Frecuencia Radial',
+        sec5: '5. Conclusión',
+        searchPlaceholder: 'Buscar código (ej. R-24, R-83) o concepto...',
+        thCode: 'Código',
+        thDesc: 'Significado / Acción Oficial',
+        thCat: 'Categoría',
+        thExample: 'Fraseología de Terreno',
+        thCopy: 'Copiar'
+      },
+      en: {
+        title: 'Forestry Radio R Codes in Chile: Full Table & Field Protocols',
+        lead: 'Field operational manual of radio codes for VHF/UHF walkie-talkies and portable handies used by CONAF firefighting crews, CORMA-affiliated forestry companies, lookout towers, and timber operations in Chile.',
+        asideLabel: 'Field Device',
+        asideTitle: 'The Walkie-Talkie in Forestry Operations',
+        asideText: 'Across the rugged terrain of Chilean mountain ranges and valleys, mobile cellular coverage often fails. The portable VHF/UHF walkie-talkie connected to mountain-top repeaters serves as the lifeline for crew coordination, aerial water drops, and emergency evacuations.',
+        sec1: '1. Why are R Codes used in Chilean Forestry?',
+        sec2: '2. Complete Forestry R Codes Table',
+        sec3: '3. ICAO / Aviation Phonetic Alphabet in the Field',
+        sec4: '4. The 30-30-30 Meteorological Rule over Radio',
+        sec5: '5. Conclusion',
+        searchPlaceholder: 'Search code (e.g. R-24, R-83) or concept...',
+        thCode: 'Code',
+        thDesc: 'Official Meaning / Action',
+        thCat: 'Category',
+        thExample: 'Field Phraseology',
+        thCopy: 'Copy'
+      }
+    }
+  };
+
   const getStoredLang = () => {
     try {
       const stored = localStorage.getItem(storageKey);
@@ -182,6 +258,103 @@
       localStorage.setItem(storageKey, lang);
     } catch {
       // storage blocked
+    }
+  };
+
+  // Traduce el contenido específico del artículo actual si coincide
+  const translateArticleContent = (lang) => {
+    const isEn = lang === 'en';
+    const path = window.location.pathname;
+
+    // 1. Elementos comunes en artículos
+    const backLink = document.querySelector('.back-link, .article-breadcrumb a');
+    if (backLink) {
+      backLink.textContent = isEn ? '← Back to blog' : '← Volver al blog';
+    }
+
+    const readMeta = document.querySelector('.post-meta time + span');
+    if (readMeta && readMeta.textContent.includes('lectura')) {
+      readMeta.textContent = readMeta.textContent.replace('min de lectura', isEn ? 'min read' : 'min de lectura');
+    } else if (readMeta && isEn && readMeta.textContent.includes('min read')) {
+      // already translated
+    }
+
+    // 2. Punchi Dock Plasmoid
+    if (path.includes('punchi-dock-plasmoid')) {
+      const t = postTranslations['punchi-dock-plasmoid'][lang];
+      if (t) {
+        const h1 = document.querySelector('article h1, .article-header h1');
+        if (h1) h1.textContent = t.title;
+        const lead = document.querySelector('.article-header .lead');
+        if (lead) lead.textContent = t.lead;
+        const intro = document.querySelector('.article-intro');
+        if (intro) intro.textContent = t.intro;
+        const noteTitle = document.querySelector('.article-note span');
+        if (noteTitle) noteTitle.textContent = t.tipTitle;
+        const noteP = document.querySelector('.article-note p');
+        if (noteP) noteP.textContent = t.tipText;
+
+        // Pestañas
+        const tabButtons = document.querySelectorAll('.punchi-tab-button');
+        if (tabButtons.length === t.tabs.length) {
+          tabButtons.forEach((btn, i) => {
+            const svg = btn.querySelector('svg');
+            btn.textContent = '';
+            if (svg) btn.append(svg);
+            btn.append(` ${t.tabs[i]}`);
+          });
+        }
+
+        const badge = document.querySelector('.punchi-badge-status');
+        if (badge) {
+          const dot = badge.querySelector('i');
+          badge.textContent = '';
+          if (dot) badge.append(dot);
+          badge.append(` ${t.status}`);
+        }
+      }
+    }
+
+    // 3. Códigos R Forestales
+    if (path.includes('codigos-r-radiocomunicacion-forestal-chile')) {
+      const t = postTranslations['codigos-r-radiocomunicacion-forestal-chile'][lang];
+      if (t) {
+        const h1 = document.querySelector('article h1, .article-header h1');
+        if (h1) h1.textContent = t.title;
+        const lead = document.querySelector('.article-header .lead');
+        if (lead) lead.textContent = t.lead;
+
+        const asideLabel = document.querySelector('.walkie-talkie-card .eyebrow');
+        if (asideLabel) asideLabel.textContent = t.asideLabel;
+        const asideTitle = document.querySelector('.walkie-talkie-card h2');
+        if (asideTitle) asideTitle.textContent = t.asideTitle;
+        const asideP = document.querySelector('.walkie-talkie-card p');
+        if (asideP) asideP.textContent = t.asideText;
+
+        const searchInput = document.getElementById('r-search');
+        if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+
+        const ths = document.querySelectorAll('#r-table th');
+        if (ths.length >= 5) {
+          ths[0].textContent = t.thCode;
+          ths[1].textContent = t.thDesc;
+          ths[2].textContent = t.thCat;
+          ths[3].textContent = t.thExample;
+          ths[4].textContent = t.thCopy;
+        }
+
+        // Filtros
+        const filterAll = document.querySelector('[data-filter="all"]');
+        const filterComms = document.querySelector('[data-filter="comms"]');
+        const filterFire = document.querySelector('[data-filter="fire"]');
+        const filterOps = document.querySelector('[data-filter="ops"]');
+        const filterEmergency = document.querySelector('[data-filter="emergency"]');
+        if (filterAll) filterAll.childNodes[0].textContent = isEn ? 'All (' : 'Todos (';
+        if (filterComms) filterComms.textContent = isEn ? 'Comms (R-1/19)' : 'Comunicaciones (R-1/19)';
+        if (filterFire) filterFire.textContent = isEn ? 'Firefighting (R-20/39)' : 'Incendios (R-20/39)';
+        if (filterOps) filterOps.textContent = isEn ? 'Operations & Logistics' : 'Faenas & Logística';
+        if (filterEmergency) filterEmergency.textContent = isEn ? 'Emergencies (R-70/99)' : 'Emergencias (R-70/99)';
+      }
     }
   };
 
@@ -203,7 +376,7 @@
       const links = navLinks.querySelectorAll('a');
       links.forEach((a) => {
         const href = a.getAttribute('href') || '';
-        if (a.classList.contains('nav-home') || href.endsWith('index.html') && !href.includes('/') && location.pathname.endsWith('index.html') || href === '../index.html' || href === 'index.html' && a.querySelector('.nav-icon')) {
+        if (a.classList.contains('nav-home') || (href.endsWith('index.html') && !href.includes('/') && location.pathname.endsWith('index.html')) || href === '../index.html' || (href === 'index.html' && a.querySelector('.nav-icon'))) {
           const icon = a.querySelector('.nav-icon');
           if (icon) {
             a.childNodes.forEach(node => {
@@ -248,18 +421,29 @@
     const footerBottomCrafted = document.querySelector('.footer-bottom > span:last-child');
     if (footerBottomCrafted) footerBottomCrafted.textContent = dict['footer.crafted'];
 
-    // 5. Actualizar el estado visual del selector
+    // 5. Traducir contenido del artículo actual
+    translateArticleContent(lang);
+
+    // 6. Actualizar el estado visual del selector
     const toggle = document.querySelector('[data-lang-toggle]');
     if (toggle) {
       const optEs = toggle.querySelector('[data-lang-opt="es"]');
       const optEn = toggle.querySelector('[data-lang-opt="en"]');
-      if (optEs) optEs.classList.toggle('active', lang === 'es');
-      if (optEn) optEn.classList.toggle('active', lang === 'en');
+      if (optEs) {
+        optEs.classList.toggle('active', lang === 'es');
+        optEs.style.background = lang === 'es' ? 'var(--accent, #38bdf8)' : 'transparent';
+        optEs.style.color = lang === 'es' ? '#ffffff' : 'inherit';
+      }
+      if (optEn) {
+        optEn.classList.toggle('active', lang === 'en');
+        optEn.style.background = lang === 'en' ? 'var(--accent, #38bdf8)' : 'transparent';
+        optEn.style.color = lang === 'en' ? '#ffffff' : 'inherit';
+      }
       toggle.setAttribute('aria-label', dict['aria.lang_switch']);
       toggle.setAttribute('title', lang === 'es' ? 'Switch to English' : 'Cambiar a Español');
     }
 
-    // 6. Notificar a observadores personalizados
+    // 7. Notificar a observadores personalizados
     document.dispatchEvent(new CustomEvent('punchisoft-langchange', { detail: { lang } }));
   };
 
@@ -271,24 +455,33 @@
     toggle.className = 'lang-toggle';
     toggle.type = 'button';
     toggle.dataset.langToggle = '';
-    toggle.setAttribute('aria-label', 'Cambiar idioma');
+    toggle.setAttribute('aria-label', 'Switch language');
 
-    const optEs = document.createElement('span');
-    optEs.className = 'lang-toggle-opt active';
-    optEs.dataset.langOpt = 'es';
-    optEs.textContent = 'ES';
+    // Estilos inline de alta fidelidad para asegurar renderizado impecable independientemente de caché CSS
+    toggle.style.order = '3';
+    toggle.style.marginLeft = '14px';
+    toggle.style.display = 'inline-flex';
+    toggle.style.alignItems = 'center';
+    toggle.style.gap = '5px';
+    toggle.style.height = '34px';
+    toggle.style.padding = '2px 8px';
+    toggle.style.borderRadius = '99px';
+    toggle.style.border = '1px solid var(--border-light, rgba(88,166,255,0.3))';
+    toggle.style.background = 'var(--surface, rgba(16,24,38,0.85))';
+    toggle.style.color = 'var(--text, #ffffff)';
+    toggle.style.cursor = 'pointer';
+    toggle.style.font = '700 0.74rem ui-monospace, monospace';
+    toggle.style.boxShadow = '0 2px 10px rgba(0,0,0,0.18)';
+    toggle.style.userSelect = 'none';
+    toggle.style.backdropFilter = 'blur(12px)';
+    toggle.style.transition = 'all 0.2s ease';
 
-    const div = document.createElement('span');
-    div.className = 'lang-divider';
-    div.textContent = '/';
-    div.setAttribute('aria-hidden', 'true');
-
-    const optEn = document.createElement('span');
-    optEn.className = 'lang-toggle-opt';
-    optEn.dataset.langOpt = 'en';
-    optEn.textContent = 'EN';
-
-    toggle.append(optEs, div, optEn);
+    toggle.innerHTML = `
+      <span style="font-size:0.9rem; margin-right:2px;" aria-hidden="true">🌐</span>
+      <span class="lang-toggle-opt active" data-lang-opt="es" style="padding:2px 6px; border-radius:4px; transition:all .2s;">ES</span>
+      <span class="lang-divider" style="opacity:0.35; font-size:0.72rem;" aria-hidden="true">/</span>
+      <span class="lang-toggle-opt" data-lang-opt="en" style="padding:2px 6px; border-radius:4px; transition:all .2s;">EN</span>
+    `;
 
     toggle.addEventListener('click', () => {
       const current = root.getAttribute('lang') || getStoredLang();
@@ -297,10 +490,13 @@
       translatePage(nextLang);
     });
 
-    // Insertar justo antes del theme-toggle (o al final de nav)
+    // Ubicarlo ordenadamente: antes de theme-toggle o menu-toggle
     const themeToggle = nav.querySelector('[data-theme-toggle]');
+    const menuToggle = nav.querySelector('.menu-toggle');
     if (themeToggle) {
       nav.insertBefore(toggle, themeToggle);
+    } else if (menuToggle) {
+      nav.insertBefore(toggle, menuToggle);
     } else {
       nav.append(toggle);
     }

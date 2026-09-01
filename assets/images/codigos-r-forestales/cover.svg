@@ -1,181 +1,299 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
   <defs>
-    <!-- Gradientes principales -->
+    <!-- Gradientes de fondo y superficie -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b0f17"/>
-      <stop offset="60%" stop-color="#121824"/>
-      <stop offset="100%" stop-color="#0a0d14"/>
-    </linearGradient>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1c2536"/>
-      <stop offset="100%" stop-color="#131a26"/>
-    </linearGradient>
-    <linearGradient id="accentOrange" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f97316"/>
-      <stop offset="100%" stop-color="#fb923c"/>
-    </linearGradient>
-    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#818cf8"/>
-    </linearGradient>
-    <linearGradient id="glowPulse" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="rgba(249,115,22,0.3)"/>
-      <stop offset="100%" stop-color="rgba(56,189,248,0.05)"/>
+      <stop offset="0%" stop-color="#090d14"/>
+      <stop offset="50%" stop-color="#101725"/>
+      <stop offset="100%" stop-color="#080b11"/>
     </linearGradient>
 
-    <!-- Filtros de resplandor -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <!-- Gradiente para el chasis reforzado del walkie-talkie -->
+    <linearGradient id="chassisGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#141a24"/>
+      <stop offset="15%" stop-color="#222c3c"/>
+      <stop offset="50%" stop-color="#283548"/>
+      <stop offset="85%" stop-color="#222c3c"/>
+      <stop offset="100%" stop-color="#141a24"/>
+    </linearGradient>
+
+    <!-- Gradiente de la pantalla LCD táctica -->
+    <linearGradient id="lcdGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#031f30"/>
+      <stop offset="100%" stop-color="#021422"/>
+    </linearGradient>
+
+    <!-- Gradiente para la antena de goma industrial -->
+    <linearGradient id="antennaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1c2430"/>
+      <stop offset="50%" stop-color="#3b485d"/>
+      <stop offset="100%" stop-color="#18202b"/>
+    </linearGradient>
+
+    <!-- Gradiente de perillas metálicas/estriadas -->
+    <linearGradient id="knobGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <!-- Filtros de resplandor (Glow) -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="8" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shadowHeavy" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.75"/>
     </filter>
   </defs>
 
   <!-- Fondo base -->
   <rect width="1200" height="675" fill="url(#bgGrad)"/>
 
-  <!-- Cuadrícula técnica de fondo -->
-  <g opacity="0.07" stroke="#94a3b8" stroke-width="1">
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40"/>
+  <!-- Malla técnica de coordenadas y curvas de nivel -->
+  <g opacity="0.06" stroke="#94a3b8" stroke-width="1">
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48"/>
     </pattern>
     <rect width="1200" height="675" fill="url(#grid)"/>
   </g>
 
-  <!-- Silueta de cordillera y bosque forestal -->
-  <path d="M 0 580 L 120 540 L 250 560 L 410 500 L 560 550 L 730 480 L 890 530 L 1050 490 L 1200 520 L 1200 675 L 0 675 Z" fill="#080c12" opacity="0.8"/>
-  <!-- Pinos / Bosque silueta -->
-  <g fill="#0c121c" opacity="0.9">
-    <polygon points="180,590 195,540 210,590"/>
-    <polygon points="198,590 210,545 222,590"/>
-    <polygon points="340,580 355,520 370,580"/>
-    <polygon points="360,585 372,530 384,585"/>
-    <polygon points="620,570 635,510 650,570"/>
-    <polygon points="810,560 825,505 840,560"/>
-    <polygon points="980,575 995,515 1010,575"/>
-    <polygon points="1000,580 1012,525 1024,580"/>
+  <!-- Silueta de la Cordillera de Nahuelbuta y valles del Biobío -->
+  <path d="M 0 570 Q 220 500 440 540 T 880 490 T 1200 530 L 1200 675 L 0 675 Z" fill="#070a10" opacity="0.9"/>
+  <!-- Silueta de plantaciones de pino y bosque nativo -->
+  <g fill="#0b1018" opacity="0.95">
+    <polygon points="120,590 135,530 150,590"/>
+    <polygon points="140,595 152,535 164,595"/>
+    <polygon points="260,575 275,510 290,575"/>
+    <polygon points="410,580 425,515 440,580"/>
+    <polygon points="670,560 685,495 700,560"/>
+    <polygon points="760,565 775,505 790,565"/>
+    <polygon points="950,550 965,485 980,550"/>
+    <polygon points="1080,560 1095,500 1110,560"/>
   </g>
 
-  <!-- Torre de Telecomunicaciones Forestal en cumbre -->
-  <g stroke="#f97316" stroke-width="2" opacity="0.85" filter="url(#glow)">
-    <!-- Estructura celosía de torre -->
-    <line x1="730" y1="480" x2="730" y2="280"/>
-    <line x1="720" y1="480" x2="728" y2="280"/>
-    <line x1="740" y1="480" x2="732" y2="280"/>
-    <line x1="723" y1="440" x2="737" y2="440"/>
-    <line x1="725" y1="390" x2="735" y2="390"/>
-    <line x1="727" y1="340" x2="733" y2="340"/>
-    <!-- Diagonales celosía -->
-    <line x1="720" y1="480" x2="737" y2="440"/>
-    <line x1="740" y1="480" x2="723" y2="440"/>
-    <line x1="723" y1="440" x2="735" y2="390"/>
-    <line x1="737" y1="440" x2="725" y2="390"/>
-    <!-- Baliza y Antena repetidora -->
-    <line x1="730" y1="280" x2="730" y2="230" stroke="#fb923c" stroke-width="3"/>
-    <circle cx="730" cy="230" r="5" fill="#f97316"/>
-    <!-- Ondas de radio concéntricas -->
-    <circle cx="730" cy="230" r="25" stroke="rgba(249,115,22,0.6)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
-    <circle cx="730" cy="230" r="55" stroke="rgba(249,115,22,0.4)" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
-    <circle cx="730" cy="230" r="95" stroke="rgba(249,115,22,0.2)" stroke-width="1.5" fill="none" stroke-dasharray="8 6"/>
+  <!-- Torre repetidora de telecomunicaciones en cumbre (Cerro Cayumanqui / Nahuelbuta) -->
+  <g stroke="#f97316" stroke-width="2" opacity="0.85" filter="url(#glowOrange)">
+    <line x1="530" y1="520" x2="560" y2="240"/>
+    <line x1="590" y1="520" x2="560" y2="240"/>
+    <line x1="560" y1="240" x2="560" y2="180"/>
+    <!-- Tensores y celosía -->
+    <line x1="538" y1="460" x2="582" y2="460"/>
+    <line x1="544" y1="400" x2="576" y2="400"/>
+    <line x1="550" y1="340" x2="570" y2="340"/>
+    <line x1="555" y1="280" x2="565" y2="280"/>
+    <line x1="538" y1="460" x2="576" y2="400"/>
+    <line x1="582" y1="460" x2="544" y2="400"/>
+    <line x1="544" y1="400" x2="570" y2="340"/>
+    <line x1="576" y1="400" x2="550" y2="340"/>
+    <!-- Dipolos VHF y radioenlace de microondas -->
+    <line x1="560" y1="200" x2="578" y2="200"/>
+    <line x1="578" y1="190" x2="578" y2="210" stroke-width="3"/>
+    <line x1="560" y1="220" x2="542" y2="220"/>
+    <line x1="542" y1="210" x2="542" y2="230" stroke-width="3"/>
+    <circle cx="560" cy="180" r="4" fill="#f97316"/>
+    <!-- Ondas de radio propagándose -->
+    <circle cx="560" cy="180" r="30" stroke="rgba(249,115,22,0.3)" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+    <circle cx="560" cy="180" r="70" stroke="rgba(249,115,22,0.18)" stroke-width="1.5" stroke-dasharray="6 6" fill="none"/>
+    <circle cx="560" cy="180" r="120" stroke="rgba(249,115,22,0.08)" stroke-width="1.5" fill="none"/>
   </g>
 
-  <!-- Tarjeta Transceptor Radio VHF Portátil (Centro Izquierda) -->
-  <g transform="translate(140, 110)">
-    <!-- Sombra posterior -->
-    <rect x="-10" y="-10" width="360" height="460" rx="28" fill="rgba(0,0,0,0.6)"/>
-    <rect x="0" y="0" width="340" height="440" rx="24" fill="url(#cardGrad)" stroke="rgba(56,189,248,0.25)" stroke-width="1.5"/>
+  <!-- ========================================================================= -->
+  <!-- ILUSTRACIÓN DEL WALKIE-TALKIE INDUSTRIAL (TRANSCEPTOR VHF TÁCTICO)         -->
+  <!-- ========================================================================= -->
+  <g transform="translate(100, 70)" filter="url(#shadowHeavy)">
+    <!-- Antena Helicoidal Gruesa y Flexible con base roscada -->
+    <path d="M 68 8 L 74 -110 C 74 -118 84 -118 84 -110 L 90 8 Z" fill="url(#antennaGrad)" stroke="#1e293b" stroke-width="1.5"/>
+    <!-- Ranuras estriadas de flexibilidad en la base de la antena -->
+    <line x1="71" y1="-10" x2="87" y2="-10" stroke="#0f172a" stroke-width="3"/>
+    <line x1="72" y1="-25" x2="86" y2="-25" stroke="#0f172a" stroke-width="3"/>
+    <line x1="73" y1="-40" x2="85" y2="-40" stroke="#0f172a" stroke-width="3"/>
+    <!-- Conector coaxial SMA reforzado -->
+    <rect x="66" y="8" width="26" height="14" rx="2" fill="#475569" stroke="#334155"/>
 
-    <!-- Antena -->
-    <rect x="75" y="-60" width="14" height="65" rx="4" fill="#334155" stroke="#475569" stroke-width="1.5"/>
-    <rect x="79" y="-95" width="6" height="40" rx="2" fill="#1e293b"/>
-    <!-- Perilla Canal -->
-    <rect x="230" y="-20" width="32" height="24" rx="4" fill="#334155" stroke="#475569" stroke-width="1.5"/>
-    <line x1="246" y1="-20" x2="246" y2="-8" stroke="#f97316" stroke-width="2"/>
+    <!-- Perilla Selector de Canal (Rotary 16 posiciones) -->
+    <rect x="125" y="-12" width="34" height="24" rx="4" fill="url(#knobGrad)" stroke="#334155"/>
+    <line x1="130" y1="-12" x2="130" y2="12" stroke="#1e293b" stroke-width="2"/>
+    <line x1="136" y1="-12" x2="136" y2="12" stroke="#1e293b" stroke-width="2"/>
+    <line x1="142" y1="-12" x2="142" y2="12" stroke="#f97316" stroke-width="2.5"/> <!-- Marca canal -->
+    <line x1="148" y1="-12" x2="148" y2="12" stroke="#1e293b" stroke-width="2"/>
+    <line x1="154" y1="-12" x2="154" y2="12" stroke="#1e293b" stroke-width="2"/>
 
-    <!-- Carcasa superior del radio -->
-    <rect x="24" y="24" width="292" height="60" rx="12" fill="#0f172a" stroke="#1e293b"/>
-    <!-- Indicador LED estado -->
-    <circle cx="48" cy="54" r="6" fill="#22c55e" filter="url(#glow)"/>
-    <text x="64" y="58" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="12" font-weight="600">CANAL 01 · VHF CONAF/CORMA</text>
+    <!-- Botón Naranja Superior de Emergencia Táctica (Alerta MAYDAY) -->
+    <rect x="180" y="-6" width="22" height="16" rx="3" fill="#ea580c" stroke="#c2410c"/>
 
-    <!-- Pantalla LCD Retroiluminada -->
-    <rect x="24" y="100" width="292" height="110" rx="12" fill="#032030" stroke="#0284c7" stroke-width="1.5"/>
-    <text x="44" y="132" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="13" font-weight="700" letter-spacing="1">RX/TX · 154.500 MHz</text>
-    <text x="44" y="172" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="28" font-weight="900" letter-spacing="0.5">R-24 EN COMBATE</text>
-    <text x="44" y="195" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="11">BRIGADA TERRESTRE · SECTOR SUR</text>
+    <!-- Perilla de Encendido / Control de Volumen -->
+    <rect x="225" y="-16" width="40" height="28" rx="4" fill="url(#knobGrad)" stroke="#334155"/>
+    <line x1="233" y1="-16" x2="233" y2="12" stroke="#0f172a" stroke-width="2"/>
+    <line x1="240" y1="-16" x2="240" y2="12" stroke="#0f172a" stroke-width="2"/>
+    <line x1="247" y1="-16" x2="247" y2="12" stroke="#0f172a" stroke-width="2"/>
+    <line x1="254" y1="-16" x2="254" y2="12" stroke="#0f172a" stroke-width="2"/>
 
-    <!-- Rejilla de altavoz -->
-    <g stroke="#334155" stroke-width="3" stroke-linecap="round">
-      <line x1="70" y1="240" x2="270" y2="240"/>
-      <line x1="85" y1="256" x2="255" y2="256"/>
-      <line x1="70" y1="272" x2="270" y2="272"/>
-      <line x1="85" y1="288" x2="255" y2="288"/>
-      <line x1="100" y1="304" x2="240" y2="304"/>
+    <!-- Botón PTT Lateral Izquierdo (Push-To-Talk ergonómico con estrías) -->
+    <g transform="translate(6, 120)">
+      <path d="M 0 10 Q 0 0 10 0 L 16 0 L 16 110 L 10 110 Q 0 110 0 100 Z" fill="#0f172a" stroke="#f97316" stroke-width="1.5"/>
+      <line x1="4" y1="25" x2="12" y2="25" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="40" x2="12" y2="40" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="55" x2="12" y2="55" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="4" y1="70" x2="12" y2="70" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="85" x2="12" y2="85" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+      <!-- Botones programables laterales inferiores -->
+      <rect x="4" y="125" width="10" height="24" rx="3" fill="#1e293b" stroke="#334155"/>
+      <rect x="4" y="160" width="10" height="24" rx="3" fill="#1e293b" stroke="#334155"/>
     </g>
 
-    <!-- Teclado numérico / Códigos R -->
-    <g transform="translate(45, 335)" fill="#1e293b" stroke="#334155" stroke-width="1">
-      <rect x="0" y="0" width="70" height="34" rx="6"/>
-      <text x="35" y="22" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">R-4</text>
+    <!-- Agarre lateral derecho antideslizante -->
+    <g transform="translate(322, 130)" fill="#0f172a" stroke="#1e293b">
+      <rect x="0" y="0" width="8" height="18" rx="2"/>
+      <rect x="0" y="28" width="8" height="18" rx="2"/>
+      <rect x="0" y="56" width="8" height="18" rx="2"/>
+      <rect x="0" y="84" width="8" height="18" rx="2"/>
+    </g>
 
-      <rect x="90" y="0" width="70" height="34" rx="6"/>
-      <text x="125" y="22" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">R-20</text>
+    <!-- CUERPO PRINCIPAL DEL CHASSIS INDUSTRIAL -->
+    <path d="
+      M 32 18
+      L 300 18
+      Q 324 18 324 42
+      L 324 450
+      Q 324 480 296 480
+      L 58 480
+      Q 22 480 22 450
+      L 22 42
+      Q 22 18 32 18 Z
+    " fill="url(#chassisGrad)" stroke="#38bdf8" stroke-width="1.8"/>
 
-      <rect x="180" y="0" width="70" height="34" rx="6" fill="rgba(249,115,22,0.2)" stroke="#f97316"/>
-      <text x="215" y="22" fill="#f97316" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">R-83</text>
+    <!-- Bisel interior con textura técnica -->
+    <rect x="36" y="32" width="272" height="434" rx="16" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
 
-      <rect x="0" y="44" width="70" height="34" rx="6"/>
-      <text x="35" y="66" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">R-25</text>
+    <!-- Barra superior de estado LED y micrófono frontal -->
+    <rect x="46" y="44" width="252" height="42" rx="8" fill="#0f1622" stroke="#1e293b"/>
+    <!-- LED indicador: Verde RX (Escucha activa en frecuencia) -->
+    <circle cx="68" cy="65" r="5" fill="#22c55e" filter="url(#glowCyan)"/>
+    <text x="82" y="69" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="11" font-weight="700">RX · REPETIDOR CUMBRE</text>
+    <!-- Orificio para micrófono de condensador con cancelación de ruido -->
+    <circle cx="274" cy="65" r="4" fill="#020617" stroke="#334155"/>
+    <text x="264" y="53" fill="#64748b" font-family="ui-monospace, monospace" font-size="8">MIC</text>
 
-      <rect x="90" y="44" width="70" height="34" rx="6"/>
-      <text x="125" y="66" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">R-34</text>
+    <!-- ===================================================================== -->
+    <!-- PANTALLA LCD RETROILUMINADA DE ALTA VISIBILIDAD                       -->
+    <!-- Muestra: R-4 COPIADO (Solicitado por el usuario)                      -->
+    <!-- ===================================================================== -->
+    <g transform="translate(46, 100)">
+      <!-- Marco exterior de pantalla con protección IP67 -->
+      <rect x="0" y="0" width="252" height="135" rx="10" fill="url(#lcdGrad)" stroke="#0284c7" stroke-width="1.8"/>
+      <!-- Sombra interior LCD -->
+      <rect x="4" y="4" width="244" height="127" rx="8" fill="none" stroke="rgba(56,189,248,0.15)"/>
 
-      <rect x="180" y="44" width="70" height="34" rx="6"/>
-      <text x="215" y="66" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="12" font-weight="700" text-anchor="middle">R-99</text>
+      <!-- Barra de telemetría superior -->
+      <text x="14" y="24" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="11" font-weight="700" letter-spacing="1">CH 04 · BIOBÍO REP</text>
+      <!-- Indicador de señal y batería -->
+      <g transform="translate(195, 12)">
+        <rect x="0" y="8" width="3" height="4" fill="#38bdf8"/>
+        <rect x="5" y="6" width="3" height="6" fill="#38bdf8"/>
+        <rect x="10" y="3" width="3" height="9" fill="#38bdf8"/>
+        <rect x="15" y="0" width="3" height="12" fill="#38bdf8"/>
+        <!-- Batería -->
+        <rect x="25" y="1" width="18" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+        <rect x="27" y="3" width="12" height="6" fill="#22c55e"/>
+      </g>
+
+      <!-- Frecuencia y subtono CTCSS -->
+      <text x="14" y="44" fill="#64748b" font-family="ui-monospace, monospace" font-size="10">154.500 MHz · CTCSS 114.8 Hz</text>
+
+      <!-- TEXTO PRINCIPAL SOLICITADO: R-4 COPIADO -->
+      <text x="14" y="88" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" letter-spacing="0.5" filter="url(#glowCyan)">R-4 COPIADO</text>
+
+      <!-- Subtexto operativo -->
+      <text x="14" y="114" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="10" font-weight="600">MENSAJE COMPRENDIDO CONFORME</text>
+      <text x="14" y="126" fill="#f97316" font-family="ui-monospace, monospace" font-size="9" font-weight="700">CONAF · ARAUCO · CMPC BIOBÍO</text>
+    </g>
+
+    <!-- ===================================================================== -->
+    <!-- REJILLA DE ALTAVOZ FRONTAL DE ALTA POTENCIA                           -->
+    <!-- Ranuras acústicas inclinadas con malla protectora interior            -->
+    <!-- ===================================================================== -->
+    <g transform="translate(56, 255)" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round">
+      <line x1="30" y1="0" x2="200" y2="0"/>
+      <line x1="15" y1="14" x2="215" y2="14"/>
+      <line x1="5" y1="28" x2="225" y2="28" stroke="#334155"/>
+      <line x1="0" y1="42" x2="230" y2="42" stroke="#334155"/>
+      <line x1="5" y1="56" x2="225" y2="56" stroke="#334155"/>
+      <line x1="15" y1="70" x2="215" y2="70"/>
+      <line x1="30" y1="84" x2="200" y2="84"/>
+    </g>
+
+    <!-- TECLADO NUMÉRICO TÁCTICO INFERIOR CON CLAVES FRECUENTES -->
+    <g transform="translate(52, 368)" fill="#151d2a" stroke="#2a384c" stroke-width="1.2">
+      <!-- Fila 1 -->
+      <rect x="0" y="0" width="70" height="38" rx="6"/>
+      <text x="35" y="24" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="13" font-weight="800" text-anchor="middle">R-4</text>
+
+      <rect x="80" y="0" width="70" height="38" rx="6"/>
+      <text x="115" y="24" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="13" font-weight="800" text-anchor="middle">R-20</text>
+
+      <rect x="160" y="0" width="70" height="38" rx="6"/>
+      <text x="195" y="24" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="13" font-weight="800" text-anchor="middle">R-24</text>
+
+      <!-- Fila 2: Emergencias prioritarias -->
+      <rect x="0" y="48" width="70" height="38" rx="6"/>
+      <text x="35" y="72" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="13" font-weight="800" text-anchor="middle">R-25</text>
+
+      <rect x="80" y="48" width="70" height="38" rx="6" fill="rgba(249,115,22,0.18)" stroke="#f97316"/>
+      <text x="115" y="72" fill="#f97316" font-family="ui-monospace, monospace" font-size="13" font-weight="800" text-anchor="middle">R-83</text>
+
+      <rect x="160" y="48" width="70" height="38" rx="6" fill="rgba(239,68,68,0.2)" stroke="#ef4444"/>
+      <text x="195" y="72" fill="#ef4444" font-family="ui-monospace, monospace" font-size="13" font-weight="900" text-anchor="middle">R-99</text>
     </g>
   </g>
 
-  <!-- Panel Informativo Lateral Derecho -->
-  <g transform="translate(560, 130)">
-    <!-- Badge de categoría -->
-    <rect x="0" y="0" width="220" height="34" rx="17" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.2"/>
+  <!-- ========================================================================= -->
+  <!-- PANEL EDITORIAL LATERAL: CÓDIGOS R Y 8VA REGIÓN DEL BIOBÍO               -->
+  <!-- ========================================================================= -->
+  <g transform="translate(530, 95)">
+    <!-- Badge de categoría y región -->
+    <rect x="0" y="0" width="310" height="34" rx="17" fill="rgba(249,115,22,0.15)" stroke="#f97316" stroke-width="1.2"/>
     <circle cx="16" cy="17" r="4" fill="#f97316"/>
-    <text x="30" y="22" fill="#fb923c" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1">CHILE · SECTOR FORESTAL</text>
+    <text x="30" y="22" fill="#fb923c" font-family="system-ui, sans-serif" font-size="11.5" font-weight="800" letter-spacing="1">CHILE · 8VA REGIÓN DEL BIOBÍO</text>
 
     <!-- Título Principal -->
     <text x="0" y="85" fill="#ffffff" font-family="system-ui, sans-serif" font-size="44" font-weight="900" letter-spacing="-0.5">CÓDIGOS R DE RADIO</text>
-    <text x="0" y="130" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="34" font-weight="800">Protocolo Forestal e Incendios</text>
+    <text x="0" y="130" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="34" font-weight="800">Norma Forestal y Terreno</text>
 
-    <!-- Subtítulo / Descripción -->
-    <text x="0" y="175" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="17" font-weight="400">
-      <tspan x="0" dy="0">Guía de claves operativas y radiocomunicaciones de terreno</tspan>
-      <tspan x="0" dy="26">utilizadas por CONAF, CORMA, faenas forestales y brigadas.</tspan>
+    <!-- Subtítulo / Descripción con énfasis en el Biobío -->
+    <text x="0" y="175" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16.5" font-weight="400">
+      <tspan x="0" dy="0">Manual operativo de radiocomunicaciones tácticas en walkie-talkies</tspan>
+      <tspan x="0" dy="25">para CONAF Biobío, CMPC Mininco, Arauco y faenas en Nahuelbuta.</tspan>
     </text>
 
-    <!-- Tarjetas de datos rápidos -->
-    <g transform="translate(0, 230)">
-      <!-- Tarjeta 1: Frecuencias -->
-      <rect x="0" y="0" width="165" height="90" rx="14" fill="#131b28" stroke="#1e293b"/>
-      <text x="18" y="30" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="11" font-weight="600">ESPECTRO</text>
-      <text x="18" y="58" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="20" font-weight="800">VHF / UHF</text>
-      <text x="18" y="76" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11">Repetidoras cumbre</text>
+    <!-- Tarjetas de datos rápidos técnicos -->
+    <g transform="translate(0, 235)">
+      <!-- Tarjeta 1: Región y Repetidoras -->
+      <rect x="0" y="0" width="180" height="95" rx="14" fill="#111824" stroke="#1e293b"/>
+      <text x="18" y="28" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">RED TRONCAL</text>
+      <text x="18" y="56" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="19" font-weight="800">Biobío / VHF</text>
+      <text x="18" y="78" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11">Nahuelbuta &amp; Cayumanqui</text>
 
-      <!-- Tarjeta 2: Claves -->
-      <rect x="185" y="0" width="165" height="90" rx="14" fill="#131b28" stroke="#1e293b"/>
-      <text x="203" y="30" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="11" font-weight="600">CATÁLOGO</text>
-      <text x="203" y="58" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="20" font-weight="800">R-1 a R-99</text>
-      <text x="203" y="76" fill="#f97316" font-family="system-ui, sans-serif" font-size="11">Claves estandarizadas</text>
+      <!-- Tarjeta 2: Fraseología y Claves -->
+      <rect x="200" y="0" width="180" height="95" rx="14" fill="#111824" stroke="#1e293b"/>
+      <text x="218" y="28" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">FRASEOLOGÍA</text>
+      <text x="218" y="56" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="19" font-weight="800">«R-4 Copiado»</text>
+      <text x="218" y="78" fill="#f97316" font-family="system-ui, sans-serif" font-size="11">Claves R-1 a R-99</text>
 
-      <!-- Tarjeta 3: Protocolo -->
-      <rect x="370" y="0" width="165" height="90" rx="14" fill="#131b28" stroke="#1e293b"/>
-      <text x="388" y="30" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="11" font-weight="600">GESTIÓN</text>
-      <text x="388" y="58" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="20" font-weight="800">SCI / ICAO</text>
-      <text x="388" y="76" fill="#22c55e" font-family="system-ui, sans-serif" font-size="11">Comando de incidentes</text>
+      <!-- Tarjeta 3: Empresas e Instituciones -->
+      <rect x="400" y="0" width="195" height="95" rx="14" fill="#111824" stroke="#1e293b"/>
+      <text x="418" y="28" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700">INTEROPERABILIDAD</text>
+      <text x="418" y="56" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="19" font-weight="800">CONAF · CORMA</text>
+      <text x="418" y="78" fill="#22c55e" font-family="system-ui, sans-serif" font-size="11">Arauco · CMPC · Masisa</text>
     </g>
 
-    <!-- Indicador de PunchiSoft -->
-    <g transform="translate(0, 355)">
+    <!-- Firma de identidad PunchiSoft -->
+    <g transform="translate(0, 375)">
       <circle cx="10" cy="10" r="4" fill="#38bdf8"/>
-      <text x="24" y="14" fill="#64748b" font-family="ui-monospace, monospace" font-size="12" font-weight="600">PUNCHISOFT · INGENIERÍA Y OPERACIONES INDUSTRIALES</text>
+      <text x="24" y="14" fill="#64748b" font-family="ui-monospace, monospace" font-size="12" font-weight="600">PUNCHISOFT · INGENIERÍA, INDUSTRIA Y DESARROLLO DE SOFTWARE</text>
     </g>
   </g>
 </svg>
