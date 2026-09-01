@@ -297,7 +297,7 @@
       transform: translateY(0);
     }
 
-    /* Alfabeto Fonético ICAO */
+    /* Rejilla de alfabeto fonético */
     .phonetic-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -314,6 +314,129 @@
     .phonetic-item strong {
       color: var(--accent);
       margin-right: 4px;
+    }
+
+    /* Sección de Referencias Técnicas */
+    .references-section {
+      margin-top: 52px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .references-section h2 {
+      font-size: 1.25rem;
+      margin: 0 0 12px;
+    }
+    .references-section p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .reference-list {
+      padding-left: 20px;
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+    .reference-list li {
+      margin-bottom: 12px;
+    }
+    .reference-list strong {
+      color: var(--text);
+    }
+
+    /* Tarjeta de Autor Profesional */
+    .author-card {
+      margin: 48px 0 24px;
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius, 16px);
+      background: linear-gradient(135deg, var(--surface), var(--bg-soft));
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 12px 34px rgba(0,0,0,0.18);
+    }
+    @media (max-width: 640px) {
+      .author-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 24px 18px;
+      }
+    }
+    .author-avatar-wrap {
+      position: relative;
+      width: 92px;
+      height: 92px;
+      flex: 0 0 92px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 8px 24px rgba(88,166,255,0.25);
+    }
+    .author-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .author-info {
+      flex: 1;
+    }
+    .author-eyebrow {
+      margin: 0 0 4px;
+      font: 700 0.72rem ui-monospace, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+    .author-name {
+      margin: 0 0 4px;
+      font-size: 1.25rem;
+      color: var(--text);
+      font-weight: 800;
+    }
+    .author-role {
+      margin: 0 0 10px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .author-bio {
+      margin: 0 0 16px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .author-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    @media (max-width: 640px) {
+      .author-links {
+        justify-content: center;
+      }
+    }
+    .author-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    .author-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
     }
   </style>
 </head>
@@ -655,6 +778,50 @@
         <p>
           Bajo esta alerta, transmitida habitualmente bajo la clave <strong>R-34</strong> y <strong>R-35</strong>, el comportamiento del fuego se vuelve errático y explosivo, ordenándose la suspensión preventiva de faenas de cosecha mecanizada para evitar chispas de roce en rocas o cables de madereo.
         </p>
+
+        <!-- ===================================================== -->
+        <!-- SECCIÓN 5: REFERENCIAS Y FUENTES TÉCNICAS              -->
+        <!-- ===================================================== -->
+        <section class="references-section">
+          <h2>5. Referencias y Fuentes Técnicas</h2>
+          <p>La información, claves operativas y protocolos presentados en este manual se fundamentan en normativas oficiales chilenas y estándares de la industria forestal y de telecomunicaciones:</p>
+          <ul class="reference-list">
+            <li><strong>CONAF (Corporación Nacional Forestal):</strong> <em>Manual de Procedimientos y Radiocomunicaciones para el Combate de Incendios Forestales</em>. Sistema de Mando de Incidentes (SCI) y protocolos de disciplina de fonía en banda VHF/UHF.</li>
+            <li><strong>CORMA (Corporación Chilena de la Madera):</strong> <em>Protocolo Conjunto de Prevención y Protección contra Incendios Forestales</em> en empresas asociadas de la Región del Biobío y Araucanía (Arauco, CMPC Celulosa/Maderas, Masisa).</li>
+            <li><strong>Industria de Procesamiento y Remanufactura de Pino Radiata (*Pinus radiata*):</strong> Procedimientos internos de seguridad operativa, canchas de acopio y logística en plantas industriales (Promasa Los Ángeles, CMPC Los Ángeles/Coronel, Arauco Horcones/Viñales).</li>
+            <li><strong>SUBTEL (Subsecretaría de Telecomunicaciones de Chile):</strong> <em>Normativa Técnica sobre Servicios Móviles Terrestres e Industriales en Bandas VHF (136-174 MHz)</em> y uso de estaciones repetidoras en altas cumbres de montaña.</li>
+            <li><strong>OACI / ICAO (Organización de Aviación Civil Internacional):</strong> <em>Anexo 10 — Telecomunicaciones Aeronáuticas</em>: Código Fonético Internacional y fraseología estándar aplicada a operaciones de extinción aérea de incendios.</li>
+          </ul>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- TARJETA DE AUTOR: CRISTIAN MUÑOZ JIMÉNEZ               -->
+        <!-- ===================================================== -->
+        <aside class="author-card" aria-label="Sobre el autor">
+          <div class="author-avatar-wrap">
+            <img src="../assets/images/perfil/cristian-munoz-industria.jpeg" alt="Cristian Muñoz Jiménez en entorno industrial con elementos de protección personal" width="1086" height="1448" loading="lazy">
+          </div>
+          <div class="author-info">
+            <p class="author-eyebrow">Autor de la publicación</p>
+            <h3 class="author-name">Cristian Muñoz Jiménez</h3>
+            <p class="author-role">Ingeniería en Ejecución en Mantenimiento Industrial · Creador de PunchiSoft</p>
+            <p class="author-bio">Especialista con experiencia de terreno en operaciones industriales y mantenimiento en la Región del Biobío. Creador de herramientas técnicas y documentador de la intersección práctica entre industria, telecomunicaciones, sistemas Linux y desarrollo de software.</p>
+            <div class="author-links">
+              <a class="author-chip" href="https://www.linkedin.com/in/cristianalexismunozjimenez/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span><span aria-hidden="true">↗</span>
+              </a>
+              <a class="author-chip" href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">
+                <span>GitHub</span><span aria-hidden="true">↗</span>
+              </a>
+              <a class="author-chip" href="https://x.com/punchisoft" target="_blank" rel="noopener noreferrer">
+                <span>X (Twitter)</span><span aria-hidden="true">↗</span>
+              </a>
+              <a class="author-chip" href="../acerca-de/index.html">
+                <span>Ver perfil completo →</span>
+              </a>
+            </div>
+          </div>
+        </aside>
       </div>
 
       <!-- Pie del artículo -->
