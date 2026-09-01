@@ -1,5 +1,25 @@
 [
   {
+    "id": "codigos-r-radiocomunicacion-forestal-chile",
+    "title": "Códigos R de radiocomunicación forestal en Chile: tabla completa y protocolos de terreno",
+    "summary": "Manual operativo y tabla interactiva de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF en faenas forestales, brigadas CONAF y CORMA.",
+    "featuredSummary": "Tabla completa y buscador en tiempo real de Códigos R de radio para walkie-talkies y combate de incendios en Chile.",
+    "category": "Industria",
+    "date": "2026-09-01",
+    "readingTime": "9 min de lectura",
+    "url": "codigos-r-radiocomunicacion-forestal-chile.html",
+    "image": "../assets/images/codigos-r-forestales/cover.svg",
+    "imageAlt": "Ilustración técnica de radiocomunicación forestal y claves R en Chile",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/radio.svg",
+      "label": "Industria · Telecomunicaciones",
+      "title": "Códigos R Forestales",
+      "detail": "VHF/UHF · Walkie-Talkies · CONAF/CORMA · Claves R-1 a R-99"
+    }
+  },
+  {
     "id": "diagnostico-suspension-lenovo-loq-fedora",
     "title": "Cuando el portátil se duerme y no vuelve: diagnóstico de suspensión en Lenovo LOQ y Fedora",
     "summary": "Diagnóstico paso a paso de fallos de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, GPU NVIDIA y métodos ACPI de bajo consumo.",
@@ -88,10 +108,10 @@
     "date": "2026-08-31",
     "readingTime": "10 min de lectura",
     "url": "punchi-dock-plasmoid.html",
-    "image": "../assets/images/punchi-dock-plasmoid/00.png",
-    "imageAlt": "Punchi Dock Remastered funcionando en el escritorio KDE Plasma 6",
-    "imageWidth": 1672,
-    "imageHeight": 941,
+    "image": "../assets/images/punchi-dock-plasmoid/desktop-layouts.png",
+    "imageAlt": "Disposiciones de escritorio y modos de Punchi Dock Remastered en KDE Plasma 6",
+    "imageWidth": 1920,
+    "imageHeight": 1080,
     "featured": {
       "icon": "icons/app.svg",
       "label": "KDE Plasma · Dock",
