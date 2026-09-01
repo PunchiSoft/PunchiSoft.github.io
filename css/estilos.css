@@ -262,6 +262,8 @@ h1, h2, h3 { margin-top: 0; line-height: 1.12; letter-spacing: -.035em; }
 .social-linkedin:hover { border-color: var(--accent); background: rgba(88,166,255,.18); }
 .social-github { background: var(--surface-2); color: var(--text); }
 .social-github:hover { border-color: var(--border-light); background: var(--surface); }
+.social-x { background: var(--surface-2); color: var(--text); }
+.social-x:hover { border-color: var(--border-light); background: var(--surface); }
 
 /* =======================================================
    PIE DE PÁGINA
@@ -695,7 +697,15 @@ blockquote p { margin: 0 !important; }
 :root[data-theme="light"] .about-focus li { background: #f6f8fb; box-shadow: inset 0 1px 0 rgba(255,255,255,.8); }
 :root[data-theme="light"] .about-focus img { padding: 4px; border-radius: 9px; background: rgba(37,110,184,.09); }
 :root[data-theme="light"] .social-linkedin { background: rgba(37,110,184,.1); color: #1f66aa; }
-:root[data-theme="light"] .social-github { background: #f6f8fb; color: #1f2935; }
+:root[data-theme="light"] .social-github,
+:root[data-theme="light"] .social-x { background: #f6f8fb; color: #1f2935; border-color: var(--border); }
+:root[data-theme="light"] .social-x:hover { border-color: var(--accent); background: var(--surface); color: var(--text); }
+:root[data-theme="light"] .site-header { border-bottom: 1px solid rgba(37,110,184,.18); background: linear-gradient(135deg, rgba(251,252,254,.96), rgba(243,246,250,.96) 48%, rgba(245,248,252,.96)); box-shadow: 0 8px 26px rgba(31,42,56,.07); }
+:root[data-theme="light"] .brand { color: #17202b; }
+:root[data-theme="light"] .nav-links { color: rgba(23,32,43,.82); }
+:root[data-theme="light"] .nav-links a:hover { border-color: rgba(37,110,184,.26); background: rgba(37,110,184,.08); color: #17202b; box-shadow: 0 4px 14px rgba(31,42,56,.06); }
+:root[data-theme="light"] .nav-links a.active { border-color: rgba(37,110,184,.32); background: linear-gradient(135deg, rgba(37,110,184,.16), rgba(33,137,91,.13)); color: #17202b; box-shadow: inset 0 0 0 1px rgba(255,255,255,.6), 0 4px 14px rgba(37,110,184,.08); }
+:root[data-theme="light"] .menu-toggle > span:not(.sr-only) { background: #17202b; }
 :root[data-theme="light"] .site-footer { background: #dfe5ec; }
 :root[data-theme="light"] .footer-bottom { color: #687586; }
 
