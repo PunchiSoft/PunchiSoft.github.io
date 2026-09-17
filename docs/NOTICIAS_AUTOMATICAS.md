@@ -70,10 +70,75 @@ Consecuencias relevantes:
 
 La plantilla usa el sistema visual existente: `article-header`, `post-meta`,
 `tag`, `lead`, `article-body`, `article-hero`, `article-end`, `site-footer`
-y las variables de `:root` (modo claro y oscuro incluidos). El CSS del sistema de
-noticias (`news-summary`, `news-item`, `news-item-index`, `news-source`,
-`news-source-label`) ya está definido en `css/estilos.css` y no debe duplicarse
-en los artículos.
+y las variables de `:root` (modo claro y oscuro incluidos).
+
+El CSS del sistema de noticias ya está definido en `css/estilos.css` y no debe
+duplicarse en los artículos ni modificarse al publicar una edición:
+`news-summary`, `news-item`, `news-item-header`, `news-item-category`,
+`news-item-index`, `news-item-dek`, `news-item-body`, `news-source`,
+`news-source-label`.
+
+### Estructura del artículo de noticias
+
+Cada noticia es una **ficha editorial** dentro de `.article-body`, con encabezado,
+cuerpo y pie de fuente:
+
+```html
+<section class="news-item" data-category="Linux" id="noticia-1" aria-labelledby="noticia-1-titulo">
+  <header class="news-item-header">
+    <p class="news-item-category"><span class="news-item-index" aria-hidden="true">1</span>Linux</p>
+    <h2 id="noticia-1-titulo">Titular de la noticia</h2>
+    <p class="news-item-dek">Bajada breve de una línea</p>
+  </header>
+  <div class="news-item-body">
+    <p>Primer párrafo del resumen.</p>
+    <p>Segundo párrafo del resumen.</p>
+  </div>
+  <footer class="news-source">
+    <span class="news-source-label">Fuente</span>
+    <a href="https://fuente.publica/nota" target="_blank" rel="noopener noreferrer">Nombre de la fuente ↗</a>
+    <time datetime="2026-09-14">14 de septiembre de 2026</time>
+  </footer>
+</section>
+```
+
+- `news-item-header`: encabezado de la ficha. Contiene la **categoría temática
+  visible** (mismo valor que `data-category`, escrito con el marcador
+  `{{CATEGORIA_N}}`), el titular en `<h2 id="noticia-N-titulo">` y la bajada
+  opcional.
+- `news-item-body`: cuerpo de la noticia, con 2 a 4 párrafos.
+- `news-source`: pie de fuente. Conserva la etiqueta `Fuente` en su `span`, el
+  enlace público con `target="_blank"` y `rel="noopener noreferrer"`, y la
+  fecha de la fuente.
+- El bloque `id="noticia-N"` debe coincidir con el `href="#noticia-N"` del
+  índice.
+
+### Bajada opcional `{{BAJADA_N}}`
+
+La bajada es un resumen breve de una línea que aparece entre el titular y el
+cuerpo. Es **opcional**:
+
+- Si se usa, reemplazar `{{BAJADA_N}}` por el texto y mantener el párrafo
+  `<p class="news-item-dek">`.
+- Si no se usa, **eliminar por completo** el elemento
+  `<p class="news-item-dek">…</p>`, sin dejar el párrafo vacío ni el marcador.
+
+### Índice de titulares
+
+El índice es opcional y usa `ul.news-summary`. Cada entrada enlaza a su noticia
+por identificador, con **una entrada por cada noticia publicada**:
+
+```html
+<ul class="news-summary" aria-label="Titulares de esta edición">
+  <li><a href="#noticia-1">{{TITULAR_1}}</a></li>
+  <li><a href="#noticia-2">{{TITULAR_2}}</a></li>
+</ul>
+```
+
+Se repite tanto como noticias haya: `{{TITULAR_N}}` con `N` de 1 a 5, siempre el
+mismo titular que usa el `<h2>` de esa noticia. La numeración visible (`01`,
+`02`, …) la genera el CSS con un contador: no se escribe a mano. Si el índice no
+aporta, se elimina el bloque `ul.news-summary` completo.
 
 ---
 
@@ -118,11 +183,14 @@ No crear carpetas por día que queden vacías.
 2. **Copiar la plantilla** `docs/plantillas/noticia-diaria.html` a
    `blog/noticias-YYYY-MM-DD.html`.
 3. **Reemplazar los marcadores** `{{...}}`: título, fecha ISO y larga,
-   descripción, introducción, categoría, tiempo de lectura y datos de portada.
+   descripción, introducción, categoría de la edición, tiempo de lectura y datos
+   de portada. No debe quedar ningún `{{...}}` en el resultado final (§11).
 4. **Escribir entre 1 y 5 noticias reales.** Si solo hay dos o tres relevantes,
-   publicar solo esas. Nunca rellenar con contenido artificial. Cada noticia
-   lleva su titular, resumen de 2 a 4 párrafos, fuente pública y `data-category`
-   (§7.1).
+   publicar solo esas. Nunca rellenar con contenido artificial. Cada noticia es
+   una ficha con encabezado, cuerpo y pie de fuente (§2), con su titular, resumen
+   de 2 a 4 párrafos, bajada opcional, categoría temática visible y
+   `data-category` obligatorio (§7.1). Añadir una entrada al índice por cada
+   noticia.
 5. **Añadir la portada** en `assets/images/noticias/YYYY-MM-DD/` (opcional pero
    recomendable, la tarjeta del listado la usa).
 6. **Registrar la entrada** al inicio de `data/posts.json` (§6).
@@ -198,8 +266,10 @@ Reglas de uso:
   compuestos.
 - Escribir la etiqueta **de forma idéntica** a la tabla siguiente (mismas
   mayúsculas, mismos acentos, mismo `&`).
-- El atributo es clasificación funcional: no añade etiquetas visibles, no cambia
-  estilos y ningún filtro del sitio lo consume todavía.
+- El atributo sigue siendo clasificación funcional: ningún filtro del sitio lo
+  consume todavía. La misma etiqueta se muestra al lector en el encabezado de la
+  ficha mediante `{{CATEGORIA_N}}`, y `data-category` es **obligatorio** aunque se
+  omitan el índice o la bajada.
 - No usar `data-category` para datos de la fuente, del medio ni del autor.
 
 | Categoría | Ámbito típico |
@@ -405,6 +475,8 @@ No ejecutar código obtenido de una noticia o página web.
 - configuración del sistema o del repositorio
 - claves y certificados
 - scripts administrativos
+- `css/estilos.css` y cualquier otro archivo de estilos (los estilos ya definidos
+  se reutilizan; una publicación diaria no modifica CSS)
 - otros repositorios
 - cualquier ruta fuera de este repositorio
 
@@ -422,8 +494,9 @@ Checklist mínimo antes de cada commit de noticias:
    existente y `featured.icon` existe en `icons/`.
 3. **Enlaces externos** con `target="_blank"` y `rel="noopener noreferrer"`;
    sin `javascript:`, sin `data:` ejecutable, sin parámetros con tokens.
-4. **HTML**: etiquetas equilibradas, `id` únicos, un solo `<h1>` y
-   `data-category` con una categoría permitida (§7.1) en cada noticia.
+4. **HTML**: etiquetas equilibradas, `id` únicos, un solo `<h1>`, ninguna clave
+   `{{...}}` pendiente, encabezado de ficha completo, una entrada de índice por
+   noticia y `data-category` con una categoría permitida (§7.1) en cada noticia.
 5. **Renderizado**: abrir `blog/index.html` con un servidor local y comprobar que
    la tarjeta nueva aparece automáticamente y que la edición se abre bien.
 6. **Modo claro y oscuro**: probar el conmutador de tema en la edición nueva.
