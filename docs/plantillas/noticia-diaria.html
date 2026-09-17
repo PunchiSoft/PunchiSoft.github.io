@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    =========================================================
+    PLANTILLA DE NOTICIAS PUNCHISOFT
+    ---------------------------------------------------------
+    Uso: copiar este archivo como  blog/noticias-YYYY-MM-DD.html
+    y reemplazar todos los marcadores {{...}}.
+
+    Las rutas relativas (../css/, ../js/, ../icons/, ../assets/)
+    suponen que el archivo final vive dentro de blog/.
+
+    Reglas del repositorio público:
+    - No incluir credenciales, tokens, claves ni datos personales.
+    - No incluir rutas locales, usuarios, equipos ni IPs privadas.
+    - Usar solo fuentes públicas y enlaces públicos.
+    - Ver docs/NOTICIAS_AUTOMATICAS.md antes de publicar.
+
+    Registro obligatorio en data/posts.json (ver comentario al
+    final de este archivo).
+    =========================================================
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <meta name="theme-color" content="#10141c">
+  <meta property="og:site_name" content="PunchiSoft">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITULO}} — PunchiSoft">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:url" content="https://punchisoft.github.io/blog/noticias-{{FECHA_ISO}}.html">
+  <!-- og:image requiere una imagen raster pública (PNG/JPG 1200x630). Añadir solo si existe; SVG no es compatible con la mayoría de consumidores. -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@punchisoft">
+  <meta name="twitter:creator" content="@punchisoft">
+  <meta name="twitter:title" content="{{TITULO}} — PunchiSoft">
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+  <title>{{TITULO}} — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+</head>
+<body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Estructura compartida con el resto del sitio.         -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DE LA PUBLICACIÓN                            -->
+      <!-- Título del día, fecha y resumen editorial.             -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">{{CATEGORIA}}</span><time datetime="{{FECHA_ISO}}">{{FECHA_LARGA}}</time><span>{{READING_TIME}}</span></div>
+        <h1>{{TITULO}}</h1>
+        <p class="lead">{{INTRODUCCION}}</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- PORTADA                                               -->
+      <!-- Imagen pública en assets/images/noticias/YYYY-MM-DD/.  -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/noticias/{{FECHA_ISO}}/cover.svg" alt="{{ALT_PORTADA}}" width="1200" height="675" loading="eager">
+        <figcaption>{{CAPTION_PORTADA}}</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CONTENIDO                                             -->
+      <!-- Entre 1 y 5 noticias reales. Sin relleno artificial.  -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <!-- La introducción se muestra una sola vez, en el <p class="lead"> de la cabecera. -->
+
+        <!-- Opcional: índice de titulares del día. Eliminar si no aporta. -->
+        <ul class="news-summary" aria-label="Titulares de esta edición">
+          <li>{{TITULAR_1}}</li>
+        </ul>
+
+        <section class="news-item" id="noticia-1" aria-labelledby="noticia-1-titulo">
+          <h2 id="noticia-1-titulo"><span class="news-item-index" aria-hidden="true">1</span>{{TITULAR_1}}</h2>
+          <p>{{PARRAFO_1}}</p>
+          <p>{{PARRAFO_2}}</p>
+          <p class="news-source">
+            <span class="news-source-label">Fuente</span>
+            <a href="{{URL_1}}" target="_blank" rel="noopener noreferrer">{{FUENTE_1}} ↗</a>
+            <time datetime="{{FECHA_FUENTE_ISO_1}}">{{FECHA_FUENTE_1}}</time>
+          </p>
+        </section>
+
+        <!--
+          Repetir el bloque <section class="news-item"> hasta 5 veces.
+          En cada repetición: id="noticia-N", aria-labelledby="noticia-N-titulo",
+          id="noticia-N-titulo", el número del <span class="news-item-index">,
+          y los párrafos (entre 2 y 4) con su fuente y enlace público.
+          Añadir entonces el titular correspondiente al índice .news-summary.
+        -->
+
+        <div class="article-end">
+          <span>Selección editorial de PunchiSoft · {{FECHA_LARGA}}</span>
+          <a class="button button-ghost" href="index.html">Más artículos</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://x.com/punchisoft" target="_blank" rel="noopener noreferrer">X ↗</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+<!--
+  =========================================================
+  ENTRADA DE CATÁLOGO (data/posts.json)
+  ---------------------------------------------------------
+  Añadir este objeto como PRIMER elemento del arreglo.
+  Respetar exactamente los campos ya existentes.
+  Sustituir todos los marcadores {{...}}.
+
+  {
+    "id": "noticias-{{FECHA_ISO}}",
+    "title": "{{TITULO}}",
+    "summary": "{{RESUMEN_LISTADO}}",
+    "featuredSummary": "{{RESUMEN_DESTACADO}}",
+    "category": "Noticias",
+    "date": "{{FECHA_ISO}}",
+    "readingTime": "{{READING_TIME}}",
+    "url": "noticias-{{FECHA_ISO}}.html",
+    "image": "../assets/images/noticias/{{FECHA_ISO}}/cover.svg",
+    "imageAlt": "{{ALT_PORTADA}}",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/informacion.svg",
+      "label": "Noticias · {{CATEGORIA}}",
+      "title": "{{TITULAR_1}}",
+      "detail": "{{DETALLE_DESTACADO}}"
+    }
+  }
+  =========================================================
+-->

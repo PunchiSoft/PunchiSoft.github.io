@@ -3,3 +3,14 @@ AGENTS.md
 modificaciones/
 .agents/
 
+# Secretos y credenciales: nunca deben llegar al repositorio público
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.*
+secrets.*
+private.*
+
