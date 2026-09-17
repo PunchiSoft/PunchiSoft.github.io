@@ -101,6 +101,15 @@ en los artículos.
 
 No crear carpetas por día que queden vacías.
 
+### 4.1 Histórico de ediciones
+
+- Cada fecha publica un archivo nuevo: `blog/noticias-YYYY-MM-DD.html`.
+- Nunca sustituir, sobrescribir ni renumerar una edición anterior.
+- Nunca reutilizar el mismo `id` en `data/posts.json`.
+- Nunca eliminar publicaciones históricas de forma automática.
+- Corregir una edición ya publicada exige revisión manual, se documenta en el
+  commit y no altera su fecha, su `id` ni su URL.
+
 ---
 
 ## 5. Proceso de publicación de una edición
@@ -111,7 +120,9 @@ No crear carpetas por día que queden vacías.
 3. **Reemplazar los marcadores** `{{...}}`: título, fecha ISO y larga,
    descripción, introducción, categoría, tiempo de lectura y datos de portada.
 4. **Escribir entre 1 y 5 noticias reales.** Si solo hay dos o tres relevantes,
-   publicar solo esas. Nunca rellenar con contenido artificial.
+   publicar solo esas. Nunca rellenar con contenido artificial. Cada noticia
+   lleva su titular, resumen de 2 a 4 párrafos, fuente pública y `data-category`
+   (§7.1).
 5. **Añadir la portada** en `assets/images/noticias/YYYY-MM-DD/` (opcional pero
    recomendable, la tarjeta del listado la usa).
 6. **Registrar la entrada** al inicio de `data/posts.json` (§6).
@@ -162,15 +173,72 @@ Reglas:
 - No modificar entradas existentes salvo necesidad estricta y documentada.
 - El archivo debe seguir siendo JSON válido y UTF-8.
 
+Una edición completa se registra como **una sola** entrada con
+`"category": "Noticias"`. Las noticias individuales **no** se registran aquí: su
+clasificación temática vive en el atributo `data-category` de cada
+`<section class="news-item">` del artículo (§7.1). No se crean páginas por
+noticia ni entradas adicionales en este archivo.
+
 ---
 
-## 7. Contenido: temáticas permitidas y excluidas
+## 7. Contenido y clasificación temática
+
+### 7.1 Categorías temáticas de cada noticia
+
+Cada noticia declara su categoría temática en el atributo `data-category` del
+bloque que la contiene:
+
+```html
+<section class="news-item" data-category="{{CATEGORIA_1}}" id="noticia-1" aria-labelledby="noticia-1-titulo">
+```
+
+Reglas de uso:
+
+- **Una sola** categoría por noticia: sin listas, sin guiones y sin valores
+  compuestos.
+- Escribir la etiqueta **de forma idéntica** a la tabla siguiente (mismas
+  mayúsculas, mismos acentos, mismo `&`).
+- El atributo es clasificación funcional: no añade etiquetas visibles, no cambia
+  estilos y ningún filtro del sitio lo consume todavía.
+- No usar `data-category` para datos de la fuente, del medio ni del autor.
+
+| Categoría | Ámbito típico |
+|---|---|
+| `Linux` | Distribuciones, kernel, escritorio, herramientas |
+| `KDE Plasma` | Plasma, KWin, widgets y aplicaciones de KDE |
+| `Fedora` | Fedora, Rawhide, spins y herramientas del proyecto |
+| `Debian` | Debian, empaquetado y derivadas |
+| `Software libre` | Licencias, comunidad y gobernanza |
+| `IA` | Inteligencia artificial, modelos y asistentes |
+| `Informática` | Hardware, redes, sistemas y seguridad |
+| `Desarrollo` | Lenguajes, librerías y herramientas de desarrollo |
+| `Mecánica` | Mecánica general y de precisión |
+| `Mantenimiento industrial` | Mantenimiento preventivo y correctivo, confiabilidad |
+| `Maquinaria` | Maquinaria y equipos industriales |
+| `Ingeniería` | Ingeniería aplicada, cálculo y normas |
+| `CAD & Planos` | Diseño mecánico, dibujo técnico, GD&T |
+| `Automatización` | PLC, control, instrumentación y robótica |
+| `Hidráulica` | Sistemas hidráulicos y fluidos |
+| `Neumática` | Sistemas neumáticos y aire comprimido |
+| `Industria` | Noticias industriales transversales |
+
+No inventar categorías nuevas fuera de esta tabla sin actualizar antes este
+documento.
+
+`{{CATEGORIA}}` (sin número) es un marcador distinto: la categoría de la
+**edición completa**, visible en el badge de la cabecera y registrada como
+`"category"` en `data/posts.json`, que para las ediciones de noticias es
+`Noticias`.
+
+### 7.2 Temáticas permitidas
 
 **Permitidas:** Linux, KDE Plasma, Fedora, Debian, software libre, informática,
 inteligencia artificial, desarrollo de software, mecánica, mantenimiento
 industrial, confiabilidad, maquinaria industrial, ingeniería, CAD y dibujo
 técnico, manufactura, automatización, hidráulica, neumática, tecnología
 industrial y noticias de Chile directamente relacionadas con estas áreas.
+
+### 7.3 Contenido excluido
 
 **Excluidas siempre:** salud, medicina, medicamentos, alertas sanitarias,
 alertas alimentarias, contaminación de alimentos, brotes epidemiológicos,
@@ -354,12 +422,14 @@ Checklist mínimo antes de cada commit de noticias:
    existente y `featured.icon` existe en `icons/`.
 3. **Enlaces externos** con `target="_blank"` y `rel="noopener noreferrer"`;
    sin `javascript:`, sin `data:` ejecutable, sin parámetros con tokens.
-4. **HTML**: etiquetas equilibradas, `id` únicos, un solo `<h1>`.
+4. **HTML**: etiquetas equilibradas, `id` únicos, un solo `<h1>` y
+   `data-category` con una categoría permitida (§7.1) en cada noticia.
 5. **Renderizado**: abrir `blog/index.html` con un servidor local y comprobar que
    la tarjeta nueva aparece automáticamente y que la edición se abre bien.
 6. **Modo claro y oscuro**: probar el conmutador de tema en la edición nueva.
 7. **Responsive**: comprobar 360–400 px, 768 px y escritorio.
-8. **Publicaciones existentes**: siguen apareciendo y abriéndose.
+8. **Publicaciones existentes**: siguen apareciendo y abriéndose, sin ediciones
+   sustituidas ni `id` reutilizados (§4.1).
 9. **Escaneo de secretos sobre el diff**:
 
    ```bash

@@ -90,7 +90,7 @@
           <li>{{TITULAR_1}}</li>
         </ul>
 
-        <section class="news-item" id="noticia-1" aria-labelledby="noticia-1-titulo">
+        <section class="news-item" data-category="{{CATEGORIA_1}}" id="noticia-1" aria-labelledby="noticia-1-titulo">
           <h2 id="noticia-1-titulo"><span class="news-item-index" aria-hidden="true">1</span>{{TITULAR_1}}</h2>
           <p>{{PARRAFO_1}}</p>
           <p>{{PARRAFO_2}}</p>
@@ -103,10 +103,19 @@
 
         <!--
           Repetir el bloque <section class="news-item"> hasta 5 veces.
-          En cada repetición: id="noticia-N", aria-labelledby="noticia-N-titulo",
+          En cada repetición: data-category="{{CATEGORIA_N}}",
+          id="noticia-N", aria-labelledby="noticia-N-titulo",
           id="noticia-N-titulo", el número del <span class="news-item-index">,
           y los párrafos (entre 2 y 4) con su fuente y enlace público.
           Añadir entonces el titular correspondiente al índice .news-summary.
+
+          Clasificación temática: una sola categoría por noticia.
+          noticia 1 → {{CATEGORIA_1}}    noticia 2 → {{CATEGORIA_2}}
+          noticia 3 → {{CATEGORIA_3}}    noticia 4 → {{CATEGORIA_4}}
+          noticia 5 → {{CATEGORIA_5}}
+          Etiquetas permitidas: docs/NOTICIAS_AUTOMATICAS.md §7.1.
+          {{CATEGORIA}} es la categoría de la edición completa;
+          {{CATEGORIA_N}} es la categoría temática de cada noticia individual.
         -->
 
         <div class="article-end">
