@@ -1,5 +1,25 @@
 [
   {
+    "id": "noticias-2026-09-17",
+    "title": "Noticias PunchiSoft — 17 de septiembre de 2026",
+    "summary": "Linux 7.2.6 y 7.3-rc3, la beta de KDE Plasma 6.8 con el sistema de temas Union, Debian 13.7 y la beta de Fedora Linux 45.",
+    "featuredSummary": "Resumen diario: el kernel estabiliza la serie 7.2, KDE abre la beta de Plasma 6.8, Debian publica la séptima actualización de «trixie» y Fedora entra en beta para su versión 45.",
+    "category": "Noticias",
+    "date": "2026-09-17",
+    "readingTime": "6 min de lectura",
+    "url": "noticias-2026-09-17.html",
+    "image": "../assets/images/noticias/2026-09-17/cover.svg",
+    "imageAlt": "Portada de la edición de Noticias PunchiSoft del 17 de septiembre de 2026",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/informacion.svg",
+      "label": "Noticias · Linux",
+      "title": "Kernel 7.2.6 y Plasma 6.8 beta",
+      "detail": "Linux · Debian 13.7 · Fedora 45 beta · KDE Plasma"
+    }
+  },
+  {
     "id": "codigos-r-radiocomunicacion-forestal-chile",
     "title": "Códigos R de radiocomunicación forestal en Chile: tabla completa y protocolos de terreno",
     "summary": "Manual operativo y tabla interactiva de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF en faenas forestales, brigadas CONAF y CORMA.",
