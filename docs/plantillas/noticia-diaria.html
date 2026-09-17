@@ -80,25 +80,33 @@
 
       <!-- ===================================================== -->
       <!-- CONTENIDO                                             -->
-      <!-- Entre 1 y 5 noticias reales. Sin relleno artificial.  -->
+      <!-- Entre 1 y 5 noticias reales. Cada noticia es una ficha -->
+      <!-- con encabezado (categoría, titular y bajada), cuerpo   -->
+      <!-- y pie de fuente. Sin relleno artificial.               -->
       <!-- ===================================================== -->
       <div class="article-body container-narrow">
         <!-- La introducción se muestra una sola vez, en el <p class="lead"> de la cabecera. -->
 
-        <!-- Opcional: índice de titulares del día. Eliminar si no aporta. -->
+        <!-- Opcional: índice de titulares. Cada entrada enlaza a su noticia. Eliminar si no aporta. -->
         <ul class="news-summary" aria-label="Titulares de esta edición">
-          <li>{{TITULAR_1}}</li>
+          <li><a href="#noticia-1">{{TITULAR_1}}</a></li>
         </ul>
 
         <section class="news-item" data-category="{{CATEGORIA_1}}" id="noticia-1" aria-labelledby="noticia-1-titulo">
-          <h2 id="noticia-1-titulo"><span class="news-item-index" aria-hidden="true">1</span>{{TITULAR_1}}</h2>
-          <p>{{PARRAFO_1}}</p>
-          <p>{{PARRAFO_2}}</p>
-          <p class="news-source">
+          <header class="news-item-header">
+            <p class="news-item-category"><span class="news-item-index" aria-hidden="true">1</span>{{CATEGORIA_1}}</p>
+            <h2 id="noticia-1-titulo">{{TITULAR_1}}</h2>
+            <p class="news-item-dek">{{BAJADA_1}}</p>
+          </header>
+          <div class="news-item-body">
+            <p>{{PARRAFO_1}}</p>
+            <p>{{PARRAFO_2}}</p>
+          </div>
+          <footer class="news-source">
             <span class="news-source-label">Fuente</span>
             <a href="{{URL_1}}" target="_blank" rel="noopener noreferrer">{{FUENTE_1}} ↗</a>
             <time datetime="{{FECHA_FUENTE_ISO_1}}">{{FECHA_FUENTE_1}}</time>
-          </p>
+          </footer>
         </section>
 
         <!--
@@ -106,8 +114,10 @@
           En cada repetición: data-category="{{CATEGORIA_N}}",
           id="noticia-N", aria-labelledby="noticia-N-titulo",
           id="noticia-N-titulo", el número del <span class="news-item-index">,
-          y los párrafos (entre 2 y 4) con su fuente y enlace público.
-          Añadir entonces el titular correspondiente al índice .news-summary.
+          la bajada {{BAJADA_N}} (opcional: eliminar el <p class="news-item-dek">
+          completo si no se usa) y los párrafos del cuerpo (entre 2 y 4).
+          Añadir entonces <li><a href="#noticia-N">{{TITULAR_N}}</a></li> al
+          índice .news-summary, una entrada por noticia.
 
           Clasificación temática: una sola categoría por noticia.
           noticia 1 → {{CATEGORIA_1}}    noticia 2 → {{CATEGORIA_2}}
