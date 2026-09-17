@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Portada de Noticias PunchiSoft del 15 de septiembre de 2026 dedicada a industria, mantenimiento y automatización" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101720"/>
+      <stop offset="0.58" stop-color="#151b24"/>
+      <stop offset="1" stop-color="#1b2330"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#52c788"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="995" cy="125" r="220" fill="#58a6ff" opacity="0.10"/>
+  <circle cx="170" cy="595" r="185" fill="#52c788" opacity="0.08"/>
+  <g fill="none" stroke="#303b4d" stroke-width="1">
+    <rect x="70" y="70" width="1060" height="535" rx="26"/>
+    <line x1="70" y1="150" x2="1130" y2="150"/>
+  </g>
+  <g fill="#9aa8bb" font-family="monospace" font-size="20" letter-spacing="3">
+    <text x="110" y="120">PUNCHISOFT</text>
+    <text x="825" y="120">INDUSTRIA</text>
+  </g>
+  <text x="110" y="292" fill="#f4f7fa" font-family="sans-serif" font-size="70" font-weight="700">Noticias PunchiSoft</text>
+  <text x="110" y="370" fill="#58a6ff" font-family="sans-serif" font-size="40" font-weight="600">15 de septiembre de 2026</text>
+  <rect x="110" y="420" width="460" height="6" rx="3" fill="url(#accent)"/>
+  <text x="110" y="500" fill="#9aa8bb" font-family="sans-serif" font-size="25">Mantenimiento · Maquinaria · Automatización</text>
+  <text x="110" y="543" fill="#9aa8bb" font-family="sans-serif" font-size="25">CAD &amp; Planos · Confiabilidad industrial</text>
+  <text x="110" y="590" fill="#6f7a87" font-family="monospace" font-size="19" letter-spacing="1">FUENTES OFICIALES · RESÚMENES ORIGINALES</text>
+</svg>
