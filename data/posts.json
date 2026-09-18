@@ -1,5 +1,25 @@
 [
   {
+    "id": "noticias-2026-09-18",
+    "title": "Noticias PunchiSoft — 18 de septiembre de 2026",
+    "summary": "IA industrial y seguridad Linux: Siemens y P&G amplían la inspección de calidad con IA, mientras Debian publica nuevas actualizaciones de seguridad.",
+    "featuredSummary": "La edición de hoy revisa una aplicación industrial de visión con IA a escala de fábrica y los avisos de seguridad más recientes de Debian.",
+    "category": "Noticias",
+    "date": "2026-09-18",
+    "readingTime": "4 min de lectura",
+    "url": "noticias-2026-09-18.html",
+    "image": "../assets/images/noticias/2026-09-18/cover.svg",
+    "imageAlt": "Portada de Noticias PunchiSoft del 18 de septiembre de 2026 sobre IA industrial y seguridad en Debian",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/informacion.svg",
+      "label": "Noticias · IA",
+      "title": "IA industrial y seguridad en Debian",
+      "detail": "Siemens · P&G · Debian Security"
+    }
+  },
+  {
     "id": "noticias-2026-09-15",
     "title": "Noticias PunchiSoft — 15 de septiembre de 2026",
     "summary": "Industria, mantenimiento y automatización: diagnóstico móvil de Fluke, confiabilidad de maquinaria con Schaeffler, productividad CNC de Siemens, CAD/PLM con PTC y control inteligente de procesos con Rockwell Automation.",
@@ -12,230 +32,24 @@
     "imageAlt": "Portada de Noticias PunchiSoft del 15 de septiembre de 2026 dedicada a industria, mantenimiento y automatización",
     "imageWidth": 1200,
     "imageHeight": 675,
-    "featured": {
-      "icon": "icons/energia.svg",
-      "label": "Noticias · Industria",
-      "title": "Mantenimiento y automatización industrial",
-      "detail": "Fluke · Schaeffler · Siemens · PTC · Rockwell Automation"
-    }
+    "featured": {"icon":"icons/energia.svg","label":"Noticias · Industria","title":"Mantenimiento y automatización industrial","detail":"Fluke · Schaeffler · Siemens · PTC · Rockwell Automation"}
   },
   {
     "id": "noticias-2026-09-17",
     "title": "Noticias PunchiSoft — 17 de septiembre de 2026",
     "summary": "Linux 7.2.6 y 7.3-rc3, la beta de KDE Plasma 6.8 con el sistema de temas Union, Debian 13.7 y la beta de Fedora Linux 45.",
     "featuredSummary": "Resumen diario: el kernel estabiliza la serie 7.2, KDE abre la beta de Plasma 6.8, Debian publica la séptima actualización de «trixie» y Fedora entra en beta para su versión 45.",
-    "category": "Noticias",
-    "date": "2026-09-17",
-    "readingTime": "6 min de lectura",
-    "url": "noticias-2026-09-17.html",
-    "image": "../assets/images/noticias/2026-09-17/cover.svg",
-    "imageAlt": "Portada de la edición de Noticias PunchiSoft del 17 de septiembre de 2026",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/informacion.svg",
-      "label": "Noticias · Linux",
-      "title": "Kernel 7.2.6 y Plasma 6.8 beta",
-      "detail": "Linux · Debian 13.7 · Fedora 45 beta · KDE Plasma"
-    }
+    "category": "Noticias","date":"2026-09-17","readingTime":"6 min de lectura","url":"noticias-2026-09-17.html","image":"../assets/images/noticias/2026-09-17/cover.svg","imageAlt":"Portada de la edición de Noticias PunchiSoft del 17 de septiembre de 2026","imageWidth":1200,"imageHeight":675,
+    "featured":{"icon":"icons/informacion.svg","label":"Noticias · Linux","title":"Kernel 7.2.6 y Plasma 6.8 beta","detail":"Linux · Debian 13.7 · Fedora 45 beta · KDE Plasma"}
   },
-  {
-    "id": "codigos-r-radiocomunicacion-forestal-chile",
-    "title": "Códigos R de radiocomunicación forestal en Chile: tabla completa y protocolos de terreno",
-    "summary": "Manual operativo y tabla interactiva de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF en faenas forestales, brigadas CONAF y CORMA.",
-    "featuredSummary": "Tabla completa y buscador en tiempo real de Códigos R de radio para walkie-talkies y combate de incendios en Chile.",
-    "category": "Industria",
-    "date": "2026-09-01",
-    "readingTime": "9 min de lectura",
-    "url": "codigos-r-radiocomunicacion-forestal-chile.html",
-    "image": "../assets/images/codigos-r-forestales/cover.svg",
-    "imageAlt": "Ilustración técnica de radiocomunicación forestal y claves R en Chile",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/radio.svg",
-      "label": "Industria · Telecomunicaciones",
-      "title": "Códigos R Forestales",
-      "detail": "VHF/UHF · Walkie-Talkies · CONAF/CORMA · Claves R-1 a R-99"
-    }
-  },
-  {
-    "id": "diagnostico-suspension-lenovo-loq-fedora",
-    "title": "Cuando el portátil se duerme y no vuelve: diagnóstico de suspensión en Lenovo LOQ y Fedora",
-    "summary": "Diagnóstico paso a paso de fallos de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, GPU NVIDIA y métodos ACPI de bajo consumo.",
-    "featuredSummary": "Diagnóstico paso a paso de suspensión e hibernación en Lenovo LOQ con Fedora y GPU NVIDIA, aislando fallos de firmware con pm_test.",
-    "category": "Fedora",
-    "date": "2026-08-23",
-    "readingTime": "7 min de lectura",
-    "url": "diagnostico-suspension-lenovo-loq-fedora.html",
-    "image": "../assets/images/diagnostico-suspension-lenovo-loq/cover.svg",
-    "imageAlt": "Diagrama conceptual de diagnóstico ACPI y estados de suspensión en Linux",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/energia.svg",
-      "label": "Fedora · ACPI · Energía",
-      "title": "Diagnóstico de suspensión",
-      "detail": "Lenovo LOQ 15ARP9 · s2idle · pm_test · NVIDIA S0ix"
-    }
-  },
-  {
-    "id": "neumatica-hidraulica-mantenimiento-industrial",
-    "title": "Neumática e hidráulica: dos formas de transmitir potencia",
-    "summary": "Una introducción práctica para comprender sus diferencias, aplicaciones, ventajas y criterios de selección en mantenimiento industrial y maestranza.",
-    "featuredSummary": "Una introducción práctica para comprender diferencias, aplicaciones y ventajas de la neumática y la hidráulica.",
-    "category": "Neumática e Hidráulica",
-    "date": "2026-07-21",
-    "readingTime": "8 min de lectura",
-    "url": "../hidraulica-neumatica/neumatica-hidraulica-mantenimiento-industrial.html",
-    "image": "../assets/images/neumatica-hidraulica/cover.jpg",
-    "imageAlt": "Esquemas neumáticos e hidráulicos de transmisión de potencia",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/energia.svg",
-      "label": "Neumática · Hidráulica",
-      "title": "Transmisión de potencia",
-      "detail": "Circuitos de fluido · Criterios técnicos · Seguridad"
-    }
-  },
-  {
-    "id": "gdt-maestranza-planos-industriales",
-    "title": "GD&T en maestranza: cuando medir no es suficiente",
-    "summary": "El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico en planos de fabricación.",
-    "featuredSummary": "El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico.",
-    "category": "CAD & Planos",
-    "date": "2026-07-21",
-    "readingTime": "8 min de lectura",
-    "url": "../inventor-autocad/gdt-maestranza-planos-industriales.html",
-    "image": "../assets/images/gdt-maestranza/cover.jpg",
-    "imageAlt": "Plano técnico con tolerancias geométricas GD&T",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/recursos.svg",
-      "label": "CAD & Planos · GD&T",
-      "title": "GD&T en maestranza",
-      "detail": "Planos técnicos · Tolerancias geométricas · Fabricación"
-    }
-  },
-  {
-    "id": "kwin-opengl-es-kde-plasma",
-    "title": "KWin apuesta por OpenGL ES y Plasma continúa refinando su experiencia de usuario",
-    "summary": "El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.",
-    "featuredSummary": "El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.",
-    "category": "KDE Plasma",
-    "date": "2026-07-21",
-    "readingTime": "5 min de lectura",
-    "url": "kwin-opengl-es-kde-plasma.html",
-    "image": "../assets/images/kwin-opengl-es/cover.jpg",
-    "imageAlt": "Ilustración conceptual de KDE Plasma con pipelines gráficos de OpenGL ES",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/app.svg",
-      "label": "KDE Plasma · KWin",
-      "title": "OpenGL ES en KWin",
-      "detail": "KDE Plasma 6.8 · OpenGL ES · Animaciones · Seguridad"
-    }
-  },
-  {
-    "id": "punchi-dock-plasmoid",
-    "title": "Punchi Dock Remastered: lanzador y gestor de tareas nativo para KDE Plasma 6",
-    "summary": "Un dock modular de alto rendimiento, lanzador de aplicaciones PunchiMenu, controles multimedia MPRIS y soporte universal multi-distribución para KDE Plasma 6 y Wayland.",
-    "featuredSummary": "La serie 0.9.7 suma el lanzador PunchiMenu, controles multimedia MPRIS, renderers 2D/2.5D y paquete universal para múltiples distribuciones.",
-    "category": "KDE Plasma",
-    "date": "2026-08-31",
-    "readingTime": "10 min de lectura",
-    "url": "punchi-dock-plasmoid.html",
-    "image": "../assets/images/punchi-dock-plasmoid/desktop-layouts.png",
-    "imageAlt": "Disposiciones de escritorio y modos de Punchi Dock Remastered en KDE Plasma 6",
-    "imageWidth": 1920,
-    "imageHeight": 1080,
-    "featured": {
-      "icon": "icons/app.svg",
-      "label": "KDE Plasma · Dock",
-      "title": "Punchi Dock Remastered",
-      "detail": "KDE Plasma 6 · Wayland · v0.9.7 · PunchiMenu & MPRIS"
-    }
-  },
-  {
-    "id": "codex-vscode-aprendizaje",
-    "title": "Codex en Visual Studio Code: aprender programación construyendo proyectos reales",
-    "summary": "Cómo Codex puede transformar el aprendizaje de programación en un proceso práctico basado en ideas reales, errores, pruebas y proyectos compartibles.",
-    "featuredSummary": "Una reflexión sobre aprender programación con IA desde proyectos reales, sin reemplazar el criterio humano ni el aprendizaje práctico.",
-    "category": "IA",
-    "date": "2026-06-26",
-    "readingTime": "7 min de lectura",
-    "url": "codex-visual-studio-code-aprender-programacion.html",
-    "image": "../assets/images/codex-vscode-aprendizaje/cover.svg",
-    "imageAlt": "Ilustración de Visual Studio Code con Codex como apoyo de aprendizaje",
-    "imageWidth": 1200,
-    "imageHeight": 760,
-    "featured": {
-      "icon": "icons/fastfetch.svg",
-      "label": "IA · aprendizaje",
-      "title": "Aprender construyendo",
-      "detail": "Codex · VS Code · Git · proyectos reales"
-    }
-  },
-  {
-    "id": "switch-turbo-boost-plasmoid",
-    "title": "Switch Turbo Boost Plasmoid 0.3.0: control rápido desde KDE Plasma",
-    "summary": "Un plasmoide para KDE Plasma 6 que permite consultar y alternar Turbo Boost desde el panel, ahora con configuración multiidioma, refresco manual y una interfaz más limpia.",
-    "featuredSummary": "La versión 0.3.0 suma configuración multiidioma, botón Refrescar y una interfaz más limpia sin perder su control rápido desde el panel.",
-    "category": "KDE Plasma",
-    "date": "2026-06-26",
-    "readingTime": "6 min de lectura",
-    "url": "switch-turbo-boost-plasmoid.html",
-    "image": "https://raw.githubusercontent.com/PunchiSoft/switch-turbo-boost-plasmoid/main/Images/02.png",
-    "imageAlt": "Preferencias de Switch Turbo Boost Plasmoid en KDE Plasma",
-    "imageWidth": 838,
-    "imageHeight": 771,
-    "featured": {
-      "icon": "icons/energia.svg",
-      "label": "KDE Plasma · Turbo Boost",
-      "title": "Versión 0.3.0",
-      "detail": "Multiidioma · QML · PolicyKit"
-    }
-  },
-  {
-    "id": "fedora-numlock",
-    "title": "Fedora KDE: activar Bloq Num en la pantalla de login",
-    "summary": "Cómo confirmé que el sistema utilizaba plasmalogin y configuré Bloq Num sin aplicar instrucciones destinadas a SDDM.",
-    "featuredSummary": "Una solución práctica para plasmalogin, después de comprobar por qué la configuración habitual de SDDM no aplicaba.",
-    "category": "Fedora",
-    "date": "2026-06-23",
-    "readingTime": "5 min de lectura",
-    "url": "fedora-kde-activar-bloq-num-login.html",
-    "image": "../assets/images/fedora-kde-numlock/loginuser.png",
-    "imageAlt": "Pantalla de inicio de sesión de Fedora KDE",
-    "imageWidth": 1586,
-    "imageHeight": 992,
-    "featured": {
-      "icon": "icons/perfiles.svg",
-      "label": "Fedora KDE · plasmalogin",
-      "title": "Bloq Num activado",
-      "detail": "Wayland · Plasma 6.6.5 · configuración"
-    }
-  },
-  {
-    "id": "fedora",
-    "title": "Switch Turbo Monitor: hacer comprensible el rendimiento en Fedora",
-    "summary": "Una interfaz visual para cambiar perfiles de rendimiento y Turbo Boost en Fedora/Linux sin depender de la BIOS ni memorizar comandos.",
-    "category": "Fedora",
-    "date": "2026-06-23",
-    "readingTime": "9 min de lectura",
-    "url": "switch-turbo-monitor.html",
-    "image": "../assets/images/switch-turbo-monitor/00.png",
-    "imageAlt": "Modos de rendimiento de Switch Turbo Monitor",
-    "imageWidth": 1293,
-    "imageHeight": 857,
-    "featured": {
-      "icon": "icons/app.svg",
-      "label": "Fedora · rendimiento",
-      "title": "Control visual del sistema",
-      "detail": "Python 3 · PyQt6 · PolicyKit · tuned"
-    }
-  }
+  {"id":"codigos-r-radiocomunicacion-forestal-chile","title":"Códigos R de radiocomunicación forestal en Chile: tabla completa y protocolos de terreno","summary":"Manual operativo y tabla interactiva de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF en faenas forestales, brigadas CONAF y CORMA.","featuredSummary":"Tabla completa y buscador en tiempo real de Códigos R de radio para walkie-talkies y combate de incendios en Chile.","category":"Industria","date":"2026-09-01","readingTime":"9 min de lectura","url":"codigos-r-radiocomunicacion-forestal-chile.html","image":"../assets/images/codigos-r-forestales/cover.svg","imageAlt":"Ilustración técnica de radiocomunicación forestal y claves R en Chile","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/radio.svg","label":"Industria · Telecomunicaciones","title":"Códigos R Forestales","detail":"VHF/UHF · Walkie-Talkies · CONAF/CORMA · Claves R-1 a R-99"}},
+  {"id":"diagnostico-suspension-lenovo-loq-fedora","title":"Cuando el portátil se duerme y no vuelve: diagnóstico de suspensión en Lenovo LOQ y Fedora","summary":"Diagnóstico paso a paso de fallos de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, GPU NVIDIA y métodos ACPI de bajo consumo.","featuredSummary":"Diagnóstico paso a paso de suspensión e hibernación en Lenovo LOQ con Fedora y GPU NVIDIA, aislando fallos de firmware con pm_test.","category":"Fedora","date":"2026-08-23","readingTime":"7 min de lectura","url":"diagnostico-suspension-lenovo-loq-fedora.html","image":"../assets/images/diagnostico-suspension-lenovo-loq/cover.svg","imageAlt":"Diagrama conceptual de diagnóstico ACPI y estados de suspensión en Linux","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/energia.svg","label":"Fedora · ACPI · Energía","title":"Diagnóstico de suspensión","detail":"Lenovo LOQ 15ARP9 · s2idle · pm_test · NVIDIA S0ix"}},
+  {"id":"neumatica-hidraulica-mantenimiento-industrial","title":"Neumática e hidráulica: dos formas de transmitir potencia","summary":"Una introducción práctica para comprender sus diferencias, aplicaciones, ventajas y criterios de selección en mantenimiento industrial y maestranza.","featuredSummary":"Una introducción práctica para comprender diferencias, aplicaciones y ventajas de la neumática y la hidráulica.","category":"Neumática e Hidráulica","date":"2026-07-21","readingTime":"8 min de lectura","url":"../hidraulica-neumatica/neumatica-hidraulica-mantenimiento-industrial.html","image":"../assets/images/neumatica-hidraulica/cover.jpg","imageAlt":"Esquemas neumáticos e hidráulicos de transmisión de potencia","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/energia.svg","label":"Neumática · Hidráulica","title":"Transmisión de potencia","detail":"Circuitos de fluido · Criterios técnicos · Seguridad"}},
+  {"id":"gdt-maestranza-planos-industriales","title":"GD&T en maestranza: cuando medir no es suficiente","summary":"El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico en planos de fabricación.","featuredSummary":"El dimensionamiento y tolerado geométrico permite que diseño, mecanizado, soldadura e inspección compartan un único criterio técnico.","category":"CAD & Planos","date":"2026-07-21","readingTime":"8 min de lectura","url":"../inventor-autocad/gdt-maestranza-planos-industriales.html","image":"../assets/images/gdt-maestranza/cover.jpg","imageAlt":"Plano técnico con tolerancias geométricas GD&T","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/recursos.svg","label":"CAD & Planos · GD&T","title":"GD&T en maestranza","detail":"Planos técnicos · Tolerancias geométricas · Fabricación"}},
+  {"id":"kwin-opengl-es-kde-plasma","title":"KWin apuesta por OpenGL ES y Plasma continúa refinando su experiencia de usuario","summary":"El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.","featuredSummary":"El equipo de KDE presentó mejoras importantes en KWin, animaciones, seguridad y rendimiento que formarán parte de las próximas versiones de Plasma.","category":"KDE Plasma","date":"2026-07-21","readingTime":"5 min de lectura","url":"kwin-opengl-es-kde-plasma.html","image":"../assets/images/kwin-opengl-es/cover.jpg","imageAlt":"Ilustración conceptual de KDE Plasma con pipelines gráficos de OpenGL ES","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/app.svg","label":"KDE Plasma · KWin","title":"OpenGL ES en KWin","detail":"KDE Plasma 6.8 · OpenGL ES · Animaciones · Seguridad"}},
+  {"id":"punchi-dock-plasmoid","title":"Punchi Dock Remastered: lanzador y gestor de tareas nativo para KDE Plasma 6","summary":"Un dock modular de alto rendimiento, lanzador de aplicaciones PunchiMenu, controles multimedia MPRIS y soporte universal multi-distribución para KDE Plasma 6 y Wayland.","featuredSummary":"La serie 0.9.7 suma el lanzador PunchiMenu, controles multimedia MPRIS, renderers 2D/2.5D y paquete universal para múltiples distribuciones.","category":"KDE Plasma","date":"2026-08-31","readingTime":"10 min de lectura","url":"punchi-dock-plasmoid.html","image":"../assets/images/punchi-dock-plasmoid/desktop-layouts.png","imageAlt":"Disposiciones de escritorio y modos de Punchi Dock Remastered en KDE Plasma 6","imageWidth":1920,"imageHeight":1080,"featured":{"icon":"icons/app.svg","label":"KDE Plasma · Dock","title":"Punchi Dock Remastered","detail":"KDE Plasma 6 · Wayland · v0.9.7 · PunchiMenu & MPRIS"}},
+  {"id":"codex-vscode-aprendizaje","title":"Codex en Visual Studio Code: aprender programación construyendo proyectos reales","summary":"Cómo Codex puede transformar el aprendizaje de programación en un proceso práctico basado en ideas reales, errores, pruebas y proyectos compartibles.","featuredSummary":"Una reflexión sobre aprender programación con IA desde proyectos reales, sin reemplazar el criterio humano ni el aprendizaje práctico.","category":"IA","date":"2026-06-26","readingTime":"7 min de lectura","url":"codex-visual-studio-code-aprender-programacion.html","image":"../assets/images/codex-vscode-aprendizaje/cover.svg","imageAlt":"Ilustración de Visual Studio Code con Codex como apoyo de aprendizaje","imageWidth":1200,"imageHeight":760,"featured":{"icon":"icons/fastfetch.svg","label":"IA · aprendizaje","title":"Aprender construyendo","detail":"Codex · VS Code · Git · proyectos reales"}},
+  {"id":"switch-turbo-boost-plasmoid","title":"Switch Turbo Boost Plasmoid 0.3.0: control rápido desde KDE Plasma","summary":"Un plasmoide para KDE Plasma 6 que permite consultar y alternar Turbo Boost desde el panel, ahora con configuración multiidioma, refresco manual y una interfaz más limpia.","featuredSummary":"La versión 0.3.0 suma configuración multiidioma, botón Refrescar y una interfaz más limpia sin perder su control rápido desde el panel.","category":"KDE Plasma","date":"2026-06-26","readingTime":"6 min de lectura","url":"switch-turbo-boost-plasmoid.html","image":"https://raw.githubusercontent.com/PunchiSoft/switch-turbo-boost-plasmoid/main/Images/02.png","imageAlt":"Preferencias de Switch Turbo Boost Plasmoid en KDE Plasma","imageWidth":838,"imageHeight":771,"featured":{"icon":"icons/energia.svg","label":"KDE Plasma · Turbo Boost","title":"Versión 0.3.0","detail":"Multiidioma · QML · PolicyKit"}},
+  {"id":"fedora-numlock","title":"Fedora KDE: activar Bloq Num en la pantalla de login","summary":"Cómo confirmé que el sistema utilizaba plasmalogin y configuré Bloq Num sin aplicar instrucciones destinadas a SDDM.","featuredSummary":"Una solución práctica para plasmalogin, después de comprobar por qué la configuración habitual de SDDM no aplicaba.","category":"Fedora","date":"2026-06-23","readingTime":"5 min de lectura","url":"fedora-kde-activar-bloq-num-login.html","image":"../assets/images/fedora-kde-numlock/loginuser.png","imageAlt":"Pantalla de inicio de sesión de Fedora KDE","imageWidth":1586,"imageHeight":992,"featured":{"icon":"icons/perfiles.svg","label":"Fedora KDE · plasmalogin","title":"Bloq Num activado","detail":"Wayland · Plasma 6.6.5 · configuración"}},
+  {"id":"fedora","title":"Switch Turbo Monitor: hacer comprensible el rendimiento en Fedora","summary":"Una interfaz visual para cambiar perfiles de rendimiento y Turbo Boost en Fedora/Linux sin depender de la BIOS ni memorizar comandos.","category":"Fedora","date":"2026-06-23","readingTime":"9 min de lectura","url":"switch-turbo-monitor.html","image":"../assets/images/switch-turbo-monitor/00.png","imageAlt":"Modos de rendimiento de Switch Turbo Monitor","imageWidth":1293,"imageHeight":857,"featured":{"icon":"icons/app.svg","label":"Fedora · rendimiento","title":"Control visual del sistema","detail":"Python 3 · PyQt6 · PolicyKit · tuned"}}
 ]
