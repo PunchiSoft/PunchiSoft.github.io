@@ -1,5 +1,25 @@
 [
   {
+    "id": "noticias-2026-09-19",
+    "title": "Noticias PunchiSoft — 19 de septiembre de 2026",
+    "summary": "KDE concentra el desarrollo de Plasma 6.8 en correcciones de regresiones y pulido antes de la versión estable.",
+    "featuredSummary": "Plasma 6.8 entra en una etapa de correcciones y ajustes de interfaz, con pocas regresiones abiertas y pruebas de compatibilidad todavía en curso.",
+    "category": "Noticias",
+    "date": "2026-09-19",
+    "readingTime": "3 min de lectura",
+    "url": "noticias-2026-09-19.html",
+    "image": "../assets/images/noticias/2026-09-19/cover.svg",
+    "imageAlt": "Portada de Noticias PunchiSoft del 19 de septiembre de 2026 dedicada a KDE Plasma 6.8",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/app.svg",
+      "label": "Noticias · KDE Plasma",
+      "title": "Plasma 6.8 entra en fase de pulido",
+      "detail": "KDE Plasma · KWin · regresiones · compatibilidad"
+    }
+  },
+  {
     "id": "noticias-2026-09-18",
     "title": "Noticias PunchiSoft — 18 de septiembre de 2026",
     "summary": "IA industrial y seguridad Linux: Siemens y P&G amplían la inspección de calidad con IA, mientras Debian publica nuevas actualizaciones de seguridad.",
