@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linux 7.3-rc4 incorpora correcciones de Btrfs para recuperar un FSID estable y reparar el arranque sin initramfs con GRUB2.">
+  <meta name="theme-color" content="#10141c">
+  <meta property="og:site_name" content="PunchiSoft">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Noticias PunchiSoft — 20 de septiembre de 2026 — PunchiSoft">
+  <meta property="og:description" content="Linux 7.3-rc4 incorpora correcciones de Btrfs para recuperar un FSID estable y reparar el arranque sin initramfs con GRUB2.">
+  <meta property="og:url" content="https://punchisoft.github.io/blog/noticias-2026-09-20.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@punchisoft">
+  <meta name="twitter:creator" content="@punchisoft">
+  <meta name="twitter:title" content="Noticias PunchiSoft — 20 de septiembre de 2026 — PunchiSoft">
+  <meta name="twitter:description" content="Linux 7.3-rc4 incorpora correcciones de Btrfs para recuperar un FSID estable y reparar el arranque sin initramfs con GRUB2.">
+  <title>Noticias PunchiSoft — 20 de septiembre de 2026 — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><nav class="nav container" aria-label="Navegación principal"><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button><div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div></nav></header>
+  <main><article>
+    <header class="article-header container-narrow"><a class="back-link" href="index.html">← Volver al blog</a><div class="post-meta"><span class="tag">Linux</span><time datetime="2026-09-20">20 de septiembre de 2026</time><span>3 min de lectura</span></div><h1>Noticias PunchiSoft — 20 de septiembre de 2026</h1><p class="lead">La edición de hoy revisa dos correcciones de Btrfs integradas para Linux 7.3-rc4: una recupera la estabilidad del identificador del sistema de archivos y otra corrige la detección de la raíz en arranques con GRUB2 sin initramfs.</p></header>
+    <figure class="article-hero container-narrow"><img src="../assets/images/noticias/2026-09-20/cover.svg" alt="Portada de Noticias PunchiSoft del 20 de septiembre de 2026 dedicada a Linux 7.3-rc4 y Btrfs" width="1200" height="675" loading="eager"><figcaption>Linux 7.3-rc4 incorpora correcciones relevantes para usuarios de Btrfs.</figcaption></figure>
+    <div class="article-body container-narrow">
+      <ul class="news-summary" aria-label="Titulares de esta edición"><li><a href="#noticia-1">Linux 7.3-rc4 corrige dos regresiones relevantes de Btrfs</a></li></ul>
+      <section class="news-item" data-category="Linux" id="noticia-1" aria-labelledby="noticia-1-titulo">
+        <header class="news-item-header"><p class="news-item-category"><span class="news-item-index" aria-hidden="true">1</span>Linux</p><h2 id="noticia-1-titulo">Linux 7.3-rc4 corrige dos regresiones relevantes de Btrfs</h2><p class="news-item-dek">Las correcciones afectan la estabilidad del FSID y la detección de la partición raíz con GRUB2 en sistemas que arrancan sin initramfs.</p></header>
+        <div class="news-item-body"><p>El conjunto de correcciones de Btrfs integrado para Linux 7.3-rc4 revierte un cambio introducido durante el ciclo de Linux 7.2 que alteraba la forma de derivar <code>f_fsid</code>. El identificador podía cambiar después de una actualización del kernel o entre reinicios, rompiendo la expectativa de estabilidad de aplicaciones de espacio de usuario.</p><p>Uno de los efectos observados alcanzó a NetworkManager OpenConnect: configuraciones que dependían del FSID para manejar archivos de claves podían dejar de funcionar en sistemas Btrfs. La corrección vuelve a derivar el identificador desde el UUID del sistema de archivos, recuperando el comportamiento estable anterior.</p><p>La segunda regresión pertenecía al desarrollo de Linux 7.3 y afectaba sistemas Btrfs que arrancan con GRUB2 sin initramfs. En ese escenario, la detección de <code>/dev/root</code> podía fallar. Ambas correcciones fueron integradas antes de la publicación prevista de 7.3-rc4.</p></div>
+        <footer class="news-source"><span class="news-source-label">Fuente</span><a href="https://www.phoronix.com/news/Btrfs-Fixes-For-Linux-7.3-rc4" target="_blank" rel="noopener noreferrer">Phoronix — Btrfs fixes for Linux 7.3-rc4 ↗</a><time datetime="2026-09-19">19 de septiembre de 2026</time></footer>
+      </section>
+      <div class="article-end"><span>Selección editorial de PunchiSoft · 20 de septiembre de 2026</span><a class="button button-ghost" href="index.html">Más artículos</a></div>
+    </div>
+  </article></main>
+  <footer class="site-footer"><div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://x.com/punchisoft" target="_blank" rel="noopener noreferrer">X ↗</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div><div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div></footer>
+  <script>const toggle=document.querySelector('.menu-toggle');const menu=document.querySelector('.nav-links');const toggleLabel=toggle.querySelector('.sr-only');const setMenuState=(isOpen)=>{toggle.setAttribute('aria-expanded',String(isOpen));menu.classList.toggle('open',isOpen);toggleLabel.textContent=isOpen?'Cerrar menú':'Abrir menú';};toggle.addEventListener('click',()=>setMenuState(toggle.getAttribute('aria-expanded')!=='true'));menu.addEventListener('click',(event)=>{if(event.target.closest('a'))setMenuState(false);});document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){setMenuState(false);toggle.focus();}});document.querySelector('[data-year]').textContent=new Date().getFullYear();</script>
+</body></html>
