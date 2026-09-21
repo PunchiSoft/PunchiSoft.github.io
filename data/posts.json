@@ -1,5 +1,25 @@
 [
   {
+    "id": "noticias-2026-09-21",
+    "title": "Noticias PunchiSoft — 21 de septiembre de 2026",
+    "summary": "Fedora CoreOS 45 inicia una semana de pruebas comunitarias antes de que su contenido avance hacia los canales testing y stable.",
+    "featuredSummary": "Fedora CoreOS y Fedora QA abren del 21 al 25 de septiembre una semana de validación de CoreOS basado en Fedora 45.",
+    "category": "Noticias",
+    "date": "2026-09-21",
+    "readingTime": "3 min de lectura",
+    "url": "noticias-2026-09-21.html",
+    "image": "../assets/images/noticias/2026-09-21/cover.svg",
+    "imageAlt": "Portada de Noticias PunchiSoft del 21 de septiembre de 2026 dedicada a Fedora CoreOS 45",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/informacion.svg",
+      "label": "Noticias · Fedora",
+      "title": "Fedora inicia la semana de pruebas de CoreOS 45",
+      "detail": "Fedora 45 · CoreOS · QA · Test Week"
+    }
+  },
+  {
     "id": "noticias-2026-09-20",
     "title": "Noticias PunchiSoft — 20 de septiembre de 2026",
     "summary": "Linux 7.3-rc4 incorpora correcciones de Btrfs para recuperar un FSID estable y reparar el arranque sin initramfs con GRUB2.",
