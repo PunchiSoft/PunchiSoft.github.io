@@ -1,5 +1,25 @@
 [
   {
+    "id": "noticias-2026-09-22",
+    "title": "Noticias PunchiSoft — 22 de septiembre de 2026",
+    "summary": "Autodesk amplía su asistente con IA agéntica aplicada a diseño, ingeniería y fabricación, usando contexto de geometría, planos y datos de proyecto.",
+    "featuredSummary": "Autodesk presenta agentes especializados para Forma, Fusion y Flow capaces de trabajar con geometría 3D, dibujos 2D y contexto técnico de proyecto.",
+    "category": "Noticias",
+    "date": "2026-09-22",
+    "readingTime": "3 min de lectura",
+    "url": "noticias-2026-09-22.html",
+    "image": "../assets/images/noticias/2026-09-22/cover.svg",
+    "imageAlt": "Portada de Noticias PunchiSoft del 22 de septiembre de 2026 dedicada a IA aplicada a CAD e ingeniería",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "featured": {
+      "icon": "icons/recursos.svg",
+      "label": "Noticias · CAD & Planos",
+      "title": "Autodesk amplía su asistente con IA agéntica",
+      "detail": "Autodesk · Fusion · CAD · IA"
+    }
+  },
+  {
     "id": "noticias-2026-09-21",
     "title": "Noticias PunchiSoft — 21 de septiembre de 2026",
     "summary": "Fedora CoreOS 45 inicia una semana de pruebas comunitarias antes de que su contenido avance hacia los canales testing y stable.",
