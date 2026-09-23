@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Noticias PunchiSoft 23 de septiembre de 2026</title>
+  <desc id="desc">Portada editorial sobre OpenSearch, software libre e infraestructura de datos para inteligencia artificial.</desc>
+  <rect width="1200" height="675" fill="#10141c"/>
+  <circle cx="970" cy="180" r="180" fill="#1e293b"/>
+  <circle cx="1040" cy="520" r="250" fill="#172033"/>
+  <g fill="none" stroke="#60a5fa" stroke-width="5" opacity="0.9">
+    <circle cx="930" cy="315" r="115"/><circle cx="930" cy="315" r="70"/><path d="M815 315h230M930 200v230"/>
+  </g>
+  <g fill="#e5e7eb" font-family="system-ui, sans-serif">
+    <text x="90" y="135" font-size="30" font-weight="600">NOTICIAS PUNCHISOFT</text>
+    <text x="90" y="245" font-size="66" font-weight="700">Infraestructura abierta</text>
+    <text x="90" y="325" font-size="66" font-weight="700">para cargas de IA</text>
+    <text x="90" y="410" font-size="30">OpenSearch · Linux Foundation Research</text>
+    <text x="90" y="545" font-size="26" opacity="0.78">23 de septiembre de 2026</text>
+  </g>
+</svg>
