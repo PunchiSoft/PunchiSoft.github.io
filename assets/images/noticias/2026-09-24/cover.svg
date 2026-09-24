@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Noticias PunchiSoft — 24 de septiembre de 2026</title>
+<desc id="desc">Portada editorial dedicada a Linux, Debian y Snapdragon X2.</desc>
+<rect width="1200" height="675" fill="#10141c"/>
+<rect x="64" y="64" width="1072" height="547" rx="28" fill="#18202c"/>
+<circle cx="970" cy="190" r="132" fill="#26354a"/>
+<circle cx="970" cy="190" r="82" fill="#10141c"/>
+<path d="M900 190h140M970 120v140" stroke="#9dc8ff" stroke-width="18" stroke-linecap="round"/>
+<text x="110" y="160" fill="#9dc8ff" font-family="sans-serif" font-size="28" font-weight="700">NOTICIAS PUNCHISOFT</text>
+<text x="110" y="235" fill="#ffffff" font-family="sans-serif" font-size="54" font-weight="700">Linux llega a</text>
+<text x="110" y="300" fill="#ffffff" font-family="sans-serif" font-size="54" font-weight="700">Snapdragon X2</text>
+<text x="110" y="380" fill="#c8d2df" font-family="sans-serif" font-size="28">Debian 13 · upstream · Adreno · Hexagon NPU</text>
+<line x1="110" y1="430" x2="650" y2="430" stroke="#40536b" stroke-width="2"/>
+<text x="110" y="490" fill="#9dc8ff" font-family="sans-serif" font-size="24">24 DE SEPTIEMBRE DE 2026</text>
+<text x="110" y="555" fill="#c8d2df" font-family="sans-serif" font-size="22">punchisoft.github.io</text>
+</svg>
