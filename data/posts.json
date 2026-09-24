@@ -1,129 +1,13 @@
 [
-  {
-    "id": "noticias-2026-09-23",
-    "title": "Noticias PunchiSoft — 23 de septiembre de 2026",
-    "summary": "OpenSearch y Linux Foundation Research publican nuevos datos sobre infraestructura abierta, interoperabilidad y cargas de IA.",
-    "featuredSummary": "El informe 2026 Open Data Infrastructure Report mide el uso de plataformas abiertas en IA y el peso de la interoperabilidad, los costos y la independencia de proveedores.",
-    "category": "Noticias",
-    "date": "2026-09-23",
-    "readingTime": "3 min de lectura",
-    "url": "noticias-2026-09-23.html",
-    "image": "../assets/images/noticias/2026-09-23/cover.svg",
-    "imageAlt": "Portada de Noticias PunchiSoft del 23 de septiembre de 2026 dedicada a OpenSearch e infraestructura abierta para IA",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/informacion.svg",
-      "label": "Noticias · Software libre",
-      "title": "Infraestructura abierta para cargas de IA",
-      "detail": "OpenSearch · IA · interoperabilidad · software libre"
-    }
-  },
-  {
-    "id": "noticias-2026-09-22",
-    "title": "Noticias PunchiSoft — 22 de septiembre de 2026",
-    "summary": "Autodesk amplía su asistente con IA agéntica aplicada a diseño, ingeniería y fabricación, usando contexto de geometría, planos y datos de proyecto.",
-    "featuredSummary": "Autodesk presenta agentes especializados para Forma, Fusion y Flow capaces de trabajar con geometría 3D, dibujos 2D y contexto técnico de proyecto.",
-    "category": "Noticias",
-    "date": "2026-09-22",
-    "readingTime": "3 min de lectura",
-    "url": "noticias-2026-09-22.html",
-    "image": "../assets/images/noticias/2026-09-22/cover.svg",
-    "imageAlt": "Portada de Noticias PunchiSoft del 22 de septiembre de 2026 dedicada a IA aplicada a CAD e ingeniería",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/recursos.svg",
-      "label": "Noticias · CAD & Planos",
-      "title": "Autodesk amplía su asistente con IA agéntica",
-      "detail": "Autodesk · Fusion · CAD · IA"
-    }
-  },
-  {
-    "id": "noticias-2026-09-21",
-    "title": "Noticias PunchiSoft — 21 de septiembre de 2026",
-    "summary": "Fedora CoreOS 45 inicia una semana de pruebas comunitarias antes de que su contenido avance hacia los canales testing y stable.",
-    "featuredSummary": "Fedora CoreOS y Fedora QA abren del 21 al 25 de septiembre una semana de validación de CoreOS basado en Fedora 45.",
-    "category": "Noticias",
-    "date": "2026-09-21",
-    "readingTime": "3 min de lectura",
-    "url": "noticias-2026-09-21.html",
-    "image": "../assets/images/noticias/2026-09-21/cover.svg",
-    "imageAlt": "Portada de Noticias PunchiSoft del 21 de septiembre de 2026 dedicada a Fedora CoreOS 45",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/informacion.svg",
-      "label": "Noticias · Fedora",
-      "title": "Fedora inicia la semana de pruebas de CoreOS 45",
-      "detail": "Fedora 45 · CoreOS · QA · Test Week"
-    }
-  },
-  {
-    "id": "noticias-2026-09-20",
-    "title": "Noticias PunchiSoft — 20 de septiembre de 2026",
-    "summary": "Linux 7.3-rc4 incorpora correcciones de Btrfs para recuperar un FSID estable y reparar el arranque sin initramfs con GRUB2.",
-    "featuredSummary": "Dos correcciones de Btrfs atienden una regresión de FSID que afectaba aplicaciones de espacio de usuario y un fallo de detección de la raíz con GRUB2 sin initramfs.",
-    "category": "Noticias",
-    "date": "2026-09-20",
-    "readingTime": "3 min de lectura",
-    "url": "noticias-2026-09-20.html",
-    "image": "../assets/images/noticias/2026-09-20/cover.svg",
-    "imageAlt": "Portada de Noticias PunchiSoft del 20 de septiembre de 2026 dedicada a Linux 7.3-rc4 y Btrfs",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/informacion.svg",
-      "label": "Noticias · Linux",
-      "title": "Linux 7.3-rc4 corrige regresiones de Btrfs",
-      "detail": "Btrfs · FSID · NetworkManager OpenConnect · GRUB2"
-    }
-  },
-  {
-    "id": "noticias-2026-09-19",
-    "title": "Noticias PunchiSoft — 19 de septiembre de 2026",
-    "summary": "KDE concentra el desarrollo de Plasma 6.8 en correcciones de regresiones y pulido antes de la versión estable.",
-    "featuredSummary": "Plasma 6.8 entra en una etapa de correcciones y ajustes de interfaz, con pocas regresiones abiertas y pruebas de compatibilidad todavía en curso.",
-    "category": "Noticias",
-    "date": "2026-09-19",
-    "readingTime": "3 min de lectura",
-    "url": "noticias-2026-09-19.html",
-    "image": "../assets/images/noticias/2026-09-19/cover.svg",
-    "imageAlt": "Portada de Noticias PunchiSoft del 19 de septiembre de 2026 dedicada a KDE Plasma 6.8",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {
-      "icon": "icons/app.svg",
-      "label": "Noticias · KDE Plasma",
-      "title": "Plasma 6.8 entra en fase de pulido",
-      "detail": "KDE Plasma · KWin · regresiones · compatibilidad"
-    }
-  },
-  {
-    "id": "noticias-2026-09-18",
-    "title": "Noticias PunchiSoft — 18 de septiembre de 2026",
-    "summary": "IA industrial y seguridad Linux: Siemens y P&G amplían la inspección de calidad con IA, mientras Debian publica nuevas actualizaciones de seguridad.",
-    "featuredSummary": "La edición de hoy revisa una aplicación industrial de visión con IA a escala de fábrica y los avisos de seguridad más recientes de Debian.",
-    "category": "Noticias",
-    "date": "2026-09-18",
-    "readingTime": "4 min de lectura",
-    "url": "noticias-2026-09-18.html",
-    "image": "../assets/images/noticias/2026-09-18/cover.svg",
-    "imageAlt": "Portada de Noticias PunchiSoft del 18 de septiembre de 2026 sobre IA industrial y seguridad en Debian",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "featured": {"icon":"icons/informacion.svg","label":"Noticias · IA","title":"IA industrial y seguridad en Debian","detail":"Siemens · P&G · Debian Security"}
-  },
-  {
-    "id": "noticias-2026-09-15",
-    "title": "Noticias PunchiSoft — 15 de septiembre de 2026",
-    "summary": "Industria, mantenimiento y automatización: diagnóstico móvil de Fluke, confiabilidad de maquinaria con Schaeffler, productividad CNC de Siemens, CAD/PLM con PTC y control inteligente de procesos con Rockwell Automation.",
-    "featuredSummary": "Edición industrial: mantenimiento predictivo, maquinaria sensorizada, preparación digital de CNC, trazabilidad CAD/PLM y automatización de procesos críticos.",
-    "category": "Noticias","date":"2026-09-15","readingTime":"8 min de lectura","url":"noticias-2026-09-15.html","image":"../assets/images/noticias/2026-09-15/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 15 de septiembre de 2026 dedicada a industria, mantenimiento y automatización","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/energia.svg","label":"Noticias · Industria","title":"Mantenimiento y automatización industrial","detail":"Fluke · Schaeffler · Siemens · PTC · Rockwell Automation"}
-  },
-  {
-    "id":"noticias-2026-09-17","title":"Noticias PunchiSoft — 17 de septiembre de 2026","summary":"Linux 7.2.6 y 7.3-rc3, la beta de KDE Plasma 6.8 con el sistema de temas Union, Debian 13.7 y la beta de Fedora Linux 45.","featuredSummary":"Resumen diario: el kernel estabiliza la serie 7.2, KDE abre la beta de Plasma 6.8, Debian publica la séptima actualización de «trixie» y Fedora entra en beta para su versión 45.","category":"Noticias","date":"2026-09-17","readingTime":"6 min de lectura","url":"noticias-2026-09-17.html","image":"../assets/images/noticias/2026-09-17/cover.svg","imageAlt":"Portada de la edición de Noticias PunchiSoft del 17 de septiembre de 2026","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · Linux","title":"Kernel 7.2.6 y Plasma 6.8 beta","detail":"Linux · Debian 13.7 · Fedora 45 beta · KDE Plasma"}
-  },
+  {"id":"noticias-2026-09-24","title":"Noticias PunchiSoft — 24 de septiembre de 2026","summary":"Qualcomm abre una vista previa de Linux para Snapdragon X2 con Debian 13 como entorno de referencia y soporte upstream en desarrollo.","featuredSummary":"Snapdragon X2 avanza hacia soporte Linux upstream para GPU Adreno, NPU Hexagon y hardware de portátiles, con Debian como primer entorno de referencia.","category":"Noticias","date":"2026-09-24","readingTime":"3 min de lectura","url":"noticias-2026-09-24.html","image":"../assets/images/noticias/2026-09-24/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 24 de septiembre de 2026 dedicada a Linux en Snapdragon X2","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · Linux","title":"Linux llega a Snapdragon X2","detail":"Debian 13 · upstream · Adreno · Hexagon NPU"}},
+  {"id":"noticias-2026-09-23","title":"Noticias PunchiSoft — 23 de septiembre de 2026","summary":"OpenSearch y Linux Foundation Research publican nuevos datos sobre infraestructura abierta, interoperabilidad y cargas de IA.","featuredSummary":"El informe 2026 Open Data Infrastructure Report mide el uso de plataformas abiertas en IA y el peso de la interoperabilidad, los costos y la independencia de proveedores.","category":"Noticias","date":"2026-09-23","readingTime":"3 min de lectura","url":"noticias-2026-09-23.html","image":"../assets/images/noticias/2026-09-23/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 23 de septiembre de 2026 dedicada a OpenSearch e infraestructura abierta para IA","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · Software libre","title":"Infraestructura abierta para cargas de IA","detail":"OpenSearch · IA · interoperabilidad · software libre"}},
+  {"id":"noticias-2026-09-22","title":"Noticias PunchiSoft — 22 de septiembre de 2026","summary":"Autodesk amplía su asistente con IA agéntica aplicada a diseño, ingeniería y fabricación, usando contexto de geometría, planos y datos de proyecto.","featuredSummary":"Autodesk presenta agentes especializados para Forma, Fusion y Flow capaces de trabajar con geometría 3D, dibujos 2D y contexto técnico de proyecto.","category":"Noticias","date":"2026-09-22","readingTime":"3 min de lectura","url":"noticias-2026-09-22.html","image":"../assets/images/noticias/2026-09-22/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 22 de septiembre de 2026 dedicada a IA aplicada a CAD e ingeniería","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/recursos.svg","label":"Noticias · CAD & Planos","title":"Autodesk amplía su asistente con IA agéntica","detail":"Autodesk · Fusion · CAD · IA"}},
+  {"id":"noticias-2026-09-21","title":"Noticias PunchiSoft — 21 de septiembre de 2026","summary":"Fedora CoreOS 45 inicia una semana de pruebas comunitarias antes de que su contenido avance hacia los canales testing y stable.","featuredSummary":"Fedora CoreOS y Fedora QA abren del 21 al 25 de septiembre una semana de validación de CoreOS basado en Fedora 45.","category":"Noticias","date":"2026-09-21","readingTime":"3 min de lectura","url":"noticias-2026-09-21.html","image":"../assets/images/noticias/2026-09-21/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 21 de septiembre de 2026 dedicada a Fedora CoreOS 45","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · Fedora","title":"Fedora inicia la semana de pruebas de CoreOS 45","detail":"Fedora 45 · CoreOS · QA · Test Week"}},
+  {"id":"noticias-2026-09-20","title":"Noticias PunchiSoft — 20 de septiembre de 2026","summary":"Linux 7.3-rc4 incorpora correcciones de Btrfs para recuperar un FSID estable y reparar el arranque sin initramfs con GRUB2.","featuredSummary":"Dos correcciones de Btrfs atienden una regresión de FSID que afectaba aplicaciones de espacio de usuario y un fallo de detección de la raíz con GRUB2 sin initramfs.","category":"Noticias","date":"2026-09-20","readingTime":"3 min de lectura","url":"noticias-2026-09-20.html","image":"../assets/images/noticias/2026-09-20/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 20 de septiembre de 2026 dedicada a Linux 7.3-rc4 y Btrfs","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · Linux","title":"Linux 7.3-rc4 corrige regresiones de Btrfs","detail":"Btrfs · FSID · NetworkManager OpenConnect · GRUB2"}},
+  {"id":"noticias-2026-09-19","title":"Noticias PunchiSoft — 19 de septiembre de 2026","summary":"KDE concentra el desarrollo de Plasma 6.8 en correcciones de regresiones y pulido antes de la versión estable.","featuredSummary":"Plasma 6.8 entra en una etapa de correcciones y ajustes de interfaz, con pocas regresiones abiertas y pruebas de compatibilidad todavía en curso.","category":"Noticias","date":"2026-09-19","readingTime":"3 min de lectura","url":"noticias-2026-09-19.html","image":"../assets/images/noticias/2026-09-19/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 19 de septiembre de 2026 dedicada a KDE Plasma 6.8","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/app.svg","label":"Noticias · KDE Plasma","title":"Plasma 6.8 entra en fase de pulido","detail":"KDE Plasma · KWin · regresiones · compatibilidad"}},
+  {"id":"noticias-2026-09-18","title":"Noticias PunchiSoft — 18 de septiembre de 2026","summary":"IA industrial y seguridad Linux: Siemens y P&G amplían la inspección de calidad con IA, mientras Debian publica nuevas actualizaciones de seguridad.","featuredSummary":"La edición de hoy revisa una aplicación industrial de visión con IA a escala de fábrica y los avisos de seguridad más recientes de Debian.","category":"Noticias","date":"2026-09-18","readingTime":"4 min de lectura","url":"noticias-2026-09-18.html","image":"../assets/images/noticias/2026-09-18/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 18 de septiembre de 2026 sobre IA industrial y seguridad en Debian","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · IA","title":"IA industrial y seguridad en Debian","detail":"Siemens · P&G · Debian Security"}},
+  {"id":"noticias-2026-09-15","title":"Noticias PunchiSoft — 15 de septiembre de 2026","summary":"Industria, mantenimiento y automatización: diagnóstico móvil de Fluke, confiabilidad de maquinaria con Schaeffler, productividad CNC de Siemens, CAD/PLM con PTC y control inteligente de procesos con Rockwell Automation.","featuredSummary":"Edición industrial: mantenimiento predictivo, maquinaria sensorizada, preparación digital de CNC, trazabilidad CAD/PLM y automatización de procesos críticos.","category":"Noticias","date":"2026-09-15","readingTime":"8 min de lectura","url":"noticias-2026-09-15.html","image":"../assets/images/noticias/2026-09-15/cover.svg","imageAlt":"Portada de Noticias PunchiSoft del 15 de septiembre de 2026 dedicada a industria, mantenimiento y automatización","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/energia.svg","label":"Noticias · Industria","title":"Mantenimiento y automatización industrial","detail":"Fluke · Schaeffler · Siemens · PTC · Rockwell Automation"}},
+  {"id":"noticias-2026-09-17","title":"Noticias PunchiSoft — 17 de septiembre de 2026","summary":"Linux 7.2.6 y 7.3-rc3, la beta de KDE Plasma 6.8 con el sistema de temas Union, Debian 13.7 y la beta de Fedora Linux 45.","featuredSummary":"Resumen diario: el kernel estabiliza la serie 7.2, KDE abre la beta de Plasma 6.8, Debian publica la séptima actualización de «trixie» y Fedora entra en beta para su versión 45.","category":"Noticias","date":"2026-09-17","readingTime":"6 min de lectura","url":"noticias-2026-09-17.html","image":"../assets/images/noticias/2026-09-17/cover.svg","imageAlt":"Portada de la edición de Noticias PunchiSoft del 17 de septiembre de 2026","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/informacion.svg","label":"Noticias · Linux","title":"Kernel 7.2.6 y Plasma 6.8 beta","detail":"Linux · Debian 13.7 · Fedora 45 beta · KDE Plasma"}},
   {"id":"codigos-r-radiocomunicacion-forestal-chile","title":"Códigos R de radiocomunicación forestal en Chile: tabla completa y protocolos de terreno","summary":"Manual operativo y tabla interactiva de claves radiales para walkie-talkies y transceptores portátiles VHF/UHF en faenas forestales, brigadas CONAF y CORMA.","featuredSummary":"Tabla completa y buscador en tiempo real de Códigos R de radio para walkie-talkies y combate de incendios en Chile.","category":"Industria","date":"2026-09-01","readingTime":"9 min de lectura","url":"codigos-r-radiocomunicacion-forestal-chile.html","image":"../assets/images/codigos-r-forestales/cover.svg","imageAlt":"Ilustración técnica de radiocomunicación forestal y claves R en Chile","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/radio.svg","label":"Industria · Telecomunicaciones","title":"Códigos R Forestales","detail":"VHF/UHF · Walkie-Talkies · CONAF/CORMA · Claves R-1 a R-99"}},
   {"id":"diagnostico-suspension-lenovo-loq-fedora","title":"Cuando el portátil se duerme y no vuelve: diagnóstico de suspensión en Lenovo LOQ y Fedora","summary":"Diagnóstico paso a paso de fallos de suspensión e hibernación en un Lenovo LOQ 15ARP9 con Fedora, GPU NVIDIA y métodos ACPI de bajo consumo.","featuredSummary":"Diagnóstico paso a paso de suspensión e hibernación en Lenovo LOQ con Fedora y GPU NVIDIA, aislando fallos de firmware con pm_test.","category":"Fedora","date":"2026-08-23","readingTime":"7 min de lectura","url":"diagnostico-suspension-lenovo-loq-fedora.html","image":"../assets/images/diagnostico-suspension-lenovo-loq/cover.svg","imageAlt":"Diagrama conceptual de diagnóstico ACPI y estados de suspensión en Linux","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/energia.svg","label":"Fedora · ACPI · Energía","title":"Diagnóstico de suspensión","detail":"Lenovo LOQ 15ARP9 · s2idle · pm_test · NVIDIA S0ix"}},
   {"id":"neumatica-hidraulica-mantenimiento-industrial","title":"Neumática e hidráulica: dos formas de transmitir potencia","summary":"Una introducción práctica para comprender sus diferencias, aplicaciones, ventajas y criterios de selección en mantenimiento industrial y maestranza.","featuredSummary":"Una introducción práctica para comprender diferencias, aplicaciones y ventajas de la neumática y la hidráulica.","category":"Neumática e Hidráulica","date":"2026-07-21","readingTime":"8 min de lectura","url":"../hidraulica-neumatica/neumatica-hidraulica-mantenimiento-industrial.html","image":"../assets/images/neumatica-hidraulica/cover.jpg","imageAlt":"Esquemas neumáticos e hidráulicos de transmisión de potencia","imageWidth":1200,"imageHeight":675,"featured":{"icon":"icons/energia.svg","label":"Neumática · Hidráulica","title":"Transmisión de potencia","detail":"Circuitos de fluido · Criterios técnicos · Seguridad"}},
