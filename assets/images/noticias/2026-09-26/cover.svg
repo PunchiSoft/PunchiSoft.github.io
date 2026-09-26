@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Noticias PunchiSoft — KDE Plasma 6.8 Beta</title>
+  <desc id="desc">Portada editorial dedicada a la beta de KDE Plasma 6.8 del 26 de septiembre de 2026.</desc>
+  <rect width="1200" height="675" fill="#10141c"/>
+  <circle cx="1010" cy="120" r="260" fill="#1d99f3" opacity=".16"/>
+  <circle cx="1080" cy="590" r="330" fill="#3daee9" opacity=".10"/>
+  <path d="M80 92h10v490H80z" fill="#3daee9"/>
+  <text x="125" y="155" fill="#9fb3c8" font-family="system-ui,sans-serif" font-size="28" font-weight="600">NOTICIAS PUNCHISOFT · 26 SEPTIEMBRE 2026</text>
+  <text x="125" y="285" fill="#ffffff" font-family="system-ui,sans-serif" font-size="76" font-weight="700">KDE Plasma 6.8</text>
+  <text x="125" y="375" fill="#ffffff" font-family="system-ui,sans-serif" font-size="76" font-weight="700">actualiza su beta</text>
+  <text x="125" y="455" fill="#b9c8d8" font-family="system-ui,sans-serif" font-size="32">Union · KWin · Wayland · pruebas</text>
+  <rect x="125" y="520" width="250" height="58" rx="29" fill="#3daee9"/>
+  <text x="250" y="558" text-anchor="middle" fill="#10141c" font-family="system-ui,sans-serif" font-size="25" font-weight="700">KDE PLASMA</text>
+</svg>
