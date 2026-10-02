@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Noticias PunchiSoft — 2 de octubre de 2026</title>
+  <desc id="desc">Portada editorial sobre la imagen de instalación de Arch Linux de octubre de 2026.</desc>
+  <rect width="1200" height="675" fill="#10141c"/>
+  <circle cx="1030" cy="120" r="230" fill="#1793d1" opacity=".16"/>
+  <circle cx="1040" cy="560" r="310" fill="#1793d1" opacity=".08"/>
+  <text x="90" y="145" fill="#8fcff2" font-family="sans-serif" font-size="28" font-weight="700">NOTICIAS PUNCHISOFT · LINUX</text>
+  <text x="90" y="250" fill="#ffffff" font-family="sans-serif" font-size="62" font-weight="700">Arch Linux renueva</text>
+  <text x="90" y="325" fill="#ffffff" font-family="sans-serif" font-size="62" font-weight="700">su ISO mensual</text>
+  <text x="90" y="405" fill="#b8c2cf" font-family="sans-serif" font-size="30">2026.10.01 · Linux 7.2.7 · 1,5 GB</text>
+  <path d="M930 220 L1040 430 L820 430 Z" fill="none" stroke="#1793d1" stroke-width="18" stroke-linejoin="round"/>
+  <path d="M930 265 L965 355 L930 335 L895 355 Z" fill="#1793d1"/>
+  <line x1="90" y1="535" x2="1110" y2="535" stroke="#2d3745" stroke-width="2"/>
+  <text x="90" y="590" fill="#d9e1ea" font-family="sans-serif" font-size="26">2 de octubre de 2026</text>
+</svg>
