@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Noticias PunchiSoft — Linux 7.2.9</title>
+  <desc id="desc">Portada editorial sobre la actualización del kernel Linux 7.2.9.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10141c"/>
+      <stop offset="1" stop-color="#243447"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="980" cy="135" r="210" fill="#ffffff" opacity="0.05"/>
+  <circle cx="1050" cy="565" r="300" fill="#ffffff" opacity="0.035"/>
+  <text x="80" y="105" fill="#a9bdd3" font-family="system-ui, sans-serif" font-size="28" font-weight="600">NOTICIAS PUNCHISOFT · 04.10.2026</text>
+  <text x="80" y="285" fill="#ffffff" font-family="system-ui, sans-serif" font-size="92" font-weight="750">Linux 7.2.9</text>
+  <text x="84" y="350" fill="#d7e2ed" font-family="system-ui, sans-serif" font-size="34">Nueva revisión de la rama estable del kernel</text>
+  <rect x="80" y="430" width="420" height="4" rx="2" fill="#a9bdd3"/>
+  <text x="80" y="510" fill="#b8c8d8" font-family="system-ui, sans-serif" font-size="26">Kernel estable · mantenimiento · soporte prolongado</text>
+  <text x="80" y="600" fill="#ffffff" font-family="system-ui, sans-serif" font-size="30" font-weight="650">PunchiSoft</text>
+</svg>
