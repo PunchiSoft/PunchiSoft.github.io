@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    =========================================================
+    PLANTILLA DE NOTICIAS PUNCHISOFT
+    ---------------------------------------------------------
+    Uso: copiar este archivo como  blog/noticias-YYYY-MM-DD.html
+    y reemplazar todos los marcadores de plantilla.
+
+    Las rutas relativas (../css/, ../js/, ../icons/, ../assets/)
+    suponen que el archivo final vive dentro de blog/.
+
+    Reglas del repositorio público:
+    - No incluir credenciales, tokens, claves ni datos personales.
+    - No incluir rutas locales, usuarios, equipos ni IPs privadas.
+    - Usar solo fuentes públicas y enlaces públicos.
+    - Ver docs/NOTICIAS_AUTOMATICAS.md antes de publicar.
+
+    Registro obligatorio en data/posts.json (ver comentario al
+    final de este archivo).
+    =========================================================
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Autodesk Fusion incorpora configuraciones bajo demanda y ELISA amplía sus herramientas abiertas para análisis, pruebas y confiabilidad de sistemas Linux.">
+  <meta name="theme-color" content="#10141c">
+  <meta property="og:site_name" content="PunchiSoft">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Noticias PunchiSoft — 6 de octubre de 2026 — PunchiSoft">
+  <meta property="og:description" content="Autodesk Fusion incorpora configuraciones bajo demanda y ELISA amplía sus herramientas abiertas para análisis, pruebas y confiabilidad de sistemas Linux.">
+  <meta property="og:url" content="https://punchisoft.github.io/blog/noticias-2026-10-06.html">
+  <!-- og:image requiere una imagen raster pública (PNG/JPG 1200x630). Añadir solo si existe; SVG no es compatible con la mayoría de consumidores. -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@punchisoft">
+  <meta name="twitter:creator" content="@punchisoft">
+  <meta name="twitter:title" content="Noticias PunchiSoft — 6 de octubre de 2026 — PunchiSoft">
+  <meta name="twitter:description" content="Autodesk Fusion incorpora configuraciones bajo demanda y ELISA amplía sus herramientas abiertas para análisis, pruebas y confiabilidad de sistemas Linux.">
+  <title>Noticias PunchiSoft — 6 de octubre de 2026 — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+</head>
+<body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Estructura compartida con el resto del sitio.         -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DE LA PUBLICACIÓN                            -->
+      <!-- Título del día, fecha y resumen editorial.             -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">Noticias</span><time datetime="2026-10-06">6 de octubre de 2026</time><span>4 min de lectura</span></div>
+        <h1>Noticias PunchiSoft — 6 de octubre de 2026</h1>
+        <p class="lead">Diseño configurable y confiabilidad de software: Autodesk simplifica la creación de variantes en Fusion, mientras ELISA incorpora nuevas herramientas abiertas para analizar y someter a prueba sistemas Linux.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- PORTADA                                               -->
+      <!-- Imagen pública en assets/images/noticias/YYYY-MM-DD/.  -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/noticias/2026-10-06/cover.svg" alt="Portada de Noticias PunchiSoft del 6 de octubre de 2026 sobre Autodesk Fusion y herramientas abiertas para confiabilidad en Linux" width="1200" height="675" loading="eager">
+        <figcaption>CAD configurable y herramientas abiertas para análisis y pruebas de sistemas.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CONTENIDO                                             -->
+      <!-- Entre 1 y 5 noticias reales. Cada noticia es una ficha -->
+      <!-- con encabezado (categoría, titular y bajada), cuerpo   -->
+      <!-- y pie de fuente. Sin relleno artificial.               -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <!-- La introducción se muestra una sola vez, en el <p class="lead"> de la cabecera. -->
+
+        <!-- Opcional: índice de titulares. Cada entrada enlaza a su noticia. Eliminar si no aporta. -->
+        <ul class="news-summary" aria-label="Titulares de esta edición">
+          <li><a href="#noticia-1">Fusion crea configuraciones bajo demanda</a></li>
+          <li><a href="#noticia-2">ELISA incorpora Cregit y stress-ng</a></li>
+        </ul>
+
+        <section class="news-item" data-category="CAD &amp; Planos" id="noticia-1" aria-labelledby="noticia-1-titulo">
+          <header class="news-item-header">
+            <p class="news-item-category"><span class="news-item-index" aria-hidden="true">1</span>CAD &amp; Planos</p>
+            <h2 id="noticia-1-titulo">Fusion crea configuraciones bajo demanda</h2>
+            <p class="news-item-dek">Las variantes se generan cuando un flujo las necesita, sin definir por adelantado todas las combinaciones posibles.</p>
+          </header>
+          <div class="news-item-body">
+            <p>Autodesk presentó en Fusion las configuraciones bajo demanda, una forma de crear variantes de producto desde flujos posteriores como Insert, Switch Configuration y Derive. Si ya existe una combinación equivalente, Fusion la reutiliza; si no, crea una nueva respetando las reglas de configuración definidas en el modelo maestro.</p>
+            <p>La función busca reducir el crecimiento innecesario de las tablas de configuración en familias de productos con muchas combinaciones. También incorpora una fila de prueba para evaluar valores antes de crear una variante definitiva, una capacidad aplicable a equipos industriales, mobiliario y conjuntos diseñados bajo pedido.</p>
+          </div>
+          <footer class="news-source">
+            <span class="news-source-label">Fuente</span>
+            <a href="https://www.autodesk.com/products/fusion-360/blog/on-demand-configurations-autodesk-fusion/" target="_blank" rel="noopener noreferrer">Autodesk Fusion Blog ↗</a>
+            <time datetime="2026-10-05">5 de octubre de 2026</time>
+          </footer>
+        </section>
+
+        <section class="news-item" data-category="Software libre" id="noticia-2" aria-labelledby="noticia-2-titulo">
+          <header class="news-item-header"><p class="news-item-category"><span class="news-item-index" aria-hidden="true">2</span>Software libre</p><h2 id="noticia-2-titulo">ELISA incorpora Cregit y stress-ng</h2><p class="news-item-dek">El proyecto amplía sus herramientas para análisis de código, pruebas de estrés y confiabilidad en sistemas Linux.</p></header>
+          <div class="news-item-body"><p>La Linux Foundation anunció que Cregit y stress-ng pasan a formar parte del ecosistema de ELISA, iniciativa orientada al uso de Linux y software abierto en aplicaciones donde la seguridad y la confiabilidad requieren evidencia técnica verificable.</p><p>Cregit permite estudiar la historia y evolución del código del kernel Linux, mientras stress-ng reúne cientos de pruebas de estrés para evaluar comportamiento, rendimiento y confiabilidad del sistema. La incorporación acerca ambas herramientas a los trabajos de ELISA sobre trazabilidad, pruebas y aseguramiento en sectores industriales, automotrices y aeroespaciales.</p></div>
+          <footer class="news-source"><span class="news-source-label">Fuente</span><a href="https://www.linuxfoundation.org/press/elisa-expands-open-source-ecosystem-for-safety-critical-software" target="_blank" rel="noopener noreferrer">Linux Foundation ↗</a><time datetime="2026-10-05">5 de octubre de 2026</time></footer>
+        </section>
+
+
+        <div class="article-end">
+          <span>Selección editorial de PunchiSoft · 6 de octubre de 2026</span>
+          <a class="button button-ghost" href="index.html">Más artículos</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://x.com/punchisoft" target="_blank" rel="noopener noreferrer">X ↗</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
