@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    =========================================================
+    PLANTILLA DE NOTICIAS PUNCHISOFT
+    ---------------------------------------------------------
+    Uso: copiar este archivo como  blog/noticias-YYYY-MM-DD.html
+    y reemplazar todos los marcadores marcadores de plantilla.
+
+    Las rutas relativas (../css/, ../js/, ../icons/, ../assets/)
+    suponen que el archivo final vive dentro de blog/.
+
+    Reglas del repositorio público:
+    - No incluir credenciales, tokens, claves ni datos personales.
+    - No incluir rutas locales, usuarios, equipos ni IPs privadas.
+    - Usar solo fuentes públicas y enlaces públicos.
+    - Ver docs/NOTICIAS_AUTOMATICAS.md antes de publicar.
+
+    Registro obligatorio en data/posts.json (ver comentario al
+    final de este archivo).
+    =========================================================
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tres novedades sobre ingeniería eléctrica abierta, trazabilidad del software automotriz y gobernanza del código abierto en Europa.">
+  <meta name="theme-color" content="#10141c">
+  <meta property="og:site_name" content="PunchiSoft">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Noticias PunchiSoft — 8 de octubre de 2026 — PunchiSoft">
+  <meta property="og:description" content="Tres novedades sobre ingeniería eléctrica abierta, trazabilidad del software automotriz y gobernanza del código abierto en Europa.">
+  <meta property="og:url" content="https://punchisoft.github.io/blog/noticias-2026-10-08.html">
+  <!-- og:image requiere una imagen raster pública (PNG/JPG 1200x630). Añadir solo si existe; SVG no es compatible con la mayoría de consumidores. -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@punchisoft">
+  <meta name="twitter:creator" content="@punchisoft">
+  <meta name="twitter:title" content="Noticias PunchiSoft — 8 de octubre de 2026 — PunchiSoft">
+  <meta name="twitter:description" content="Tres novedades sobre ingeniería eléctrica abierta, trazabilidad del software automotriz y gobernanza del código abierto en Europa.">
+  <title>Noticias PunchiSoft — 8 de octubre de 2026 — PunchiSoft</title>
+  <link rel="icon" href="../icons/app.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("punchisoft-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+</head>
+<body>
+  <!-- ===================================================== -->
+  <!-- NAVEGACIÓN PRINCIPAL                                  -->
+  <!-- Estructura compartida con el resto del sitio.         -->
+  <!-- ===================================================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <div class="nav-links" id="menu-principal"><a class="nav-home" href="../index.html"><span class="nav-icon"><img src="../icons/inicio.svg" alt=""></span>Inicio</a><a class="active" href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <!-- ===================================================== -->
+      <!-- CABECERA DE LA PUBLICACIÓN                            -->
+      <!-- Título del día, fecha y resumen editorial.             -->
+      <!-- ===================================================== -->
+      <header class="article-header container-narrow">
+        <a class="back-link" href="index.html">← Volver al blog</a>
+        <div class="post-meta"><span class="tag">Noticias</span><time datetime="2026-10-08">8 de octubre de 2026</time><span>5 min de lectura</span></div>
+        <h1>Noticias PunchiSoft — 8 de octubre de 2026</h1>
+        <p class="lead">Esta edición reúne tres anuncios técnicos del 7 de octubre: infraestructura abierta para redes eléctricas, trazabilidad del software automotriz y un nuevo estudio europeo sobre software libre.</p>
+      </header>
+
+      <!-- ===================================================== -->
+      <!-- PORTADA                                               -->
+      <!-- Imagen pública en assets/images/noticias/YYYY-MM-DD/.  -->
+      <!-- ===================================================== -->
+      <figure class="article-hero container-narrow">
+        <img src="../assets/images/noticias/2026-10-08/cover.svg" alt="Portada de Noticias PunchiSoft del 8 de octubre de 2026 sobre ingeniería, industria y software libre" width="1200" height="675" loading="eager">
+        <figcaption>Ingeniería abierta, trazabilidad industrial y soberanía digital.</figcaption>
+      </figure>
+
+      <!-- ===================================================== -->
+      <!-- CONTENIDO                                             -->
+      <!-- Entre 1 y 5 noticias reales. Cada noticia es una ficha -->
+      <!-- con encabezado (categoría, titular y bajada), cuerpo   -->
+      <!-- y pie de fuente. Sin relleno artificial.               -->
+      <!-- ===================================================== -->
+      <div class="article-body container-narrow">
+        <!-- La introducción se muestra una sola vez, en el <p class="lead"> de la cabecera. -->
+
+        <!-- Opcional: índice de titulares. Cada entrada enlaza a su noticia. Eliminar si no aporta. -->
+        <ul class="news-summary" aria-label="Titulares de esta edición">
+          <li><a href="#noticia-1">OpenGrid impulsa herramientas abiertas para planificar redes eléctricas</a></li>
+          <li><a href="#noticia-2">OpenChain presenta un marco SBOM para software automotriz</a></li>
+          <li><a href="#noticia-3">Europa analiza soberanía digital y gobernanza del código abierto</a></li>
+        </ul>
+
+        <section class="news-item" data-category="Ingeniería" id="noticia-1" aria-labelledby="noticia-1-titulo"><header class="news-item-header"><p class="news-item-category"><span class="news-item-index" aria-hidden="true">1</span>Ingeniería</p><h2 id="noticia-1-titulo">OpenGrid impulsa herramientas abiertas para planificar redes eléctricas</h2><p class="news-item-dek">Linux Foundation crea una base interoperable para compartir modelos, datos y herramientas de planificación.</p></header><div class="news-item-body"><p>La Linux Foundation presentó OpenGrid, una iniciativa abierta para modernizar la planificación de redes eléctricas y reducir barreras de interoperabilidad entre herramientas comerciales y de código abierto. El proyecto plantea una arquitectura común de datos, estándares, API y un repositorio de conjuntos de datos preparados para modelado.</p><p>Su primera aplicación prevista, OpenGrid Translator, está en desarrollo para 2027 y buscará facilitar el intercambio de datos y modelos entre plataformas. La iniciativa resulta relevante para ingeniería eléctrica, expansión de infraestructura y análisis de demanda industrial.</p></div><footer class="news-source"><span class="news-source-label">Fuente</span><a href="https://www.linuxfoundation.org/press/linux-foundation-launches-opengrid-to-build-open-shared-infrastructure-for-the-worlds-electric-grid" target="_blank" rel="noopener noreferrer">Linux Foundation ↗</a><time datetime="2026-10-07">7 de octubre de 2026</time></footer></section>
+
+        <section class="news-item" data-category="Industria" id="noticia-2" aria-labelledby="noticia-2-titulo"><header class="news-item-header"><p class="news-item-category"><span class="news-item-index" aria-hidden="true">2</span>Industria</p><h2 id="noticia-2-titulo">OpenChain presenta un marco SBOM para software automotriz</h2><p class="news-item-dek">La versión 1.0 propone criterios compartidos para inventariar componentes y dependencias del software en vehículos.</p></header><div class="news-item-body"><p>Linux Foundation publicó OpenChain Automotive SBOM Framework 1.0, una guía abierta para crear e intercambiar listas de materiales de software en la industria automotriz. Define campos recomendados, criterios de calidad y escenarios de intercambio entre fabricantes y proveedores.</p><p>El marco complementa formatos existentes como SPDX (ISO/IEC 5962), sin sustituirlos. Su propósito es facilitar la trazabilidad de dependencias, la revisión de ciberseguridad y la comunicación técnica a lo largo de la cadena de suministro.</p></div><footer class="news-source"><span class="news-source-label">Fuente</span><a href="https://www.linuxfoundation.org/press/linux-foundation-releases-openchain-automotive-sbom-framework-1.0-for-greater-reliability-and-traceability-in-automotive-software" target="_blank" rel="noopener noreferrer">Linux Foundation ↗</a><time datetime="2026-10-07">7 de octubre de 2026</time></footer></section>
+
+        <section class="news-item" data-category="Software libre" id="noticia-3" aria-labelledby="noticia-3-titulo"><header class="news-item-header"><p class="news-item-category"><span class="news-item-index" aria-hidden="true">3</span>Software libre</p><h2 id="noticia-3-titulo">Europa analiza soberanía digital y gobernanza del código abierto</h2><p class="news-item-dek">Un informe de Linux Foundation Europe examina el papel del software abierto ante la adopción de IA.</p></header><div class="news-item-body"><p>Linux Foundation Europe difundió el informe State of Open Source in Europe 2026, centrado en soberanía tecnológica, gobernanza y uso de tecnologías abiertas. Según la investigación, el 94 % de las organizaciones consultadas considera importante la soberanía digital para su estrategia tecnológica.</p><p>El documento también identifica desafíos en el mantenimiento de proyectos, la gobernanza y el cumplimiento normativo a medida que crece el uso de inteligencia artificial. Sus conclusiones ofrecen contexto para equipos que evalúan dependencias abiertas, colaboración y sostenibilidad del software.</p></div><footer class="news-source"><span class="news-source-label">Fuente</span><a href="https://www.linuxfoundation.org/press/linux-foundation-europe-report-finds-digital-sovereignty-drives-european-tech-strategy-but-governance-and-ai-strain-present-major-hurdles" target="_blank" rel="noopener noreferrer">Linux Foundation ↗</a><time datetime="2026-10-07">7 de octubre de 2026</time></footer></section>
+
+        <div class="article-end">
+          <span>Selección editorial de PunchiSoft · 8 de octubre de 2026</span>
+          <a class="button button-ghost" href="index.html">Más artículos</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA                                         -->
+  <!-- Navegación secundaria y metadatos compartidos.         -->
+  <!-- ===================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content"><div><a class="brand" href="../index.html"><span class="brand-mark"><img src="../icons/app.svg" alt=""></span><span>PunchiSoft</span></a><p>Industria, Linux, IA y software con propósito.</p></div><nav aria-label="Navegación del pie"><a href="index.html">Mundo Linux</a><a href="../software/index.html">Proyectos</a><a href="../hidraulica-neumatica/index.html">Neumática e Hidráulica</a><a href="../inventor-autocad/index.html">CAD &amp; Planos</a><a href="../acerca-de/index.html">Acerca de</a><a href="../legal/index.html">Legal</a><a href="../seguridad/index.html">Seguridad</a><a href="https://x.com/punchisoft" target="_blank" rel="noopener noreferrer">X ↗</a><a href="https://github.com/PunchiSoft" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div>
+    <div class="container footer-bottom"><span>© <span data-year>2026</span> PunchiSoft</span><span>Hecho con curiosidad y código.</span></div>
+  </footer>
+  <script>
+    // =======================================================
+    // NAVEGACIÓN RESPONSIVE Y AÑO DEL COPYRIGHT
+    // Control compartido por las páginas internas del sitio.
+    // =======================================================
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+    const toggleLabel = toggle.querySelector('.sr-only');
+
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu.classList.toggle('open', isOpen);
+      toggleLabel.textContent = isOpen ? 'Cerrar menú' : 'Abrir menú';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuState(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+
+    document.querySelector('[data-year]').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
